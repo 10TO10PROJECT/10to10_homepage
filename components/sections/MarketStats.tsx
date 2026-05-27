@@ -11,14 +11,16 @@ export function MarketStats() {
       <Container>
         <FadeIn>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            사교육 시장은 큽니다.
+            이 거대한 사교육 시장은
             <br />
-            하지만 <span className="text-[var(--color-mint-600)]">정보는 흩어져</span> 있습니다.
+            아직도 <span className="text-[var(--color-mint-600)]">입소문에 의존</span>합니다.
           </h2>
         </FadeIn>
         <FadeIn delay={0.1} className="mt-4 mb-12">
           <p className="text-lg text-[var(--color-ink-700)]">
-            학부모는 맘카페에 의존하고, 학원은 마케팅에 헤맵니다.
+            학원은 맘카페와 블로그에 정보를 올리지만, 학부모는 정보를 찾기 어려워합니다.
+            <br />
+            결국은 아직까지도 입소문에 의존하고 있습니다.
           </p>
         </FadeIn>
         <StaggerChildren className="grid gap-6 md:grid-cols-3">
