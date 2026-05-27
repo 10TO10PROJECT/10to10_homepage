@@ -64,9 +64,9 @@ export function Agents() {
         <FadeIn className="mb-12 max-w-3xl">
           <Badge>AI AGENT — 9월 정식 출시</Badge>
           <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight">
-            네 개의 AI 에이전트가
+            AI Agent가 이 4가지 업무를
             <br />
-            원장님의 손이 가던 일을 대신합니다.
+            자동화합니다.
           </h2>
         </FadeIn>
         <StaggerChildren className="grid gap-4 md:grid-cols-2">

@@ -17,12 +17,12 @@ export function MainCta() {
             <Symbol variant="gradient" size={56} />
           </div>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            동네 학원의 다음 10년,
+            대한민국 거대 사교육 시장의 다음 10년,
             <br />
             <span className="bg-gradient-to-r from-[var(--color-mint-500)] to-[var(--color-sky-500)] bg-clip-text text-transparent">
               10to10
             </span>
-            과 함께.
+            이 설계합니다.
           </h2>
           <p className="mt-6 text-lg text-[var(--color-ink-700)] max-w-xl mx-auto">
             마케팅 풀케어, 플랫폼 도입, 투자·지원 — 가장 맞는 방식으로 연결해 드립니다.

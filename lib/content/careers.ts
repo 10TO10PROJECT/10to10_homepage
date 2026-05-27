@@ -21,16 +21,6 @@ export const CAREERS_VALUES = [
 
 export const CAREERS_OPEN_ROLES = [
   {
-    title: "Backend Engineer",
-    type: "정규직 · 풀타임",
-    desc: "정규 v1.x 출시를 함께. NestJS + Prisma + PostgreSQL 기반.",
-  },
-  {
-    title: "Growth / Sales (학원 영업)",
-    type: "정규직 · 풀타임",
-    desc: "10to10 STAGE 영업 사이클을 직접 설계·운영. 현장 미팅 비중 큼.",
-  },
-  {
     title: "Open Application",
     type: "포지션 무관",
     desc: "우리 비전에 공감한다면, 직무 제안과 함께 자유롭게 연락 주세요.",

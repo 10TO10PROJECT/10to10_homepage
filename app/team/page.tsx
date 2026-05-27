@@ -9,7 +9,7 @@ import { COMPANY } from "@/lib/content/company";
 
 export const metadata: Metadata = {
   title: "팀 — 10to10",
-  description: "10to10을 함께 만드는 사람들. 8명의 작은 팀이 동네 학원의 다음 10년을 설계합니다.",
+  description: "10to10을 함께 만드는 사람들. 8명의 작은 팀이 대한민국 거대 사교육 시장의 다음 10년을 설계합니다.",
 };
 
 export default function TeamPage() {
