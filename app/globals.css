@@ -55,3 +55,44 @@
     }
   }
 }
+
+/* IR Deck — print to PDF (16:9 landscape) */
+@page {
+  size: 1280px 720px;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .ir-deck {
+    padding: 0 !important;
+    background: white !important;
+  }
+  .ir-deck > div {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  .ir-slide {
+    width: 1280px !important;
+    height: 720px !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .ir-slide:last-child {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
+}
