@@ -22,9 +22,7 @@ export const INVEST_HIGHLIGHTS = [
   },
   {
     label: "AI",
-    value: "Solar(Upstage)",
-    desc: "Beta에서 한국형 LLM Solar 통합 실험. 정규 v1.x에서 본격 탑재.",
+    value: "10to10 AI",
+    desc: "학원 업무 AX 자동화. 플랫폼 데이터 기반으로 학부모·학생에게 맞춤 교육 정보 AI 리서치 제공.",
   },
 ] as const;
-
-export const INVEST_CONTACT_EMAIL = "ricky7@yonsei.ac.kr";

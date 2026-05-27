@@ -4,45 +4,15 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
-import { MailtoForm, type MailtoField } from "@/components/forms/MailtoForm";
+import { InvestInquiryForm } from "@/components/forms/InvestInquiryForm";
 import { COMPANY } from "@/lib/content/company";
-import {
-  INVEST_HERO,
-  INVEST_HIGHLIGHTS,
-  INVEST_CONTACT_EMAIL,
-} from "@/lib/content/invest";
+import { INVEST_HERO, INVEST_HIGHLIGHTS } from "@/lib/content/invest";
 
 export const metadata: Metadata = {
   title: "투자·지원 — 10to10",
   description:
-    "10to10 IR 자료와 투자·지원사업 협업 제안 창구. 메일 폼 또는 카카오톡으로 연락 주세요.",
+    "10to10 IR 자료와 투자·지원사업 협업 제안 창구. 폼 또는 카카오톡으로 연락 주세요.",
 };
-
-const INVEST_FIELDS: MailtoField[] = [
-  { name: "name", label: "이름", required: true },
-  { name: "organization", label: "소속 / 기관", required: true },
-  {
-    name: "email",
-    label: "회신용 이메일",
-    type: "email",
-    placeholder: "you@example.com",
-    required: true,
-  },
-  {
-    name: "topic",
-    label: "관심 주제",
-    placeholder: "예: 시드 투자 · 지원사업 · 협업 · 산학협력",
-    required: true,
-  },
-  {
-    name: "message",
-    label: "메시지",
-    type: "textarea",
-    rows: 5,
-    placeholder: "관심 영역, 검토 단계, 일정 등 자유롭게 알려주세요.",
-    required: true,
-  },
-];
 
 export default function InvestPage() {
   return (
@@ -135,19 +105,12 @@ export default function InvestPage() {
               투자·지원 협업 제안
             </h2>
             <p className="mt-4 text-[var(--color-ink-700)] leading-relaxed">
-              아래 폼을 채우면 <span className="font-semibold">{INVEST_CONTACT_EMAIL}</span>로
-              메일이 자동 작성됩니다. CEO 신현우가 직접 회신드립니다.
+              아래 폼을 작성하시면 CEO 신현우가 직접 확인하고 영업일 기준 2일 내 회신드립니다.
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <Card>
-              <MailtoForm
-                to={INVEST_CONTACT_EMAIL}
-                subjectPrefix="[10to10 투자·지원 문의]"
-                fields={INVEST_FIELDS}
-                submitLabel="메일 작성하기 →"
-                note="메일 클라이언트가 없는 경우 카카오톡으로도 받습니다."
-              />
+              <InvestInquiryForm />
             </Card>
           </FadeIn>
           <FadeIn delay={0.2} className="mt-8 text-center">
