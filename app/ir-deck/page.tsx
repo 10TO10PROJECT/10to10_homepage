@@ -6,7 +6,7 @@ import { COMPANY } from "@/lib/content/company";
 
 export const metadata: Metadata = {
   title: "10to10 IR Deck",
-  description: "10to10 — 동네 학원의 다음 10년 · Investor Deck 2026",
+  description: "10to10 — 대한민국 거대 사교육 시장의 다음 10년 · Investor Deck 2026",
   robots: { index: false, follow: false },
 };
 
@@ -32,7 +32,7 @@ export default function IrDeckPage() {
             Investor Deck · 2026
           </div>
           <h1 className="mt-6 text-[7rem] leading-none font-bold tracking-tight">10to10</h1>
-          <p className="mt-8 text-3xl font-semibold opacity-95">동네 학원의 다음 10년</p>
+          <p className="mt-8 text-3xl font-semibold opacity-95">대한민국 거대 사교육 시장의 다음 10년, 10to10이 설계합니다.</p>
           <p className="mt-4 max-w-[700px] text-lg opacity-80 leading-relaxed">
             29.2조 사교육 시장의 신뢰 인프라를 만듭니다. 학원 운영 SaaS, 학부모·학생 탐색 앱,
             그리고 학원 마케팅 풀케어 STAGE.
@@ -573,9 +573,9 @@ export default function IrDeckPage() {
             Ask · Let's talk
           </div>
           <h2 className="mt-6 text-6xl font-bold leading-tight tracking-tight">
-            동네 학원의 다음 10년에
+            대한민국 거대 사교육 시장의 다음 10년,
             <br />
-            <span className="text-[var(--color-mint-500)]">함께 베팅하시겠습니까?</span>
+            <span className="text-[var(--color-mint-500)]">10to10이 설계합니다.</span>
           </h2>
           <p className="mt-8 text-xl opacity-80 max-w-[760px] leading-relaxed">
             투자·파트너십·운영 협업 모두 환영합니다. 한국 사교육 시장의 단단한 인프라를

@@ -13,7 +13,7 @@ export function Revenue() {
             REVENUE MODEL
           </div>
           <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
-            지속 가능한 수익 구조.
+            합리적인 SaaS 이용료 및 AI 구독료.
           </h2>
         </FadeIn>
         <StaggerChildren className="grid gap-6 md:grid-cols-3">

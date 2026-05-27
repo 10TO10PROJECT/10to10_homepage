@@ -1,6 +1,6 @@
 export const INVEST_HERO = {
   eyebrow: "FOR INVESTORS & PARTNERS",
-  title: "동네 학원의 다음 10년에 함께 베팅하실래요?",
+  title: "대한민국 거대 사교육 시장의 다음 10년, 10to10이 설계합니다.",
   desc: "10to10은 29조 사교육 시장의 단단한 인프라가 되려 합니다. 사업 모델·시장 기회·팀·로드맵을 IR 자료로 정리했습니다.",
 } as const;
 
