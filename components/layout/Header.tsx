@@ -15,11 +15,14 @@ export function Header() {
           <Link href="/stage" className="hover:text-[var(--color-mint-600)] transition-colors">
             STAGE
           </Link>
-          <Link href="/#team" className="hover:text-[var(--color-mint-600)] transition-colors">
+          <Link href="/team" className="hover:text-[var(--color-mint-600)] transition-colors">
             팀
           </Link>
-          <Link href="/#careers" className="hover:text-[var(--color-mint-600)] transition-colors">
+          <Link href="/careers" className="hover:text-[var(--color-mint-600)] transition-colors">
             채용
+          </Link>
+          <Link href="/invest" className="hover:text-[var(--color-mint-600)] transition-colors">
+            투자·지원
           </Link>
         </nav>
         <Button href="/stage" variant="primary" size="sm">

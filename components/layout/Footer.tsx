@@ -35,21 +35,26 @@ export function Footer() {
             <div className="font-semibold text-[var(--color-ink-900)] mb-3">회사</div>
             <ul className="space-y-2 text-[var(--color-ink-700)]">
               <li>
+                <Link href="/team" className="hover:text-[var(--color-mint-600)]">
+                  팀
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers" className="hover:text-[var(--color-mint-600)]">
+                  채용
+                </Link>
+              </li>
+              <li>
+                <Link href="/invest" className="hover:text-[var(--color-mint-600)]">
+                  투자·지원
+                </Link>
+              </li>
+              <li>
                 <a
                   href={`mailto:${COMPANY.email}`}
                   className="hover:text-[var(--color-mint-600)]"
                 >
                   {COMPANY.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={COMPANY.irPdfPath}
-                  className="hover:text-[var(--color-mint-600)]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  IR 자료 다운로드
                 </a>
               </li>
               <li>
