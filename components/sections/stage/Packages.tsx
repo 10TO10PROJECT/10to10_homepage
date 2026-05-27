@@ -39,7 +39,7 @@ export function Packages() {
                   <span className="text-[var(--color-ink-500)]">원~ / 월</span>
                 </div>
                 <div className="text-sm text-[var(--color-ink-500)] mt-2">
-                  운영 인건비 {p.monthly} 포함
+                  {p.annualNote}
                 </div>
                 <ul className="mt-8 space-y-3 text-[var(--color-ink-700)] flex-1">
                   {p.includes.map((it) => (
