@@ -11,7 +11,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <Logo height={32} variant="dark" />
             <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink-700)]">
-              {COMPANY.legalName} {COMPANY.legalNote}
+              {COMPANY.legalName}
               <br />
               대표 {COMPANY.ceo} · 사업자등록번호 {COMPANY.bizNo}
             </p>

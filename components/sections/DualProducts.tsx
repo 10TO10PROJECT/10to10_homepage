@@ -50,7 +50,8 @@ export function DualProducts() {
                 </div>
                 <h3 className="mt-3 text-2xl md:text-3xl font-bold">10to10 STAGE</h3>
                 <p className="mt-4 text-[var(--color-ink-700)] leading-relaxed">
-                  학원 홍보, 운영팀이 대신합니다. 콘텐츠·광고·현장 운영까지 패키지로 제공합니다.
+                  학원의 마케팅 운영, 10to10 전문팀이 직접 진행합니다. 콘텐츠·광고·현장 운영까지
+                  패키지로 제공합니다.
                 </p>
                 <ul className="mt-6 space-y-2 text-sm text-[var(--color-ink-700)]">
                   <li>· 베이직 월 80만부터</li>

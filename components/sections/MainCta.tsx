@@ -25,11 +25,11 @@ export function MainCta() {
             과 함께.
           </h2>
           <p className="mt-6 text-lg text-[var(--color-ink-700)] max-w-xl mx-auto">
-            제품 도입, 영업 위탁, 투자·지원 — 가장 맞는 방식으로 연결해 드립니다.
+            마케팅 풀케어, 플랫폼 도입, 투자·지원 — 가장 맞는 방식으로 연결해 드립니다.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Button href="/stage" variant="primary" size="lg">
-              학원 영업 위탁
+              10to10 STAGE · 마케팅 풀케어
             </Button>
             <Button href="/platform" variant="outline" size="lg">
               플랫폼 도입
