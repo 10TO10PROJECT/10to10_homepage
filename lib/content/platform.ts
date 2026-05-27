@@ -25,10 +25,26 @@ export const PLATFORM_TWO_SIDED = {
 } as const;
 
 export const PLATFORM_AGENTS = [
-  { title: "상담 자동 요약", desc: "학부모 채팅을 LLM이 핵심 요약 + 다음 액션 추천" },
-  { title: "시간표 자동화", desc: "강사·강의실 충돌 자동 해소, 변경 알림 일괄 발송" },
-  { title: "공지 생성", desc: "원장님 한 줄 요청 → 학원 톤의 공지 초안 자동 작성" },
-  { title: "학원 비교", desc: "학부모용 — 거리·과목·시간대 기준 매칭 + 가격 비교" },
+  {
+    title: "상담 자동 요약",
+    desc: "학부모 채팅을 LLM이 핵심 요약 + 다음 액션 추천",
+    icon: "chat",
+  },
+  {
+    title: "시간표 자동화",
+    desc: "강사·강의실 충돌 자동 해소, 변경 알림 일괄 발송",
+    icon: "schedule",
+  },
+  {
+    title: "공지 생성",
+    desc: "원장님 한 줄 요청 → 학원 톤의 공지 초안 자동 작성",
+    icon: "notice",
+  },
+  {
+    title: "학원 비교",
+    desc: "학부모용 — 거리·과목·시간대 기준 매칭 + 가격 비교",
+    icon: "compare",
+  },
 ] as const;
 
 export const PLATFORM_REVENUE = [
@@ -38,9 +54,22 @@ export const PLATFORM_REVENUE = [
 ] as const;
 
 export const PLATFORM_ROADMAP = [
-  { phase: "현재", label: "Beta 운영 중", sub: "eduflo.co.kr 에서 체험" },
-  { phase: "2026-07-28", label: "정규 v1.0 출시", sub: "비AI 기능 완성판" },
-  { phase: "2026-09", label: "AI Agent 탑재", sub: "v1.1 — Solar LLM 통합" },
+  {
+    phase: "현재",
+    label: "Beta 운영 중",
+    sub: "eduflo.co.kr · 한국형 LLM Solar(Upstage) 탑재 실험",
+  },
+  {
+    phase: "2026-07-28",
+    label: "정규 v1.0 출시",
+    sub: "비AI 기능 완성판 — 학원 운영 SaaS + 학부모·학생 앱",
+  },
+  {
+    phase: "이후 업데이트",
+    label: "AI Agent 본격 탑재",
+    sub: "정규 v1.x — 상세 사양은 추후 공개",
+  },
 ] as const;
 
 export const PLATFORM_BETA_URL = "https://eduflo.co.kr";
+export const PLATFORM_ACADEMY_REGISTER_URL = "https://www.eduflo.co.kr/auth?role=admin";

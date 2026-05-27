@@ -14,11 +14,11 @@ export function BetaInvite() {
               BETA — 운영 중
             </div>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-              지금 Beta를 체험해 보세요.
+              Beta 서비스로 먼저 만나보세요.
             </h2>
             <p className="mt-4 text-[var(--color-ink-700)] max-w-xl mx-auto leading-relaxed">
-              eduflo.co.kr 에서 학원·학부모용 Beta 앱을 운영 중입니다. 정규 v1.0 출시 알림을
-              받으시려면 채널에 등록해 주세요.
+              eduflo.co.kr 에서 학원·학부모용 Beta 앱을 운영 중입니다. 정규 v1.0 출시 전,
+              새로운 기능을 가장 먼저 사용해보고 의견을 주시면 빠르게 반영합니다.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button href={PLATFORM_BETA_URL} variant="primary" size="lg" external>
