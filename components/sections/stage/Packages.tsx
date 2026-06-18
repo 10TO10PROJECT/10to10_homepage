@@ -43,20 +43,34 @@ export function Packages() {
 
                 <div className="mt-6">
                   {p.discountBadge && (
-                    <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-[var(--color-mint-500)]/10 px-3 py-1 text-xs font-bold text-[var(--color-mint-700)]">
-                      🎉 {p.discountBadge}
+                    <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-3 py-1.5 text-xs font-bold text-white shadow-md shadow-red-500/30 animate-pulse">
+                      🔥 {p.discountBadge} · 47% OFF
+                    </div>
+                  )}
+                  {p.originalPrice && (
+                    <div className="mb-1 flex items-baseline gap-2 text-base">
+                      <span className="text-[var(--color-ink-500)]">정가</span>
+                      <span className="text-[var(--color-ink-500)] line-through decoration-red-500 decoration-2">
+                        {p.originalPrice}원
+                      </span>
+                      <span className="text-red-500 font-bold">→</span>
                     </div>
                   )}
                   <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold">{p.fromPrice}</span>
+                    <span
+                      className={`text-6xl font-extrabold tracking-tight ${
+                        p.discountBadge
+                          ? "bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent"
+                          : ""
+                      }`}
+                    >
+                      {p.fromPrice}
+                    </span>
                     <span className="text-[var(--color-ink-500)]">{p.priceUnit}</span>
                   </div>
                   {p.originalPrice && (
-                    <div className="mt-1 text-sm text-[var(--color-ink-500)]">
-                      정가{" "}
-                      <span className="line-through">
-                        {p.originalPrice}원 / 연
-                      </span>
+                    <div className="mt-1 text-sm font-bold text-red-500">
+                      💸 연 70만원 절약
                     </div>
                   )}
                   <div className="mt-2 text-xs text-[var(--color-ink-500)]">
