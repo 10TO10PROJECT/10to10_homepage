@@ -36,25 +36,33 @@ export function StageHero() {
             <FadeIn delay={0.3} className="mt-8">
               <a
                 href="#info-session"
-                className="group relative flex items-center gap-4 rounded-[var(--radius-lg)] border border-[var(--color-mint-500)]/40 bg-gradient-to-br from-[var(--color-mint-100)] to-white p-5 shadow-lg shadow-[var(--color-mint-600)]/10 transition hover:shadow-xl hover:shadow-[var(--color-mint-600)]/20 hover:-translate-y-0.5"
+                className="group relative flex items-center gap-4 overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br from-[var(--color-ink-900)] via-[var(--color-ink-900)] to-[#0a3d36] p-5 shadow-xl shadow-[var(--color-mint-600)]/30 ring-2 ring-[var(--color-mint-500)]/60 transition hover:shadow-2xl hover:shadow-[var(--color-mint-600)]/50 hover:-translate-y-0.5"
               >
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-mint-500)] text-2xl shadow-md shadow-[var(--color-mint-600)]/30">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[var(--color-mint-500)]/30 blur-3xl"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-[var(--color-sky-500)]/20 blur-3xl"
+                />
+                <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-mint-500)] text-2xl shadow-lg shadow-[var(--color-mint-500)]/60">
                   🎯
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="relative flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-[var(--color-ink-900)] px-2 py-0.5 text-[10px] font-bold tracking-widest text-[var(--color-mint-500)]">
+                    <span className="rounded-full bg-[var(--color-mint-500)] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[var(--color-ink-900)] shadow-sm shadow-[var(--color-mint-400)]/50">
                       FLAGSHIP
                     </span>
-                    <span className="text-sm font-bold text-[var(--color-ink-900)]">
+                    <span className="text-sm font-bold text-white">
                       설명회 풀케어 — 1년 등록률을 바꾸는 무대
                     </span>
                   </div>
-                  <p className="mt-1 text-xs text-[var(--color-ink-700)]">
+                  <p className="mt-1 text-xs text-white/75">
                     기획·디자인·모객·쿠폰·현장 운영·등록률 트래킹까지 한 팀이 전담
                   </p>
                 </div>
-                <span className="flex-shrink-0 text-[var(--color-mint-600)] transition group-hover:translate-x-1">
+                <span className="relative flex-shrink-0 text-[var(--color-mint-500)] text-lg font-bold transition group-hover:translate-x-1">
                   →
                 </span>
               </a>
@@ -94,14 +102,54 @@ export function StageHero() {
           </div>
           <FadeIn delay={0.2} className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div className="absolute inset-0 -z-10 rounded-[var(--radius-lg)] bg-gradient-to-br from-[var(--color-mint-500)]/15 to-[var(--color-sky-500)]/10 blur-2xl" />
-            <Image
-              src="/stage-mockups/10-place-hero.jpg"
-              alt="네이버 플레이스 마케팅 — 검색 첫인상부터 상담까지 설계"
-              width={900}
-              height={1200}
-              priority
-              className="w-full h-auto rounded-[var(--radius-lg)] shadow-2xl shadow-[var(--color-mint-600)]/10 ring-1 ring-[var(--color-ink-300)]/40"
-            />
+            <div className="relative overflow-hidden rounded-[var(--radius-lg)] shadow-2xl shadow-[var(--color-mint-600)]/10 ring-1 ring-[var(--color-ink-300)]/40">
+              <Image
+                src="/stage-mockups/10-place-hero.jpg"
+                alt="네이버 플레이스 마케팅 — 검색 첫인상부터 상담까지 설계"
+                width={900}
+                height={1200}
+                priority
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              <div className="relative aspect-square overflow-hidden rounded-[var(--radius-md)] shadow-lg ring-1 ring-[var(--color-ink-300)]/40">
+                <Image
+                  src="/info-session/01-hall-wide.jpg"
+                  alt="설명회 현장 — 학부모 가득 찬 강의실"
+                  fill
+                  sizes="(max-width: 768px) 33vw, 200px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-2 py-1.5">
+                  <span className="text-[10px] font-bold text-white">설명회 현장</span>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-[var(--radius-md)] shadow-lg ring-1 ring-[var(--color-ink-300)]/40">
+                <Image
+                  src="/info-session/03-speaker-male.jpg"
+                  alt="설명회 연사 — 입시 컨설팅 세션"
+                  fill
+                  sizes="(max-width: 768px) 33vw, 200px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-2 py-1.5">
+                  <span className="text-[10px] font-bold text-white">전문 연사</span>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-[var(--radius-md)] shadow-lg ring-1 ring-[var(--color-ink-300)]/40">
+                <Image
+                  src="/info-session/04-booklet.jpg"
+                  alt="EDUFLO 브랜드 안내책자"
+                  fill
+                  sizes="(max-width: 768px) 33vw, 200px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-2 py-1.5">
+                  <span className="text-[10px] font-bold text-white">인쇄물</span>
+                </div>
+              </div>
+            </div>
           </FadeIn>
         </div>
       </Container>
