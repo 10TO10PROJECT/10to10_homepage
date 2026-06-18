@@ -6,8 +6,8 @@ export const STAGE_PRICING = {
     priceUnit: "원 / 연",
     annualNote: "연 단위 구독료 · 매월 정기 결제",
     badge: null as string | null,
-    discountBadge: null as string | null,
-    originalPrice: null as string | null,
+    discountBadge: "오픈 기념 할인" as string | null,
+    originalPrice: "89만" as string | null,
     tagline: "학원 운영을 받쳐주는 기본 마케팅 패키지",
     areas: [
       {
@@ -185,8 +185,8 @@ export const STAGE_FAQ = [
     a: "제작된 모든 자산(콘텐츠/영상/디자인)은 학원에 귀속됩니다.",
   },
   {
-    q: "프리미엄 오픈 할인은 언제까지인가요?",
-    a: "초기 파트너 학원 한정으로 정가 149만원 → 79만원에 제공해 드립니다. 할인 종료 후에도 가입 시점의 단가를 유지해 드립니다.",
+    q: "오픈 기념 할인은 언제까지인가요?",
+    a: "초기 파트너 학원 한정으로 베이직 89만원 → 49만원, 프리미엄 149만원 → 79만원에 제공해 드립니다. 할인 종료 후에도 가입 시점의 단가를 그대로 유지해 드립니다.",
   },
   {
     q: "설명회·블로그 구축은 따로 의뢰할 수 있나요?",
