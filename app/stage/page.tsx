@@ -4,6 +4,7 @@ import { Painpoints } from "@/components/sections/stage/Painpoints";
 import { WhyUs } from "@/components/sections/stage/WhyUs";
 import { StageGallery } from "@/components/sections/stage/StageGallery";
 import { Packages } from "@/components/sections/stage/Packages";
+import { InfoSessionFlagship } from "@/components/sections/stage/InfoSessionFlagship";
 import { Options } from "@/components/sections/stage/Options";
 import { Process } from "@/components/sections/stage/Process";
 import { StageFaq } from "@/components/sections/stage/StageFaq";
@@ -23,6 +24,7 @@ export default function StagePage() {
       <WhyUs />
       <StageGallery />
       <Packages />
+      <InfoSessionFlagship />
       <Options />
       <Process />
       <StageFaq />

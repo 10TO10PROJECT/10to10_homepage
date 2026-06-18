@@ -65,13 +65,6 @@ export const STAGE_PRICING = {
 
 export const STAGE_ONE_TIME = [
   {
-    id: "info-session",
-    title: "설명회 풀케어 서비스",
-    desc: "기획 · 디자인 · 모객 · 현장 운영까지 1회성 풀패키지로.",
-    priceLabel: "견적 문의",
-    highlight: true,
-  },
-  {
     id: "blog-build",
     title: "블로그 구축 서비스",
     desc: "공식 블로그 신규 구축 · 키워드 설계 · 초기 발행 세팅.",
@@ -86,6 +79,90 @@ export const STAGE_ONE_TIME = [
     highlight: false,
   },
 ] as const;
+
+export const INFO_SESSION = {
+  badge: "FLAGSHIP · 메인 1회성 상품",
+  headline: "설명회만 잘 열어도,\n학원의 1년이 달라집니다.",
+  subhead:
+    "기획부터 디자인·모객·쿠폰·현장 운영·등록률 트래킹까지. 학원장님은 무대 위에서 발표만 하시면 됩니다.",
+  metrics: [
+    { value: "4.32", unit: "/ 5.0", label: "평균 만족도" },
+    { value: "100%", unit: "", label: "재참석 의사" },
+    { value: "95.2%", unit: "", label: "추천 의사" },
+    { value: "75%", unit: "", label: "후속 설명회 희망" },
+  ],
+  stages: [
+    {
+      step: "01",
+      title: "기획 · 컨셉 설계",
+      desc: "타깃 학년·학부모 페르소나 설정, 세션 구성, MC 대본, 연사 큐시트까지 전체 흐름 설계.",
+    },
+    {
+      step: "02",
+      title: "디자인 · 인쇄물",
+      desc: "포스터·현수막·안내책자·세션 자료·MC 큐카드 등 브랜드 톤 일관된 디자인 + 인쇄 진행.",
+    },
+    {
+      step: "03",
+      title: "모객 · 디지털 마케팅",
+      desc: "오픈채팅방 · 인스타 · 학부모 카페 · 지역 광고 통합 운영. 신청 폼·랜딩 페이지 제작.",
+    },
+    {
+      step: "04",
+      title: "디지털 쿠폰 발급",
+      desc: "참석자 한정 무료 레벨테스트·상담 쿠폰 자동 발급. 지류 쿠폰 없이 모바일에서 끝.",
+    },
+    {
+      step: "05",
+      title: "현장 운영 총괄",
+      desc: "MC 진행, 등록 데스크, 세션별 시간 관리, 사진·영상 기록, Q&A 운영까지 전담팀 배치.",
+    },
+    {
+      step: "06",
+      title: "등록률 트래킹 리포트",
+      desc: "설명회 후 쿠폰 사용 → 상담 예약 → 등록까지 전 과정을 데이터로 추적. 실제 ROI를 숫자로 증명.",
+    },
+  ],
+  differentiators: [
+    "광고대행사·이벤트사가 못 하는 학원장 인터뷰 기반 컨셉 설계",
+    "디자인부터 현장까지 한 팀이 일관된 톤으로 운영",
+    "쿠폰·등록률 데이터를 학원에 그대로 귀속 — 다음 설명회 기획의 자산",
+  ],
+  photos: [
+    {
+      src: "/info-session/01-hall-wide.jpg",
+      alt: "설명회 현장 — 학부모 가득 찬 강의실",
+      caption: "학부모 가득 찬 현장",
+    },
+    {
+      src: "/info-session/02-speaker-female.jpg",
+      alt: "여성 연사 — 학교별 수업 자료 세션",
+      caption: "전문 연사 섭외",
+    },
+    {
+      src: "/info-session/03-speaker-male.jpg",
+      alt: "이경보 원장 — 입시 컨설팅 세션",
+      caption: "입시 컨설턴트 세션",
+    },
+    {
+      src: "/info-session/04-booklet.jpg",
+      alt: "EDUFLO 브랜드 안내책자 · 인쇄물",
+      caption: "브랜드 일관 인쇄물",
+    },
+    {
+      src: "/info-session/05-hall-app.jpg",
+      alt: "10to10 앱 안내 세션 — 현장",
+      caption: "10to10 앱 연동 안내",
+    },
+  ],
+  testimonial: {
+    quote: "다양한 강의가 너무 좋았습니다. 또 참석하고 싶어요.",
+    source: "참석 학부모 · 자유의견 발췌",
+  },
+  ctaPrimary: { label: "설명회 풀케어 견적 문의", href: "#contact" },
+  ctaSecondary: { label: "패키지 함께 보기", href: "#packages" },
+  note: "* 만족도 지표는 2026.02 EDUFLO 입시 설명회(응답자 21명) 실측 기준입니다.",
+} as const;
 
 export const STAGE_PROCESS = [
   { step: 1, title: "문의", desc: "폼 또는 카톡으로 신청" },
@@ -190,14 +267,14 @@ export const STAGE_GALLERY = [
   },
   {
     src: "/stage-mockups/02-app-chat.jpg",
-    alt: "STAGE 앱 — 챗봇 상담 + 설명회 예약",
-    label: "STAGE 챗봇 · 상담 예약",
+    alt: "10to10 AI — 챗봇 상담 + 설명회 예약",
+    label: "10to10 AI · 상담 예약",
     span: "square" as const,
   },
   {
     src: "/stage-mockups/07-mobile-page.png",
-    alt: "모바일 학원 페이지 — STAGE 노출 화면",
-    label: "STAGE 학원 페이지",
+    alt: "모바일 학원 페이지 — 10to10 노출 화면",
+    label: "10to10 학원 페이지",
     span: "square" as const,
   },
 ] as const;

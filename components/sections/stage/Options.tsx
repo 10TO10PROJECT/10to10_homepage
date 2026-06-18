@@ -10,18 +10,18 @@ export function Options() {
       <Container>
         <FadeIn className="mb-12 max-w-3xl">
           <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
-            ONE-TIME SERVICES
+            OTHER ONE-TIME SERVICES
           </div>
           <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
-            필요할 때 한 번만,
+            그 외에도 필요할 때,
             <br />
-            1회성 서비스도 있습니다.
+            1회성으로 의뢰하세요.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-ink-700)]">
             구독 없이도 단발성 프로젝트로 의뢰 가능합니다. 학원 상황에 맞춰 견적 안내드립니다.
           </p>
         </FadeIn>
-        <StaggerChildren className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <StaggerChildren className="grid gap-4 sm:grid-cols-2">
           {STAGE_ONE_TIME.map((o) => (
             <StaggerItem key={o.id}>
               <Card
