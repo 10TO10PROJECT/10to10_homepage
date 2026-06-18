@@ -98,8 +98,10 @@ export function InquiryForm({ source = "stage" }: { source?: Source }) {
           defaultValue="basic"
           className="h-11 rounded-[var(--radius-md)] border border-[var(--color-ink-300)] px-3 bg-white"
         >
-          <option value="basic">베이직 (월 80만부터)</option>
-          <option value="premium">프리미엄 (월 200만부터)</option>
+          <option value="basic">베이직 (연 49만)</option>
+          <option value="premium">프리미엄 (연 79만 · 오픈 할인)</option>
+          <option value="info_session">설명회 풀케어 (1회성 · 견적 문의)</option>
+          <option value="blog_build">블로그 구축 (1회성 · 견적 문의)</option>
           <option value="custom">맞춤 견적</option>
         </select>
       </label>
