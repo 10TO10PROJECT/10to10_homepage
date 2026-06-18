@@ -60,14 +60,21 @@ export function StageHero() {
               </a>
             </FadeIn>
             <FadeIn delay={0.4} className="mt-6 flex flex-wrap gap-3">
-              <Button href="#info-session" variant="primary" size="lg">
-                설명회 풀케어 보기
-              </Button>
-              <Button href="#packages" variant="outline" size="lg">
+              <Button
+                href="#packages"
+                variant="primary"
+                size="lg"
+                className="shadow-lg shadow-[var(--color-mint-600)]/30 hover:shadow-xl hover:shadow-[var(--color-mint-600)]/40 hover:-translate-y-0.5 transition"
+              >
                 패키지 보기
               </Button>
-              <Button href="#contact" variant="ghost" size="lg">
-                무료 상담
+              <Button
+                href="#contact"
+                variant="secondary"
+                size="lg"
+                className="shadow-lg shadow-[var(--color-ink-900)]/20 hover:shadow-xl hover:shadow-[var(--color-ink-900)]/30 hover:-translate-y-0.5 transition"
+              >
+                무료 상담 신청
               </Button>
             </FadeIn>
             <FadeIn delay={0.5} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-700)]">
