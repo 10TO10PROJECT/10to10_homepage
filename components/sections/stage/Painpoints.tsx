@@ -13,10 +13,13 @@ export function Painpoints() {
             WHY STAGE
           </div>
           <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
-            학원 영업, 직접 하기엔
+            돈은 쓰는데 결과가 안 보이고,
             <br />
-            너무 큰 일입니다.
+            케어는 받는데 케어가 없는.
           </h2>
+          <p className="mt-4 text-lg text-[var(--color-ink-700)]">
+            지금 원장님이 겪고 있는 문제, 저희도 압니다.
+          </p>
         </FadeIn>
         <StaggerChildren className="grid gap-4 md:grid-cols-3">
           {STAGE_PAINPOINTS.map((p) => (

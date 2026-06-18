@@ -15,40 +15,73 @@ export function Packages() {
             PACKAGES
           </div>
           <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
-            두 가지 시작점.
+            연 단위 정찰 가격,
+            <br />
+            두 가지 패키지.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-ink-700)]">
-            학원 규모와 목표에 맞춰 선택하세요. 옵션은 자유롭게 추가 가능합니다.
+            계약 시점 단가가 다음 해에도 그대로 유지됩니다.
+            <br className="hidden sm:inline" />
+            광고비·디자인비 별도 청구 없이, 약속한 운영을 끝까지 책임집니다.
           </p>
         </FadeIn>
-        <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+        <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
           {items.map((p, i) => (
             <FadeIn key={p.id} delay={i * 0.1}>
               <Card
-                interactive
                 className={`relative flex flex-col h-full ${
-                  p.id === "premium" ? "border-[var(--color-mint-500)] shadow-lg" : ""
+                  p.id === "premium"
+                    ? "border-[var(--color-mint-500)] shadow-xl shadow-[var(--color-mint-600)]/10 ring-1 ring-[var(--color-mint-500)]/30"
+                    : ""
                 }`}
               >
                 {p.badge && (
                   <Badge className="absolute -top-3 right-6">{p.badge}</Badge>
                 )}
                 <h3 className="text-2xl font-bold">{p.name}</h3>
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span className="text-5xl font-bold">{p.fromPrice}</span>
-                  <span className="text-[var(--color-ink-500)]">원~ / 월</span>
+                <p className="mt-2 text-sm text-[var(--color-ink-700)]">{p.tagline}</p>
+
+                <div className="mt-6">
+                  {p.discountBadge && (
+                    <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-[var(--color-mint-500)]/10 px-3 py-1 text-xs font-bold text-[var(--color-mint-700)]">
+                      🎉 {p.discountBadge}
+                    </div>
+                  )}
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-bold">{p.fromPrice}</span>
+                    <span className="text-[var(--color-ink-500)]">{p.priceUnit}</span>
+                  </div>
+                  {p.originalPrice && (
+                    <div className="mt-1 text-sm text-[var(--color-ink-500)]">
+                      정가{" "}
+                      <span className="line-through">
+                        {p.originalPrice}원 / 연
+                      </span>
+                    </div>
+                  )}
+                  <div className="mt-2 text-xs text-[var(--color-ink-500)]">
+                    {p.annualNote}
+                  </div>
                 </div>
-                <div className="text-sm text-[var(--color-ink-500)] mt-2">
-                  {p.annualNote}
-                </div>
-                <ul className="mt-8 space-y-3 text-[var(--color-ink-700)] flex-1">
-                  {p.includes.map((it) => (
-                    <li key={it} className="flex gap-2">
-                      <span className="text-[var(--color-mint-600)] flex-shrink-0">✓</span>
-                      {it}
-                    </li>
+
+                <div className="mt-8 space-y-5 flex-1">
+                  {p.areas.map((area) => (
+                    <div key={area.title}>
+                      <div className="text-sm font-bold text-[var(--color-ink-900)]">
+                        {area.title}
+                      </div>
+                      <ul className="mt-2 space-y-1.5 text-sm text-[var(--color-ink-700)]">
+                        {area.items.map((it) => (
+                          <li key={it} className="flex gap-2">
+                            <span className="text-[var(--color-mint-600)] flex-shrink-0">✓</span>
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
+
                 <Button
                   href="#contact"
                   variant={p.id === "premium" ? "primary" : "outline"}
@@ -61,7 +94,9 @@ export function Packages() {
           ))}
         </div>
         <p className="mt-8 text-center text-sm text-[var(--color-ink-500)]">
-          * 표시 금액은 시작가입니다. 학원 상황·옵션에 따라 맞춤 견적을 제공해 드립니다.
+          * 네이버·구글 광고 매체비는 학원이 직접 결제하며, 권장 예산을 함께 제안드립니다.
+          <br className="hidden sm:inline" />
+          * 프리미엄 오픈 할인은 초기 파트너 학원 한정이며, 가입 시점 단가는 다음 해에도 유지됩니다.
         </p>
       </Container>
     </section>
