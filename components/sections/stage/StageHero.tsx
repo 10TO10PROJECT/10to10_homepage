@@ -28,27 +28,56 @@ export function StageHero() {
             </FadeIn>
             <FadeIn delay={0.2} className="mt-6">
               <p className="text-lg md:text-xl text-[var(--color-ink-700)] leading-relaxed max-w-xl">
-                연세대·한양대 출신 마케팅 전문팀이 디자인·콘텐츠·플레이스 운영까지
+                연세대·한양대 출신 마케팅 전문팀이 디자인·콘텐츠·플레이스 운영부터
                 <br className="hidden sm:inline" />
-                학원 마케팅 전 과정을 직접 운영합니다.
+                <strong className="text-[var(--color-ink-900)]">학원 설명회 풀케어</strong>까지 직접 운영합니다.
               </p>
             </FadeIn>
-            <FadeIn delay={0.3} className="mt-8 flex flex-wrap gap-3">
-              <Button href="#packages" variant="primary" size="lg">
+            <FadeIn delay={0.3} className="mt-8">
+              <a
+                href="#info-session"
+                className="group relative flex items-center gap-4 rounded-[var(--radius-lg)] border border-[var(--color-mint-500)]/40 bg-gradient-to-br from-[var(--color-mint-100)] to-white p-5 shadow-lg shadow-[var(--color-mint-600)]/10 transition hover:shadow-xl hover:shadow-[var(--color-mint-600)]/20 hover:-translate-y-0.5"
+              >
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-mint-500)] text-2xl shadow-md shadow-[var(--color-mint-600)]/30">
+                  🎯
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-[var(--color-ink-900)] px-2 py-0.5 text-[10px] font-bold tracking-widest text-[var(--color-mint-500)]">
+                      FLAGSHIP
+                    </span>
+                    <span className="text-sm font-bold text-[var(--color-ink-900)]">
+                      설명회 풀케어 — 1년 등록률을 바꾸는 무대
+                    </span>
+                  </div>
+                  <p className="mt-1 text-xs text-[var(--color-ink-700)]">
+                    기획·디자인·모객·쿠폰·현장 운영·등록률 트래킹까지 한 팀이 전담
+                  </p>
+                </div>
+                <span className="flex-shrink-0 text-[var(--color-mint-600)] transition group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </FadeIn>
+            <FadeIn delay={0.4} className="mt-6 flex flex-wrap gap-3">
+              <Button href="#info-session" variant="primary" size="lg">
+                설명회 풀케어 보기
+              </Button>
+              <Button href="#packages" variant="outline" size="lg">
                 패키지 보기
               </Button>
-              <Button href="#contact" variant="outline" size="lg">
-                무료 상담 신청
+              <Button href="#contact" variant="ghost" size="lg">
+                무료 상담
               </Button>
             </FadeIn>
-            <FadeIn delay={0.4} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-700)]">
+            <FadeIn delay={0.5} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-700)]">
               <span className="flex items-center gap-2">
                 <span className="text-[var(--color-mint-600)]">✓</span>
-                광고비·디자인비 따로 ❌
+                만족도 4.32 / 5.0
               </span>
               <span className="flex items-center gap-2">
                 <span className="text-[var(--color-mint-600)]">✓</span>
-                전담 매니저 1:1 케어
+                재참석 의사 100%
               </span>
               <span className="flex items-center gap-2">
                 <span className="text-[var(--color-mint-600)]">✓</span>
