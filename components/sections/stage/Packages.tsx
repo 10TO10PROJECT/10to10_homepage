@@ -26,7 +26,12 @@ export function Packages() {
           </p>
         </FadeIn>
         <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
-          {items.map((p, i) => (
+          {items.map((p, i) => {
+            const fromNum = parseInt(p.fromPrice, 10);
+            const origNum = p.originalPrice ? parseInt(p.originalPrice, 10) : null;
+            const savings = origNum ? origNum - fromNum : 0;
+            const offPct = origNum ? Math.round((savings / origNum) * 100) : 0;
+            return (
             <FadeIn key={p.id} delay={i * 0.1}>
               <Card
                 className={`relative flex flex-col h-full ${
@@ -44,7 +49,7 @@ export function Packages() {
                 <div className="mt-6">
                   {p.discountBadge && (
                     <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-3 py-1.5 text-xs font-bold text-white shadow-md shadow-red-500/30 animate-pulse">
-                      🔥 {p.discountBadge} · 47% OFF
+                      🔥 {p.discountBadge} · {offPct}% OFF
                     </div>
                   )}
                   {p.originalPrice && (
@@ -70,7 +75,7 @@ export function Packages() {
                   </div>
                   {p.originalPrice && (
                     <div className="mt-1 text-sm font-bold text-red-500">
-                      💸 연 70만원 절약
+                      💸 연 {savings}만원 절약
                     </div>
                   )}
                   <div className="mt-2 text-xs text-[var(--color-ink-500)]">
@@ -105,12 +110,13 @@ export function Packages() {
                 </Button>
               </Card>
             </FadeIn>
-          ))}
+            );
+          })}
         </div>
         <p className="mt-8 text-center text-sm text-[var(--color-ink-500)]">
           * 네이버·구글 광고 매체비는 학원이 직접 결제하며, 권장 예산을 함께 제안드립니다.
           <br className="hidden sm:inline" />
-          * 프리미엄 오픈 할인은 초기 파트너 학원 한정이며, 가입 시점 단가는 다음 해에도 유지됩니다.
+          * 오픈 기념 할인은 초기 파트너 학원 한정이며, 가입 시점 단가는 다음 해에도 유지됩니다.
         </p>
       </Container>
     </section>
