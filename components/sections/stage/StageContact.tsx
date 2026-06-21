@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Container } from "@/components/ui/Container";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 import { FadeIn } from "@/components/motion/FadeIn";
@@ -48,7 +49,9 @@ export function StageContact() {
           <div className="text-sm font-bold tracking-widest text-[var(--color-ink-500)] mb-4">
             또는 문의 폼 작성
           </div>
-          <InquiryForm source="stage" />
+          <Suspense fallback={<div className="h-96 rounded-[var(--radius-lg)] bg-[var(--color-ink-100)] animate-pulse" />}>
+            <InquiryForm source="stage" />
+          </Suspense>
         </FadeIn>
       </Container>
     </section>

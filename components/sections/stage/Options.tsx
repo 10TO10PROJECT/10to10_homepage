@@ -24,20 +24,26 @@ export function Options() {
         <StaggerChildren className="grid gap-4 sm:grid-cols-2">
           {STAGE_ONE_TIME.map((o) => (
             <StaggerItem key={o.id}>
-              <Card
-                interactive
-                className={`h-full flex flex-col ${
-                  o.highlight ? "border-[var(--color-mint-500)]/60" : ""
-                }`}
+              <a
+                href={`?service=${o.id}#contact`}
+                aria-label={`${o.title} 견적 문의`}
+                className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-mint-500)] rounded-[var(--radius-lg)]"
               >
-                <h3 className="font-bold text-lg">{o.title}</h3>
-                <p className="mt-3 text-sm text-[var(--color-ink-700)] leading-relaxed flex-1">
-                  {o.desc}
-                </p>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-mint-600)]">
-                  {o.priceLabel} <span aria-hidden>→</span>
-                </div>
-              </Card>
+                <Card
+                  interactive
+                  className={`h-full flex flex-col ${
+                    o.highlight ? "border-[var(--color-mint-500)]/60" : ""
+                  }`}
+                >
+                  <h3 className="font-bold text-lg">{o.title}</h3>
+                  <p className="mt-3 text-sm text-[var(--color-ink-700)] leading-relaxed flex-1">
+                    {o.desc}
+                  </p>
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-mint-600)]">
+                    {o.priceLabel} <span aria-hidden>→</span>
+                  </div>
+                </Card>
+              </a>
             </StaggerItem>
           ))}
         </StaggerChildren>

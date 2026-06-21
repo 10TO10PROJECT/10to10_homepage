@@ -138,7 +138,7 @@ export function InfoSessionFlagship() {
         {/* CTA */}
         <FadeIn delay={0.35} className="mt-12 flex flex-wrap justify-center gap-3">
           <Button
-            href={INFO_SESSION.ctaPrimary.href}
+            href={`?service=info_session${INFO_SESSION.ctaPrimary.href}`}
             variant="primary"
             size="lg"
           >
