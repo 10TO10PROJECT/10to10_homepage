@@ -102,7 +102,7 @@ export function Packages() {
                 </div>
 
                 <Button
-                  href="#contact"
+                  href={`?service=${p.id}#contact`}
                   variant={p.id === "premium" ? "primary" : "outline"}
                   className="mt-8 w-full"
                 >

@@ -1,12 +1,31 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { inquirySchema, type InquiryInput } from "@/lib/schema/inquiry";
 import { cn } from "@/lib/cn";
 
 type Source = "stage" | "platform" | "main";
+type PackageValue = InquiryInput["package"];
+
+const SERVICE_TO_PACKAGE: Record<string, PackageValue> = {
+  basic: "basic",
+  premium: "premium",
+  info_session: "info_session",
+  "blog-build": "blog_build",
+  "offline-print": "custom",
+};
 
 export function InquiryForm({ source = "stage" }: { source?: Source }) {
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams.get("service") ?? "";
+  const [pkg, setPkg] = useState<PackageValue>(SERVICE_TO_PACKAGE[serviceParam] ?? "basic");
+
+  useEffect(() => {
+    const mapped = SERVICE_TO_PACKAGE[serviceParam];
+    if (mapped) setPkg(mapped);
+  }, [serviceParam]);
+
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
   );
@@ -95,14 +114,15 @@ export function InquiryForm({ source = "stage" }: { source?: Source }) {
         <span className="text-sm font-semibold">관심 패키지</span>
         <select
           name="package"
-          defaultValue="basic"
+          value={pkg}
+          onChange={(e) => setPkg(e.target.value as PackageValue)}
           className="h-11 rounded-[var(--radius-md)] border border-[var(--color-ink-300)] px-3 bg-white"
         >
           <option value="basic">베이직 (연 49만 · 오픈 할인)</option>
           <option value="premium">프리미엄 (연 79만 · 오픈 할인)</option>
           <option value="info_session">설명회 풀케어 (1회성 · 견적 문의)</option>
           <option value="blog_build">블로그 구축 (1회성 · 견적 문의)</option>
-          <option value="custom">맞춤 견적</option>
+          <option value="custom">맞춤 견적 (오프라인 제작물 등)</option>
         </select>
       </label>
 
