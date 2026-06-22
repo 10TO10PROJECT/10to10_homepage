@@ -9,6 +9,7 @@ import { Options } from "@/components/sections/stage/Options";
 import { Process } from "@/components/sections/stage/Process";
 import { StageFaq } from "@/components/sections/stage/StageFaq";
 import { StageContact } from "@/components/sections/stage/StageContact";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export const metadata: Metadata = {
   title: "10to10 STAGE — 학원 마케팅, 결과로 증명합니다",
@@ -20,14 +21,23 @@ export default function StagePage() {
   return (
     <>
       <StageHero />
+      <SectionDivider from="white" to="muted" />
       <Painpoints />
+      <SectionDivider from="muted" to="white" />
       <WhyUs />
+      <SectionDivider from="white" to="muted" />
       <StageGallery />
+      <SectionDivider from="muted" to="white" />
       <Packages />
+      <SectionDivider from="white" to="dark" size="lg" />
       <InfoSessionFlagship />
+      <SectionDivider from="dark" to="muted" size="lg" />
       <Options />
+      <SectionDivider from="muted" to="white" />
       <Process />
+      <SectionDivider from="white" to="muted" />
       <StageFaq />
+      <SectionDivider from="muted" to="white" />
       <StageContact />
     </>
   );

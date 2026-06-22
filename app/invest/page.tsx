@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { InvestInquiryForm } from "@/components/forms/InvestInquiryForm";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { COMPANY } from "@/lib/content/company";
 import { INVEST_HERO, INVEST_HIGHLIGHTS } from "@/lib/content/invest";
 
@@ -41,6 +42,8 @@ export default function InvestPage() {
         </Container>
       </section>
 
+      <SectionDivider from="white" to="muted" />
+
       <section className="py-20 md:py-24 bg-[var(--color-ink-50)]">
         <Container>
           <FadeIn className="mb-10 max-w-2xl">
@@ -70,6 +73,8 @@ export default function InvestPage() {
           </StaggerChildren>
         </Container>
       </section>
+
+      <SectionDivider from="muted" to="white" />
 
       <section className="py-24 md:py-32">
         <Container size="narrow">
