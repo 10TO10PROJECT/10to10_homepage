@@ -49,7 +49,7 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-2">
           <Button
-            href="/stage"
+            href="/inquiry"
             variant="primary"
             size="sm"
             className="hidden md:inline-flex"
@@ -117,7 +117,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="/stage"
+              href="/inquiry"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-mint-500)] px-5 text-base font-semibold text-white hover:bg-[var(--color-mint-600)] transition-colors"
             >
