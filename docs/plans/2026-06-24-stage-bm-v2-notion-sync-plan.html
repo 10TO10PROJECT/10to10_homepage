@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STAGE BM v2 반영 계획 — 예솜님 노션 6/23 회의안 기반</title>
+<style>
+  :root {
+    --mint-50: #F0FBF7;
+    --mint-100: #E6FAF5;
+    --mint-500: #50E3C2;
+    --mint-600: #2CC4A8;
+    --mint-700: #1E9E88;
+    --sky-500: #15BDFF;
+    --ink-900: #1A1A1A;
+    --ink-700: #4A4A4A;
+    --ink-500: #9B9B9B;
+    --ink-300: #D6D6D6;
+    --ink-100: #F5F5F5;
+    --ink-50: #FAFAFA;
+    --red-500: #EF4444;
+    --orange-500: #F97316;
+    --yellow-100: #FEF3C7;
+    --yellow-500: #EAB308;
+    --green-100: #DCFCE7;
+    --green-500: #22C55E;
+    --blue-100: #DBEAFE;
+    --blue-500: #3B82F6;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    line-height: 1.6;
+    color: var(--ink-900);
+    background: var(--ink-50);
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 60px 32px 120px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px 60px;
+    border-bottom: 1px solid var(--ink-300);
+    margin-bottom: 60px;
+  }
+  .header .eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--mint-100);
+    color: var(--mint-700);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+  .header .meta {
+    color: var(--ink-500);
+    font-size: 14px;
+  }
+  .header .status {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: var(--yellow-100);
+    color: #92400E;
+    font-weight: 700;
+    border-radius: 999px;
+    font-size: 14px;
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 80px;
+  }
+  section > h2 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--ink-900);
+  }
+  section > h2 .num {
+    display: inline-block;
+    background: var(--ink-900);
+    color: var(--mint-500);
+    font-size: 14px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+  section > .lead {
+    color: var(--ink-700);
+    font-size: 15px;
+    margin: 12px 0 30px;
+  }
+  section h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 30px 0 14px;
+    padding-left: 12px;
+    border-left: 4px solid var(--mint-500);
+  }
+
+  /* TL;DR box */
+  .tldr {
+    background: linear-gradient(135deg, var(--mint-50), var(--ink-50));
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    border: 1px solid var(--mint-500);
+    box-shadow: 0 4px 20px rgba(80, 227, 194, 0.15);
+  }
+  .tldr h3 {
+    margin: 0 0 20px;
+    padding: 0;
+    border: none;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--mint-700);
+    font-weight: 800;
+  }
+  .tldr ol {
+    margin: 0;
+    padding-left: 24px;
+  }
+  .tldr li {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .tldr li strong {
+    color: var(--mint-700);
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--ink-100);
+    vertical-align: top;
+  }
+  th {
+    background: var(--ink-900);
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--mint-50); }
+  td strong { color: var(--ink-900); }
+
+  /* Status pills */
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .pill-keep { background: var(--green-100); color: #14532D; }
+  .pill-edit { background: var(--yellow-100); color: #92400E; }
+  .pill-new  { background: #FECACA; color: #7F1D1D; }
+  .pill-p0   { background: var(--red-500); color: white; }
+  .pill-p1   { background: var(--orange-500); color: white; }
+  .pill-p2   { background: var(--blue-500); color: white; }
+  .pill-star { background: var(--mint-500); color: var(--ink-900); }
+
+  /* Copy quote boxes */
+  .copy-box {
+    background: var(--ink-900);
+    color: white;
+    padding: 24px 28px;
+    border-radius: var(--radius-md);
+    margin: 14px 0;
+    position: relative;
+  }
+  .copy-box .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--mint-500);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .copy-box .quote {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .copy-box .sub {
+    color: rgba(255,255,255,0.7);
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Package cards side-by-side */
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .pkg-card {
+    background: white;
+    padding: 24px 26px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--ink-300);
+  }
+  .pkg-card.premium {
+    border: 2px solid var(--mint-500);
+    box-shadow: 0 8px 24px rgba(80, 227, 194, 0.15);
+  }
+  .pkg-card h4 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .pkg-card .sub {
+    color: var(--ink-500);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .pkg-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pkg-card li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--ink-100);
+    font-size: 14px;
+  }
+  .pkg-card li:last-child { border-bottom: none; }
+  .pkg-card li strong { color: var(--mint-700); display: block; margin-bottom: 4px; }
+  .pkg-card li.new::before {
+    content: "⭐ NEW";
+    display: inline-block;
+    background: var(--mint-500);
+    color: var(--ink-900);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    margin-right: 8px;
+  }
+
+  /* S0~S9 flow */
+  .flow-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .flow-item {
+    background: white;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--mint-500);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .flow-item .no {
+    background: var(--ink-900);
+    color: var(--mint-500);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    min-width: 32px;
+    text-align: center;
+  }
+  .flow-item .body strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .flow-item .body span {
+    color: var(--ink-500);
+    font-size: 12px;
+  }
+
+  /* PR roadmap */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .pr-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 20px 18px;
+    border-top: 4px solid var(--mint-500);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .pr-card.p0 { border-top-color: var(--red-500); }
+  .pr-card.p1 { border-top-color: var(--orange-500); }
+  .pr-card.p2 { border-top-color: var(--blue-500); }
+  .pr-card .title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .pr-card .scope {
+    font-size: 13px;
+    color: var(--ink-700);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .pr-card .meta {
+    font-size: 11px;
+    color: var(--ink-500);
+    padding-top: 12px;
+    border-top: 1px dashed var(--ink-300);
+  }
+  .pr-card .meta code {
+    background: var(--ink-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--ink-900);
+  }
+
+  /* Open Questions */
+  .q-list {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .q-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 22px 26px;
+    border: 2px solid var(--ink-100);
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 16px;
+    align-items: start;
+    position: relative;
+  }
+  .q-card:hover { border-color: var(--mint-500); }
+  .q-card .q-num {
+    background: var(--mint-500);
+    color: var(--ink-900);
+    font-weight: 800;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .q-card .q-body strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .q-card .q-body p {
+    margin: 0;
+    color: var(--ink-700);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .q-card .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .q-card .options span {
+    background: var(--ink-100);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--ink-700);
+    font-weight: 600;
+  }
+  .q-card .confirm-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 100px;
+    align-items: flex-end;
+  }
+  .q-card .confirm-box .hint {
+    font-size: 10px;
+    color: var(--ink-500);
+    letter-spacing: 0.05em;
+  }
+  .q-card .confirm-box .line {
+    width: 90px;
+    height: 22px;
+    border-bottom: 1.5px solid var(--ink-300);
+  }
+
+  /* Asset list */
+  .asset-group {
+    background: white;
+    padding: 22px 26px;
+    border-radius: var(--radius-md);
+    margin-bottom: 14px;
+    border-left: 5px solid var(--mint-500);
+  }
+  .asset-group.urgent { border-left-color: var(--red-500); }
+  .asset-group.pre-pr { border-left-color: var(--orange-500); }
+  .asset-group.later  { border-left-color: var(--blue-500); }
+  .asset-group h4 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .asset-group ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: var(--ink-700);
+  }
+  .asset-group li { margin-bottom: 4px; }
+
+  /* Actions */
+  .actions {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+    border: 2px solid var(--mint-500);
+  }
+  .actions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .actions li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-100);
+    font-size: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .actions li:last-child { border-bottom: none; }
+  .actions li::before {
+    content: "☐";
+    color: var(--mint-500);
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  /* TOC (sticky right) */
+  .toc {
+    position: fixed;
+    right: 24px;
+    top: 24px;
+    background: white;
+    padding: 18px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--ink-300);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    max-width: 200px;
+    font-size: 13px;
+  }
+  .toc h5 {
+    margin: 0 0 12px;
+    font-size: 11px;
+    color: var(--ink-500);
+    letter-spacing: 0.15em;
+    font-weight: 800;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.9;
+  }
+  .toc a {
+    color: var(--ink-700);
+    text-decoration: none;
+  }
+  .toc a:hover { color: var(--mint-600); font-weight: 600; }
+
+  @media (max-width: 1280px) {
+    .toc { display: none; }
+  }
+  @media (max-width: 900px) {
+    .wrapper { padding: 40px 20px 80px; }
+    .pkg-grid { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: 1fr 1fr; }
+    .flow-grid { grid-template-columns: 1fr; }
+    .q-card { grid-template-columns: 40px 1fr; }
+    .q-card .confirm-box { grid-column: 2; align-items: flex-start; margin-top: 8px; }
+  }
+
+  .kbd {
+    background: var(--ink-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+    color: var(--ink-900);
+    border: 1px solid var(--ink-300);
+  }
+
+  .callout {
+    background: var(--yellow-100);
+    border-left: 5px solid var(--yellow-500);
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+  .callout strong { color: #92400E; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px 20px;
+    color: var(--ink-500);
+    font-size: 13px;
+    border-top: 1px solid var(--ink-300);
+  }
+</style>
+</head>
+<body>
+
+<aside class="toc" aria-label="목차">
+  <h5>목차</h5>
+  <ol>
+    <li><a href="#tldr">TL;DR</a></li>
+    <li><a href="#s1">노션안 핵심</a></li>
+    <li><a href="#s2">현재 vs 노션안 갭</a></li>
+    <li><a href="#s3">우선순위</a></li>
+    <li><a href="#s4">PR 로드맵</a></li>
+    <li><a href="#s5">Open Questions</a></li>
+    <li><a href="#s6">자산 요청</a></li>
+    <li><a href="#s7">다음 액션</a></li>
+  </ol>
+</aside>
+
+<div class="wrapper">
+
+  <header class="header">
+    <div class="eyebrow">10TO10 STAGE · BM v2 SYNC</div>
+    <h1>STAGE BM v2 반영 계획<br/>예솜님 노션 6/23 회의안 기반</h1>
+    <div class="meta">
+      작성일 2026-06-24 · 담당 CEO 검토 · 원본 출처
+      <a href="https://app.notion.com/p/389f122eb1e480ad8af6fe848d8b0324" target="_blank" rel="noopener">노션 페이지 →</a>
+    </div>
+    <div class="status">⏳ CEO 컨펌 대기 · 오늘 새벽 예솜님 회의 후 회신 예정</div>
+  </header>
+
+  <!-- TL;DR -->
+  <section id="tldr">
+    <div class="tldr">
+      <h3>TL;DR</h3>
+      <ol>
+        <li>STAGE 페이지 구조를 <strong>S0~S9 9섹션</strong>으로 재구성. 신규 개념 <strong>"첫인상 진단"</strong>이 히어로 CTA·Basic 첫 요소·마지막 CTA로 관통.</li>
+        <li>Basic/Premium을 각각 <strong>5요소·4요소</strong>로 재정의. Basic 부제는 유지, Premium은 <em>숏폼→월간 콘텐츠 운영</em>으로 명칭 변경.</li>
+        <li><strong>블로그 팩 3종</strong>(55/45/80만) + 단건 3티어(15/20/25만) 신설. 폼 스키마 <span class="kbd">blog_build</span> 단일 → 5개로 확장 필요.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 1. 노션안 핵심 -->
+  <section id="s1">
+    <h2><span class="num">01</span>노션 개선안 핵심</h2>
+
+    <h3>1-1. 블로그 팩 재정의</h3>
+    <table>
+      <thead>
+        <tr><th>상품</th><th>가격</th><th>발행량</th><th>포지션</th><th>추천도</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>블로그 첫달 세팅팩</strong></td><td>55만원 <span class="pill pill-star">1회성</span></td><td>첫 달 4건 + 세팅</td><td>진입 상품 · 카테고리·키워드·톤 정리</td><td>★★★★★</td></tr>
+        <tr><td><strong>월간 4건 운영팩</strong></td><td>45만원/월</td><td>월 4건</td><td>정기 운영 · 요청 주제 반영 가능</td><td>★★★★★</td></tr>
+        <tr><td><strong>월간 8건 성장팩</strong></td><td>80만원/월</td><td>월 8건</td><td>검색 유입/시즌 모집 강화</td><td>★★★★☆</td></tr>
+        <tr><td>일반 단건</td><td>15만원</td><td>1건</td><td>학원 소식·정보·짧은 홍보</td><td>—</td></tr>
+        <tr><td>상세 단건</td><td>20만원</td><td>1건</td><td>방학특강 상세·커리큘럼</td><td>—</td></tr>
+        <tr><td>고관여 단건</td><td>25만원</td><td>1건</td><td>원장/강사 인터뷰·설명회 상세</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>운영 룰</strong> · 첫 달은 고정 구성, 이후 월 4건 단위 개별 요청형. 단건은 10만원 이하로 내리지 않음 (월간팩 잠식 방지).</div>
+
+    <h3>1-2. STAGE 최종 페이지 구조 (S0~S9)</h3>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="no">S0</div><div class="body"><strong>Hero</strong><span>좌우 분할 배너 · 서비스 정체성</span></div></div>
+      <div class="flow-item"><div class="no">S1</div><div class="body"><strong>문제 인식</strong><span>배너 + 3단 문제 카드 (미리캔버스 반론)</span></div></div>
+      <div class="flow-item"><div class="no">S2</div><div class="body"><strong>왜 10to10인가</strong><span>Before/After 비교표</span></div></div>
+      <div class="flow-item"><div class="no">S3</div><div class="body"><strong>서비스 흐름</strong><span>4단 플로우</span></div></div>
+      <div class="flow-item"><div class="no">S4</div><div class="body"><strong>Basic / Premium</strong><span>2열 가격 카드</span></div></div>
+      <div class="flow-item"><div class="no">S5</div><div class="body"><strong>제공물 예시</strong><span>탭 갤러리 · 채널별 5탭</span></div></div>
+      <div class="flow-item"><div class="no">S6</div><div class="body"><strong>추가 옵션</strong><span>3~4개 카드</span></div></div>
+      <div class="flow-item"><div class="no">S7</div><div class="body"><strong>왜 STAGE인가</strong><span>3단 가치 카드</span></div></div>
+      <div class="flow-item"><div class="no">S8</div><div class="body"><strong>진행 방식</strong><span>5단 스텝</span></div></div>
+      <div class="flow-item"><div class="no">S9</div><div class="body"><strong>마지막 CTA</strong><span>하단 배너</span></div></div>
+    </div>
+
+    <h3>1-3. 핵심 카피 갱신</h3>
+    <div class="copy-box">
+      <div class="label">S0 · Hero 헤드</div>
+      <div class="quote">"홍보물은 누구에게나 쉬워졌습니다. 근데, 어디에 어떻게 쓰고 계신가요?"</div>
+      <div class="sub">10to10 STAGE는 학원 홍보물을 채널별로 다시 쓰기 좋게 설계하고, 학부모가 검색하고 비교하고 문의하기까지의 흐름을 정리합니다.</div>
+      <div class="sub">CTA: <strong>패키지 보기</strong> · <strong>첫인상 진단 문의하기</strong> ← 신규</div>
+    </div>
+    <div class="copy-box">
+      <div class="label">S2 · 왜 10to10인가</div>
+      <div class="quote">"제작보다 중요한 건 배치, 배치보다 중요한 건 연결입니다."</div>
+      <div class="sub">홍보물은 많아졌지만, 문의로 이어지는 구조는 여전히 부족합니다.</div>
+    </div>
+    <div class="copy-box">
+      <div class="label">S9 · 마지막 CTA</div>
+      <div class="quote">"우리 학원은 지금, 어떻게 보이고 있을까요?"</div>
+      <div class="sub">플레이스·블로그·인스타·검색 결과까지. 학부모가 학원을 처음 만나는 화면부터 점검하고 개선 방향을 제안드립니다.</div>
+    </div>
+
+    <h3>1-4. Basic / Premium 재정의</h3>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <h4>Basic</h4>
+        <div class="sub">학원 운영을 받쳐주는 기본 마케팅 패키지</div>
+        <ul>
+          <li class="new"><strong>첫인상 진단 리포트</strong>플레이스·블로그·인스타·검색 결과 노출 분석 + 지역 경쟁 학원 비교 + 실행안</li>
+          <li><strong>기본 홍보 자산 세트</strong>학원 소개 · 강사 · 커리큘럼 · 성과·후기 사례</li>
+          <li><strong>플레이스 첫인상 세팅</strong>대표 이미지 · 소개글 · 소식 배너 · 적용 목업</li>
+          <li><strong>시즌 홍보 기본 세트</strong>중간·기말 / 방학특강 / 개강 / 설명회</li>
+          <li><strong>10to10 연계 안내</strong>설명회 · 레벨테스트 · 학부모 문의 연결 안내</li>
+        </ul>
+        <div class="callout" style="margin-top: 12px;"><strong>⚠ 갭</strong> · 현재 <em>월간 운영 리포트</em> 요소가 노션안엔 없음 → Premium 이관 여부 확인 필요 (Q1)</div>
+      </div>
+      <div class="pkg-card premium">
+        <h4>Premium <span class="pill pill-star" style="vertical-align: middle;">BEST</span></h4>
+        <div class="sub">디자인·콘텐츠·광고까지 전담 매니저 1:1 케어</div>
+        <ul>
+          <li><strong>Basic 전체 포함</strong>5요소 그대로</li>
+          <li class="new"><strong>월간 콘텐츠 운영</strong>릴스·숏츠 · 카드뉴스 · 소식글 · 월간 콘텐츠 캘린더</li>
+          <li><strong>디지털 광고 운영</strong>네이버·구글 키워드 광고 · 소재 기획 · 성과 리뷰</li>
+          <li><strong>운영 관리</strong>월 1회 리뷰 미팅 · 긴급 대응 · 시즌 조율 · 콘텐츠 수정 방향</li>
+        </ul>
+        <div class="callout" style="margin-top: 12px;"><strong>변경</strong> · <em>숏폼 콘텐츠 → 월간 콘텐츠 운영</em>으로 확장, <em>전담 매니저 → 운영 관리</em>로 이름 정리, 광고비 별도 안내 문구 명시.</div>
+      </div>
+    </div>
+
+    <h3>1-5. S6 추가 옵션 (3개로 축소)</h3>
+    <table>
+      <thead><tr><th>옵션</th><th>내용</th><th>처리</th></tr></thead>
+      <tbody>
+        <tr><td><strong>검색형 블로그 운영팩</strong></td><td>신규 블로그 팩 3종 진입점</td><td><span class="pill pill-new">신설</span></td></tr>
+        <tr><td><strong>시즌 모집팩</strong></td><td>방학특강·내신·설명회 시즌 홍보물 일괄 교체</td><td><span class="pill pill-new">신설</span></td></tr>
+        <tr><td><strong>현장 홍보물 세트</strong></td><td>QR 안내판 · 상담 안내지 · 원내 포스터 · 전단지 · 안내책자</td><td><span class="pill pill-edit">기존 재정리</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>1-6. S5 필요 목업 (예솜님 우선순위)</h3>
+    <table>
+      <thead><tr><th>#</th><th>목업</th><th>이유</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>기본 홍보 자산 세트 모음</td><td>"학원 소개 콘텐츠"의 애매함 해결</td></tr>
+        <tr><td>2</td><td>채널별 재활용 목업</td><td>STAGE 차별점 가장 잘 노출</td></tr>
+        <tr><td>3</td><td>네이버 플레이스 첫 화면 목업 <span class="pill pill-keep">보유</span></td><td>학원장이 바로 이해</td></tr>
+        <tr><td>4</td><td>블로그 검색 결과 목업</td><td>검색 설계 포인트 전달</td></tr>
+        <tr><td>5</td><td>인스타 피드 그리드 목업</td><td>콘텐츠 운영 느낌 전달</td></tr>
+        <tr><td>6</td><td>시즌 캠페인 세트 목업</td><td>옵션 판매 연결</td></tr>
+        <tr><td>7</td><td>첫인상 진단 리포트 내부 페이지 목업</td><td>Basic 제공 요소 신뢰도 상승</td></tr>
+        <tr><td>8</td><td>10to10 문의 흐름 목업</td><td>본 서비스 연결 은근하게</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 2. 갭 분석 -->
+  <section id="s2">
+    <h2><span class="num">02</span>현재 vs 노션안 갭</h2>
+
+    <h3>2-1. 섹션 매핑</h3>
+    <table>
+      <thead><tr><th>노션</th><th>현재 홈페이지</th><th>상태</th><th>조치</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S0 Hero</strong></td><td>StageHero (2분할 · PR #22)</td><td><span class="pill pill-keep">유지</span></td><td>헤드·서브·CTA 라벨 교체</td></tr>
+        <tr><td><strong>S1 문제 인식</strong></td><td>Painpoints (4개)</td><td><span class="pill pill-edit">축소·재편</span></td><td>4→3 카드, 미리캔버스 반론 톤</td></tr>
+        <tr><td><strong>S2 왜 10to10</strong></td><td>없음</td><td><span class="pill pill-new">신규</span></td><td>Before/After 비교표 컴포넌트</td></tr>
+        <tr><td><strong>S3 서비스 흐름</strong></td><td>Process (4단)</td><td><span class="pill pill-keep">유지</span></td><td>카피만 노션안 4단으로 갱신</td></tr>
+        <tr><td><strong>S4 Basic/Premium</strong></td><td>Packages (2열)</td><td><span class="pill pill-edit">요소 재정의</span></td><td>Basic 4→5, Premium 이름 정리</td></tr>
+        <tr><td><strong>S5 제공물 예시</strong></td><td>StageGallery (11개)</td><td><span class="pill pill-edit">탭으로 재편</span></td><td>채널별 5탭 (플레이스/블로그/인스타/시즌/10to10)</td></tr>
+        <tr><td><strong>S6 추가 옵션</strong></td><td>Options (2개)</td><td><span class="pill pill-edit">3개로 확장</span></td><td>블로그 팩 진입 + 시즌 모집팩 + 현장 홍보물</td></tr>
+        <tr><td><strong>S7 왜 STAGE</strong></td><td>WhyUs (3개)</td><td><span class="pill pill-keep">유지</span></td><td>카피 확인</td></tr>
+        <tr><td><strong>S8 진행 방식</strong></td><td>(Process가 겸함)</td><td><span class="pill pill-new">분리</span></td><td>S3와 분리, 5단 스텝 신규</td></tr>
+        <tr><td><strong>S9 마지막 CTA</strong></td><td>StageContact</td><td><span class="pill pill-edit">배너 추가</span></td><td>"우리 학원은 지금..." 배너 삽입</td></tr>
+        <tr><td>—</td><td>InfoSessionFlagship</td><td><span class="pill pill-keep">유지</span></td><td>설명회 풀케어 트랙 그대로 (Q4 확인)</td></tr>
+        <tr><td>—</td><td>StageFaq</td><td><span class="pill pill-edit">문답 추가</span></td><td>블로그 팩·첫인상 진단 관련 3~4개</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2-2. 폼 스키마 확장 (<span class="kbd">lib/schema/inquiry.ts</span>)</h3>
+    <table>
+      <thead><tr><th>현재 <span class="kbd">package</span> enum</th><th>노션안 반영 확장</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="width:35%; vertical-align:top;">
+            <code>basic</code><br/>
+            <code>premium</code><br/>
+            <code>info_session</code><br/>
+            <code>blog_build</code><br/>
+            <code>custom</code>
+          </td>
+          <td>
+            <code>basic</code> <span class="pill pill-keep">유지</span><br/>
+            <code>premium</code> <span class="pill pill-keep">유지</span><br/>
+            <code>info_session</code> <span class="pill pill-keep">유지</span><br/>
+            <code>blog_setup</code> <span class="pill pill-new">신규 · 첫달 세팅팩 55만</span><br/>
+            <code>blog_monthly_4</code> <span class="pill pill-new">신규 · 월간 4건 45만</span><br/>
+            <code>blog_monthly_8</code> <span class="pill pill-new">신규 · 월간 8건 80만</span><br/>
+            <code>blog_single</code> <span class="pill pill-new">신규 · 단건 15/20/25만</span><br/>
+            <code>season_campaign</code> <span class="pill pill-new">신규 · 시즌 모집팩</span><br/>
+            <code>offline_print</code> <span class="pill pill-edit">이름 통일</span><br/>
+            <code>diagnosis</code> <span class="pill pill-new">신규 · 첫인상 진단 (Q2 확인)</span><br/>
+            <code>custom</code> <span class="pill pill-keep">유지</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2-3. 신규/변경 컴포넌트</h3>
+    <table>
+      <thead><tr><th>파일</th><th>상태</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td><code>WhyOverDIY.tsx</code></td><td><span class="pill pill-new">신규</span></td><td>S2 Before/After 비교표</td></tr>
+        <tr><td><code>ServiceFlow.tsx</code></td><td><span class="pill pill-new">신규</span></td><td>S3 4단 플로우</td></tr>
+        <tr><td><code>ProofTabs.tsx</code></td><td><span class="pill pill-new">신규</span></td><td>S5 채널별 5탭 (client component)</td></tr>
+        <tr><td><code>BlogPacks.tsx</code></td><td><span class="pill pill-new">신규</span></td><td>블로그 팩 3종 카드</td></tr>
+        <tr><td><code>StageSteps.tsx</code></td><td><span class="pill pill-new">신규</span></td><td>S8 5단 스텝 타임라인</td></tr>
+        <tr><td><code>StageHero.tsx</code></td><td><span class="pill pill-edit">변경</span></td><td>카피 + CTA 라벨</td></tr>
+        <tr><td><code>Painpoints.tsx</code></td><td><span class="pill pill-edit">변경</span></td><td>4→3 카드, 카피 재작성</td></tr>
+        <tr><td><code>Packages.tsx</code></td><td><span class="pill pill-edit">변경</span></td><td>Basic 5요소·Premium 3요소, 광고비 안내</td></tr>
+        <tr><td><code>Options.tsx</code></td><td><span class="pill pill-edit">변경</span></td><td>3개 옵션 + 블로그 팩 진입점</td></tr>
+        <tr><td><code>StageContact.tsx</code></td><td><span class="pill pill-edit">변경</span></td><td>상단 첫인상 진단 배너 삽입</td></tr>
+        <tr><td><code>WhyUs.tsx</code></td><td><span class="pill pill-keep">유지</span></td><td>—</td></tr>
+        <tr><td><code>InfoSessionFlagship.tsx</code></td><td><span class="pill pill-keep">유지</span></td><td>Q4 확인</td></tr>
+        <tr><td><code>StageFaq.tsx</code></td><td><span class="pill pill-edit">보강</span></td><td>문답 3~4개 추가</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3. 우선순위 -->
+  <section id="s3">
+    <h2><span class="num">03</span>우선순위</h2>
+
+    <h3><span class="pill pill-p0">P0</span> 즉시 반영 · 카피/상수 변경 중심</h3>
+    <ul>
+      <li>히어로 카피 4건 (헤드·서브·CTA 라벨)</li>
+      <li>Basic 5요소 재편, Premium 이름 정리, 광고비 별도 안내</li>
+      <li>Painpoints 4→3 카드 재작성</li>
+      <li>폼 스키마 <code>package</code> enum 확장 + <code>SERVICE_TO_PACKAGE</code> 매핑</li>
+      <li>StageContact 상단 "첫인상 진단" 배너</li>
+    </ul>
+
+    <h3><span class="pill pill-p1">P1</span> 섹션 신설 · 콘텐츠 이관</h3>
+    <ul>
+      <li>WhyOverDIY (S2 Before/After)</li>
+      <li>ServiceFlow (S3 4단)</li>
+      <li>BlogPacks (블로그 팩 3종 카드)</li>
+      <li>Options 3개 옵션 재편</li>
+      <li>StageSteps (S8 5단) — 신규 또는 Process 리팩터</li>
+      <li>StageFaq 문답 보강</li>
+    </ul>
+
+    <h3><span class="pill pill-p2">P2</span> 탭 인터랙션 + 목업 필요</h3>
+    <ul>
+      <li>ProofTabs (S5 채널별 5탭) — 목업 자산 확보 후 반영</li>
+      <li>8종 목업 우선순위 상위 3~4개 확보 후 채워넣기 (예솜님/디자이너 병행)</li>
+    </ul>
+  </section>
+
+  <!-- 4. PR 로드맵 -->
+  <section id="s4">
+    <h2><span class="num">04</span>PR 로드맵 (4개 분해)</h2>
+    <p class="lead">각 PR은 이전 세션 룰대로 <code>next build</code> 클린 확인 후 squash merge + 브랜치 삭제.</p>
+    <div class="roadmap">
+      <div class="pr-card p0">
+        <div class="title">PR-A <span class="pill pill-p0">P0</span></div>
+        <div class="scope">카피·상수·스키마 정리<br/>히어로 카피, Basic/Premium 재편, 폼 스키마 확장, 첫인상 배너.</div>
+        <div class="meta">브랜치 <code>feat/stage-bm-v2-copy</code><br/>파일 6~7개</div>
+      </div>
+      <div class="pr-card p1">
+        <div class="title">PR-B <span class="pill pill-p1">P1</span></div>
+        <div class="scope">3섹션 신설<br/>WhyOverDIY + ServiceFlow + StageSteps</div>
+        <div class="meta">브랜치 <code>feat/stage-bm-v2-flow-sections</code><br/>파일 6~7개</div>
+      </div>
+      <div class="pr-card p1">
+        <div class="title">PR-C <span class="pill pill-p1">P1</span></div>
+        <div class="scope">블로그·옵션 재편<br/>BlogPacks + Options 3개 옵션 재편</div>
+        <div class="meta">브랜치 <code>feat/stage-bm-v2-blog-options</code><br/>파일 4~5개</div>
+      </div>
+      <div class="pr-card p2">
+        <div class="title">PR-D <span class="pill pill-p2">P2</span></div>
+        <div class="scope">탭 갤러리<br/>ProofTabs 채널별 5탭 (자산 확보 후)</div>
+        <div class="meta">브랜치 <code>feat/stage-bm-v2-proof-tabs</code><br/>파일 3개</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Open Questions -->
+  <section id="s5">
+    <h2><span class="num">05</span>Open Questions · CEO 컨펌 필요</h2>
+    <p class="lead">7건 회신 주시면 문서 락 걸고 PR-A 착수. 회의 후 이 카드 옆 빈칸에 답변만 적어 주세요.</p>
+
+    <div class="q-list">
+      <div class="q-card">
+        <div class="q-num">1</div>
+        <div class="q-body">
+          <strong>Basic <em>월간 운영 리포트</em> 이관 여부</strong>
+          <p>현재 Basic 요소 4번째인 "월간 운영 리포트"가 노션안엔 없음. Premium <em>운영 관리</em>로 이관 vs Basic에도 축소판 유지 — 어느 쪽?</p>
+          <div class="options">
+            <span>A. Premium 완전 이관</span>
+            <span>B. Basic 축소판 유지</span>
+            <span>C. 삭제</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">2</div>
+        <div class="q-body">
+          <strong>"첫인상 진단" 폼 옵션 처리</strong>
+          <p>히어로 CTA <em>첫인상 진단 문의하기</em>로 폼 진입 시 자동 선택될 서비스명. 별도 <code>diagnosis</code> 옵션으로 뺄지 vs Basic 진입 리드로 처리할지.</p>
+          <div class="options">
+            <span>A. 별도 옵션 신설</span>
+            <span>B. Basic 자동 선택</span>
+            <span>C. "상담" 자유 유형</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">3</div>
+        <div class="q-body">
+          <strong>블로그 팩 진입 위치</strong>
+          <p>S6 옵션 카드 1개로 두고 상세는 별도 페이지·앵커 vs STAGE 페이지 내 <code>BlogPacks</code> 섹션 신설.</p>
+          <div class="options">
+            <span>A. Options 안 카드</span>
+            <span>B. 별도 섹션</span>
+            <span>C. 별도 페이지 <code>/stage/blog</code></span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">4</div>
+        <div class="q-body">
+          <strong><code>InfoSessionFlagship</code> 위치</strong>
+          <p>S0~S9 노션안에 설명회 풀케어 언급 없음. 히어로 좌측 카드 링크 유지 + 페이지 하단(S8~S9 사이) 유지 확인.</p>
+          <div class="options">
+            <span>A. 현행 유지</span>
+            <span>B. 히어로 링크만 유지 · 섹션 이동</span>
+            <span>C. 다른 위치</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">5</div>
+        <div class="q-body">
+          <strong>기존 <code>StageGallery</code> (11개 이미지) 처리</strong>
+          <p>S5 <code>ProofTabs</code> 채널별 탭으로 대체 시 기존 갤러리 폐기 vs 특정 탭(플레이스·시즌)에 흡수.</p>
+          <div class="options">
+            <span>A. 전량 폐기</span>
+            <span>B. 관련 탭에 흡수</span>
+            <span>C. 하위 섹션 유지</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">6</div>
+        <div class="q-body">
+          <strong>블로그 팩 가격 히어로 근처 노출 수위</strong>
+          <p>55/45/80만원은 시선을 끄는 숫자. 히어로 CTA 근처 노출 vs S6에만 명시.</p>
+          <div class="options">
+            <span>A. 히어로에 미리보기</span>
+            <span>B. S6에만 노출</span>
+            <span>C. 히어로 하단 티저 라인</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">7</div>
+        <div class="q-body">
+          <strong>PR 진행 순서</strong>
+          <p>순차 A→B→C→D vs P0 우선 반영 후 A/B/C 병렬. 또는 A만 먼저 배포해 카피 반응 보고 진행.</p>
+          <div class="options">
+            <span>A. 순차 진행</span>
+            <span>B. A 먼저 → B/C 병렬</span>
+            <span>C. A 배포 후 관찰</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 자산 요청 -->
+  <section id="s6">
+    <h2><span class="num">06</span>자산 요청 리스트 · 예솜님·휘민님</h2>
+
+    <div class="asset-group urgent">
+      <h4>🔴 즉시 필요</h4>
+      <ul>
+        <li><strong>첫인상 진단 리포트 목업</strong> — Basic 첫 요소 신뢰도 확보용</li>
+        <li><strong>미리캔버스 반론 카피 3세트</strong> — S1 문제 카드 3개 아이콘/텍스트</li>
+      </ul>
+    </div>
+
+    <div class="asset-group pre-pr">
+      <h4>🟠 PR-D 진행 전</h4>
+      <ul>
+        <li>S5 탭 5개용 목업 (플레이스·블로그·인스타·시즌 홍보·10to10 연계)</li>
+        <li>채널별 재활용 목업 (S5 우선순위 2)</li>
+        <li>블로그 검색 결과 목업 (S5 우선순위 4)</li>
+        <li>인스타 피드 그리드 목업 (S5 우선순위 5)</li>
+      </ul>
+    </div>
+
+    <div class="asset-group later">
+      <h4>🔵 배포 후 순차 확보</h4>
+      <ul>
+        <li>시즌 캠페인 세트 목업</li>
+        <li>10to10 문의 흐름 목업</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7. Next -->
+  <section id="s7">
+    <h2><span class="num">07</span>다음 액션</h2>
+    <div class="actions">
+      <ul>
+        <li>CEO 컨펌 — Open Questions 7건 회신 → 문서 락</li>
+        <li>컨펌 후 PR-A 착수 (P0 카피·상수·스키마, 3~4시간 예상)</li>
+        <li>자산 요청 예솜님·휘민님 병행 진행</li>
+        <li>PR-A 배포 후 카피 반응 관찰 → PR-B/C 착수</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">
+    10to10 · STAGE BM v2 반영 계획 · 2026-06-24 · 원본 마크다운 <code>docs/plans/2026-06-24-stage-bm-v2-notion-sync-plan.md</code>
+  </div>
+
+</div>
+</body>
+</html>
