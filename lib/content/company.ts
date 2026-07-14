@@ -7,6 +7,7 @@ export const COMPANY = {
   email: "eduflo365@gmail.com",
   kakaoUrl:
     process.env.NEXT_PUBLIC_KAKAO_CHANNEL_URL ?? "https://pf.kakao.com/_dAxggn/chat",
+  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "",
   careersUrl: "/careers",
   irPdfPath: "/ir/10to10-deck.pdf",
 } as const;
