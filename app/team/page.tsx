@@ -82,6 +82,24 @@ export default function TeamPage() {
               </div>
             </Card>
           </FadeIn>
+
+          <FadeIn delay={0.15} className="mt-10 flex flex-wrap justify-center items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-mint-500)]/40 bg-[var(--color-mint-500)]/10 px-4 py-1.5 text-xs font-bold text-[var(--color-mint-700)]">
+              <span className="h-2 w-2 rounded-full bg-[var(--color-mint-500)] animate-pulse" />
+              Phase 1 Sprint · 2주 단위 · 학원 설명회 시장 집중
+            </span>
+            {COMPANY.instagramUrl && (
+              <a
+                href={COMPANY.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink-300)] bg-white px-4 py-1.5 text-xs font-semibold text-[var(--color-ink-700)] hover:border-[var(--color-mint-500)] hover:text-[var(--color-mint-600)] transition"
+              >
+                <span aria-hidden>📷</span>
+                10to10 인스타그램 팔로우
+              </a>
+            )}
+          </FadeIn>
         </Container>
       </section>
     </>
