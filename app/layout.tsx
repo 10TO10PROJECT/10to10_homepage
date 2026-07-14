@@ -6,13 +6,16 @@ import { SITE } from "@/lib/site";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(SITE.canonicalUrl),
   title: { default: SITE.name, template: `%s · ${SITE.name}` },
   description: SITE.description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: SITE.name,
     description: SITE.description,
-    url: SITE.url,
+    url: SITE.canonicalUrl,
     siteName: SITE.name,
     locale: "ko_KR",
     type: "website",
