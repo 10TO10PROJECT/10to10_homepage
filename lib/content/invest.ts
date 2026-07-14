@@ -12,13 +12,13 @@ export const INVEST_HIGHLIGHTS = [
   },
   {
     label: "현재",
-    value: "Beta + 16개 학원",
-    desc: "eduflo.co.kr 베타 운영, 운영 파트너십 STAGE 16곳 누적.",
+    value: "Phase 1 진행 중",
+    desc: "학원 설명회 시장 집중. 설명회 풀케어로 파트너 학원 확보 중 (만족도 4.32/5.0 · 재참석 100%).",
   },
   {
     label: "정규",
     value: "2026-07-28",
-    desc: "정규 v1.0 출시 — 학원 운영 SaaS + 학부모·학생 앱.",
+    desc: "AI 플랫폼 정규 v1.0 출시 — 학원 운영 SaaS + 학부모·학생 앱.",
   },
   {
     label: "AI",
@@ -26,3 +26,39 @@ export const INVEST_HIGHLIGHTS = [
     desc: "학원 업무 AX 자동화. 플랫폼 데이터 기반으로 학부모·학생에게 맞춤 교육 정보 AI 리서치 제공.",
   },
 ] as const;
+
+export const INVEST_PHASES = [
+  {
+    id: "phase-1",
+    label: "PHASE 1",
+    status: "진행 중",
+    tone: "mint",
+    title: "학원 설명회 시장 집중",
+    desc: "기획·홍보·현장 운영·후속 트래킹까지 설명회 풀케어. 파트너 학원 확보를 KPI로 뾰족하게 진입.",
+    kpi: "파트너 학원 확보 · 만족도 4.32",
+  },
+  {
+    id: "phase-2",
+    label: "PHASE 2",
+    status: "예정",
+    tone: "sky",
+    title: "STAGE 학원 마케팅 확장",
+    desc: "Phase 1 학원 풀 기반으로 블로그·인스타·네이버 플레이스·소식탭·배너 등 마케팅 전 영역 순차 확장.",
+    kpi: "서비스 확장 · ARPU 성장",
+  },
+  {
+    id: "phase-3",
+    label: "PHASE 3",
+    status: "검토",
+    tone: "ink",
+    title: "SaaS 올인원 플랫폼",
+    desc: "네이버·미리캔버스·블로그·인스타 등 흩어진 홍보 채널을 한 번에 관리하는 학원 전용 올인원 솔루션.",
+    kpi: "자동화 · 플랫폼화",
+  },
+] as const;
+
+export const INVEST_RECOGNITION = {
+  eyebrow: "SELECTION",
+  title: "모두의 창업 선정",
+  desc: "AI 솔루션 활용 기록(워들리·Finhive Studio 등)을 함께 제출하며, 학원 전문 마케팅 파트너로 정부·창업 지원 트랙에 진입했습니다.",
+} as const;

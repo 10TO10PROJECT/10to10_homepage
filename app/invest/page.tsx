@@ -7,7 +7,12 @@ import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildre
 import { InvestInquiryForm } from "@/components/forms/InvestInquiryForm";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { COMPANY } from "@/lib/content/company";
-import { INVEST_HERO, INVEST_HIGHLIGHTS } from "@/lib/content/invest";
+import {
+  INVEST_HERO,
+  INVEST_HIGHLIGHTS,
+  INVEST_PHASES,
+  INVEST_RECOGNITION,
+} from "@/lib/content/invest";
 
 export const metadata: Metadata = {
   title: "투자·지원 — 10to10",
@@ -37,6 +42,27 @@ export default function InvestPage() {
               <Button href="#contact" variant="outline" size="lg">
                 투자·지원 문의
               </Button>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2} className="mt-12">
+            <div className="rounded-[var(--radius-lg)] border border-[var(--color-mint-500)]/50 bg-gradient-to-br from-[var(--color-mint-500)]/10 to-[var(--color-sky-500)]/10 p-6 md:p-7">
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm text-2xl">
+                  🏅
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-mint-700)]">
+                    {INVEST_RECOGNITION.eyebrow}
+                  </div>
+                  <div className="mt-1 text-lg md:text-xl font-bold text-[var(--color-ink-900)]">
+                    {INVEST_RECOGNITION.title}
+                  </div>
+                  <p className="mt-1 text-sm text-[var(--color-ink-700)] leading-relaxed">
+                    {INVEST_RECOGNITION.desc}
+                  </p>
+                </div>
+              </div>
             </div>
           </FadeIn>
         </Container>
@@ -75,6 +101,64 @@ export default function InvestPage() {
       </section>
 
       <SectionDivider from="muted" to="white" />
+
+      <section className="py-20 md:py-24">
+        <Container>
+          <FadeIn className="mb-10 max-w-2xl">
+            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+              ROADMAP
+            </div>
+            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+              Phase 전략 · 뾰족하게, 그 다음 넓게.
+            </h2>
+            <p className="mt-4 text-[15px] md:text-base text-[var(--color-ink-700)] leading-relaxed">
+              학원 마케팅 전반을 한 번에 판매하지 않습니다. 시장이 비어 있는 설명회 영역에
+              먼저 진입해 파트너 학원을 확보한 후, 확장·플랫폼화로 넘어갑니다.
+            </p>
+          </FadeIn>
+          <StaggerChildren className="grid gap-5 md:grid-cols-3">
+            {INVEST_PHASES.map((p) => {
+              const isMint = p.tone === "mint";
+              const isSky = p.tone === "sky";
+              const borderCls = isMint
+                ? "border-t-[var(--color-mint-500)]"
+                : isSky
+                  ? "border-t-[var(--color-sky-500)]"
+                  : "border-t-[var(--color-ink-500)]";
+              const statusCls = isMint
+                ? "bg-[var(--color-mint-500)] text-[var(--color-ink-900)]"
+                : "bg-[var(--color-ink-100)] text-[var(--color-ink-700)]";
+              return (
+                <StaggerItem key={p.id}>
+                  <div
+                    className={`h-full rounded-[var(--radius-lg)] bg-white p-6 md:p-7 ring-1 ring-[var(--color-ink-300)]/40 shadow-lg shadow-[var(--color-ink-900)]/5 border-t-4 ${borderCls}`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-ink-500)]">
+                        {p.label}
+                      </span>
+                      <span
+                        className={`text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-full ${statusCls}`}
+                      >
+                        {p.status}
+                      </span>
+                    </div>
+                    <h3 className="mt-3 text-xl font-bold text-[var(--color-ink-900)] leading-tight">
+                      {p.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-[var(--color-ink-700)] leading-relaxed">
+                      {p.desc}
+                    </p>
+                    <div className="mt-6 text-[11px] font-semibold tracking-wide text-[var(--color-ink-500)] pt-4 border-t border-[var(--color-ink-100)]">
+                      🎯 {p.kpi}
+                    </div>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerChildren>
+        </Container>
+      </section>
 
       <section className="py-24 md:py-32">
         <Container size="narrow">
