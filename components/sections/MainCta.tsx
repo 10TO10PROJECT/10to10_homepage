@@ -25,14 +25,14 @@ export function MainCta() {
             이 설계합니다.
           </h2>
           <p className="mt-6 text-lg text-[var(--color-ink-700)] max-w-xl mx-auto">
-            마케팅 풀케어, 플랫폼 도입, 투자·지원 — 가장 맞는 방식으로 연결해 드립니다.
+            학원 설명회 풀케어, AI 플랫폼 도입, 투자·지원 — 가장 맞는 방식으로 연결해 드립니다.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Button href="/stage" variant="primary" size="lg">
-              10to10 STAGE · 마케팅 풀케어
+              10to10 STAGE · 설명회 풀케어
             </Button>
             <Button href="/platform" variant="outline" size="lg">
-              플랫폼 도입
+              AI 플랫폼 도입
             </Button>
             <Button href={COMPANY.kakaoUrl} variant="ghost" size="lg" external>
               카카오톡 문의
