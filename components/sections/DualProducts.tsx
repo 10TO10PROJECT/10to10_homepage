@@ -23,8 +23,13 @@ export function DualProducts() {
           <FadeIn delay={0.1}>
             <Link href="/platform" className="block h-full">
               <Card interactive className="h-full">
-                <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
-                  PRODUCT 01
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+                    PRODUCT 01
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest text-[var(--color-ink-500)] px-2 py-0.5 rounded-full bg-[var(--color-ink-100)]">
+                    PHASE 3 SaaS
+                  </span>
                 </div>
                 <h3 className="mt-3 text-2xl md:text-3xl font-bold">10to10 AI 플랫폼</h3>
                 <p className="mt-4 text-[var(--color-ink-700)] leading-relaxed">
@@ -45,18 +50,23 @@ export function DualProducts() {
           <FadeIn delay={0.2}>
             <Link href="/stage" className="block h-full">
               <Card interactive className="h-full">
-                <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
-                  PRODUCT 02
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+                    PRODUCT 02
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest text-[var(--color-mint-700)] px-2 py-0.5 rounded-full bg-[var(--color-mint-100)]">
+                    PHASE 1 · 진행 중
+                  </span>
                 </div>
                 <h3 className="mt-3 text-2xl md:text-3xl font-bold">10to10 STAGE</h3>
                 <p className="mt-4 text-[var(--color-ink-700)] leading-relaxed">
-                  학원의 마케팅 운영, 10to10 전문팀이 직접 진행합니다. 콘텐츠·광고·현장 운영까지
-                  패키지로 제공합니다.
+                  학원 설명회 풀케어. 기획·디자인·모객·쿠폰·현장 운영·등록률 트래킹까지
+                  한 팀이 전담합니다. 원장님은 발표만 하세요.
                 </p>
                 <ul className="mt-6 space-y-2 text-sm text-[var(--color-ink-700)]">
-                  <li>· 베이직 월 80만부터</li>
-                  <li>· 프리미엄 월 200만부터</li>
-                  <li>· 광고·콘텐츠·현장 운영 통합</li>
+                  <li>· 설명회 만족도 4.32 / 5.0</li>
+                  <li>· 재참석 의사 100% · 추천 95.2%</li>
+                  <li>· Phase 2 학원 마케팅 전반 확장 예정</li>
                 </ul>
                 <div className="mt-8 text-sm font-semibold text-[var(--color-mint-600)]">
                   자세히 보기 →

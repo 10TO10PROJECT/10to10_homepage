@@ -36,12 +36,12 @@ export function Hero() {
           <p className="max-w-2xl text-lg md:text-xl text-[var(--color-ink-700)] leading-relaxed">
             10to10은 동네 학원·학부모·학생을 연결하는 AI 플랫폼과,
             <br className="hidden sm:inline" />
-            학원 마케팅 전 과정을 직접 운영하는 STAGE 파트너십을 함께 제공합니다.
+            <strong className="text-[var(--color-ink-900)]">학원 설명회 풀케어</strong>부터 시작하는 STAGE 파트너십을 함께 제공합니다.
           </p>
         </FadeIn>
         <FadeIn delay={0.4} className="mt-10 flex flex-wrap gap-3">
           <Button href="/stage" variant="primary" size="lg">
-            학원 마케팅 위탁 알아보기
+            학원 설명회 풀케어 보기
           </Button>
           <Button href="/platform" variant="outline" size="lg">
             AI 플랫폼 알아보기
@@ -54,11 +54,11 @@ export function Hero() {
           </span>
           <span className="flex items-center gap-2">
             <span className="text-[var(--color-mint-600)]">✓</span>
-            디자인·콘텐츠·운영 한 팀
+            설명회 만족도 4.32 / 5.0
           </span>
           <span className="flex items-center gap-2">
             <span className="text-[var(--color-mint-600)]">✓</span>
-            연 단위 정찰 가격
+            모두의 창업 선정
           </span>
         </FadeIn>
       </Container>

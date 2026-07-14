@@ -36,6 +36,7 @@ export default function InquiryPage() {
           <FadeIn delay={0.15}>
             <InquiryCard
               eyebrow="PRODUCT 01 · 10to10 AI 플랫폼"
+              phase="PHASE 3 SaaS"
               title="AI 플랫폼 도입·체험"
               desc="학원 운영 SaaS와 학부모·학생 탐색 앱을 연결한 양면 플랫폼입니다. Beta 체험 또는 정규 도입 문의를 안내드립니다."
               bullets={[
@@ -55,14 +56,15 @@ export default function InquiryPage() {
           <FadeIn delay={0.25}>
             <InquiryCard
               eyebrow="PRODUCT 02 · 10to10 STAGE"
-              title="STAGE 마케팅·설명회 문의"
-              desc="연세대·한양대 출신 전담팀이 설명회 풀케어 또는 연 단위 에이전트 패키지로 학원 마케팅을 운영합니다."
+              phase="PHASE 1 · 진행 중"
+              title="학원 설명회 풀케어 문의"
+              desc="연세대·한양대 출신 전담팀이 학원 설명회를 기획·디자인·모객·현장 운영까지 풀케어합니다. 원장님은 발표만 하세요."
               bullets={[
-                "설명회 풀케어 (1회성)",
-                "에이전트 패키지 (연 단위 구독)",
-                "디자인·플레이스·블로그 등 단발 의뢰",
+                "설명회 풀케어 · 1회성 프로젝트",
+                "만족도 4.32 / 5.0 · 재참석 100%",
+                "Phase 2 마케팅 전반 확장 예정",
               ]}
-              primary={{ href: "/stage#contact", label: "STAGE 문의하기" }}
+              primary={{ href: "/stage#contact", label: "설명회 견적 문의하기" }}
               secondary={{ href: "/stage", label: "STAGE 자세히 보기" }}
               tone="ink"
             />
@@ -86,6 +88,7 @@ export default function InquiryPage() {
 
 function InquiryCard({
   eyebrow,
+  phase,
   title,
   desc,
   bullets,
@@ -94,6 +97,7 @@ function InquiryCard({
   tone,
 }: {
   eyebrow: string;
+  phase?: string;
   title: string;
   desc: string;
   bullets: string[];
@@ -106,10 +110,18 @@ function InquiryCard({
       ? "inline-flex items-center gap-2 rounded-full bg-[var(--color-mint-500)] px-5 py-2.5 text-sm font-bold text-[var(--color-ink-900)] transition hover:bg-[var(--color-mint-600)] hover:text-white"
       : "inline-flex items-center gap-2 rounded-full bg-[var(--color-ink-900)] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[var(--color-ink-700)]";
 
+  const phaseBadgeCls =
+    tone === "mint"
+      ? "text-[10px] font-bold tracking-widest text-[var(--color-ink-500)] px-2 py-0.5 rounded-full bg-[var(--color-ink-100)]"
+      : "text-[10px] font-bold tracking-widest text-[var(--color-mint-700)] px-2 py-0.5 rounded-full bg-[var(--color-mint-100)]";
+
   return (
     <div className="h-full rounded-[var(--radius-lg)] bg-white p-8 md:p-10 ring-1 ring-[var(--color-ink-300)]/40 shadow-lg shadow-[var(--color-ink-900)]/5 transition hover:shadow-2xl hover:shadow-[var(--color-ink-900)]/10 hover:-translate-y-0.5">
-      <div className="text-xs font-bold tracking-[0.18em] text-[var(--color-mint-600)]">
-        {eyebrow}
+      <div className="flex items-center flex-wrap gap-2">
+        <span className="text-xs font-bold tracking-[0.18em] text-[var(--color-mint-600)]">
+          {eyebrow}
+        </span>
+        {phase && <span className={phaseBadgeCls}>{phase}</span>}
       </div>
       <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-ink-900)]">
         {title}
