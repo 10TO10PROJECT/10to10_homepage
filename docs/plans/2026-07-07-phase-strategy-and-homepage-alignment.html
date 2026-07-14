@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phase 전략 채택 · 홈페이지 전반 재정렬 · 2026-07-07</title>
+<style>
+  :root {
+    --mint-50: #F0FBF7;
+    --mint-100: #E6FAF5;
+    --mint-500: #50E3C2;
+    --mint-600: #2CC4A8;
+    --mint-700: #1E9E88;
+    --sky-500: #15BDFF;
+    --ink-900: #1A1A1A;
+    --ink-700: #4A4A4A;
+    --ink-500: #9B9B9B;
+    --ink-300: #D6D6D6;
+    --ink-100: #F5F5F5;
+    --ink-50: #FAFAFA;
+    --red-500: #EF4444;
+    --orange-500: #F97316;
+    --yellow-100: #FEF3C7;
+    --yellow-500: #EAB308;
+    --green-100: #DCFCE7;
+    --green-500: #22C55E;
+    --blue-100: #DBEAFE;
+    --blue-500: #3B82F6;
+    --purple-500: #A855F7;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+    line-height: 1.6;
+    color: var(--ink-900);
+    background: var(--ink-50);
+    margin: 0;
+  }
+  .wrapper { max-width: 1080px; margin: 0 auto; padding: 60px 32px 120px; }
+
+  /* Header */
+  .header { text-align: center; padding: 40px 20px 60px; border-bottom: 1px solid var(--ink-300); margin-bottom: 60px; }
+  .header .eyebrow {
+    display: inline-block; padding: 6px 14px;
+    background: var(--mint-100); color: var(--mint-700);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+    border-radius: 999px; margin-bottom: 20px;
+  }
+  .header h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 16px; }
+  .header .meta { color: var(--ink-500); font-size: 14px; }
+  .header .status {
+    display: inline-block; margin-top: 20px; padding: 10px 24px;
+    background: var(--yellow-100); color: #92400E; font-weight: 700;
+    border-radius: 999px; font-size: 14px;
+  }
+  .header .super {
+    margin-top: 12px; padding: 8px 18px;
+    background: #FEE2E2; color: #991B1B;
+    border-radius: 999px; font-size: 12px; font-weight: 700;
+    display: inline-block;
+  }
+
+  /* Sections */
+  section { margin-bottom: 80px; }
+  section > h2 {
+    font-size: 28px; font-weight: 800; letter-spacing: -0.01em;
+    margin: 0 0 8px; padding-bottom: 12px;
+    border-bottom: 3px solid var(--ink-900);
+  }
+  section > h2 .num {
+    display: inline-block; background: var(--ink-900); color: var(--mint-500);
+    font-size: 14px; font-weight: 800; padding: 4px 10px; border-radius: 6px;
+    margin-right: 12px; vertical-align: middle;
+  }
+  section > .lead { color: var(--ink-700); font-size: 15px; margin: 12px 0 30px; }
+  section h3 {
+    font-size: 20px; font-weight: 700; margin: 30px 0 14px;
+    padding-left: 12px; border-left: 4px solid var(--mint-500);
+  }
+
+  /* TL;DR */
+  .tldr {
+    background: linear-gradient(135deg, var(--mint-50), var(--ink-50));
+    border-radius: var(--radius-lg); padding: 32px 36px;
+    border: 1px solid var(--mint-500);
+    box-shadow: 0 4px 20px rgba(80, 227, 194, 0.15);
+  }
+  .tldr h3 { margin: 0 0 20px; padding: 0; border: none; font-size: 14px; letter-spacing: 0.2em; color: var(--mint-700); font-weight: 800; }
+  .tldr ol { margin: 0; padding-left: 24px; }
+  .tldr li { font-size: 17px; line-height: 1.7; margin-bottom: 12px; font-weight: 500; }
+  .tldr li strong { color: var(--mint-700); }
+
+  /* Phase roadmap */
+  .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+  .phase-card {
+    background: white; border-radius: var(--radius-lg); padding: 28px 24px;
+    border-top: 6px solid var(--mint-500);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .phase-card.p1 { border-top-color: var(--mint-500); background: linear-gradient(180deg, var(--mint-50) 0%, white 100%); }
+  .phase-card.p2 { border-top-color: var(--sky-500); }
+  .phase-card.p3 { border-top-color: var(--purple-500); }
+  .phase-card .phase-label {
+    font-size: 12px; font-weight: 800; letter-spacing: 0.15em;
+    color: var(--ink-500); margin-bottom: 8px;
+  }
+  .phase-card.p1 .phase-label { color: var(--mint-600); }
+  .phase-card.p2 .phase-label { color: var(--sky-500); }
+  .phase-card.p3 .phase-label { color: var(--purple-500); }
+  .phase-card h4 { font-size: 20px; font-weight: 800; margin: 0 0 8px; }
+  .phase-card .when { font-size: 12px; color: var(--ink-500); margin-bottom: 14px; }
+  .phase-card .desc { font-size: 14px; color: var(--ink-700); line-height: 1.55; margin-bottom: 14px; }
+  .phase-card .kpi {
+    font-size: 12px; padding: 8px 12px; background: var(--ink-100); border-radius: 6px;
+    color: var(--ink-700); font-weight: 600;
+  }
+  .phase-card.p1::after {
+    content: "지금 진행 중"; position: absolute; top: 16px; right: 16px;
+    background: var(--mint-500); color: var(--ink-900);
+    font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 999px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%; border-collapse: collapse; background: white;
+    border-radius: var(--radius-md); overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin: 16px 0 24px; font-size: 14px;
+  }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--ink-100); vertical-align: top; }
+  th { background: var(--ink-900); color: white; font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--mint-50); }
+  td strong { color: var(--ink-900); }
+
+  /* Pills */
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.03em; white-space: nowrap; }
+  .pill-keep { background: var(--green-100); color: #14532D; }
+  .pill-defer { background: #FEF3C7; color: #92400E; }
+  .pill-now { background: #FECACA; color: #7F1D1D; }
+  .pill-p0 { background: var(--red-500); color: white; }
+  .pill-p1 { background: var(--orange-500); color: white; }
+  .pill-p2 { background: var(--blue-500); color: white; }
+  .pill-p3 { background: var(--purple-500); color: white; }
+
+  /* Info boxes */
+  .callout {
+    background: var(--yellow-100); border-left: 5px solid var(--yellow-500);
+    padding: 14px 18px; border-radius: 6px; font-size: 14px; margin: 12px 0;
+  }
+  .callout strong { color: #92400E; }
+  .callout.danger { background: #FEE2E2; border-left-color: var(--red-500); }
+  .callout.danger strong { color: #991B1B; }
+  .callout.info { background: var(--blue-100); border-left-color: var(--blue-500); }
+  .callout.info strong { color: #1E3A8A; }
+
+  /* Page mapping cards */
+  .page-map { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0; }
+  .page-card {
+    background: white; border-radius: var(--radius-md); padding: 22px 26px;
+    border-left: 5px solid var(--mint-500);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .page-card.p0 { border-left-color: var(--red-500); }
+  .page-card.p1 { border-left-color: var(--orange-500); }
+  .page-card.p2 { border-left-color: var(--blue-500); }
+  .page-card .path {
+    font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 15px; font-weight: 700;
+    background: var(--ink-100); padding: 4px 10px; border-radius: 6px;
+    display: inline-block; margin-bottom: 6px;
+  }
+  .page-card h4 { margin: 8px 0 12px; font-size: 15px; font-weight: 700; }
+  .page-card ul { margin: 0; padding-left: 20px; font-size: 13px; color: var(--ink-700); }
+  .page-card li { margin-bottom: 6px; line-height: 1.5; }
+
+  /* Hero Redesign box */
+  .hero-redesign {
+    background: white; border-radius: var(--radius-lg); padding: 32px;
+    border: 2px solid var(--mint-500); margin: 20px 0;
+  }
+  .hero-redesign .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+  .hero-redesign .side {
+    padding: 20px; border-radius: var(--radius-md); background: var(--ink-50);
+  }
+  .hero-redesign .side.after { background: var(--mint-50); border: 1px solid var(--mint-500); }
+  .hero-redesign .side h5 {
+    margin: 0 0 12px; font-size: 12px; letter-spacing: 0.15em;
+    font-weight: 800; color: var(--ink-500); text-transform: uppercase;
+  }
+  .hero-redesign .side.after h5 { color: var(--mint-700); }
+  .hero-redesign .side ul { margin: 0; padding-left: 18px; font-size: 14px; }
+  .hero-redesign .side li { margin-bottom: 6px; line-height: 1.5; }
+
+  /* PR Roadmap */
+  .roadmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 24px 0; }
+  .pr-card {
+    background: white; border-radius: var(--radius-md); padding: 18px 16px;
+    border-top: 4px solid var(--mint-500);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .pr-card.p0 { border-top-color: var(--red-500); }
+  .pr-card.p1 { border-top-color: var(--orange-500); }
+  .pr-card.p2 { border-top-color: var(--blue-500); }
+  .pr-card .title { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+  .pr-card .scope { font-size: 12px; color: var(--ink-700); margin-bottom: 12px; line-height: 1.5; }
+  .pr-card .meta { font-size: 10px; color: var(--ink-500); padding-top: 10px; border-top: 1px dashed var(--ink-300); }
+  .pr-card .meta code { background: var(--ink-100); padding: 1px 4px; border-radius: 3px; font-size: 10px; color: var(--ink-900); word-break: break-all; }
+
+  /* Q list */
+  .q-list { display: grid; gap: 16px; margin: 24px 0; }
+  .q-card {
+    background: white; border-radius: var(--radius-md); padding: 22px 26px;
+    border: 2px solid var(--ink-100);
+    display: grid; grid-template-columns: 40px 1fr auto; gap: 16px; align-items: start;
+  }
+  .q-card:hover { border-color: var(--mint-500); }
+  .q-card .q-num {
+    background: var(--mint-500); color: var(--ink-900); font-weight: 800;
+    font-size: 16px; width: 36px; height: 36px; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .q-card .q-body strong { display: block; font-size: 16px; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .q-card .q-body p { margin: 0; color: var(--ink-700); font-size: 14px; line-height: 1.55; }
+  .q-card .options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .q-card .options span {
+    background: var(--ink-100); padding: 4px 10px; border-radius: 6px;
+    font-size: 12px; color: var(--ink-700); font-weight: 600;
+  }
+  .q-card .confirm-box { display: flex; flex-direction: column; gap: 6px; min-width: 100px; align-items: flex-end; }
+  .q-card .confirm-box .hint { font-size: 10px; color: var(--ink-500); letter-spacing: 0.05em; }
+  .q-card .confirm-box .line { width: 90px; height: 22px; border-bottom: 1.5px solid var(--ink-300); }
+
+  /* Actions */
+  .actions {
+    background: white; border-radius: var(--radius-md); padding: 24px 28px;
+    border: 2px solid var(--mint-500);
+  }
+  .actions ul { list-style: none; padding: 0; margin: 0; }
+  .actions li { padding: 12px 0; border-bottom: 1px solid var(--ink-100); font-size: 15px; display: flex; gap: 12px; align-items: center; }
+  .actions li:last-child { border-bottom: none; }
+  .actions li::before { content: "☐"; color: var(--mint-500); font-weight: 800; font-size: 18px; }
+
+  /* TOC */
+  .toc {
+    position: fixed; right: 24px; top: 24px;
+    background: white; padding: 18px 20px;
+    border-radius: var(--radius-md); border: 1px solid var(--ink-300);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    max-width: 200px; font-size: 13px;
+  }
+  .toc h5 { margin: 0 0 12px; font-size: 11px; color: var(--ink-500); letter-spacing: 0.15em; font-weight: 800; }
+  .toc ol { margin: 0; padding-left: 20px; line-height: 1.9; }
+  .toc a { color: var(--ink-700); text-decoration: none; }
+  .toc a:hover { color: var(--mint-600); font-weight: 600; }
+
+  @media (max-width: 1280px) { .toc { display: none; } }
+  @media (max-width: 900px) {
+    .wrapper { padding: 40px 20px 80px; }
+    .phase-grid, .page-map { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: 1fr 1fr; }
+    .hero-redesign .before-after { grid-template-columns: 1fr; }
+    .q-card { grid-template-columns: 40px 1fr; }
+    .q-card .confirm-box { grid-column: 2; align-items: flex-start; margin-top: 8px; }
+  }
+
+  .kbd {
+    background: var(--ink-100); padding: 2px 6px; border-radius: 4px;
+    font-size: 12px; font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+    color: var(--ink-900); border: 1px solid var(--ink-300);
+  }
+
+  .footer { text-align: center; padding: 40px 20px 20px; color: var(--ink-500); font-size: 13px; border-top: 1px solid var(--ink-300); }
+</style>
+</head>
+<body>
+
+<aside class="toc" aria-label="목차">
+  <h5>목차</h5>
+  <ol>
+    <li><a href="#tldr">TL;DR</a></li>
+    <li><a href="#s1">회의 요약</a></li>
+    <li><a href="#s2">6/24 계획 조정</a></li>
+    <li><a href="#s3">페이지별 반영</a></li>
+    <li><a href="#s4">히어로 재편</a></li>
+    <li><a href="#s5">우선순위</a></li>
+    <li><a href="#s6">PR 로드맵</a></li>
+    <li><a href="#s7">Open Questions</a></li>
+    <li><a href="#s8">리스크·다음 액션</a></li>
+  </ol>
+</aside>
+
+<div class="wrapper">
+
+  <header class="header">
+    <div class="eyebrow">10TO10 · PHASE STRATEGY · HOMEPAGE ALIGNMENT</div>
+    <h1>Phase 전략 채택 · 홈페이지 전반 재정렬<br/>7/6 회의 반영</h1>
+    <div class="meta">
+      작성일 2026-07-07 · 근거
+      <a href="https://app.notion.com/p/396f122eb1e4807d8a62d74ff60464f4" target="_blank" rel="noopener">7/6 회의 & 2주 sprint 노션 →</a>
+    </div>
+    <div>
+      <span class="status">⏳ CEO 컨펌 대기 · Q8~Q14 회신 필요</span>
+    </div>
+    <div>
+      <span class="super">⚠ 6/24 BM v2 계획 부분 슈퍼시드</span>
+    </div>
+  </header>
+
+  <!-- TL;DR -->
+  <section id="tldr">
+    <div class="tldr">
+      <h3>TL;DR</h3>
+      <ol>
+        <li><strong>Phase 접근법 락</strong> — Phase 1(설명회 집중, 현재) · Phase 2(STAGE 확장) · Phase 3(SaaS 올인원)</li>
+        <li><strong>6/24 BM v2 계획 부분 슈퍼시드</strong> — 블로그 팩 3종·Basic/Premium 재정의·S0~S9 9섹션 재구조화는 <em>Phase 2로 이월</em></li>
+        <li><strong>STAGE 히어로 재편</strong> — 2분할(설명회 + 에이전트 패키지) → <em>설명회 풀케어 단독 메인</em>. 에이전트 카드는 Phase 2 티저로 강등</li>
+        <li><strong>AI 도구 학습</strong> — 워들리·Finhive Studio 활용 기록을 IR·투자 페이지에 노출 (모두의창업 제출용)</li>
+        <li><strong>인스타 성장 트랙</strong> — 본계정 트래픽·신뢰도 확보. Footer·team에 계정 링크 노출 검토 (Q11)</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 1. 회의 요약 -->
+  <section id="s1">
+    <h2><span class="num">01</span>7/6 회의 핵심 요약</h2>
+
+    <h3>1-1. Phase 로드맵</h3>
+    <div class="phase-grid">
+      <div class="phase-card p1">
+        <div class="phase-label">PHASE 1</div>
+        <h4>설명회 집중</h4>
+        <div class="when">현재 · Sprint 2주 · ~7/19</div>
+        <div class="desc">학원 설명회 시장에 뾰족하게 진입. 기획·홍보·신청 동선·후기 콘텐츠까지 풀케어. 시장이 비교적 비어 있어 파트너 학원 확보 용이.</div>
+        <div class="kpi">🎯 KPI · 파트너 학원 확보</div>
+      </div>
+      <div class="phase-card p2">
+        <div class="phase-label">PHASE 2</div>
+        <h4>STAGE 확장</h4>
+        <div class="when">Phase 1 완료 후</div>
+        <div class="desc">Phase 1 학원 풀 기반으로 블로그·인스타·네이버 플레이스·소식탭·배너 등 기존 Stage 서비스 전개. 6/24 BM v2 계획이 여기 진입.</div>
+        <div class="kpi">💰 KPI · 서비스 확장 · ARPU</div>
+      </div>
+      <div class="phase-card p3">
+        <div class="phase-label">PHASE 3</div>
+        <h4>SaaS 올인원</h4>
+        <div class="when">향후 검토</div>
+        <div class="desc">네이버·미리캔버스·캔바·블로그·인스타 등 흩어진 홍보 채널을 한 번에 관리하는 학원 전용 올인원 솔루션. 현재 진행 중인 <code>/platform</code> 트랙과 연계.</div>
+        <div class="kpi">🚀 KPI · 자동화·플랫폼화</div>
+      </div>
+    </div>
+
+    <h3>1-2. 인스타그램 성장 트랙 (본계정)</h3>
+    <div class="callout info">
+      <strong>목적</strong> · 당장 판매가 아닌 <em>트래픽 확보 / 신뢰도 형성 / "학원 마케팅 전문 계정" 포지셔닝</em>. 학원 전문 소셜 계정이 부재하므로 파이 선점 → 브랜드 자산화 → Phase 2 확장 기반.
+    </div>
+    <ul>
+      <li><strong>마케터 출연</strong> — 얼굴 전체 노출 없이 손·목소리·뒷모습·화면 설명</li>
+      <li><strong>강사/원장 인터뷰</strong> — 설명회·학습 정보·학부모 Q&A</li>
+      <li><strong>현장형 콘텐츠</strong> — 설명회 준비 과정, 홍보물 제작, 신청 동선 점검</li>
+      <li><strong>정보형 릴스</strong> — 학원 홍보·설명회·네이버 노출 짧은 팁</li>
+    </ul>
+
+    <h3>1-3. AI 도구 활용 (모두의창업 제출)</h3>
+    <table>
+      <thead><tr><th>도구</th><th>활용 방향</th><th>스프린트 목표</th></tr></thead>
+      <tbody>
+        <tr><td><strong>워들리</strong></td><td>설명회 홍보 블로그·학부모 정보성 글·후기형 글 초안 제작</td><td>결과 3건</td></tr>
+        <tr><td><strong>Finhive Studio</strong></td><td>설명회 콘텐츠 플로우·인스타 기획·카드뉴스/릴스 아이디어</td><td>결과 1~2건</td></tr>
+      </tbody>
+    </table>
+
+    <h3>1-4. 2주 스프린트 최종 산출물 (7/19)</h3>
+    <ul>
+      <li>Phase 1 설명회 서비스 정리본</li>
+      <li>설명회 패키지 구성안</li>
+      <li>인스타그램 실제 세팅 + 콘텐츠 카테고리 정리 + 업로드 최소 2개</li>
+      <li>모두의창업 제출용 워들리 3건 · Finhive Studio 1~2건 활용 기록</li>
+    </ul>
+  </section>
+
+  <!-- 2. 6/24 계획 조정 -->
+  <section id="s2">
+    <h2><span class="num">02</span>6/24 BM v2 계획 재조정 · Phase별 이월 매트릭스</h2>
+    <p class="lead">지난 6/24 계획의 각 항목을 Phase 관점에서 재분류. 대부분은 Phase 2로 이월되고 일부는 즉시 활용 가능.</p>
+
+    <table>
+      <thead><tr><th>6/24 계획 항목</th><th>상태</th><th>처리</th></tr></thead>
+      <tbody>
+        <tr><td>STAGE 9섹션 재구조화(S0~S9)</td><td><span class="pill pill-defer">부분 이월</span></td><td>Phase 2로 이월. Phase 1은 히어로 재편 + 설명회 강조에 집중</td></tr>
+        <tr><td>Basic/Premium 재정의 (5요소·3요소)</td><td><span class="pill pill-defer">Phase 2</span></td><td>Phase 1에는 노출 최소화 (히어로 티저 or 숨김)</td></tr>
+        <tr><td>블로그 팩 3종 (55/45/80만)</td><td><span class="pill pill-defer">Phase 2</span></td><td>Phase 2 시점 도입</td></tr>
+        <tr><td>Options 3개 옵션 재편</td><td><span class="pill pill-defer">Phase 2</span></td><td>현재 유지</td></tr>
+        <tr><td>폼 스키마 확장 (blog_setup 등)</td><td><span class="pill pill-defer">Phase 2</span></td><td><code>info_session</code> 위주로 정리</td></tr>
+        <tr><td><strong>"첫인상 진단" CTA</strong></td><td><span class="pill pill-now">✅ 즉시 활용</span></td><td>히어로 CTA <code>첫인상 진단 문의하기</code> 문구는 Phase 무관하게 유효</td></tr>
+        <tr><td><strong>미리캔버스 반론 카피 (S1)</strong></td><td><span class="pill pill-now">✅ 즉시 활용</span></td><td>Painpoints 카피 갱신에 활용 가능</td></tr>
+        <tr><td>Before/After 비교표 (S2)</td><td><span class="pill pill-defer">Phase 2</span></td><td>블로그·플레이스 확장 후 재조명</td></tr>
+        <tr><td>탭 갤러리 (S5)</td><td><span class="pill pill-defer">Phase 2</span></td><td>설명회 갤러리는 유지, 채널별 탭은 Phase 2</td></tr>
+        <tr><td>StageSteps 5단 (S8)</td><td><span class="pill pill-keep">활용</span></td><td>설명회 진행 프로세스 5단으로 재구성해서 Phase 1에서 즉시 활용</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3. 페이지별 반영 -->
+  <section id="s3">
+    <h2><span class="num">03</span>홈페이지 전 페이지 반영 매트릭스</h2>
+
+    <div class="page-map">
+      <div class="page-card p0">
+        <div><span class="pill pill-p0">P0</span></div>
+        <div class="path">/stage</div>
+        <h4>설명회 단독 메인으로 재정렬</h4>
+        <ul>
+          <li>히어로: 설명회 풀케어 <strong>단독 강조</strong>, 에이전트 패키지 카드 제거/티저화</li>
+          <li>섹션 순서: Hero → InfoSessionFlagship → Painpoints → WhyUs → Process → Contact</li>
+          <li>Packages/Options/BlogPacks/Gallery = <strong>Phase 2 이월 · 임시 숨김</strong> (Q9)</li>
+          <li>폼 <code>package</code> enum <code>info_session/custom</code> 위주 정리</li>
+        </ul>
+      </div>
+      <div class="page-card p0">
+        <div><span class="pill pill-p0">P0</span></div>
+        <div class="path">/</div>
+        <h4>메인 CTA·카피 조정</h4>
+        <ul>
+          <li>Hero CTA 서브 카피: "설명회 풀케어" 명시적 노출</li>
+          <li>DualProducts STAGE 카드: "학원 설명회 풀케어 — 원장님은 발표만" 톤 조정</li>
+          <li>Phase 2 확장 티저 소형 뱃지 추가</li>
+        </ul>
+      </div>
+      <div class="page-card p0">
+        <div><span class="pill pill-p0">P0</span></div>
+        <div class="path">/inquiry</div>
+        <h4>분기 카드 카피 Phase 명시</h4>
+        <ul>
+          <li>좌측 (AI 플랫폼): <strong>"Phase 3 SaaS 방향"</strong> 소형 뱃지</li>
+          <li>우측 (STAGE): 부제를 "학원 설명회 풀케어 (Phase 1)" 명확화</li>
+        </ul>
+      </div>
+      <div class="page-card p1">
+        <div><span class="pill pill-p1">P1</span></div>
+        <div class="path">/platform</div>
+        <h4>Phase 3 SaaS 관점 로드맵 조정</h4>
+        <ul>
+          <li>Roadmap 섹션에 <strong>Phase 3 = SaaS 확장</strong> 표기</li>
+          <li>현재 Beta 진행은 Phase 3 준비 단계로 스토리라인화</li>
+          <li>Agents 섹션 카피: "네이버·미리캔버스·블로그·인스타 통합 관리" 방향으로 조정</li>
+        </ul>
+      </div>
+      <div class="page-card p1">
+        <div><span class="pill pill-p1">P1</span></div>
+        <div class="path">/invest</div>
+        <h4>Phase 로드맵 공개</h4>
+        <ul>
+          <li>INVEST_HIGHLIGHTS에 <strong>Phase 로드맵 3단 카드</strong> 추가 (Q13 컨펌 필요)</li>
+          <li>"AI 도구 활용 · 모두의창업 선정 · Phase 1 진행 중" 지표 명시</li>
+          <li>IR PDF 재생성 시 Phase 로드맵 반영</li>
+        </ul>
+      </div>
+      <div class="page-card p2">
+        <div><span class="pill pill-p2">P2</span></div>
+        <div class="path">/team</div>
+        <h4>Phase 진행 현황 노출</h4>
+        <ul>
+          <li>"Phase 1 Sprint 진행 중 · 2주 단위 · 7/19 완료 목표" 배지</li>
+          <li>CEO+예솜님 파트너쉽 스토리 강화</li>
+        </ul>
+      </div>
+      <div class="page-card p1">
+        <div><span class="pill pill-p1">P1</span></div>
+        <div class="path">Footer / 소셜</div>
+        <h4>인스타그램 계정 노출 (Q11 후)</h4>
+        <ul>
+          <li>본계정 인스타그램 URL 노출</li>
+          <li>사일런트는 절대 노출 X (Two-way 마케팅 락)</li>
+          <li>카카오톡 채널 + 인스타 아이콘 병기</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 히어로 재편 -->
+  <section id="s4">
+    <h2><span class="num">04</span>STAGE 히어로 재편 · Before/After</h2>
+    <div class="hero-redesign">
+      <div class="before-after">
+        <div class="side">
+          <h5>Before · 현재 (PR #22 이후)</h5>
+          <ul>
+            <li>2분할 카드: 설명회 풀케어 / 에이전트 패키지</li>
+            <li>좌측 = <code>#info-session</code></li>
+            <li>우측 = <code>#packages</code> (Basic/Premium)</li>
+            <li>동등 위계</li>
+          </ul>
+        </div>
+        <div class="side after">
+          <h5>After · Phase 1 (제안)</h5>
+          <ul>
+            <li><strong>설명회 풀케어 단독 메인 카드</strong> — 좌측 큰 카드 or 풀너비 히어로</li>
+            <li>사진: 설명회 콜라주 (<code>/info-session/*.jpg</code>) 확대 활용</li>
+            <li>CTA: <code>설명회 풀케어 견적 문의</code> (primary) · <code>설명회 자세히 보기</code> (secondary)</li>
+            <li>에이전트 패키지: <strong>"Phase 2 예정" 소형 티저</strong> 카드 or 완전 제거 (Q8)</li>
+            <li>Trust line: 만족도 4.32 / 5.0 · 재참석 100% · 연 단위 정찰 가격 유지</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="callout"><strong>대안</strong> · 히어로 아래 <code>InfoSessionFlagship</code> 섹션을 <strong>바로 붙이는 구조</strong>가 이번 재편의 핵심. 설명회 상세를 첫 접점 후 즉시 노출.</div>
+  </section>
+
+  <!-- 5. 우선순위 -->
+  <section id="s5">
+    <h2><span class="num">05</span>우선순위</h2>
+
+    <h3><span class="pill pill-p0">P0</span> 즉시 반영 · Phase 1 시작 대응</h3>
+    <ul>
+      <li>STAGE 히어로 설명회 단독 재편 + 에이전트 패키지 제거/티저화 (Q8)</li>
+      <li>STAGE 섹션 순서 재정렬 (Packages/Options/Gallery 임시 숨김/접힘) (Q9)</li>
+      <li><code>/inquiry</code> 카드 카피 Phase 명시</li>
+      <li>메인 Hero·DualProducts 카피 조정</li>
+      <li>폼 스키마 유지 (URL 호환 위해 옵션 유지, 자동 선택은 <code>info_session</code>)</li>
+    </ul>
+
+    <h3><span class="pill pill-p1">P1</span> Phase 1 sprint 중 반영 (~7/19)</h3>
+    <ul>
+      <li>인스타그램 링크 footer/team 노출 (Q11)</li>
+      <li><code>/invest</code> Phase 로드맵 3단 카드 신설 (Q13)</li>
+      <li><code>/platform</code> Phase 3 문구 조정</li>
+      <li>모두의창업/AI 도구 활용 배지 (invest + 메인 CompanyStats) (Q14)</li>
+    </ul>
+
+    <h3><span class="pill pill-p2">P2</span> Phase 2 착수 시 반영</h3>
+    <ul>
+      <li>Basic/Premium 5요소·3요소 재정의 (6/24 계획 활용)</li>
+      <li>블로그 팩 3종 + BlogPacks 컴포넌트 신설</li>
+      <li>ProofTabs 채널별 5탭 갤러리</li>
+      <li>WhyOverDIY (S2) 신규 섹션</li>
+      <li>폼 스키마 확장 (blog_setup/monthly_4/monthly_8)</li>
+    </ul>
+  </section>
+
+  <!-- 6. PR 로드맵 -->
+  <section id="s6">
+    <h2><span class="num">06</span>PR 로드맵 (5개 분해)</h2>
+    <p class="lead">각 PR은 <code>next build</code> 클린 → squash merge + 브랜치 삭제 룰 유지.</p>
+    <div class="roadmap">
+      <div class="pr-card p0">
+        <div class="title">PR-α <span class="pill pill-p0">P0</span></div>
+        <div class="scope">STAGE 히어로 설명회 단독 재편, 에이전트 카드 제거/티저</div>
+        <div class="meta"><code>feat/phase1-stage-hero-realign</code><br/>2~3 파일</div>
+      </div>
+      <div class="pr-card p0">
+        <div class="title">PR-β <span class="pill pill-p0">P0</span></div>
+        <div class="scope">STAGE 섹션 순서 조정 + Phase 2 예정 접힘</div>
+        <div class="meta"><code>feat/phase1-stage-sections-order</code><br/>2~3 파일</div>
+      </div>
+      <div class="pr-card p0">
+        <div class="title">PR-γ <span class="pill pill-p0">P0</span></div>
+        <div class="scope">메인·inquiry 카피 Phase 명시 + AI 도구 배지</div>
+        <div class="meta"><code>feat/phase1-copy-alignment</code><br/>4~5 파일</div>
+      </div>
+      <div class="pr-card p1">
+        <div class="title">PR-δ <span class="pill pill-p1">P1</span></div>
+        <div class="scope">invest Phase 로드맵 3단 카드 + 모두의창업 강조</div>
+        <div class="meta"><code>feat/phase1-invest-roadmap</code><br/>2~3 파일</div>
+      </div>
+      <div class="pr-card p1">
+        <div class="title">PR-ε <span class="pill pill-p1">P1</span></div>
+        <div class="scope">인스타 링크 + Footer 소셜 (Q11 후)</div>
+        <div class="meta"><code>feat/phase1-social-links</code><br/>2 파일</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Open Questions -->
+  <section id="s7">
+    <h2><span class="num">07</span>Open Questions · CEO 컨펌 필요</h2>
+    <p class="lead">지난 Q1~Q7은 대부분 Phase 2 이월로 자동 클로즈. 이번 신규 Q8~Q14 회신 주시면 문서 락.</p>
+
+    <div class="callout"><strong>지난 Q1~Q7 상태</strong> · Q1/Q3/Q6 = Phase 2 이월 자동 클로즈 / Q2 = 유효 유지 / Q4 = InfoSessionFlagship이 히어로 아래 메인 상세로 승격 / Q5 = 설명회 갤러리 우선, 채널 탭 Phase 2 / Q7 = 새 로드맵 α~ε으로 재구성</div>
+
+    <div class="q-list">
+      <div class="q-card">
+        <div class="q-num">8</div>
+        <div class="q-body">
+          <strong>에이전트 패키지 카드 처리</strong>
+          <p>현재 히어로 우측 카드 어떻게 할지? (설명회 단독으로 갈 때)</p>
+          <div class="options">
+            <span>A. 완전 제거</span>
+            <span>B. Phase 2 예정 소형 티저</span>
+            <span>C. <code>/stage/packages</code> 별도 페이지로 이동</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">9</div>
+        <div class="q-body">
+          <strong>Packages/Options/BlogPacks 섹션 임시 처리</strong>
+          <p>Phase 2 이월 섹션들의 노출 방식</p>
+          <div class="options">
+            <span>A. 완전 숨김</span>
+            <span>B. 접힘/Phase 2 티저 압축</span>
+            <span>C. <code>?phase=2</code> 파라미터 프리뷰</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">10</div>
+        <div class="q-body">
+          <strong>STAGE 페이지 URL 앵커</strong>
+          <p>현재 <code>#packages</code>, <code>#info-session</code> 앵커 처리</p>
+          <div class="options">
+            <span>A. 유지 (호환용)</span>
+            <span>B. <code>#info-session</code> 우선, 나머지 폐기</span>
+            <span>C. 완전 재작성</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">11</div>
+        <div class="q-body">
+          <strong>인스타그램 본계정 URL 노출</strong>
+          <p>홈페이지 어디까지 노출할지</p>
+          <div class="options">
+            <span>A. Footer + Team 하단</span>
+            <span>B. Team 하단만</span>
+            <span>C. 팔로워 확보 후</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">12</div>
+        <div class="q-body">
+          <strong>사일런트 계정 노출 재확인</strong>
+          <p>Two-way 마케팅 락에 따르면 사일런트는 노출 X 원칙. 재확인 필요?</p>
+          <div class="options">
+            <span>A. 락 유지 · 절대 X</span>
+            <span>B. 조건부 노출</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">13</div>
+        <div class="q-body">
+          <strong><code>/invest</code> Phase 로드맵 공개 수위</strong>
+          <p>투자자 대상 로드맵 노출 정도</p>
+          <div class="options">
+            <span>A. Phase 1/2/3 그대로 공개</span>
+            <span>B. Phase 1 강조, 2/3는 "향후 로드맵"</span>
+            <span>C. 공개 X (IR 자료 안에만)</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-num">14</div>
+        <div class="q-body">
+          <strong>모두의창업 선정 배지 노출</strong>
+          <p>선정 사실을 어디에 강조할지</p>
+          <div class="options">
+            <span>A. CompanyStats에 배지 (현행)</span>
+            <span>B. /invest 상단 셀렉션 카드</span>
+            <span>C. 두 곳 모두</span>
+          </div>
+        </div>
+        <div class="confirm-box"><div class="hint">답변</div><div class="line"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 리스크·다음 액션 -->
+  <section id="s8">
+    <h2><span class="num">08</span>리스크 · 다음 액션</h2>
+
+    <h3>주의사항</h3>
+    <div class="callout danger"><strong>1</strong> · 6/24 계획서와의 관계 명확화 — 팀·예솜님이 헷갈리지 않도록 6/24 문서 상단에 "부분 슈퍼시드" 헤더 삽입 완료</div>
+    <div class="callout"><strong>2</strong> · <code>/inquiry</code> 헤더 CTA 문구는 유지. 라우팅은 그대로 <code>/inquiry</code></div>
+    <div class="callout"><strong>3</strong> · <code>STAGE_PRICING</code> 상수 삭제 금지 — Phase 2 재활용. 사용 안하더라도 데드코드 경고에 유의</div>
+    <div class="callout"><strong>4</strong> · 폼 옵션 URL 호환성 — 기존 <code>?service=basic|premium|blog-build|offline-print</code> 링크가 외부 자료에 노출되어 있을 수 있음. 최소 3개월 호환 유지</div>
+    <div class="callout"><strong>5</strong> · 인스타 링크 확정 전 실제 URL 확보 필요 (예솜님/CEO 확인)</div>
+
+    <h3>다음 액션</h3>
+    <div class="actions">
+      <ul>
+        <li>CEO 컨펌 — Q8~Q14 (7건) 회신 → 문서 락</li>
+        <li>Q11·Q12 확정 후 인스타 계정 URL 수집 (예솜님/CEO)</li>
+        <li>6/24 계획서 상단 "부분 슈퍼시드" 헤더 완료 ✓</li>
+        <li>PR-α 착수 (STAGE 히어로 재편, ~2시간 예상)</li>
+        <li>PR-α 배포 후 카피 반응 관찰 → PR-β~ε 순차</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">
+    10to10 · Phase 전략 채택 · 2026-07-07 · 원본 마크다운 <code>docs/plans/2026-07-07-phase-strategy-and-homepage-alignment.md</code>
+  </div>
+
+</div>
+</body>
+</html>
