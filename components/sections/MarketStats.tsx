@@ -7,13 +7,22 @@ import { MARKET_STATS } from "@/lib/content/company";
 
 export function MarketStats() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-ink-50)]">
+    <section className="py-24 md:py-32 bg-[var(--color-paper-dim)]">
       <Container>
         <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <div className="micro-label text-[var(--color-ink-500)]">Market</div>
+          <h2 className="display-type mt-4 text-3xl md:text-5xl text-[var(--color-ink-950)]">
             이 거대한 사교육 시장은
             <br />
-            아직도 <span className="text-[var(--color-mint-600)]">입소문에 의존</span>합니다.
+            아직도{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">입소문에 의존</span>
+              <span
+                aria-hidden
+                className="absolute inset-x-[-0.08em] bottom-[0.03em] z-0 h-[0.4em] bg-[var(--color-mint-500)]/60"
+              />
+            </span>
+            합니다.
           </h2>
         </FadeIn>
         <FadeIn delay={0.1} className="mt-4 mb-12">

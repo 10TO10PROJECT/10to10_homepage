@@ -14,6 +14,7 @@
   --color-sky-500:  #15BDFF;
 
   /* Ink */
+  --color-ink-950: #111614;
   --color-ink-900: #1A1A1A;
   --color-ink-700: #4A4A4A;
   --color-ink-500: #9B9B9B;
@@ -21,14 +22,24 @@
   --color-ink-100: #F5F5F5;
   --color-ink-50:  #FAFAFA;
 
+  /* Editorial surfaces — DESIGN.md(broadsheet) 번안: 캔버스는 순백이 아닌 민트 기운의 종이 */
+  --color-paper:      #FAFFFD;
+  --color-paper-dim:  #F2F8F5;
+
   /* Type */
   --font-sans: 'Pretendard', system-ui, -apple-system, sans-serif;
 
-  /* Radius */
+  /* Radius — 에디토리얼: 버튼은 각지게, 이미지는 14px */
+  --radius-xs: 0.375rem;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1.25rem;
   --radius-xl: 2rem;
+  --radius-img: 14px;
+
+  /* Shadow — 유일한 입체감은 민트 버튼에만 */
+  --shadow-mint: 1px 8px 20px 0 rgba(44, 196, 168, 0.35);
+  --shadow-mint-soft: 1px 8px 20px 0 rgba(44, 196, 168, 0.2);
 
   /* Motion */
   --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -39,7 +50,7 @@
 
 @layer base {
   html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  body { background: #ffffff; color: var(--color-ink-900); }
+  body { background: var(--color-paper); color: var(--color-ink-900); }
   ::selection { background: var(--color-mint-500); color: #fff; }
   :focus-visible {
     outline: 2px solid var(--color-mint-600);
@@ -54,6 +65,36 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+@layer utilities {
+  /* 마이크로 라벨 — DESIGN.md 11px/550 uppercase 번안. 크롬 대신 타이포가 구조를 만든다 */
+  .micro-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  /* 디스플레이 타이포 — 지면 잉크처럼 읽히는 타이트한 자간·행간 */
+  .display-type {
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+
+  /* 민트 듀오톤 — 장식용 사진 인서트를 지면과 같은 톤 패밀리로 (증거 사진에는 쓰지 않음) */
+  .img-duotone {
+    filter: grayscale(1) sepia(0.42) saturate(1.9) hue-rotate(118deg)
+      brightness(1.05) contrast(0.9);
+  }
+
+  /* 헤어라인 — 카드 그림자 대신 1px 구조선 */
+  .hairline { border: 1px solid color-mix(in srgb, var(--color-ink-900) 14%, transparent); }
+  .hairline-b { border-bottom: 1px solid color-mix(in srgb, var(--color-ink-900) 14%, transparent); }
+  .hairline-t { border-top: 1px solid color-mix(in srgb, var(--color-ink-900) 14%, transparent); }
 }
 
 /* IR Deck — print to PDF (16:9 landscape) */

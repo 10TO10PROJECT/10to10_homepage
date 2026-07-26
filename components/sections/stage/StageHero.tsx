@@ -1,34 +1,36 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Badge";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { COMPANY } from "@/lib/content/company";
 
 export function StageHero() {
   return (
-    <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-24">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 right-1/4 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-[var(--color-mint-500)]/15 to-[var(--color-sky-500)]/10 blur-3xl"
-      />
-      <Container className="relative">
-        <div className="max-w-3xl">
+    <section className="pt-20 pb-16 md:pt-28 md:pb-24">
+      <Container>
+        <div className="max-w-4xl">
           <FadeIn>
-            <Badge>PRODUCT 02 · 10to10 STAGE</Badge>
+            <div className="micro-label text-[var(--color-ink-500)]">
+              10to10 STAGE · 학원 설명회 풀케어
+            </div>
           </FadeIn>
           <FadeIn delay={0.1} className="mt-6">
-            <h1 className="text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.1] tracking-tight">
+            <h1 className="display-type text-[clamp(2.6rem,7vw,5.5rem)] text-[var(--color-ink-950)]">
               학원 설명회,
               <br />
-              <span className="text-[var(--color-mint-600)]">
-                원장님은 발표만 하세요.
+              원장님은{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">발표만 하세요.</span>
+                <span
+                  aria-hidden
+                  className="absolute inset-x-[-0.1em] bottom-[0.02em] z-0 h-[0.42em] bg-[var(--color-mint-500)]/70"
+                />
               </span>
             </h1>
           </FadeIn>
-          <FadeIn delay={0.2} className="mt-6">
-            <p className="text-lg md:text-xl text-[var(--color-ink-700)] leading-relaxed">
-              연세대·한양대 출신 마케팅 전문팀이 기획·디자인·모객·쿠폰·현장 운영·
-              <br className="hidden sm:inline" />
-              등록률 트래킹까지 <strong className="text-[var(--color-ink-900)]">설명회 풀케어</strong>로 학원의 1년을 바꿔드립니다.
+          <FadeIn delay={0.2} className="mt-8">
+            <p className="max-w-2xl text-lg leading-relaxed text-[var(--color-ink-700)] md:text-xl">
+              기획·모객·자료 제작·현장 운영·성과 리포트까지 전담팀이 대신합니다.
+              블로그와 인스타로 안 되던 등록 전환, 설명회가 잇습니다.
             </p>
           </FadeIn>
         </div>
@@ -37,23 +39,22 @@ export function StageHero() {
           <FlagshipCard />
         </FadeIn>
 
-        <FadeIn delay={0.4} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-700)]">
+        <FadeIn delay={0.4} className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm text-[var(--color-ink-700)]">
           <span className="flex items-center gap-2">
-            <span className="text-[var(--color-mint-600)]">✓</span>
-            만족도 4.32 / 5.0
+            <span className="font-bold text-[var(--color-mint-600)]">4.32</span>
+            설명회 만족도 / 5.0
           </span>
           <span className="flex items-center gap-2">
-            <span className="text-[var(--color-mint-600)]">✓</span>
-            재참석 의사 100%
+            <span className="font-bold text-[var(--color-mint-600)]">100%</span>
+            재참석 의사
           </span>
           <span className="flex items-center gap-2">
-            <span className="text-[var(--color-mint-600)]">✓</span>
-            추천 의사 95.2%
+            <span className="font-bold text-[var(--color-mint-600)]">95.2%</span>
+            추천 의사
           </span>
-        </FadeIn>
-
-        <FadeIn delay={0.5} className="mt-14">
-          <Phase2Teaser />
+          <span className="text-xs text-[var(--color-ink-500)]">
+            2026.02 자체 설명회 실측 · 응답 21명
+          </span>
         </FadeIn>
       </Container>
     </section>
@@ -62,37 +63,42 @@ export function StageHero() {
 
 function FlagshipCard() {
   return (
-    <div className="group grid gap-0 md:grid-cols-[1.15fr_1fr] overflow-hidden rounded-[var(--radius-lg)] bg-white ring-1 ring-[var(--color-ink-300)]/40 shadow-lg shadow-[var(--color-ink-900)]/5 transition hover:shadow-2xl hover:shadow-[var(--color-ink-900)]/10">
-      <div className="p-8 md:p-10 flex flex-col justify-center order-2 md:order-1">
-        <div className="text-xs font-bold tracking-[0.18em] text-[var(--color-mint-600)]">
-          FLAGSHIP · 설명회 풀케어
+    <div className="group grid gap-0 overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-ink-900)]/15 bg-white md:grid-cols-[1.15fr_1fr]">
+      <div className="order-2 flex flex-col justify-center p-8 md:order-1 md:p-12">
+        <div className="micro-label text-[var(--color-mint-600)]">
+          Flagship · 설명회 풀케어
         </div>
-        <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-ink-900)] leading-tight">
+        <h2 className="display-type mt-4 text-3xl text-[var(--color-ink-950)] md:text-4xl">
           1년 등록률을 바꾸는
           <br />
           단 하루의 무대.
         </h2>
-        <p className="mt-5 text-[15px] md:text-base text-[var(--color-ink-700)] leading-relaxed">
-          기획부터 현장 운영, 쿠폰·등록률 트래킹까지 한 팀이 전담합니다.
-          원장님은 학원의 강점만 알려주시면 됩니다.
+        <p className="mt-5 text-[15px] leading-relaxed text-[var(--color-ink-700)] md:text-base">
+          원장님은 학원의 강점만 알려주시면 됩니다. 신청 20명을 못 채우면
+          부족한 만큼 돌려드리는 <strong>모객 보장</strong>까지.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
           <a
-            href="#info-session"
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--color-mint-500)] px-5 py-2.5 text-sm font-bold text-[var(--color-ink-900)] transition hover:bg-[var(--color-mint-600)] hover:text-white"
+            href={COMPANY.kakaoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-[var(--radius-xs)] bg-[var(--color-mint-500)] px-5 py-3 text-sm font-bold text-[var(--color-ink-950)] shadow-[var(--shadow-mint)] transition hover:bg-[var(--color-mint-600)] hover:text-white"
           >
-            설명회 풀케어 자세히 보기
+            카톡으로 3분 상담
             <span aria-hidden>→</span>
           </a>
           <a
-            href="?service=info_session#contact"
-            className="text-sm font-medium text-[var(--color-ink-500)] underline-offset-4 hover:text-[var(--color-ink-900)] hover:underline"
+            href="#info-session"
+            className="text-sm font-medium text-[var(--color-ink-700)] underline decoration-[var(--color-ink-900)]/30 underline-offset-4 transition hover:text-[var(--color-ink-950)] hover:decoration-[var(--color-ink-950)]"
           >
-            견적 문의하기 →
+            풀케어 자세히 보기
           </a>
         </div>
+        <p className="mt-3 text-xs text-[var(--color-ink-500)]">
+          평균 응답 30분 · 영업 전화 없이 카톡/폼으로만 답합니다
+        </p>
       </div>
-      <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[360px] bg-[var(--color-ink-100)] order-1 md:order-2 overflow-hidden">
+      <div className="relative order-1 aspect-[4/3] overflow-hidden bg-[var(--color-ink-100)] md:order-2 md:aspect-auto md:min-h-[380px]">
         <Image
           src="/info-session/01-hall-wide.jpg"
           alt="설명회 현장 — 학부모로 가득 찬 강의실"
@@ -101,33 +107,9 @@ function FlagshipCard() {
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           priority
         />
-      </div>
-    </div>
-  );
-}
-
-function Phase2Teaser() {
-  return (
-    <div className="rounded-[var(--radius-lg)] border border-dashed border-[var(--color-ink-300)] bg-[var(--color-ink-50)]/60 px-6 py-5 md:px-8 md:py-6">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="min-w-0">
-          <div className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-ink-500)]">
-            COMING NEXT · PHASE 2
-          </div>
-          <div className="mt-1 text-base md:text-lg font-bold text-[var(--color-ink-900)]">
-            에이전트 패키지 — 학원 마케팅 연 단위 풀케어
-          </div>
-          <p className="mt-1 text-sm text-[var(--color-ink-700)]">
-            네이버 플레이스·블로그·인스타·디자인까지 한 팀이 연 단위로 운영합니다. Phase 1 파트너 학원을 대상으로 순차 확장 예정.
-          </p>
-        </div>
-        <a
-          href="/inquiry"
-          className="shrink-0 inline-flex items-center gap-2 rounded-full border border-[var(--color-ink-300)] bg-white px-4 py-2 text-xs font-semibold text-[var(--color-ink-700)] hover:border-[var(--color-mint-500)] hover:text-[var(--color-mint-600)] transition"
-        >
-          사전 상담 문의
-          <span aria-hidden>→</span>
-        </a>
+        <span className="micro-label absolute bottom-4 left-4 rounded-[var(--radius-xs)] bg-[var(--color-ink-950)]/80 px-2.5 py-1.5 text-white">
+          실제 현장 · 2026.02
+        </span>
       </div>
     </div>
   );

@@ -1,16 +1,16 @@
 type Tone = "white" | "muted" | "dark" | "mint";
 
 const TONE_HEX: Record<Tone, string> = {
-  white: "#FFFFFF",
-  muted: "#FAFAFA",
-  dark: "#1A1A1A",
+  white: "#FAFFFD",
+  muted: "#F2F8F5",
+  dark: "#111614",
   mint: "#E6FAF5",
 };
 
 const HEIGHTS = {
-  sm: "h-12 md:h-16",
-  md: "h-20 md:h-24",
-  lg: "h-28 md:h-36",
+  sm: "h-10 md:h-12",
+  md: "h-14 md:h-20",
+  lg: "h-20 md:h-28",
 } as const;
 
 export function SectionDivider({

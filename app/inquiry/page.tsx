@@ -35,7 +35,23 @@ export default function InquiryPage() {
         <div className="mt-14 grid gap-6 md:gap-8 md:grid-cols-2">
           <FadeIn delay={0.15}>
             <InquiryCard
-              eyebrow="PRODUCT 01 · 10to10 AI 플랫폼"
+              eyebrow="10to10 STAGE"
+              phase="PHASE 1 · 진행 중"
+              title="학원 설명회 풀케어 문의"
+              desc="전담팀이 학원 설명회를 기획·모객·자료 제작·현장 운영까지 풀케어합니다. 원장님은 발표만 하세요."
+              bullets={[
+                "모객 20명 → 등록 6명 = 예상 매출 720만 원",
+                "만족도 4.32 / 5.0 · 재참석 100% (실측)",
+                "신청 20명 미달 시 부족한 만큼 환급 — 모객 보장",
+              ]}
+              primary={{ href: "/stage#contact", label: "설명회 견적 문의하기" }}
+              secondary={{ href: "/stage", label: "STAGE 자세히 보기" }}
+              tone="mint"
+            />
+          </FadeIn>
+          <FadeIn delay={0.25}>
+            <InquiryCard
+              eyebrow="10to10 AI 플랫폼"
               phase="PHASE 3 SaaS"
               title="AI 플랫폼 도입·체험"
               desc="학원 운영 SaaS와 학부모·학생 탐색 앱을 연결한 양면 플랫폼입니다. Beta 체험 또는 정규 도입 문의를 안내드립니다."
@@ -50,22 +66,6 @@ export default function InquiryPage() {
                 external: true,
               }}
               secondary={{ href: "/platform", label: "플랫폼 자세히 보기" }}
-              tone="mint"
-            />
-          </FadeIn>
-          <FadeIn delay={0.25}>
-            <InquiryCard
-              eyebrow="PRODUCT 02 · 10to10 STAGE"
-              phase="PHASE 1 · 진행 중"
-              title="학원 설명회 풀케어 문의"
-              desc="연세대·한양대 출신 전담팀이 학원 설명회를 기획·디자인·모객·현장 운영까지 풀케어합니다. 원장님은 발표만 하세요."
-              bullets={[
-                "설명회 풀케어 · 1회성 프로젝트",
-                "만족도 4.32 / 5.0 · 재참석 100%",
-                "Phase 2 마케팅 전반 확장 예정",
-              ]}
-              primary={{ href: "/stage#contact", label: "설명회 견적 문의하기" }}
-              secondary={{ href: "/stage", label: "STAGE 자세히 보기" }}
               tone="ink"
             />
           </FadeIn>

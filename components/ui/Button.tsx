@@ -26,17 +26,18 @@ const base =
   "inline-flex items-center justify-center gap-2 font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-mint-600)] disabled:opacity-50 disabled:cursor-not-allowed select-none";
 
 const sizes: Record<Size, string> = {
-  sm: "h-9 px-4 text-sm rounded-[var(--radius-sm)]",
-  md: "h-11 px-5 text-base rounded-[var(--radius-md)]",
-  lg: "h-14 px-7 text-lg rounded-[var(--radius-md)]",
+  sm: "h-9 px-4 text-sm rounded-[var(--radius-xs)]",
+  md: "h-11 px-5 text-base rounded-[var(--radius-xs)]",
+  lg: "h-14 px-7 text-lg rounded-[var(--radius-xs)]",
 };
 
 const variants: Record<Variant, string> = {
-  primary: "bg-[var(--color-mint-500)] text-white hover:bg-[var(--color-mint-600)]",
-  secondary: "bg-[var(--color-ink-900)] text-white hover:bg-black",
+  primary:
+    "bg-[var(--color-mint-500)] text-[var(--color-ink-950)] font-bold shadow-[var(--shadow-mint)] hover:bg-[var(--color-mint-600)] hover:text-white",
+  secondary: "bg-[var(--color-ink-950)] text-white hover:bg-black",
   ghost: "text-[var(--color-ink-900)] hover:bg-[var(--color-ink-100)]",
   outline:
-    "border border-[var(--color-ink-300)] text-[var(--color-ink-900)] hover:border-[var(--color-mint-500)] hover:text-[var(--color-mint-600)]",
+    "border border-[var(--color-ink-900)]/25 text-[var(--color-ink-900)] hover:border-[var(--color-ink-900)] hover:bg-[var(--color-ink-950)] hover:text-white",
 };
 
 export function Button(props: Props) {
