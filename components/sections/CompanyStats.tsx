@@ -25,7 +25,7 @@ const STATS: StatItem[] = [
   {
     value: "Beta",
     label: "운영 중",
-    caption: "정규 v1.0 · 2026.07.28 예정",
+    caption: "정규 v1.0 · 2026 하반기 (일정 추후 공개)",
     icon: "launch",
   },
   {
@@ -94,24 +94,25 @@ const TRUST_BADGES = [
 
 export function CompanyStats() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-ink-900)] text-white">
+    <section className="py-24 md:py-32 bg-[var(--color-ink-950)] text-white">
       <Container>
         <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <div className="micro-label text-[var(--color-mint-500)]">By the Numbers</div>
+          <h2 className="display-type mt-4 text-3xl md:text-5xl">
             숫자로 보는 10to10
           </h2>
           <p className="mt-4 text-lg text-white/70">
             우리는 천천히, 그러나 단단하게 만들고 있습니다.
           </p>
         </FadeIn>
-        <StaggerChildren className="mt-14 grid gap-5 md:grid-cols-4">
+        <StaggerChildren className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-sm)] border border-white/15 bg-white/15 md:grid-cols-4">
           {STATS.map((s) => (
-            <StaggerItem key={s.label}>
-              <div className="h-full rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-6 transition hover:border-[var(--color-mint-500)]/40 hover:bg-white/[0.06]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-gradient-to-br from-[var(--color-mint-500)]/25 to-[var(--color-sky-500)]/25 text-[var(--color-mint-500)]">
+            <StaggerItem key={s.label} className="h-full">
+              <div className="h-full bg-[var(--color-ink-950)] p-6 transition-colors hover:bg-white/[0.04]">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--color-mint-500)]/15 text-[var(--color-mint-500)]">
                   <StatIcon kind={s.icon} />
                 </div>
-                <div className="mt-6 text-4xl md:text-5xl font-bold tracking-tight">
+                <div className="display-type mt-6 text-4xl md:text-5xl">
                   {s.value}
                 </div>
                 <div className="mt-2 text-sm md:text-base font-medium text-white/80">

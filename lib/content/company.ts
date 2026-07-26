@@ -15,7 +15,7 @@ export const COMPANY = {
 export const COMPANY_STATS = [
   { value: "16+", label: "파트너 학원" },
   { value: "8", label: "팀원" },
-  { value: "Beta", label: "정규 출시 7/28 예정" },
+  { value: "Beta", label: "정규 v1.0 · 2026 하반기" },
   { value: "선정", label: "모두의 창업" },
 ] as const;
 
