@@ -25,13 +25,13 @@ const PHASE2_CARDS = [
 
 export function Phase2Roadmap() {
   return (
-    <section id="packages" className="py-24 md:py-32 bg-[var(--color-ink-50)]">
+    <section id="packages" className="py-24 md:py-32">
       <Container>
         <FadeIn className="mb-10 max-w-2xl">
-          <div className="text-xs font-bold tracking-[0.18em] text-[var(--color-ink-500)]">
-            COMING NEXT · PHASE 2
+          <div className="micro-label text-[var(--color-ink-500)]">
+            Coming Next · Phase 2
           </div>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
             학원 마케팅 전반으로,
             <br />
             곧 확장합니다.
@@ -47,9 +47,9 @@ export function Phase2Roadmap() {
             <StaggerItem key={c.id}>
               <div
                 id={c.id}
-                className="h-full rounded-[var(--radius-lg)] border border-dashed border-[var(--color-ink-300)] bg-white p-6 md:p-7"
+                className="h-full rounded-[var(--radius-sm)] border border-dashed border-[var(--color-ink-900)]/25 bg-white p-6 md:p-7"
               >
-                <div className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-ink-500)]">
+                <div className="micro-label text-[var(--color-ink-500)]">
                   {c.eyebrow} · PHASE 2
                 </div>
                 <h3 className="mt-3 text-xl font-bold text-[var(--color-ink-900)]">
@@ -66,7 +66,7 @@ export function Phase2Roadmap() {
         <FadeIn delay={0.2} className="mt-10 text-center">
           <a
             href="/inquiry"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink-300)] bg-white px-5 py-2.5 text-sm font-semibold text-[var(--color-ink-700)] hover:border-[var(--color-mint-500)] hover:text-[var(--color-mint-600)] transition"
+            className="inline-flex items-center gap-2 rounded-[var(--radius-xs)] border border-[var(--color-ink-900)]/25 bg-white px-5 py-2.5 text-sm font-semibold text-[var(--color-ink-700)] hover:border-[var(--color-ink-950)] hover:text-[var(--color-ink-950)] transition"
           >
             Phase 2 사전 상담 · 관심 학원 문의
             <span aria-hidden>→</span>

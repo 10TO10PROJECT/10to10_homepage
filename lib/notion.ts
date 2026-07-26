@@ -7,7 +7,7 @@ export async function createInquiryRow(input: {
   phone: string;
   academyName: string;
   region: string;
-  package: "basic" | "premium" | "info_session" | "blog_build" | "custom";
+  package: "info_session" | "custom" | "phase2" | "basic" | "premium" | "blog_build";
   message: string;
   source: "stage" | "platform" | "main";
 }) {
