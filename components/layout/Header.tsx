@@ -33,7 +33,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-ink-300)]/60 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75">
+    <header className="sticky top-0 z-50 border-b border-[var(--color-ink-900)]/15 bg-[var(--color-paper)]/90 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-paper)]/80">
       <Container className="flex h-16 items-center justify-between">
         <Logo height={28} />
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-ink-700)]">
@@ -103,7 +103,7 @@ export function Header() {
       {open && (
         <div
           id="mobile-menu"
-          className="md:hidden border-t border-[var(--color-ink-300)]/60 bg-white"
+          className="md:hidden border-t border-[var(--color-ink-900)]/15 bg-[var(--color-paper)]"
         >
           <Container className="py-4 grid gap-1">
             {NAV_ITEMS.map((item) => (
@@ -119,7 +119,7 @@ export function Header() {
             <Link
               href="/inquiry"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-mint-500)] px-5 text-base font-semibold text-white hover:bg-[var(--color-mint-600)] transition-colors"
+              className="mt-2 inline-flex h-11 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--color-mint-500)] px-5 text-base font-bold text-[var(--color-ink-950)] hover:bg-[var(--color-mint-600)] hover:text-white transition-colors"
             >
               학원 문의 →
             </Link>
