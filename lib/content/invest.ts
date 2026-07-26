@@ -17,8 +17,8 @@ export const INVEST_HIGHLIGHTS = [
   },
   {
     label: "정규",
-    value: "2026-07-28",
-    desc: "AI 플랫폼 정규 v1.0 출시 — 학원 운영 SaaS + 학부모·학생 앱.",
+    value: "2026 하반기",
+    desc: "AI 플랫폼 정규 v1.0 출시 예정 — 학원 운영 SaaS + 학부모·학생 앱 (일정 추후 공개).",
   },
   {
     label: "AI",

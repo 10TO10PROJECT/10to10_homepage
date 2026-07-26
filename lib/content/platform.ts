@@ -49,7 +49,7 @@ export const PLATFORM_AGENTS = [
 
 export const PLATFORM_REVENUE = [
   { title: "SaaS 월정액", price: "월 8만", desc: "학원 운영 핵심 기능 (정규 v1.0)" },
-  { title: "AI Agent 모듈", price: "월 3만", desc: "9월 정식 출시 예정" },
+  { title: "AI Agent 모듈", price: "월 3만", desc: "정식 출시 준비 중" },
   { title: "학부모·학생 앱", price: "무료", desc: "탐색·예약·커뮤니티" },
 ] as const;
 
@@ -60,9 +60,9 @@ export const PLATFORM_ROADMAP = [
     sub: "eduflo.co.kr · 한국형 LLM Solar(Upstage) 탑재 실험",
   },
   {
-    phase: "2026-07-28",
-    label: "정규 v1.0 출시",
-    sub: "비AI 기능 완성판 — 학원 운영 SaaS + 학부모·학생 앱",
+    phase: "2026 하반기",
+    label: "정규 v1.0 출시 준비 중",
+    sub: "비AI 기능 완성판 — 학원 운영 SaaS + 학부모·학생 앱 (일정 추후 공개)",
   },
   {
     phase: "이후 업데이트",

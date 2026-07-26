@@ -62,7 +62,7 @@ export function Agents() {
     <section className="py-24 md:py-32 bg-[var(--color-ink-50)]">
       <Container>
         <FadeIn className="mb-12 max-w-3xl">
-          <Badge>AI AGENT — 9월 정식 출시</Badge>
+          <Badge>AI AGENT — 정식 출시 준비 중</Badge>
           <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight">
             AI Agent가 이 4가지 업무를
             <br />
