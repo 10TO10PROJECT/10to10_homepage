@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Badge";
 import { FadeIn } from "@/components/motion/FadeIn";
 
 /** P1-G: STAGE(Phase 1·진행 중)가 먼저, AI 플랫폼은 다음. */
@@ -23,11 +22,8 @@ export function DualProducts() {
           <FadeIn delay={0.1}>
             <Link href="/stage" className="block h-full">
               <article className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="mint">Phase 1 · 진행 중</Badge>
-                  <span className="micro-label text-[var(--color-ink-500)]">
-                    10to10 STAGE
-                  </span>
+                <div className="micro-label text-[var(--color-ink-500)]">
+                  10to10 STAGE
                 </div>
                 <h3 className="mt-4 text-2xl font-bold text-[var(--color-ink-950)] md:text-3xl">
                   학원 설명회 풀케어
@@ -52,11 +48,8 @@ export function DualProducts() {
           <FadeIn delay={0.2}>
             <Link href="/platform" className="block h-full">
               <article className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline">Phase 3 · SaaS</Badge>
-                  <span className="micro-label text-[var(--color-ink-500)]">
-                    10to10 AI 플랫폼
-                  </span>
+                <div className="micro-label text-[var(--color-ink-500)]">
+                  10to10 AI 플랫폼
                 </div>
                 <h3 className="mt-4 text-2xl font-bold text-[var(--color-ink-950)] md:text-3xl">
                   학원 운영 자동화
