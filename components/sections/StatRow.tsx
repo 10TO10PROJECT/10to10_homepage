@@ -16,8 +16,8 @@ const STATS = [
     emphasis: false,
   },
   {
-    value: "4.32 / 5.0",
-    label: "참석 학부모 만족도",
+    value: "95.2%",
+    label: "참석 학부모 추천 의사",
     note: "실측 · 응답 21명",
     emphasis: false,
   },
