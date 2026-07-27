@@ -57,7 +57,7 @@ export const PLATFORM_ROADMAP = [
   {
     phase: "현재",
     label: "Beta 운영 중",
-    sub: "eduflo.co.kr · 한국형 LLM Solar(Upstage) 탑재 실험",
+    sub: "10to10.ai.kr · 한국형 LLM Solar(Upstage) 탑재 실험",
   },
   {
     phase: "2026 하반기",
@@ -71,5 +71,5 @@ export const PLATFORM_ROADMAP = [
   },
 ] as const;
 
-export const PLATFORM_BETA_URL = "https://eduflo.co.kr";
-export const PLATFORM_ACADEMY_REGISTER_URL = "https://www.eduflo.co.kr/auth?role=admin";
+export const PLATFORM_BETA_URL = "https://www.10to10.ai.kr";
+export const PLATFORM_ACADEMY_REGISTER_URL = "https://www.10to10.ai.kr/auth?role=admin";
