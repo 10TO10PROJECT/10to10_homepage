@@ -4,6 +4,7 @@ import { Painpoints } from "@/components/sections/stage/Painpoints";
 import { RoiBoard } from "@/components/sections/stage/RoiBoard";
 import { InfoSessionFlagship } from "@/components/sections/stage/InfoSessionFlagship";
 import { WhyUs } from "@/components/sections/stage/WhyUs";
+import { PromoShowcase } from "@/components/sections/PromoShowcase";
 import { GuaranteeBanner } from "@/components/sections/stage/GuaranteeBanner";
 import { Process } from "@/components/sections/stage/Process";
 import { StageFaq } from "@/components/sections/stage/StageFaq";
@@ -29,6 +30,7 @@ export default function StagePage() {
       <RoiBoard />
       <InfoSessionFlagship />
       <WhyUs />
+      <PromoShowcase />
       <GuaranteeBanner />
       <Process />
       <StageFaq />
