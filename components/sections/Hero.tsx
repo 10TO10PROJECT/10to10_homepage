@@ -46,10 +46,25 @@ export function Hero() {
         </FadeIn>
         <FadeIn delay={0.25} className="mt-10">
           <p className="max-w-2xl text-lg leading-relaxed text-[var(--color-ink-700)] md:text-xl">
-            블로그도 인스타도 하는데 등록은 안 늘죠. 등록을 만드는 건 학부모가
-            원장님을 직접 만나는 순간입니다 — 그 하루를 10to10 전담팀이 통째로
-            만들어 드립니다.
+            홍보·모객부터 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리와
+            데이터 수집까지 — 설명회의 전 과정을 10to10 전담팀이 케어합니다.
+            원장님은 <strong className="text-[var(--color-ink-950)]">개최와 강연만</strong> 하시면 됩니다.
           </p>
+        </FadeIn>
+        <FadeIn delay={0.3} className="mt-6 flex flex-wrap items-center gap-2">
+          {["홍보 · 모객", "연사 섭외", "홍보물 제작", "현장 운영", "등록 관리 · 데이터"].map(
+            (scope) => (
+              <span
+                key={scope}
+                className="micro-label rounded-[var(--radius-xs)] border border-[var(--color-ink-900)]/20 bg-white px-3 py-2 text-[var(--color-ink-700)]"
+              >
+                {scope}
+              </span>
+            ),
+          )}
+          <span className="micro-label rounded-[var(--radius-xs)] bg-[var(--color-ink-950)] px-3 py-2 text-[var(--color-mint-500)]">
+            원장님은 개최 · 강연만
+          </span>
         </FadeIn>
         <FadeIn delay={0.35} className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
           <Button href="/stage" variant="primary" size="lg">

@@ -29,8 +29,10 @@ export function StageHero() {
           </FadeIn>
           <FadeIn delay={0.2} className="mt-8">
             <p className="max-w-2xl text-lg leading-relaxed text-[var(--color-ink-700)] md:text-xl">
-              기획·모객·자료 제작·현장 운영·성과 리포트까지 전담팀이 대신합니다.
-              블로그와 인스타로 안 되던 등록 전환, 설명회가 잇습니다.
+              홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리와
+              데이터 수집까지 전담팀이 대신합니다. 원장님은{" "}
+              <strong className="text-[var(--color-ink-950)]">개최와 강연만</strong>{" "}
+              하시면 됩니다.
             </p>
           </FadeIn>
         </div>

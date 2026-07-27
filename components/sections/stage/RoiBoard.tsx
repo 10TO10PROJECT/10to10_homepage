@@ -6,7 +6,11 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { STAGE_ROI } from "@/lib/content/stage";
 
 /** 심리 2 — ROI를 문장이 아니라 계산 과정으로. 20명 → 6명 → 720만 3단 카운터. */
-export function RoiBoard() {
+export function RoiBoard({
+  cta,
+}: {
+  cta?: { href: string; label: string };
+}) {
   return (
     <section id="roi" className="bg-[var(--color-ink-950)] py-24 text-white md:py-32">
       <Container>
@@ -49,6 +53,18 @@ export function RoiBoard() {
           </div>
           <p className="mt-4 text-xs leading-relaxed text-white/45">{STAGE_ROI.footnote}</p>
         </FadeIn>
+
+        {cta && (
+          <FadeIn delay={0.15} className="mt-10">
+            <a
+              href={cta.href}
+              className="inline-flex items-center gap-2 rounded-[var(--radius-xs)] bg-[var(--color-mint-500)] px-6 py-3.5 text-base font-bold text-[var(--color-ink-950)] shadow-[var(--shadow-mint)] transition hover:bg-[var(--color-mint-600)] hover:text-white"
+            >
+              {cta.label}
+              <span aria-hidden>→</span>
+            </a>
+          </FadeIn>
+        )}
       </Container>
     </section>
   );

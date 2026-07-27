@@ -1,5 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
-import { MarketStats } from "@/components/sections/MarketStats";
+import { RoiBoard } from "@/components/sections/stage/RoiBoard";
 import { DualProducts } from "@/components/sections/DualProducts";
 import { CompanyStats } from "@/components/sections/CompanyStats";
 import { MissionVision } from "@/components/sections/MissionVision";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <MarketStats />
+      <RoiBoard cta={{ href: "/stage", label: "설명회 풀케어 자세히 보기" }} />
       <DualProducts />
       <CompanyStats />
       <MissionVision />
