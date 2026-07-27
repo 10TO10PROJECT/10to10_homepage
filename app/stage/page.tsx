@@ -13,7 +13,7 @@ import { StageContact } from "@/components/sections/stage/StageContact";
 import { StickyCta } from "@/components/ui/StickyCta";
 
 export const metadata: Metadata = {
-  title: "10to10 STAGE — 학원 설명회, 원장님은 발표만 하세요",
+  title: "10to10 STAGE — 등록으로 이어지는 가장 확실한 퍼널, 학원 설명회 풀케어",
   description:
     "설명회 풀케어 — 기획·모객·자료 제작·현장 운영·성과 리포트까지 전담팀이 대신합니다. 모객 20명 → 등록 6명 → 예상 매출 720만 원. 신청 20명 미달 시 부족한 만큼 환급하는 모객 보장.",
 };
