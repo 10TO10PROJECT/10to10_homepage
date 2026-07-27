@@ -32,7 +32,6 @@ export default function InquiryPage() {
           <FadeIn delay={0.15}>
             <InquiryCard
               eyebrow="10to10 STAGE"
-              phase="PHASE 1 · 진행 중"
               title="학원 설명회 풀케어 문의"
               desc="전담팀이 학원 설명회를 기획·모객·자료 제작·현장 운영까지 풀케어합니다. 원장님은 발표만 하세요."
               bullets={[
@@ -48,7 +47,6 @@ export default function InquiryPage() {
           <FadeIn delay={0.25}>
             <InquiryCard
               eyebrow="10to10 AI 플랫폼"
-              phase="PHASE 3 SaaS"
               title="AI 플랫폼 도입·체험"
               desc="학원 운영 SaaS와 학부모·학생 탐색 앱을 연결한 양면 플랫폼입니다. Beta 체험 또는 정규 도입 문의를 안내드립니다."
               bullets={[
