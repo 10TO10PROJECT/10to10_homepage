@@ -20,17 +20,19 @@ export function StageHero() {
               </div>
             </FadeIn>
             <FadeIn delay={0.1} className="mt-6">
-              <h1 className="display-type text-[clamp(2.3rem,6.5vw,4rem)] text-[var(--color-ink-950)]">
-                학원 설명회,
+              <h1 className="display-type text-[clamp(2rem,5.5vw,3.6rem)] text-[var(--color-ink-950)]">
+                학부모가 직접 방문하는 설명회,
                 <br />
-                원장님은{" "}
+                등록으로 이어지는
+                <br />
                 <span className="relative inline-block">
-                  <span className="relative z-10">발표만 하세요.</span>
+                  <span className="relative z-10">가장 확실한 퍼널</span>
                   <span
                     aria-hidden
                     className="absolute inset-x-[-0.08em] bottom-[0.04em] z-0 h-[0.38em] bg-[var(--color-mint-500)]/70"
                   />
                 </span>
+                입니다.
               </h1>
             </FadeIn>
             <FadeIn delay={0.25} className="mt-7 hidden md:block">
