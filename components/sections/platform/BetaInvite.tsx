@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { PLATFORM_BETA_URL } from "@/lib/content/platform";
 
@@ -9,11 +10,9 @@ export function BetaInvite() {
     <section id="beta" className="py-24 md:py-32">
       <Container size="narrow">
         <FadeIn>
-          <Card className="text-center bg-gradient-to-br from-[var(--color-mint-500)]/10 to-[var(--color-sky-500)]/10 border-[var(--color-mint-500)]/40">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
-              BETA — 운영 중
-            </div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+          <Card className="text-center p-10">
+            <Badge variant="mint">Beta — 운영 중</Badge>
+            <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
               Beta 서비스로 먼저 만나보세요.
             </h2>
             <p className="mt-4 text-[var(--color-ink-700)] max-w-xl mx-auto leading-relaxed">

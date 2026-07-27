@@ -59,11 +59,11 @@ function AgentIcon({ name }: { name: IconName }) {
 
 export function Agents() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-ink-50)]">
-      <Container>
+    <section className="py-20 md:py-28">
+      <Container size="wide">
         <FadeIn className="mb-12 max-w-3xl">
-          <Badge>AI AGENT — 정식 출시 준비 중</Badge>
-          <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight">
+          <Badge variant="mint">AI Agent — 정식 출시 준비 중</Badge>
+          <h2 className="mt-4 display-type text-3xl md:text-5xl text-[var(--color-ink-950)]">
             AI Agent가 이 4가지 업무를
             <br />
             자동화합니다.
@@ -72,9 +72,9 @@ export function Agents() {
         <StaggerChildren className="grid gap-4 md:grid-cols-2">
           {PLATFORM_AGENTS.map((a) => (
             <StaggerItem key={a.title}>
-              <div className="group h-full rounded-[var(--radius-lg)] border border-[var(--color-ink-300)]/60 bg-white p-7 transition hover:border-[var(--color-mint-600)] hover:shadow-[0_8px_30px_-12px_rgba(44,196,168,0.35)]">
+              <div className="group h-full rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 transition hover:border-[var(--color-ink-500)]">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-mint-600)] text-white transition group-hover:bg-[var(--color-ink-900)]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-ink-950)] text-[var(--color-mint-500)]">
                     <AgentIcon name={a.icon} />
                   </div>
                   <div className="flex-1">

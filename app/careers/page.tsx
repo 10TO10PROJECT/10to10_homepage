@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { MailtoForm, type MailtoField } from "@/components/forms/MailtoForm";
-import { SectionDivider } from "@/components/ui/SectionDivider";
 import { COMPANY } from "@/lib/content/company";
 import {
   CAREERS_HERO,
@@ -64,10 +63,10 @@ export default function CareersPage() {
       <section className="py-24 md:py-32">
         <Container>
           <FadeIn className="max-w-3xl">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               {CAREERS_HERO.eyebrow}
             </div>
-            <h1 className="mt-4 text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+            <h1 className="display-type mt-4 text-4xl md:text-6xl text-[var(--color-ink-950)]">
               {CAREERS_HERO.title}
             </h1>
             <p className="mt-6 text-lg text-[var(--color-ink-700)] leading-relaxed">
@@ -77,15 +76,13 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      <SectionDivider from="white" to="muted" />
-
-      <section className="py-20 md:py-24 bg-[var(--color-ink-50)]">
+      <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="mb-10 max-w-2xl">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               OUR VALUES
             </div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
               우리가 일하는 방식.
             </h2>
           </FadeIn>
@@ -104,15 +101,13 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      <SectionDivider from="muted" to="white" />
-
       <section className="py-24 md:py-32">
         <Container>
           <FadeIn className="mb-10 max-w-2xl">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               OPEN ROLES
             </div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
               지금 열린 자리.
             </h2>
           </FadeIn>
@@ -120,7 +115,7 @@ export default function CareersPage() {
             {CAREERS_OPEN_ROLES.map((r) => (
               <StaggerItem key={r.title}>
                 <Card className="h-full flex flex-col">
-                  <div className="text-xs font-bold tracking-widest text-[var(--color-mint-600)]">
+                  <div className="micro-label text-[var(--color-ink-500)]">
                     {r.type}
                   </div>
                   <h3 className="mt-2 text-xl font-bold">{r.title}</h3>
@@ -137,15 +132,13 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      <SectionDivider from="white" to="muted" />
-
-      <section id="apply" className="py-24 md:py-32 bg-[var(--color-ink-50)]">
+      <section id="apply" className="py-24 md:py-32">
         <Container size="narrow">
           <FadeIn className="mb-10">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               APPLY
             </div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
               지원하기
             </h2>
             <p className="mt-4 text-[var(--color-ink-700)] leading-relaxed">
@@ -167,12 +160,10 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      <SectionDivider from="muted" to="white" />
-
       <section className="pb-24 md:pb-32 pt-16 md:pt-20">
         <Container size="narrow">
           <FadeIn>
-            <Card className="bg-gradient-to-br from-[var(--color-mint-500)]/10 to-[var(--color-sky-500)]/10 border-[var(--color-mint-500)]/40 text-center">
+            <Card className="text-center p-10">
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                 먼저 가볍게 커피챗부터.
               </h2>

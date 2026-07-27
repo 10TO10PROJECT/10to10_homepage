@@ -5,13 +5,13 @@ import { PLATFORM_TWO_SIDED } from "@/lib/content/platform";
 
 export function TwoSided() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-ink-50)]">
-      <Container>
+    <section className="py-20 md:py-28">
+      <Container size="wide">
         <FadeIn className="mb-12 max-w-3xl">
-          <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
-            TWO-SIDED PLATFORM
+          <div className="micro-label text-[var(--color-ink-500)]">
+            Two-Sided Platform
           </div>
-          <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="display-type mt-4 text-3xl md:text-5xl text-[var(--color-ink-950)]">
             양면에서 동시에 풉니다.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-ink-700)]">

@@ -54,7 +54,7 @@ export function InvestInquiryForm() {
   if (status === "success") {
     return (
       <div className="rounded-[var(--radius-lg)] border border-[var(--color-mint-500)] bg-[var(--color-mint-100)] p-10 text-center">
-        <div className="text-2xl font-bold text-[var(--color-mint-600)]">
+        <div className="text-2xl font-bold text-[var(--color-ink-950)]">
           문의 접수 완료!
         </div>
         <p className="mt-3 text-[var(--color-ink-700)]">
