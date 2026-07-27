@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { InvestInquiryForm } from "@/components/forms/InvestInquiryForm";
-import { SectionDivider } from "@/components/ui/SectionDivider";
 import { COMPANY } from "@/lib/content/company";
 import {
   INVEST_HERO,
@@ -26,10 +25,10 @@ export default function InvestPage() {
       <section className="py-24 md:py-32">
         <Container>
           <FadeIn className="max-w-3xl">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               {INVEST_HERO.eyebrow}
             </div>
-            <h1 className="mt-4 text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+            <h1 className="display-type mt-4 text-4xl md:text-6xl text-[var(--color-ink-950)]">
               {INVEST_HERO.title}
             </h1>
             <p className="mt-6 text-lg text-[var(--color-ink-700)] leading-relaxed">
@@ -46,13 +45,13 @@ export default function InvestPage() {
           </FadeIn>
 
           <FadeIn delay={0.2} className="mt-12">
-            <div className="rounded-[var(--radius-lg)] border border-[var(--color-mint-500)]/50 bg-gradient-to-br from-[var(--color-mint-500)]/10 to-[var(--color-sky-500)]/10 p-6 md:p-7">
+            <div className="rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white p-6 md:p-7">
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm text-2xl">
                   🏅
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-mint-700)]">
+                  <div className="micro-label text-[var(--color-ink-500)]">
                     {INVEST_RECOGNITION.eyebrow}
                   </div>
                   <div className="mt-1 text-lg md:text-xl font-bold text-[var(--color-ink-900)]">
@@ -68,15 +67,13 @@ export default function InvestPage() {
         </Container>
       </section>
 
-      <SectionDivider from="white" to="muted" />
-
-      <section className="py-20 md:py-24 bg-[var(--color-ink-50)]">
+      <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="mb-10 max-w-2xl">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               HIGHLIGHTS
             </div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
               한눈에 보는 10to10.
             </h2>
           </FadeIn>
@@ -84,10 +81,10 @@ export default function InvestPage() {
             {INVEST_HIGHLIGHTS.map((h) => (
               <StaggerItem key={h.label}>
                 <Card className="h-full">
-                  <div className="text-xs font-bold tracking-widest text-[var(--color-mint-600)]">
+                  <div className="micro-label text-[var(--color-ink-500)]">
                     {h.label}
                   </div>
-                  <div className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+                  <div className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
                     {h.value}
                   </div>
                   <p className="mt-3 text-sm text-[var(--color-ink-700)] leading-relaxed">
@@ -100,15 +97,13 @@ export default function InvestPage() {
         </Container>
       </section>
 
-      <SectionDivider from="muted" to="white" />
-
       <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="mb-10 max-w-2xl">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               ROADMAP
             </div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
               Phase 전략 · 뾰족하게, 그 다음 넓게.
             </h2>
             <p className="mt-4 text-[15px] md:text-base text-[var(--color-ink-700)] leading-relaxed">
@@ -131,7 +126,7 @@ export default function InvestPage() {
               return (
                 <StaggerItem key={p.id}>
                   <div
-                    className={`h-full rounded-[var(--radius-lg)] bg-white p-6 md:p-7 ring-1 ring-[var(--color-ink-300)]/40 shadow-lg shadow-[var(--color-ink-900)]/5 border-t-4 ${borderCls}`}
+                    className={`h-full rounded-[var(--radius-card)] bg-white p-6 md:p-7 border border-[var(--color-cloud)] border-t-4 ${borderCls}`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-ink-500)]">
@@ -163,11 +158,11 @@ export default function InvestPage() {
       <section className="py-24 md:py-32">
         <Container size="narrow">
           <FadeIn>
-            <Card className="text-center bg-gradient-to-br from-[var(--color-mint-500)]/10 to-[var(--color-sky-500)]/10 border-[var(--color-mint-500)]/40">
-              <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <Card className="text-center p-10">
+              <div className="micro-label text-[var(--color-ink-500)]">
                 IR DECK
               </div>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+              <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
                 10to10 IR 자료
               </h2>
               <p className="mt-4 text-[var(--color-ink-700)] max-w-xl mx-auto leading-relaxed">
@@ -187,10 +182,10 @@ export default function InvestPage() {
       <section id="contact" className="pb-24 md:pb-32">
         <Container size="narrow">
           <FadeIn className="mb-10">
-            <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+            <div className="micro-label text-[var(--color-ink-500)]">
               CONTACT
             </div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="display-type mt-4 text-3xl md:text-4xl text-[var(--color-ink-950)]">
               투자·지원 협업 제안
             </h2>
             <p className="mt-4 text-[var(--color-ink-700)] leading-relaxed">

@@ -6,7 +6,6 @@ import { Roadmap } from "@/components/sections/platform/Roadmap";
 import { BetaInvite } from "@/components/sections/platform/BetaInvite";
 import { Revenue } from "@/components/sections/platform/Revenue";
 import { PlatformCta } from "@/components/sections/platform/PlatformCta";
-import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export const metadata: Metadata = {
   title: "10to10 AI 플랫폼",
@@ -18,15 +17,11 @@ export default function PlatformPage() {
   return (
     <>
       <PlatformHero />
-      <SectionDivider from="white" to="muted" />
       <TwoSided />
       <Agents />
       <Roadmap />
-      <SectionDivider from="muted" to="white" />
       <BetaInvite />
-      <SectionDivider from="white" to="muted" />
       <Revenue />
-      <SectionDivider from="muted" to="dark" size="lg" />
       <PlatformCta />
     </>
   );

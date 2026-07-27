@@ -5,10 +5,10 @@ import { STAGE_FAQ } from "@/lib/content/stage";
 
 export function StageFaq() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-paper-dim)]">
+    <section className="py-20 md:py-28">
       <Container size="narrow">
         <FadeIn className="mb-12">
-          <div className="micro-label text-[var(--color-mint-600)]">FAQ</div>
+          <div className="micro-label text-[var(--color-ink-500)]">FAQ</div>
           <h2 className="display-type mt-4 text-3xl md:text-5xl text-[var(--color-ink-950)]">
             자주 묻는 질문
           </h2>

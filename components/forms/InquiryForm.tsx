@@ -88,7 +88,7 @@ export function InquiryForm({ source = "stage" }: { source?: Source }) {
 
   if (status === "success") {
     return (
-      <div className="rounded-[var(--radius-sm)] border-2 border-[var(--color-mint-500)] bg-[var(--color-mint-100)] p-10 text-center">
+      <div className="rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white p-10 text-center">
         <div className="text-2xl font-bold text-[var(--color-ink-950)]">
           문의 접수 완료!
         </div>
@@ -99,7 +99,7 @@ export function InquiryForm({ source = "stage" }: { source?: Source }) {
           href={COMPANY.kakaoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-[var(--radius-xs)] bg-[var(--color-mint-500)] px-5 py-2.5 text-sm font-bold text-[var(--color-ink-950)] shadow-[var(--shadow-mint-soft)] transition hover:bg-[var(--color-mint-600)] hover:text-white"
+          className="mt-6 inline-flex items-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] px-5 py-3 text-sm font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
         >
           카톡 채널 바로가기
           <span aria-hidden>→</span>

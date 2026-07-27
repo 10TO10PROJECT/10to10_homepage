@@ -4,12 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 const NAV_ITEMS = [
-  { href: "/platform", label: "AI 플랫폼" },
   { href: "/stage", label: "STAGE" },
+  { href: "/platform", label: "AI 플랫폼" },
   { href: "/team", label: "팀" },
   { href: "/careers", label: "채용" },
   { href: "/invest", label: "투자·지원" },
@@ -18,10 +17,20 @@ const NAV_ITEMS = [
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -33,36 +42,38 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-ink-900)]/15 bg-[var(--color-paper)]/90 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-paper)]/80">
+    <header
+      className={`sticky top-0 z-50 bg-[var(--color-paper)]/90 backdrop-blur transition-shadow ${
+        scrolled ? "border-b border-[var(--color-cloud)]" : ""
+      }`}
+    >
       <Container className="flex h-16 items-center justify-between">
         <Logo height={28} />
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-ink-700)]">
+        <nav className="hidden items-center gap-8 text-[15px] font-medium text-[var(--color-ink-700)] md:flex">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-[var(--color-mint-600)] transition-colors"
+              className="transition-colors hover:text-[var(--color-ink-950)]"
             >
               {item.label}
             </Link>
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Button
+          <Link
             href="/inquiry"
-            variant="primary"
-            size="sm"
-            className="hidden md:inline-flex"
+            className="hidden h-10 items-center rounded-full bg-[var(--color-ink-950)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-btn-dark)] transition hover:bg-black md:inline-flex"
           >
             학원 문의
-          </Button>
+          </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-[var(--radius-sm)] text-[var(--color-ink-900)] hover:bg-[var(--color-ink-100)] transition-colors"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--radius-btn)] text-[var(--color-ink-900)] transition-colors hover:bg-[var(--color-cloud)] md:hidden"
           >
             {open ? (
               <svg
@@ -103,15 +114,15 @@ export function Header() {
       {open && (
         <div
           id="mobile-menu"
-          className="md:hidden border-t border-[var(--color-ink-900)]/15 bg-[var(--color-paper)]"
+          className="border-t border-[var(--color-cloud)] bg-[var(--color-paper)] md:hidden"
         >
-          <Container className="py-4 grid gap-1">
+          <Container className="grid gap-1 py-4">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-[var(--radius-sm)] px-3 py-3 text-base font-medium text-[var(--color-ink-700)] hover:bg-[var(--color-ink-100)] hover:text-[var(--color-mint-600)] transition-colors"
+                className="block rounded-[var(--radius-btn)] px-3 py-3 text-base font-medium text-[var(--color-ink-700)] transition-colors hover:bg-[var(--color-cloud)] hover:text-[var(--color-ink-950)]"
               >
                 {item.label}
               </Link>
@@ -119,7 +130,7 @@ export function Header() {
             <Link
               href="/inquiry"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex h-11 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--color-mint-500)] px-5 text-base font-bold text-[var(--color-ink-950)] hover:bg-[var(--color-mint-600)] hover:text-white transition-colors"
+              className="mt-2 inline-flex h-12 items-center justify-center rounded-[var(--radius-btn)] bg-[var(--color-ink-950)] px-5 text-base font-bold text-white transition-colors hover:bg-black"
             >
               학원 문의 →
             </Link>

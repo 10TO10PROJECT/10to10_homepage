@@ -47,10 +47,8 @@ export function PlatformCta() {
     <section className="py-24 md:py-32 bg-[var(--color-ink-900)] text-white">
       <Container>
         <FadeIn className="mb-12 max-w-3xl">
-          <div className="text-sm font-bold tracking-widest text-[var(--color-mint-500)]">
-            NEXT STEP
-          </div>
-          <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
+          <div className="micro-label text-[var(--color-mint-500)]">Next Step</div>
+          <h2 className="display-type mt-4 text-3xl md:text-5xl">
             10to10 플랫폼과 함께하세요.
           </h2>
           <p className="mt-5 text-lg text-white/70">
@@ -61,13 +59,13 @@ export function PlatformCta() {
           {CARDS.map((c) => (
             <StaggerItem key={c.title}>
               <div
-                className={`flex h-full flex-col rounded-[var(--radius-lg)] border p-7 transition ${
+                className={`flex h-full flex-col rounded-[var(--radius-card)] border p-7 transition ${
                   c.primary
-                    ? "border-[var(--color-mint-500)] bg-gradient-to-br from-[var(--color-mint-500)]/15 to-[var(--color-sky-500)]/15"
-                    : "border-white/10 bg-white/[0.04] hover:border-[var(--color-mint-500)]/40"
+                    ? "border-[var(--color-mint-500)] bg-white/[0.06]"
+                    : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07]"
                 }`}
               >
-                <div className="text-xs font-bold tracking-widest text-[var(--color-mint-500)]">
+                <div className="micro-label text-[var(--color-mint-500)]">
                   {c.eyebrow}
                 </div>
                 <h3 className="mt-3 text-xl md:text-2xl font-bold">{c.title}</h3>
@@ -77,14 +75,10 @@ export function PlatformCta() {
                 <div className="mt-6">
                   <Button
                     href={c.href}
-                    variant={c.primary ? "primary" : "outline"}
+                    variant="secondary"
                     size="md"
                     external={c.external}
-                    className={
-                      c.primary
-                        ? undefined
-                        : "bg-transparent text-white border-white/30 hover:border-[var(--color-mint-500)] hover:text-[var(--color-mint-500)]"
-                    }
+                    className={c.primary ? "w-full" : undefined}
                   >
                     {c.cta}
                   </Button>

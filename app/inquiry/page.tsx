@@ -12,17 +12,13 @@ export const metadata: Metadata = {
 
 export default function InquiryPage() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-32 right-1/3 h-[480px] w-[480px] rounded-full bg-gradient-to-br from-[var(--color-mint-500)]/15 to-[var(--color-sky-500)]/10 blur-3xl"
-      />
-      <Container className="relative">
+    <section className="py-20 md:py-28">
+      <Container>
         <FadeIn className="max-w-3xl">
-          <div className="text-sm font-bold tracking-widest text-[var(--color-mint-600)]">
+          <div className="micro-label text-[var(--color-ink-500)]">
             INQUIRY
           </div>
-          <h1 className="mt-4 text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight leading-[1.15]">
+          <h1 className="display-type mt-4 text-[clamp(2rem,5vw,3.5rem)] text-[var(--color-ink-950)]">
             어떤 문의를 하시나요?
           </h1>
           <p className="mt-5 text-lg md:text-xl text-[var(--color-ink-700)] leading-relaxed">
@@ -75,7 +71,7 @@ export default function InquiryPage() {
           어떤 트랙인지 모르겠다면{" "}
           <Link
             href="/stage#contact"
-            className="font-semibold text-[var(--color-mint-600)] hover:underline"
+            className="font-semibold text-[var(--color-ink-950)] underline decoration-[var(--color-ink-300)] underline-offset-4 hover:decoration-[var(--color-ink-950)]"
           >
             STAGE 문의 폼
           </Link>
@@ -106,19 +102,17 @@ function InquiryCard({
   tone: "mint" | "ink";
 }) {
   const primaryCls =
-    tone === "mint"
-      ? "inline-flex items-center gap-2 rounded-full bg-[var(--color-mint-500)] px-5 py-2.5 text-sm font-bold text-[var(--color-ink-900)] transition hover:bg-[var(--color-mint-600)] hover:text-white"
-      : "inline-flex items-center gap-2 rounded-full bg-[var(--color-ink-900)] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[var(--color-ink-700)]";
+    "inline-flex items-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-ink-950)] px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-btn-dark)] transition hover:bg-black";
 
   const phaseBadgeCls =
     tone === "mint"
-      ? "text-[10px] font-bold tracking-widest text-[var(--color-ink-500)] px-2 py-0.5 rounded-full bg-[var(--color-ink-100)]"
-      : "text-[10px] font-bold tracking-widest text-[var(--color-mint-700)] px-2 py-0.5 rounded-full bg-[var(--color-mint-100)]";
+      ? "micro-label rounded-[var(--radius-badge)] bg-[var(--color-mint-500)] px-2 py-1 text-[var(--color-ink-950)]"
+      : "micro-label rounded-[var(--radius-badge)] bg-[var(--color-ink-100)] px-2 py-1 text-[var(--color-ink-500)]";
 
   return (
-    <div className="h-full rounded-[var(--radius-lg)] bg-white p-8 md:p-10 ring-1 ring-[var(--color-ink-300)]/40 shadow-lg shadow-[var(--color-ink-900)]/5 transition hover:shadow-2xl hover:shadow-[var(--color-ink-900)]/10 hover:-translate-y-0.5">
+    <div className="h-full rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 md:p-9 transition-colors hover:border-[var(--color-ink-500)]">
       <div className="flex items-center flex-wrap gap-2">
-        <span className="text-xs font-bold tracking-[0.18em] text-[var(--color-mint-600)]">
+        <span className="micro-label text-[var(--color-ink-500)]">
           {eyebrow}
         </span>
         {phase && <span className={phaseBadgeCls}>{phase}</span>}

@@ -6,17 +6,13 @@ import { PLATFORM_HERO } from "@/lib/content/platform";
 
 export function PlatformHero() {
   return (
-    <section className="relative overflow-hidden pt-24 pb-24 md:pt-32">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 right-1/4 h-[480px] w-[480px] rounded-full bg-gradient-to-br from-[var(--color-mint-500)]/30 to-[var(--color-sky-500)]/20 blur-3xl"
-      />
-      <Container className="relative">
+    <section className="pt-16 pb-20 md:pt-24 md:pb-24">
+      <Container size="wide">
         <FadeIn>
-          <Badge>PRODUCT 01 · 10to10 AI 플랫폼</Badge>
+          <Badge variant="outline">10to10 AI 플랫폼 · Phase 3</Badge>
         </FadeIn>
         <FadeIn delay={0.1} className="mt-6">
-          <h1 className="text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.1] tracking-tight max-w-4xl">
+          <h1 className="display-type max-w-4xl text-[clamp(2.1rem,5.5vw,4rem)] text-[var(--color-ink-950)]">
             {PLATFORM_HERO.title}
           </h1>
         </FadeIn>
