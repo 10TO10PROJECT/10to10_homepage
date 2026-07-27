@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 export function Accordion({ items }: { items: ReadonlyArray<{ q: string; a: string }> }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="divide-y divide-[var(--color-ink-300)]">
+    <div className="divide-y divide-[var(--color-cloud)] rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white px-6 md:px-8">
       {items.map((it, i) => {
         const isOpen = open === i;
         return (
@@ -21,7 +21,7 @@ export function Accordion({ items }: { items: ReadonlyArray<{ q: string; a: stri
               </span>
               <span
                 className={cn(
-                  "text-2xl text-[var(--color-mint-600)] transition-transform duration-200",
+                  "text-2xl text-[var(--color-ink-500)] transition-transform duration-200",
                   isOpen && "rotate-45",
                 )}
               >

@@ -7,7 +7,7 @@ export function MissionVision() {
     <section className="py-24 md:py-32">
       <Container>
         <FadeIn className="max-w-3xl">
-          <div className="micro-label text-[var(--color-mint-600)]">
+          <div className="micro-label text-[var(--color-ink-500)]">
             Mission &amp; Vision
           </div>
           <h2 className="display-type mt-4 text-3xl md:text-5xl text-[var(--color-ink-950)]">

@@ -94,22 +94,22 @@ const TRUST_BADGES = [
 
 export function CompanyStats() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-ink-950)] text-white">
-      <Container>
+    <section className="py-20 md:py-28 bg-[var(--color-ink-900)] text-white">
+      <Container size="wide">
         <FadeIn>
           <div className="micro-label text-[var(--color-mint-500)]">By the Numbers</div>
           <h2 className="display-type mt-4 text-3xl md:text-5xl">
             숫자로 보는 10to10
           </h2>
-          <p className="mt-4 text-lg text-white/70">
+          <p className="mt-4 text-base md:text-lg text-white/70">
             우리는 천천히, 그러나 단단하게 만들고 있습니다.
           </p>
         </FadeIn>
-        <StaggerChildren className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-sm)] border border-white/15 bg-white/15 md:grid-cols-4">
+        <StaggerChildren className="mt-12 grid gap-4 md:grid-cols-4">
           {STATS.map((s) => (
             <StaggerItem key={s.label} className="h-full">
-              <div className="h-full bg-[var(--color-ink-950)] p-6 transition-colors hover:bg-white/[0.04]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--color-mint-500)]/15 text-[var(--color-mint-500)]">
+              <div className="h-full rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-6 transition-colors hover:bg-white/[0.07]">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-mint-500)]/15 text-[var(--color-mint-500)]">
                   <StatIcon kind={s.icon} />
                 </div>
                 <div className="display-type mt-6 text-4xl md:text-5xl">

@@ -47,7 +47,7 @@ export function Phase2Roadmap() {
             <StaggerItem key={c.id}>
               <div
                 id={c.id}
-                className="h-full rounded-[var(--radius-sm)] border border-dashed border-[var(--color-ink-900)]/25 bg-white p-6 md:p-7"
+                className="h-full rounded-[var(--radius-card)] border border-dashed border-[var(--color-ink-300)] bg-white p-6 md:p-7"
               >
                 <div className="micro-label text-[var(--color-ink-500)]">
                   {c.eyebrow} · PHASE 2

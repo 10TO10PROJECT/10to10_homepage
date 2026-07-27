@@ -14,7 +14,7 @@
   --color-sky-500:  #15BDFF;
 
   /* Ink */
-  --color-ink-950: #111614;
+  --color-ink-950: #0B0C0C;
   --color-ink-900: #1A1A1A;
   --color-ink-700: #4A4A4A;
   --color-ink-500: #9B9B9B;
@@ -22,24 +22,35 @@
   --color-ink-100: #F5F5F5;
   --color-ink-50:  #FAFAFA;
 
-  /* Editorial surfaces — DESIGN.md(broadsheet) 번안: 캔버스는 순백이 아닌 민트 기운의 종이 */
-  --color-paper:      #FAFFFD;
-  --color-paper-dim:  #F2F8F5;
+  /* Awesomic 번안 서피스 — zinc 캔버스 + 헤어라인 (docs/design/DESIGN-awesomic.md) */
+  --color-paper: #F4F4F5;
+  --color-cloud: #ECECEE;
+  --color-paper-dim: #ECEDEE;
+
+  /* 기능적 컬러 — 카카오 CTA 전용 (T2 예외, 카카오 공식 버튼 규격) */
+  --color-kakao: #FEE500;
 
   /* Type */
   --font-sans: 'Pretendard', system-ui, -apple-system, sans-serif;
 
-  /* Radius — 에디토리얼: 버튼은 각지게, 이미지는 14px */
-  --radius-xs: 0.375rem;
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1.25rem;
-  --radius-xl: 2rem;
-  --radius-img: 14px;
+  /* Radius — Awesomic 지오메트리: 카드 36 / 버튼·인풋 14 / 뱃지 12 / 브레이크 48 */
+  --radius-badge: 12px;
+  --radius-btn: 14px;
+  --radius-card: 36px;
+  --radius-break: 48px;
+  --radius-img: 24px;
+  /* 레거시 별칭 — 미개편 컴포넌트가 새 스케일을 자동 상속 */
+  --radius-xs: 14px;
+  --radius-sm: 16px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --shadow-mint: var(--shadow-md-soft);
+  --shadow-mint-soft: var(--shadow-md-soft);
 
-  /* Shadow — 유일한 입체감은 민트 버튼에만 */
-  --shadow-mint: 1px 8px 20px 0 rgba(44, 196, 168, 0.35);
-  --shadow-mint-soft: 1px 8px 20px 0 rgba(44, 196, 168, 0.2);
+  /* Elevation — 카드는 헤어라인만, 다크 버튼만 inset 하이라이트 */
+  --shadow-btn-dark: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.5), 0 4px 6px 0 rgba(0, 0, 0, 0.14);
+  --shadow-md-soft: 0 4px 12px 0 rgba(0, 0, 0, 0.04);
 
   /* Motion */
   --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -51,9 +62,9 @@
 @layer base {
   html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   body { background: var(--color-paper); color: var(--color-ink-900); }
-  ::selection { background: var(--color-mint-500); color: #fff; }
+  ::selection { background: var(--color-mint-500); color: var(--color-ink-950); }
   :focus-visible {
-    outline: 2px solid var(--color-mint-600);
+    outline: 2px solid var(--color-ink-950);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -68,33 +79,27 @@
 }
 
 @layer utilities {
-  /* 마이크로 라벨 — DESIGN.md 11px/550 uppercase 번안. 크롬 대신 타이포가 구조를 만든다 */
+  /* 메타 라벨 — Awesomic 12~13px 조용한 라벨 (F1: 13px 하한) */
   .micro-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    line-height: 1.1;
+    line-height: 1.2;
   }
 
-  /* 디스플레이 타이포 — 지면 잉크처럼 읽히는 타이트한 자간·행간 */
+  /* 디스플레이 — weight 600~700, 타이트 리딩 (Awesomic 1.12), 트래킹은 절제 */
   .display-type {
-    font-weight: 800;
-    line-height: 1.02;
-    letter-spacing: -0.03em;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
     word-break: keep-all;
   }
 
-  /* 민트 듀오톤 — 장식용 사진 인서트를 지면과 같은 톤 패밀리로 (증거 사진에는 쓰지 않음) */
-  .img-duotone {
-    filter: grayscale(1) sepia(0.42) saturate(1.9) hue-rotate(118deg)
-      brightness(1.05) contrast(0.9);
-  }
-
-  /* 헤어라인 — 카드 그림자 대신 1px 구조선 */
-  .hairline { border: 1px solid color-mix(in srgb, var(--color-ink-900) 14%, transparent); }
-  .hairline-b { border-bottom: 1px solid color-mix(in srgb, var(--color-ink-900) 14%, transparent); }
-  .hairline-t { border-top: 1px solid color-mix(in srgb, var(--color-ink-900) 14%, transparent); }
+  /* 헤어라인 — 1px cloud 보더가 유일한 컨테이너 구조 */
+  .hairline { border: 1px solid var(--color-cloud); }
+  .hairline-b { border-bottom: 1px solid var(--color-cloud); }
+  .hairline-t { border-top: 1px solid var(--color-cloud); }
 }
 
 /* IR Deck — print to PDF (16:9 landscape) */

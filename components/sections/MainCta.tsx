@@ -1,11 +1,11 @@
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { Button, KakaoSymbol } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { COMPANY } from "@/lib/content/company";
 
 export function MainCta() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-28">
       <Container>
         <FadeIn className="text-center">
           <div className="micro-label text-[var(--color-ink-500)]">Get Started</div>
@@ -14,7 +14,7 @@ export function MainCta() {
             <br />
             10to10이 설계합니다.
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-[var(--color-ink-700)]">
+          <p className="mx-auto mt-6 max-w-xl text-base text-[var(--color-ink-700)] md:text-lg">
             학원 설명회 풀케어, AI 플랫폼 도입, 투자·지원 — 가장 맞는 방식으로
             연결해 드립니다.
           </p>
@@ -22,7 +22,8 @@ export function MainCta() {
             <Button href="/stage" variant="primary" size="lg">
               10to10 STAGE · 설명회 풀케어
             </Button>
-            <Button href={COMPANY.kakaoUrl} variant="outline" size="lg" external>
+            <Button href={COMPANY.kakaoUrl} variant="kakao" size="lg" external>
+              <KakaoSymbol size={20} />
               카톡으로 3분 상담
             </Button>
           </div>
