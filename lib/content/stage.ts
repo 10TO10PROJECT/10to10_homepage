@@ -317,9 +317,9 @@ export const STAGE_PRICING_PUBLIC = {
     { name: "외부 연사 초청", price: "50만 원", note: "시가 80만 → 50만 · 입시 컨설턴트" },
     { name: "유료 광고 집행", price: "10만 원~ (실비)", note: "당근·인스타·카페 등" },
     { name: "자료집 업그레이드", price: "실비+제작비", note: "고급 제본" },
-    { name: "인쇄물 패키지", price: "실비", note: "배너·포스터·현수막" },
+    { name: "인쇄물 패키지", price: "실비", note: "배너·포스터·현수막 · 디자인·인쇄까지 (배포는 학원 진행)" },
     { name: "우편 발송", price: "실비+운영비", note: "" },
-    { name: "추가 현장 인력", price: "10만 원/인", note: "40명 이상 모집 시" },
+    { name: "추가 현장 인력", price: "1.5만 원/시간", note: "40명 이상 모집 시 · 최소 4시간" },
   ],
   footnote: "모든 금액은 VAT 별도입니다.",
 } as const;
