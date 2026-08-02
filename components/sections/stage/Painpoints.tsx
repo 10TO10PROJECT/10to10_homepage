@@ -56,7 +56,8 @@ export function Painpoints() {
             </div>
             <p className="mt-6 text-lg font-bold md:text-xl">
               그 다리가 되는 방법,{" "}
-              <span className="text-[var(--color-mint-500)]">설명회</span>입니다.
+              <span className="script-accent text-[1.6em] leading-none text-[var(--color-mint-500)]">설명회</span>
+              입니다.
             </p>
           </FadeIn>
         </div>

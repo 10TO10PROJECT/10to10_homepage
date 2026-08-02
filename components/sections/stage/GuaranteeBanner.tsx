@@ -32,7 +32,7 @@ export function GuaranteeBanner() {
                   <span className="micro-label rounded-[var(--radius-badge)] bg-[var(--color-mint-500)] px-2.5 py-1.5 text-[var(--color-ink-950)]">
                     {STAGE_GUARANTEE.eyebrow}
                   </span>
-                  <span className="micro-label text-white/50">10to10 Guarantee</span>
+                  <span className="text-sm font-semibold text-white/60">저희가 책임지고 함께 하겠습니다</span>
                 </div>
                 <h2 className="display-type mt-6 whitespace-pre-line text-3xl md:text-5xl">
                   신청 20명을 못 채우면,
