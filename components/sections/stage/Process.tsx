@@ -11,7 +11,7 @@ export function Process() {
         <FadeIn className="mb-12 max-w-3xl">
           <div className="micro-label text-[var(--color-ink-500)]">Process</div>
           <h2 className="display-type mt-4 text-3xl text-[var(--color-ink-950)] md:text-5xl">
-            표준 30일 진행 절차
+            표준 30일 진행 절차 안내
           </h2>
           <p className="mt-4 text-base text-[var(--color-ink-700)] md:text-lg">
             이번 주 상담이 다음 학기 등록을 결정할 수 있습니다.

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource/nanum-pen-script/400.css";
 @import "@fontsource/pretendard/400.css";
 @import "@fontsource/pretendard/500.css";
 @import "@fontsource/pretendard/600.css";
@@ -94,6 +95,13 @@
     line-height: 1.12;
     letter-spacing: -0.015em;
     word-break: keep-all;
+  }
+
+  /* 손글씨 액센트 — 브로슈어의 스크립트 강조 차용 (포인트 단어 전용) */
+  .script-accent {
+    font-family: 'Nanum Pen Script', cursive;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
   /* 헤어라인 — 1px cloud 보더가 유일한 컨테이너 구조 */

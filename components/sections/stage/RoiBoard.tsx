@@ -70,6 +70,9 @@ export function RoiBoard({
             <p className="mt-4 text-[13px] leading-relaxed text-white/45">
               {STAGE_ROI.footnote}
             </p>
+            <p className="mt-8 border-t border-white/10 pt-6 text-right text-lg font-bold text-white/90 md:text-xl">
+              {STAGE_ROI.closer}
+            </p>
           </FadeIn>
 
           {cta && (

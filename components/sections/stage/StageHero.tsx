@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { StageLogo } from "@/components/brand/StageLogo";
 import { KakaoSymbol } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { COMPANY } from "@/lib/content/company";
@@ -15,8 +16,11 @@ export function StageHero() {
         <div className="grid gap-8 md:grid-cols-[1.25fr_1fr] md:gap-14">
           <div>
             <FadeIn>
-              <div className="micro-label text-[var(--color-ink-500)]">
-                10to10 STAGE · 학원 설명회 풀케어
+              <div className="flex items-center gap-3">
+                <StageLogo height={20} />
+                <span className="micro-label text-[var(--color-ink-500)]">
+                  학원 설명회 풀케어
+                </span>
               </div>
             </FadeIn>
             <FadeIn delay={0.1} className="mt-6">
@@ -56,7 +60,11 @@ export function StageHero() {
 function StageHeroSub() {
   return (
     <>
-      <p className="max-w-2xl text-base leading-relaxed text-[var(--color-ink-700)] md:text-lg">
+      <p className="text-lg font-bold text-[var(--color-ink-950)] md:text-xl">
+        설명회 <span className="script-accent text-[1.35em] leading-none">하루</span>가
+        학원의 <span className="script-accent text-[1.35em] leading-none">한 학기</span>를 바꿉니다.
+      </p>
+      <p className="mt-3 max-w-2xl text-base leading-relaxed text-[var(--color-ink-700)] md:text-lg">
         홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리와 데이터
         수집까지 전담팀이 대신합니다. 원장님은{" "}
         <strong className="text-[var(--color-ink-950)]">개최와 강연만</strong>{" "}

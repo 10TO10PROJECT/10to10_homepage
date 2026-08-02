@@ -84,8 +84,12 @@ export const INFO_SESSION = {
   badge: "FLAGSHIP · 설명회 풀케어",
   headline: "10to10 STAGE는\n이렇게 준비해 드립니다.",
   subhead: "원장님은 발표와 상담에만 집중하세요.",
+  numbersHead: {
+    eyebrow: "다시 오고 싶은 설명회, 이유가 있습니다",
+    headline: "숫자로 보는 설명회의 가능성",
+  },
   metrics: [
-    { value: "4.32", unit: "/ 5.0", label: "평균 만족도" },
+    { value: "4.32", unit: "/ 5", label: "만족도" },
     { value: "100%", unit: "", label: "재참석 의사" },
     { value: "95.2%", unit: "", label: "추천 의사" },
     { value: "47명", unit: "", label: "모객 실적" },
@@ -160,7 +164,7 @@ export const INFO_SESSION = {
   },
   ctaPrimary: { label: "카톡으로 3분 상담", href: "kakao" },
   ctaSecondary: { label: "견적 폼 작성하기", href: "#contact" },
-  note: "* 만족도 지표는 2026.02 EDUFLO 입시 설명회(응답자 21명) 실측 기준입니다.",
+  note: "2026.02 EDUFLO 입시 설명회, 응답 21명  |  설명회 규모와 지역에 따라 결과는 달라질 수 있습니다.",
 } as const;
 
 /* ─── Phase 1 설명회 풀케어 — BM v1 확정 수치 (SSOT: docs/plans/2026-07-27-stage-bm-v1.md) ─── */
@@ -224,6 +228,7 @@ export const STAGE_ROI = {
   ],
   footnote:
     "* 모객 20명·전환 30%·월 원비 40만 원·재원 3개월은 계산을 위한 보수적 가정입니다. 실제 지역, 학원 규모, 원비, 참석률에 따라 결과는 달라질 수 있습니다.",
+  closer: "이 계산을 실제로 만들어내려면, 무엇을 준비해야 할까요?",
 } as const;
 
 /** 심리 6·4 — 해자 4축 (BM v1 §1-1). WhyUs 섹션 데이터. */
@@ -349,8 +354,8 @@ export const STAGE_FAQ = [
 
 /** 심리 8 — 희소성·긴급성. 이 두 개만, 남발 금지. */
 export const STAGE_URGENCY = {
-  slots: "8월 진행 슬롯 2곳",
-  deadline: "준비 기간 30일 — 8월 개최는 이번 주 상담을 권합니다.",
+  slots: "파트너 1·2호 모집 중",
+  deadline: "준비 기간 30일, 빠른 진행을 원하신다면? 지금 바로 5분만 상담해 보세요!",
   openSale: "오픈 파트너 1·2호 학원 한정 특별가 운영 중",
 } as const;
 

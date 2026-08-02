@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { KakaoSymbol } from "@/components/ui/Button";
+import { LaurelBranch } from "@/components/brand/Laurel";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { INFO_SESSION } from "@/lib/content/stage";
@@ -24,25 +25,39 @@ export function InfoSessionFlagship() {
           </p>
         </FadeIn>
 
-        {/* 실측 지표 — 심리 5: 사회적 증거 (출처 병기) */}
-        <FadeIn delay={0.1} className="mt-12">
+        {/* 실측 지표 — 브로슈어 P5 '숫자로 보는 설명회의 가능성' + 월계수 리스 */}
+        <FadeIn delay={0.1} className="mt-16">
+          <div className="mb-8 text-center">
+            <div className="text-sm font-semibold text-white/60">
+              {INFO_SESSION.numbersHead.eyebrow}
+            </div>
+            <h3 className="display-type mt-2 text-2xl md:text-4xl">
+              {INFO_SESSION.numbersHead.headline}
+            </h3>
+          </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
             {INFO_SESSION.metrics.map((m) => (
               <div
                 key={m.label}
-                className="rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-5 md:p-6"
+                className="flex flex-col items-center rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-5 text-center md:p-6"
               >
-                <div className="flex items-baseline gap-1">
-                  <span className="display-type text-3xl text-[var(--color-mint-500)] md:text-4xl">
-                    {m.value}
-                  </span>
-                  <span className="text-sm text-white/50">{m.unit}</span>
+                <div className="flex items-center gap-1 text-[var(--color-mint-500)]">
+                  <LaurelBranch size={44} side="left" />
+                  <div className="min-w-0">
+                    <div className="text-[13px] font-semibold text-white/70">{m.label}</div>
+                    <div className="display-type mt-0.5 text-2xl md:text-3xl">
+                      {m.value}
+                      {m.unit && (
+                        <span className="ml-0.5 text-sm text-white/50">{m.unit}</span>
+                      )}
+                    </div>
+                  </div>
+                  <LaurelBranch size={44} side="right" />
                 </div>
-                <div className="mt-1.5 text-[13px] text-white/65 md:text-sm">{m.label}</div>
               </div>
             ))}
           </div>
-          <p className="mt-3 text-[13px] text-white/45">{INFO_SESSION.note}</p>
+          <p className="mt-3 text-center text-[13px] text-white/45">{INFO_SESSION.note}</p>
         </FadeIn>
 
         {/* 풀케어 6단계 */}

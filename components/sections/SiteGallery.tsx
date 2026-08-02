@@ -102,7 +102,10 @@ export function SiteGallery() {
             </div>
           </div>
           <p className="mt-3 text-center text-[13px] text-[var(--color-ink-500)]">
-            좌우로 넘기면서 실제 설명회 현장을 확인해 보세요.
+            실제 설명회 사진 · 좌우로 넘기면서 확인해 보세요.
+          </p>
+          <p className="script-accent mt-6 text-center text-2xl leading-snug text-[var(--color-ink-900)] md:text-3xl">
+            기획부터 현장, 결과까지<br />하나의 팀이 끝까지 책임지겠습니다
           </p>
         </FadeIn>
       </Container>
