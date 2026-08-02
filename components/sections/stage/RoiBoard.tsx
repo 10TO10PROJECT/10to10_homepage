@@ -16,13 +16,33 @@ export function RoiBoard({
       <Container size="wide">
         <div className="rounded-[var(--radius-break)] bg-[var(--color-ink-900)] p-7 text-white md:p-14">
           <FadeIn className="max-w-3xl">
-            <div className="micro-label text-[var(--color-mint-500)]">
+            <div className="text-sm font-semibold text-white/60">
               {STAGE_ROI.eyebrow}
             </div>
-            <h2 className="display-type mt-4 text-3xl md:text-5xl">
-              {STAGE_ROI.headline}
+            <h2 className="display-type mt-3 text-3xl md:text-5xl">
+              신규 등록은{" "}
+              <span className="text-[var(--color-mint-500)]">만남</span>에서
+              결정됩니다.
             </h2>
             <p className="mt-4 text-base text-white/70 md:text-lg">{STAGE_ROI.subhead}</p>
+          </FadeIn>
+
+          {/* 브로슈어 P3 — 87% 신뢰 지표 */}
+          <FadeIn delay={0.05} className="mt-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 rounded-[var(--radius-card)] border border-[var(--color-mint-500)]/40 bg-[var(--color-mint-500)]/10 px-6 py-5 md:px-8">
+              <span className="max-w-md text-[15px] leading-snug text-white/85 md:text-base">
+                {STAGE_ROI.trust.label}
+              </span>
+              <span className="display-type text-5xl text-[var(--color-mint-500)] md:text-6xl">
+                {STAGE_ROI.trust.value}
+              </span>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.08} className="mt-10">
+            <h3 className="display-type text-2xl md:text-3xl">
+              {STAGE_ROI.headline}
+            </h3>
           </FadeIn>
 
           <FadeIn delay={0.1} className="mt-10 md:mt-12">

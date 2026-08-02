@@ -31,7 +31,7 @@ export function Footer() {
             <div className="micro-label mb-4 text-white/50">Product</div>
             <ul className="space-y-2.5 text-white/75">
               <li>
-                <Link href="/stage" className="transition hover:text-[var(--color-mint-500)]">
+                <Link href="/" className="transition hover:text-[var(--color-mint-500)]">
                   10to10 STAGE · 설명회 풀케어
                 </Link>
               </li>
