@@ -39,8 +39,8 @@ export default function InquiryPage() {
                 "만족도 4.32 / 5.0 · 재참석 100% (실측)",
                 "신청 20명 미달 시 부족한 만큼 환급 — 모객 보장",
               ]}
-              primary={{ href: "/stage#contact", label: "설명회 견적 문의하기" }}
-              secondary={{ href: "/stage", label: "STAGE 자세히 보기" }}
+              primary={{ href: "/#contact", label: "설명회 견적 문의하기" }}
+              secondary={{ href: "/", label: "STAGE 자세히 보기" }}
               tone="mint"
             />
           </FadeIn>
@@ -68,7 +68,7 @@ export default function InquiryPage() {
         <FadeIn delay={0.4} className="mt-12 text-center text-sm text-[var(--color-ink-500)]">
           어떤 트랙인지 모르겠다면{" "}
           <Link
-            href="/stage#contact"
+            href="/#contact"
             className="font-semibold text-[var(--color-ink-950)] underline decoration-[var(--color-ink-300)] underline-offset-4 hover:decoration-[var(--color-ink-950)]"
           >
             STAGE 문의 폼

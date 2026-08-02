@@ -7,7 +7,6 @@ import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
 
 const NAV_ITEMS = [
-  { href: "/stage", label: "STAGE" },
   { href: "/platform", label: "AI 플랫폼" },
   { href: "/team", label: "팀" },
   { href: "/careers", label: "채용" },
