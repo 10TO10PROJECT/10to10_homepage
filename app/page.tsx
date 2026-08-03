@@ -13,6 +13,8 @@ import { StageFaq } from "@/components/sections/stage/StageFaq";
 import { Phase2Roadmap } from "@/components/sections/stage/Phase2Roadmap";
 import { StageContact } from "@/components/sections/stage/StageContact";
 import { StickyCta } from "@/components/ui/StickyCta";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { STAGE_SERVICE_JSONLD, STAGE_FAQ_JSONLD } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "10to10 STAGE — 등록으로 이어지는 가장 확실한 퍼널, 학원 설명회 풀케어",
@@ -29,6 +31,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <JsonLd data={STAGE_SERVICE_JSONLD} />
+      <JsonLd data={STAGE_FAQ_JSONLD} />
       <StageHero />
       <Painpoints />
       <RoiBoard />
