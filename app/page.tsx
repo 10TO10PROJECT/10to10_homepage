@@ -19,7 +19,7 @@ import { STAGE_SERVICE_JSONLD, STAGE_FAQ_JSONLD } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "10to10 STAGE — 등록으로 이어지는 가장 확실한 퍼널, 학원 설명회 풀케어",
   description:
-    "학부모가 직접 방문하는 설명회는 등록으로 이어지는 가장 확실한 퍼널입니다. 설명회 하루가 학원의 한 학기를 바꿉니다. 홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리까지 전담팀이 대신합니다. 원장님은 개최와 강연만.",
+    "학부모가 직접 방문하는 설명회는 등록으로 이어지는 가장 확실한 퍼널입니다. 설명회 하루가 학원의 한 학기를 바꿉니다. 홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리까지 전담팀이 대신합니다.",
   openGraph: {
     title: "10to10 STAGE — 등록으로 이어지는 가장 확실한 퍼널, 학원 설명회 풀케어",
     description:

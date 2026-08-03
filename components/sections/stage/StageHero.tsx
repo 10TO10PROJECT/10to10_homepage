@@ -66,9 +66,7 @@ function StageHeroSub() {
       </p>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-[var(--color-ink-700)] md:text-lg">
         홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리와 데이터
-        수집까지 전담팀이 대신합니다. 원장님은{" "}
-        <strong className="text-[var(--color-ink-950)]">개최와 강연만</strong>{" "}
-        하시면 됩니다.
+        수집까지 전담팀이 대신합니다.
       </p>
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2 text-[15px] text-[var(--color-ink-700)]">
         <span>
