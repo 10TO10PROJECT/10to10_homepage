@@ -27,15 +27,18 @@ export function RoiBoard({
             <p className="mt-4 text-base text-white/70 md:text-lg">{STAGE_ROI.subhead}</p>
           </FadeIn>
 
-          {/* 브로슈어 P3 — 87% 신뢰 지표 */}
+          {/* 신뢰 지표 — 방문 상담 74.2% (대교 에듀베이션 조사, 출처 각주 필수) */}
           <FadeIn delay={0.05} className="mt-8">
-            <div className="flex flex-wrap items-center justify-between gap-4 rounded-[var(--radius-card)] border border-[var(--color-mint-500)]/40 bg-[var(--color-mint-500)]/10 px-6 py-5 md:px-8">
-              <span className="max-w-md text-[15px] leading-snug text-white/85 md:text-base">
-                {STAGE_ROI.trust.label}
-              </span>
-              <span className="display-type text-5xl text-[var(--color-mint-500)] md:text-6xl">
-                {STAGE_ROI.trust.value}
-              </span>
+            <div className="rounded-[var(--radius-card)] border border-[var(--color-mint-500)]/40 bg-[var(--color-mint-500)]/10 px-6 py-5 md:px-8">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <span className="max-w-md text-[15px] leading-snug text-white/85 md:text-base">
+                  {STAGE_ROI.trust.label}
+                </span>
+                <span className="display-type text-5xl text-[var(--color-mint-500)] md:text-6xl">
+                  {STAGE_ROI.trust.value}
+                </span>
+              </div>
+              <p className="mt-3 text-[13px] text-white/45">{STAGE_ROI.trust.source}</p>
             </div>
           </FadeIn>
 
