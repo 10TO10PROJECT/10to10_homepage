@@ -4,7 +4,7 @@ export const COMPANY = {
   ceo: "신현우",
   bizNo: "154-01-03674",
   address: "TBD",
-  email: "eduflo365@gmail.com",
+  email: "stage@10to10.kr",
   kakaoUrl:
     process.env.NEXT_PUBLIC_KAKAO_CHANNEL_URL ?? "https://pf.kakao.com/_dAxggn/chat",
   instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "",
