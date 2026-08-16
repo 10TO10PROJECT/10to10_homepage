@@ -262,6 +262,11 @@ export const STAGE_TRUST = {
   ],
   partners: [
     {
+      src: "/trust/mss.png",
+      alt: "중소벤처기업부 로고",
+      label: "중소벤처기업부 주관 프로그램",
+    },
+    {
       src: "/trust/moduchangup.png",
       alt: "모두의창업 로고",
       label: "모두의창업 1기 선정팀",

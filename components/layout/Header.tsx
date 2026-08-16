@@ -7,7 +7,10 @@ import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
 
 /* 채용·투자·팀 네비 제거 (2026-08-16 멘토링 반영 — 랜딩 목적 집중). 팀은 메인 본문 섹션으로 이동 */
-const NAV_ITEMS = [{ href: "/platform", label: "플랫폼" }];
+const NAV_ITEMS = [
+  { href: "/portfolio", label: "포트폴리오" },
+  { href: "/platform", label: "플랫폼" },
+];
 
 export function Header() {
   const pathname = usePathname();
@@ -60,7 +63,7 @@ export function Header() {
             href="/inquiry"
             className="hidden h-10 items-center rounded-full bg-[var(--color-ink-950)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-btn-dark)] transition hover:bg-black md:inline-flex"
           >
-            학원 문의
+            견적 문의
           </Link>
           <button
             type="button"
@@ -127,7 +130,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex h-12 items-center justify-center rounded-[var(--radius-btn)] bg-[var(--color-ink-950)] px-5 text-base font-bold text-white transition-colors hover:bg-black"
             >
-              학원 문의 →
+              견적 문의 →
             </Link>
           </Container>
         </div>
