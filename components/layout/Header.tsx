@@ -6,12 +6,8 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
 
-const NAV_ITEMS = [
-  { href: "/platform", label: "AI 플랫폼" },
-  { href: "/team", label: "팀" },
-  { href: "/careers", label: "채용" },
-  { href: "/invest", label: "투자·지원" },
-];
+/* 채용·투자·팀 네비 제거 (2026-08-16 멘토링 반영 — 랜딩 목적 집중). 팀은 메인 본문 섹션으로 이동 */
+const NAV_ITEMS = [{ href: "/platform", label: "플랫폼" }];
 
 export function Header() {
   const pathname = usePathname();

@@ -16,27 +16,29 @@ export function StageHero() {
         <div className="grid gap-8 md:grid-cols-[1.25fr_1fr] md:gap-14">
           <div>
             <FadeIn>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <StageLogo height={20} />
                 <span className="micro-label text-[var(--color-ink-500)]">
-                  학원 설명회 풀케어
+                  모객부터 전환까지 책임지는 학원 설명회 풀케어 솔루션
                 </span>
               </div>
             </FadeIn>
             <FadeIn delay={0.1} className="mt-6">
+              {/* 브로슈어 0816 커버 헤드 정합 · 2줄 고정 (멘토링 ④-2) */}
               <h1 className="display-type text-[clamp(2rem,5.5vw,3.6rem)] text-[var(--color-ink-950)]">
-                학부모가 직접 방문하는 설명회,
+                설명회 <span className="script-accent text-[1.2em] leading-none">하루</span>가
                 <br />
-                등록으로 이어지는
-                <br />
+                학원의{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10">가장 확실한 퍼널</span>
+                  <span className="script-accent relative z-10 text-[1.2em] leading-none">
+                    한 학기
+                  </span>
                   <span
                     aria-hidden
                     className="absolute inset-x-[-0.08em] bottom-[0.04em] z-0 h-[0.38em] bg-[var(--color-mint-500)]/70"
                   />
                 </span>
-                입니다.
+                를 바꿉니다.
               </h1>
             </FadeIn>
             <FadeIn delay={0.25} className="mt-7 hidden md:block">
@@ -61,8 +63,7 @@ function StageHeroSub() {
   return (
     <>
       <p className="text-lg font-bold text-[var(--color-ink-950)] md:text-xl">
-        설명회 <span className="script-accent text-[1.35em] leading-none">하루</span>가
-        학원의 <span className="script-accent text-[1.35em] leading-none">한 학기</span>를 바꿉니다.
+        학부모가 직접 방문하는 설명회는, 등록으로 이어지는 가장 확실한 퍼널입니다.
       </p>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-[var(--color-ink-700)] md:text-lg">
         홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리와 데이터
@@ -70,7 +71,7 @@ function StageHeroSub() {
       </p>
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2 text-[15px] text-[var(--color-ink-700)]">
         <span>
-          <strong className="text-[var(--color-ink-950)]">4.32</strong> 만족도 / 5.0
+          <strong className="text-[var(--color-ink-950)]">4.3</strong> 만족도 / 5.0
         </span>
         <span>
           <strong className="text-[var(--color-ink-950)]">100%</strong> 재참석 의사

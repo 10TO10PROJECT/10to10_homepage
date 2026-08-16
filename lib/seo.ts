@@ -14,7 +14,7 @@ export const ORGANIZATION_JSONLD = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "eduflo365@gmail.com",
+    email: "stage@10to10.kr",
     availableLanguage: "Korean",
   },
 } as const;

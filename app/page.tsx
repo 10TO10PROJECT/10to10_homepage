@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { StageHero } from "@/components/sections/stage/StageHero";
+import { TrustBar } from "@/components/sections/stage/TrustBar";
 import { Painpoints } from "@/components/sections/stage/Painpoints";
 import { RoiBoard } from "@/components/sections/stage/RoiBoard";
 import { InfoSessionFlagship } from "@/components/sections/stage/InfoSessionFlagship";
 import { SiteGallery } from "@/components/sections/SiteGallery";
 import { PromoShowcase } from "@/components/sections/PromoShowcase";
 import { WhyUs } from "@/components/sections/stage/WhyUs";
+import { TeamCredential } from "@/components/sections/stage/TeamCredential";
 import { PricingSection } from "@/components/sections/stage/PricingSection";
 import { GuaranteeBanner } from "@/components/sections/stage/GuaranteeBanner";
 import { Process } from "@/components/sections/stage/Process";
 import { StageFaq } from "@/components/sections/stage/StageFaq";
-import { Phase2Roadmap } from "@/components/sections/stage/Phase2Roadmap";
 import { StageContact } from "@/components/sections/stage/StageContact";
 import { StickyCta } from "@/components/ui/StickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -27,24 +28,25 @@ export const metadata: Metadata = {
   },
 };
 
-/** 메인 = STAGE 랜딩 (브로슈어 2026 파트너 제안서 흐름 정합) */
+/** 메인 = STAGE 랜딩. 섹션 맵 = 멘토링 ④-1: 히어로 → 신뢰도 → 페인 → 솔루션 → 포트폴리오 → 차별화 → 팀 → 가격·보장 → 수행방안 */
 export default function Home() {
   return (
     <>
       <JsonLd data={STAGE_SERVICE_JSONLD} />
       <JsonLd data={STAGE_FAQ_JSONLD} />
       <StageHero />
+      <TrustBar />
       <Painpoints />
       <RoiBoard />
       <InfoSessionFlagship />
       <SiteGallery />
       <PromoShowcase />
       <WhyUs />
+      <TeamCredential />
       <PricingSection />
       <GuaranteeBanner />
       <Process />
       <StageFaq />
-      <Phase2Roadmap />
       <StageContact />
       <StickyCta formHref="#contact" />
     </>
