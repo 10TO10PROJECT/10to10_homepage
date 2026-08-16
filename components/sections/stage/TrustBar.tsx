@@ -22,7 +22,9 @@ export function TrustBar() {
                       alt={p.alt}
                       fill
                       sizes="112px"
-                      className="object-contain object-left"
+                      className={`object-contain object-left ${
+                        "invert" in p && p.invert ? "invert" : ""
+                      }`}
                     />
                   </div>
                   <figcaption className="text-[13px] font-semibold leading-tight text-[var(--color-ink-700)]">

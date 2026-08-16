@@ -270,6 +270,7 @@ export const STAGE_TRUST = {
       src: "/trust/alphabrothers.png",
       alt: "알파브라더스 로고",
       label: "멘토 기관 · 알파브라더스",
+      invert: true, // 화이트 워드마크 원본 → 라이트 배경에서 반전 표시
     },
     {
       src: "/trust/highway.png",
@@ -301,6 +302,37 @@ export const STAGE_TEAM = {
     desc: "설명회를 남의 손에 맡기지 않고 직접 주최해 완주해 본 팀입니다. 홍보물 디자인부터 신청 폼 개발, 현장 운영까지 전 공정을 내부에서 소화합니다.",
   },
   closer: "저희는 외주업체가 아니라, 학원의 다음 학기를 함께 설계하는 파트너입니다.",
+} as const;
+
+/** 행사 운영 실적 — 연세대 창업학회 VERY 43기 'VERIFY' (2026.07.18). "데모데이" 명칭 비노출 리프레이밍 (멘토링 ④-11) */
+export const STAGE_EVENT_RECORD = {
+  eyebrow: "EVENT TRACK RECORD",
+  headline: "대규모 행사도 직접 기획해 완주한 팀입니다.",
+  desc: "연세대학교 창업학회 VERY 43기 공식 행사 'VERIFY' — 기획, 모객, 현장 운영을 대표가 총괄했습니다. 설명회와 동일한 모객 로직(카카오톡·인스타그램 채널 운영)으로 2주 만에 신청 67명을 모았고, 대학생부터 현직 CEO·투자 심사역까지 한 자리에 모이는 행사를 완주했습니다.",
+  stats: [
+    { value: "67명", label: "행사 신청자 (2주 모객)" },
+    { value: "6곳", label: "연계 기업·기관" },
+    { value: "VC·CEO", label: "심사역·현직 참석" },
+  ],
+  partnersNote:
+    "연계: 티오더 · 크라이치즈버거 · ZUZU · 더존바이오 · 한국벤처기업협회 · 한국창업멘토협회",
+  photos: [
+    {
+      src: "/events/verify-stage.jpg",
+      alt: "VERIFY 행사 — 무대에서 진행을 총괄하는 신현우 대표",
+      caption: "무대 총괄 진행 (2026.07.18)",
+    },
+    {
+      src: "/events/verify-audience.jpg",
+      alt: "VERIFY 행사 현장 — 심사석과 참관객",
+      caption: "현장 — 대학·기업·심사역 참석",
+    },
+    {
+      src: "/events/verify-booth.jpg",
+      alt: "VERIFY 행사 — 연계 기업 케이터링 부스",
+      caption: "기업 연계 부스 운영",
+    },
+  ],
 } as const;
 
 /** 심리 1 — 손실 회피. 가격보다 눈에 띄게. (✅GO — CEO 확정 2026-07-26, 문구 락) */
