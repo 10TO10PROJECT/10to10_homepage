@@ -26,19 +26,11 @@ const CARDS: CtaCard[] = [
     primary: true,
   },
   {
-    eyebrow: "FOR INVESTORS",
-    title: "IR 자료 다운로드",
-    desc: "10to10의 사업 모델·시장·팀·로드맵을 한 장에 담은 IR 덱(PDF).",
-    href: COMPANY.irPdfPath,
-    cta: "IR PDF 받기 ↓",
-    external: true,
-  },
-  {
-    eyebrow: "PARTNERSHIP",
-    title: "투자·지원 협업 제안",
-    desc: "투자, 지원사업, 협업 제안은 메일 또는 카카오톡으로 편하게 연락 주세요.",
-    href: "/invest",
-    cta: "투자·지원 페이지 →",
+    eyebrow: "STAGE",
+    title: "설명회 풀케어 문의",
+    desc: "모객부터 전환까지 책임지는 학원 설명회 풀케어 — 견적과 진행 절차를 안내드립니다.",
+    href: "/inquiry",
+    cta: "설명회 문의하기 →",
   },
 ];
 
@@ -52,10 +44,10 @@ export function PlatformCta() {
             10to10 플랫폼과 함께하세요.
           </h2>
           <p className="mt-5 text-lg text-white/70">
-            학원 도입, 투자·지원, 협업 제안 — 가장 잘 맞는 방식으로 시작하실 수 있습니다.
+            학원 도입과 설명회 풀케어 — 가장 잘 맞는 방식으로 시작하실 수 있습니다.
           </p>
         </FadeIn>
-        <StaggerChildren className="grid gap-5 md:grid-cols-3">
+        <StaggerChildren className="grid gap-5 md:grid-cols-2">
           {CARDS.map((c) => (
             <StaggerItem key={c.title}>
               <div

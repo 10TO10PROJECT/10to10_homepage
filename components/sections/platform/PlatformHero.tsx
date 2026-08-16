@@ -9,7 +9,7 @@ export function PlatformHero() {
     <section className="pt-16 pb-20 md:pt-24 md:pb-24">
       <Container size="wide">
         <FadeIn>
-          <Badge variant="outline">10to10 AI 플랫폼 · Phase 3</Badge>
+          <Badge variant="outline">10to10 플랫폼</Badge>
         </FadeIn>
         <FadeIn delay={0.1} className="mt-6">
           <h1 className="display-type max-w-4xl text-[clamp(2.1rem,5.5vw,4rem)] text-[var(--color-ink-950)]">

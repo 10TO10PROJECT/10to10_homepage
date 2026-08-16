@@ -37,29 +37,14 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/platform" className="transition hover:text-[var(--color-mint-500)]">
-                  10to10 AI 플랫폼
+                  10to10 플랫폼
                 </Link>
               </li>
             </ul>
           </div>
           <div className="text-[15px]">
-            <div className="micro-label mb-4 text-white/50">Company</div>
+            <div className="micro-label mb-4 text-white/50">Contact</div>
             <ul className="space-y-2.5 text-white/75">
-              <li>
-                <Link href="/team" className="transition hover:text-[var(--color-mint-500)]">
-                  팀
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="transition hover:text-[var(--color-mint-500)]">
-                  채용
-                </Link>
-              </li>
-              <li>
-                <Link href="/invest" className="transition hover:text-[var(--color-mint-500)]">
-                  투자·지원
-                </Link>
-              </li>
               <li>
                 <a
                   href={`mailto:${COMPANY.email}`}

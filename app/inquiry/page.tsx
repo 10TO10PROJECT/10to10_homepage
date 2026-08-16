@@ -7,7 +7,7 @@ import { PLATFORM_BETA_URL } from "@/lib/content/platform";
 export const metadata: Metadata = {
   title: "학원 문의 — 10to10",
   description:
-    "10to10은 두 가지 트랙으로 학원을 지원합니다. AI 플랫폼 도입과 STAGE 마케팅 문의를 트랙별로 안내합니다.",
+    "10to10은 두 가지 트랙으로 학원을 지원합니다. 플랫폼 도입과 STAGE 설명회 풀케어 문의를 트랙별로 안내합니다.",
 };
 
 export default function InquiryPage() {
@@ -36,7 +36,7 @@ export default function InquiryPage() {
               desc="전담팀이 학원 설명회를 기획·모객·자료 제작·현장 운영까지 풀케어합니다."
               bullets={[
                 "모객 20명 → 등록 6명 = 예상 매출 720만 원",
-                "만족도 4.32 / 5.0 · 재참석 100% (실측)",
+                "만족도 4.3 / 5.0 · 재참석 100% (실측)",
                 "신청 20명 미달 시 부족한 만큼 환급 — 모객 보장",
               ]}
               primary={{ href: "/#contact", label: "설명회 견적 문의하기" }}
@@ -46,8 +46,8 @@ export default function InquiryPage() {
           </FadeIn>
           <FadeIn delay={0.25}>
             <InquiryCard
-              eyebrow="10to10 AI 플랫폼"
-              title="AI 플랫폼 도입·체험"
+              eyebrow="10to10 플랫폼"
+              title="플랫폼 도입·체험"
               desc="학원 운영 SaaS와 학부모·학생 탐색 앱을 연결한 양면 플랫폼입니다. Beta 체험 또는 정규 도입 문의를 안내드립니다."
               bullets={[
                 "학원 운영 SaaS (관리자 콘솔)",
