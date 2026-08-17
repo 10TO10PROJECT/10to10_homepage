@@ -36,6 +36,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/portfolio" className="transition hover:text-[var(--color-mint-500)]">
+                  포트폴리오
+                </Link>
+              </li>
+              <li>
                 <Link href="/platform" className="transition hover:text-[var(--color-mint-500)]">
                   10to10 플랫폼
                 </Link>
