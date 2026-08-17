@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE } from "@/lib/site";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { KakaoFab } from "@/components/ui/KakaoFab";
+import { StickyCta } from "@/components/ui/StickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ORGANIZATION_JSONLD, WEBSITE_JSONLD, SITE_KEYWORDS } from "@/lib/seo";
 
@@ -49,6 +50,7 @@ export default function RootLayout({
         <JsonLd data={WEBSITE_JSONLD} />
         <SiteChrome>{children}</SiteChrome>
         <KakaoFab />
+        <StickyCta />
         <Analytics />
         <SpeedInsights />
       </body>
