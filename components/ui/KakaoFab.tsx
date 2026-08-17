@@ -12,7 +12,7 @@ export function KakaoFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="카카오톡으로 문의하기"
-      className="group fixed bottom-5 right-4 z-50 flex items-center gap-0 rounded-full bg-[var(--color-kakao)] shadow-[0_4px_16px_rgba(0,0,0,0.18)] transition-all hover:shadow-[0_6px_20px_rgba(0,0,0,0.24)] md:bottom-7 md:right-7"
+      className="group fixed bottom-[calc(5.25rem_+_env(safe-area-inset-bottom))] right-4 z-50 flex items-center gap-0 rounded-full bg-[var(--color-kakao)] shadow-[0_4px_16px_rgba(0,0,0,0.18)] transition-all hover:shadow-[0_6px_20px_rgba(0,0,0,0.24)] md:bottom-7 md:right-7"
     >
       <span className="flex h-14 w-14 items-center justify-center md:h-15 md:w-15">
         <KakaoSymbol size={26} />
