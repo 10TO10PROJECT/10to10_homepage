@@ -379,6 +379,67 @@ export const STAGE_PROCESS = [
   },
 ] as const;
 
+/** GF 차용 P0-② — 같은 6공정, 원장님 혼자 vs STAGE 전담팀 (시간 수치 = 1R 사업계획서 40→12시간) */
+export const STAGE_COMPARE = {
+  eyebrow: "SAME WORK, DIFFERENT WEIGHT",
+  headline: "같은 6개 공정,\n누가 드느냐의 차이입니다.",
+  processes: [
+    "기획·일정 설계",
+    "디자인·자료 제작",
+    "온라인 모객",
+    "쿠폰·신청 관리",
+    "현장 운영",
+    "사후 리포트",
+  ],
+  before: {
+    label: "원장님 혼자 진행할 때",
+    desc: "수업과 상담을 병행하며 전 공정을 직접 챙겨야 합니다.",
+    time: "약 40시간",
+    timeNote: "설명회 1회당 원장님 투입 시간",
+  },
+  after: {
+    label: "STAGE와 함께할 때",
+    desc: "6개 공정은 전담팀이 대신합니다. 원장님은 발표와 상담에만 집중하세요.",
+    ownerChip: "원장님은 발표·상담만",
+    time: "약 12시간",
+    timeNote: "커리큘럼 전달 · 발표 준비 · 당일 상담",
+  },
+} as const;
+
+/** GF 차용 P0-① — 무료 모객 진단 리드 마그넷 (표준 절차 1단계 '사전진단'을 전면 오퍼로) */
+export const STAGE_DIAGNOSIS = {
+  eyebrow: "FREE CHECK-UP",
+  headline: "우리 학원 홍보,\n지금 잘 되고 있는 걸까요?",
+  desc: "블로그·네이버 플레이스·SNS 등 학원의 홍보 현황과 모객 채널을 무료로 진단해 드립니다. 진단 결과와 개선 방향만 받아보셔도 됩니다 — 설명회 계약 여부와 무관하게, 부담 없이.",
+  bullets: [
+    "신청 5분, 진단 안내 3일 내",
+    "설명회 계약 의무 없음",
+    "영업 전화 없음 — 카톡·폼으로만 답합니다",
+  ],
+  ctaKakao: "카톡으로 무료 진단 받기",
+  ctaForm: "폼으로 진단 신청 →",
+} as const;
+
+/** GF 차용 P0-③ — 비용 앵커링 3컷 (가격 섹션 도입부). 외주 합산 100만+ 근거 = 1R 사업계획서 공정별 시장가 조사 */
+export const STAGE_COST_ANCHOR = [
+  {
+    title: "따로따로 맡기면",
+    value: "100만 원+",
+    desc: "기획·디자인·모객·현장을 각각 외주 — 견적 합산 기준, 업체 조율은 원장님 몫입니다.",
+  },
+  {
+    title: "직접 다 하면",
+    value: "40시간",
+    desc: "원장님의 수업 외 시간을 전부 쏟아도, 품질은 보장되지 않습니다.",
+  },
+  {
+    title: "STAGE 하나로",
+    value: "100만 원",
+    desc: "6종 올인클루시브 + 모객 보장까지. 파트너 1·2호는 50만 원.",
+    highlight: true,
+  },
+] as const;
+
 /** 가격 공개 (브로슈어 P6 정합 — 2026-08-02 가격 공개 정책 전환). VAT 별도. */
 export const STAGE_PRICING_PUBLIC = {
   eyebrow: "'견적은 문의 주세요'? NO.",

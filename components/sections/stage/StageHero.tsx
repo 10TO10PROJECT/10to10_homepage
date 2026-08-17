@@ -120,10 +120,10 @@ function HeroCard() {
         <div className="mt-2.5 flex items-center justify-between text-[13px] text-[var(--color-ink-500)]">
           <span>평균 응답 30분 · 영업 전화 없음</span>
           <a
-            href="?service=info_session#contact"
+            href="#diagnosis"
             className="font-semibold text-[var(--color-ink-700)] underline decoration-[var(--color-ink-300)] underline-offset-4 hover:text-[var(--color-ink-950)]"
           >
-            견적 폼 →
+            무료 모객 진단 →
           </a>
         </div>
       </div>

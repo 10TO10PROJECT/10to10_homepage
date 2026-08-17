@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { KakaoSymbol } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { STAGE_PRICING_PUBLIC } from "@/lib/content/stage";
+import { STAGE_PRICING_PUBLIC, STAGE_COST_ANCHOR } from "@/lib/content/stage";
 import { COMPANY } from "@/lib/content/company";
 
 /**
@@ -20,6 +20,32 @@ export function PricingSection() {
           <h2 className="display-type mt-3 whitespace-pre-line text-3xl text-[var(--color-ink-950)] md:text-5xl">
             {P.headline}
           </h2>
+        </FadeIn>
+
+        {/* 비용 앵커링 3컷 (GF POINT 03 문법) — 가격 공개 전 기준점 세팅 */}
+        <FadeIn delay={0.03} className="mb-10">
+          <div className="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-[var(--color-cloud)] md:grid-cols-3">
+            {STAGE_COST_ANCHOR.map((c) => (
+              <div
+                key={c.title}
+                className={`p-6 md:p-7 ${
+                  "highlight" in c && c.highlight
+                    ? "bg-[var(--color-mint-500)]/15"
+                    : "bg-white"
+                }`}
+              >
+                <div className="text-sm font-bold text-[var(--color-ink-500)]">
+                  {c.title}
+                </div>
+                <div className="display-type mt-2 text-3xl text-[var(--color-ink-950)] md:text-4xl">
+                  {c.value}
+                </div>
+                <p className="mt-2.5 text-[13px] leading-relaxed text-[var(--color-ink-700)]">
+                  {c.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </FadeIn>
 
         {/* 정식가 → 프로모션 */}
