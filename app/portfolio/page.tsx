@@ -5,7 +5,6 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { SiteGallery } from "@/components/sections/SiteGallery";
 import { PromoShowcase } from "@/components/sections/PromoShowcase";
-import { StickyCta } from "@/components/ui/StickyCta";
 import { KakaoSymbol } from "@/components/ui/Button";
 import { STAGE_GALLERY, STAGE_EVENT_RECORD } from "@/lib/content/stage";
 import { COMPANY } from "@/lib/content/company";
@@ -150,8 +149,6 @@ export default function PortfolioPage() {
           </FadeIn>
         </Container>
       </section>
-
-      <StickyCta formHref="/?service=info_session#contact" />
     </>
   );
 }

@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { StageLogo } from "@/components/brand/StageLogo";
-import { KakaoSymbol } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { COMPANY } from "@/lib/content/company";
 
 /**
  * 스플릿 히어로 — 좌 헤드라인 / 우 현장 사진 + CTA 카드(카테고리 카드 문법).
@@ -108,14 +106,13 @@ function HeroCard() {
           신청 20명을 못 채우면 부족한 만큼 돌려드리는{" "}
           <strong className="text-[var(--color-ink-950)]">모객 보장</strong>까지.
         </p>
+        {/* 히어로 primary = 견적 문의 (abbg·GF 문법). 카카오 접점은 우하단 KakaoFab 전담 */}
         <a
-          href={COMPANY.kakaoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] text-base font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
+          href="?service=info_session#contact"
+          className="mt-4 inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-ink-950)] text-base font-bold text-white transition hover:bg-black"
         >
-          <KakaoSymbol size={18} />
-          카톡으로 3분 상담
+          견적 문의하기
+          <span aria-hidden>→</span>
         </a>
         <div className="mt-2.5 flex items-center justify-between text-[13px] text-[var(--color-ink-500)]">
           <span>평균 응답 30분 · 영업 전화 없음</span>

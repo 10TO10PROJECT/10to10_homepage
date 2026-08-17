@@ -15,7 +15,6 @@ import { GuaranteeBanner } from "@/components/sections/stage/GuaranteeBanner";
 import { Process } from "@/components/sections/stage/Process";
 import { StageFaq } from "@/components/sections/stage/StageFaq";
 import { StageContact } from "@/components/sections/stage/StageContact";
-import { StickyCta } from "@/components/ui/StickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { STAGE_SERVICE_JSONLD, STAGE_FAQ_JSONLD } from "@/lib/seo";
 
@@ -52,7 +51,6 @@ export default function Home() {
       <Process />
       <StageFaq />
       <StageContact />
-      <StickyCta formHref="#contact" />
     </>
   );
 }

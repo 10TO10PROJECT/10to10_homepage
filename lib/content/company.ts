@@ -5,8 +5,9 @@ export const COMPANY = {
   bizNo: "154-01-03674",
   address: "TBD",
   email: "stage@10to10.kr",
-  kakaoUrl:
-    process.env.NEXT_PUBLIC_KAKAO_CHANNEL_URL ?? "https://pf.kakao.com/_dAxggn/chat",
+  // 임시(2026-08-17): 카카오 비즈니스 상호 변경 심사로 채널 채팅 차단 → 오픈채팅방 하드코딩 우회 (env 오버라이드도 잠시 무시).
+  // 심사 완료 후 `process.env.NEXT_PUBLIC_KAKAO_CHANNEL_URL ?? "https://pf.kakao.com/_dAxggn/chat"`로 복원할 것.
+  kakaoUrl: "https://open.kakao.com/o/sSNmmm2h",
   instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "",
   careersUrl: "/careers",
   irPdfPath: "/ir/10to10-deck.pdf",
