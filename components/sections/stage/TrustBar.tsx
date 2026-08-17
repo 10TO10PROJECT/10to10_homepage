@@ -13,10 +13,10 @@ export function TrustBar() {
             <div className="micro-label shrink-0 text-[var(--color-ink-500)]">
               {STAGE_TRUST.eyebrow}
             </div>
-            <div className="flex flex-1 flex-wrap items-center gap-x-10 gap-y-5">
+            <div className="flex flex-1 flex-wrap items-center gap-x-12 gap-y-6">
               {STAGE_TRUST.partners.map((p) => (
-                <figure key={p.src} className="flex items-center gap-3">
-                  <div className="relative h-9 w-24 md:h-10 md:w-28">
+                <figure key={p.src} className="flex items-center gap-4">
+                  <div className="relative h-12 w-32 md:h-16 md:w-44">
                     <Image
                       src={p.src}
                       alt={p.alt}
@@ -27,7 +27,7 @@ export function TrustBar() {
                       }`}
                     />
                   </div>
-                  <figcaption className="text-[13px] font-semibold leading-tight text-[var(--color-ink-700)]">
+                  <figcaption className="text-[13px] font-semibold leading-tight text-[var(--color-ink-700)] md:text-sm">
                     {p.label}
                   </figcaption>
                 </figure>
