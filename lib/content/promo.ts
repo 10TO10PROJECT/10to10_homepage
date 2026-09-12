@@ -29,56 +29,21 @@ export const PROMO_LOGIC = {
   ],
 } as const;
 
-export const PROMO_PORTFOLIO = [
-  {
-    src: "/stage-mockups/11-summer.png",
-    alt: "2026 여름방학특강 포스터 — 시즌 모집 디자인",
-    label: "시즌 특강 포스터",
-    aspect: "portrait",
-  },
-  {
-    src: "/promo/signage-mockup.jpg",
-    alt: "10to10 수학학원 간판 사이니지 목업",
-    label: "간판 · 사이니지",
-    aspect: "square",
-  },
-  {
-    src: "/stage-mockups/03-100points.jpg",
-    alt: "또 100점, 또 1등 — 성적 인증 포스터",
-    label: "성적 인증 포스터",
-    aspect: "portrait",
-  },
-  {
-    src: "/stage-mockups/04-results.jpg",
-    alt: "입시 결과·성적 향상 후기 카드뉴스",
-    label: "입시 결과 카드뉴스",
-    aspect: "portrait",
-  },
-  {
-    src: "/stage-mockups/01-instructor.jpg",
-    alt: "강사 소개·커리큘럼 카드뉴스",
-    label: "강사 · 커리큘럼 소개",
-    aspect: "portrait",
-  },
-  {
-    src: "/promo/leveltest-card.jpg",
-    alt: "무료 레벨테스트 신청 카드뉴스 — QR 전환 디자인",
-    label: "신청 전환 카드뉴스",
-    aspect: "square",
-  },
-  {
-    src: "/stage-mockups/08-grade1.jpg",
-    alt: "내신부터 수능까지 확실한 1등급 비법 — 타깃 모집 카드뉴스",
-    label: "타깃 모집 카드뉴스",
-    aspect: "portrait",
-  },
-  {
-    src: "/stage-mockups/12-place-setting-pitch.jpg",
-    alt: "학원 네이버 플레이스 세팅 안내 콘텐츠",
-    label: "네이버 플레이스 세팅",
-    aspect: "portrait",
-  },
-] as const;
+export type PromoPortfolioItem = {
+  src: string;
+  alt: string;
+  label: string;
+  aspect: "square" | "portrait";
+};
+
+/**
+ * 공개 포트폴리오에는 실제 진행분만 싣는다.
+ * 데모 학원(10to10 수학학원) 브랜딩으로 만든 샘플은 2026-09-12 전량 내림 —
+ * 합격 실적·성적 향상 수치가 실제 실적이 아니어서 원장 대상 신뢰에 역효과.
+ * 파일럿 설명회(2026.02) 실물 홍보물 파일을 받는 대로 이 배열을 채운다.
+ * 데모 샘플은 공개 웹이 아니라 1:1 견적·미팅 자료에서 학원명을 바꿔 사용한다.
+ */
+export const PROMO_PORTFOLIO: readonly PromoPortfolioItem[] = [];
 
 export const PROMO_NOTE =
-  "* 포트폴리오는 데모 학원 브랜딩(10to10 수학학원)으로 제작한 자체 디자인 샘플입니다.";
+  "* 2026.02 파일럿 설명회에서 실제 사용한 홍보물입니다.";
