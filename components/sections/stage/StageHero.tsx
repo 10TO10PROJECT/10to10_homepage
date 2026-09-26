@@ -69,7 +69,7 @@ function StageHeroSub() {
       </p>
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2 text-[15px] text-[var(--color-ink-700)]">
         <span>
-          <strong className="text-[var(--color-ink-950)]">4.3</strong> 만족도 / 5.0
+          <strong className="text-[var(--color-ink-950)]">4.25</strong> 만족도 / 5.0
         </span>
         <span>
           <strong className="text-[var(--color-ink-950)]">100%</strong> 재참석 의사
@@ -78,7 +78,7 @@ function StageHeroSub() {
           <strong className="text-[var(--color-ink-950)]">95.2%</strong> 추천 의사
         </span>
         <span className="text-[13px] text-[var(--color-ink-500)]">
-          2026.02 자체 설명회 실측 · 응답 21명
+          2026.02 콜라보 설명회 · 응답 21명 · 5점 척도 (재참석·추천 = 4~5점 응답 비율)
         </span>
       </div>
     </>

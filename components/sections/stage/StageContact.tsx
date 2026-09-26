@@ -68,7 +68,7 @@ export function StageContact() {
               <strong>모객 보장</strong> — 신청 20명을 못 채우면, 부족한 만큼 돌려드립니다.{" "}
               <span className="text-[var(--color-ink-500)]">{STAGE_GUARANTEE.sub}</span>
               <span className="mx-2 text-[var(--color-ink-300)]">|</span>
-              만족도 4.32/5.0 · 재참석 의사 100% (실측)
+              만족도 4.25/5.0 · 재참석 의사 100%(4~5점 응답) · 응답 21명
             </div>
           </div>
         </FadeIn>

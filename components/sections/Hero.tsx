@@ -20,8 +20,8 @@ const HERO_OUTCOMES = [
   },
   {
     title: "학부모 신뢰",
-    value: "만족도 4.32 / 5.0",
-    note: "재참석 의사 100% · 실측",
+    value: "만족도 4.25 / 5.0",
+    note: "재참석 의사 100%(4~5점 응답) · 응답 21명",
     src: "/info-session/03-speaker-male.jpg",
     alt: "학부모 앞에서 진행되는 입시 컨설턴트 세션",
   },
