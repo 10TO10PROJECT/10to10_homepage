@@ -44,12 +44,14 @@ export const STAGE_SERVICE_JSONLD = {
       name: "설명회 풀케어 정식가",
       price: "1000000",
       priceCurrency: "KRW",
+      priceSpecification: { "@type": "PriceSpecification", price: "1000000", priceCurrency: "KRW", valueAddedTaxIncluded: true },
     },
     {
       "@type": "Offer",
       name: "오픈 파트너 1·2호 특별가",
       price: "500000",
       priceCurrency: "KRW",
+      priceSpecification: { "@type": "PriceSpecification", price: "500000", priceCurrency: "KRW", valueAddedTaxIncluded: true },
     },
   ],
 } as const;
