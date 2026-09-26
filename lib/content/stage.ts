@@ -119,7 +119,7 @@ export const INFO_SESSION = {
     {
       step: "05",
       title: "설명회 현장도 걱정 마세요",
-      desc: "전담 2인 배치 — 접수 · 진행 · 안내 · 체크인.",
+      desc: "전담 2인 배치 — 접수 · 진행 · 안내 · 체크인. 현장 커피 케이터링(LOCK IN COFFEE)까지.",
     },
     {
       step: "06",
@@ -242,7 +242,7 @@ export const STAGE_MOATS = [
   {
     no: "02",
     title: "콘텐츠 제작비 올인클루시브",
-    desc: "발표자료 PPT, 자료집 30부, 안내물 디자인, 모바일 쿠폰, 성과 리포트까지 기본가에 전부 포함입니다. 추가 옵션도 전 항목 정찰제 — 숨은 비용이 없습니다.",
+    desc: "발표자료 PPT, 자료집 30부, 안내물 디자인, 모바일 쿠폰, 성과 리포트, 스타트업 커피 브랜드 LOCK IN COFFEE의 현장 케이터링까지 기본가에 전부 포함입니다. 추가 옵션도 전 항목 정찰제 — 숨은 비용이 없습니다.",
   },
   {
     no: "03",
@@ -281,6 +281,11 @@ export const STAGE_TRUST = {
       src: "/trust/highway.png",
       alt: "하이웨이 합격연구소 로고",
       label: "연사 공급 파트너 · 하이웨이 합격연구소",
+    },
+    {
+      src: "/trust/lockin-coffee.png",
+      alt: "LOCK IN COFFEE 로고",
+      label: "케이터링 파트너 · LOCK IN COFFEE",
     },
   ],
   footnote:
@@ -447,7 +452,7 @@ export const STAGE_PRICING_PUBLIC = {
   standard: {
     label: "정식가",
     price: "100만 원",
-    includes: ["기획", "디자인", "마케팅(모객)", "모바일 쿠폰", "현장 운영", "성과 리포트"],
+    includes: ["기획", "디자인", "마케팅(모객)", "모바일 쿠폰", "현장 운영·케이터링", "성과 리포트"],
     note: "학원 규모(예상 인원·세션 수)에 따라 추가 금액이 발생할 수 있습니다.",
   },
   promo: {
