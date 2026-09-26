@@ -89,11 +89,11 @@ export const INFO_SESSION = {
     headline: "숫자로 보는 설명회의 가능성",
   },
   metrics: [
-    { value: "4.3", unit: "/ 5", label: "만족도" },
+    { value: "4.25", unit: "/ 5", label: "만족도" },
     { value: "100%", unit: "", label: "재참석 의사" },
     { value: "95.2%", unit: "", label: "추천 의사" },
-    { value: "47명", unit: "", label: "모객 실적" },
-    { value: "75%", unit: "", label: "재참여 희망" },
+    { value: "37명", unit: "", label: "신청 인원" },
+    { value: "71.4%", unit: "", label: "후속 설명회 희망" },
   ],
   stages: [
     {
@@ -119,7 +119,7 @@ export const INFO_SESSION = {
     {
       step: "05",
       title: "설명회 현장도 걱정 마세요",
-      desc: "전담 2인 배치 — 접수 · 진행 · 안내 · 체크인.",
+      desc: "전담 2인 배치 — 접수 · 진행 · 안내 · 체크인. 현장 커피 케이터링(LOCK IN COFFEE)까지.",
     },
     {
       step: "06",
@@ -159,12 +159,12 @@ export const INFO_SESSION = {
     },
   ],
   testimonial: {
-    quote: "다양한 강의가 너무 좋았습니다. 또 참석하고 싶어요.",
+    quote: "다양한 강의가 너무 좋았습니다.",
     source: "참석 학부모 · 자유의견 발췌",
   },
   ctaPrimary: { label: "카톡으로 3분 상담", href: "kakao" },
   ctaSecondary: { label: "견적 폼 작성하기", href: "#contact" },
-  note: "2026.02 EDUFLO 입시 설명회, 응답 21명  |  설명회 규모와 지역에 따라 결과는 달라질 수 있습니다.",
+  note: "2026.02 콜라보 설명회 · 신청 37명 · 만족도 조사 응답 21명(5점 척도)  |  만족도 = 6개 항목 평균 · 재참석·추천 = 4~5점 응답 비율 · 후속 설명회 희망 = 21명 중 15명  |  설명회 규모와 지역에 따라 결과는 달라질 수 있습니다.",
 } as const;
 
 /* ─── Phase 1 설명회 풀케어 — BM v1 확정 수치 (SSOT: docs/plans/2026-07-27-stage-bm-v1.md) ─── */
@@ -212,7 +212,7 @@ export const STAGE_ROI = {
       value: 20,
       suffix: "명",
       label: "설명회 모객",
-      note: "자체 실적 47명 → 보수적 하향",
+      note: "2026.02 콜라보 설명회 신청 37명 → 보수적 하향",
     },
     {
       value: 6,
@@ -242,7 +242,7 @@ export const STAGE_MOATS = [
   {
     no: "02",
     title: "콘텐츠 제작비 올인클루시브",
-    desc: "발표자료 PPT, 자료집 30부, 안내물 디자인, 모바일 쿠폰, 성과 리포트까지 기본가에 전부 포함입니다. 추가 옵션도 전 항목 정찰제 — 숨은 비용이 없습니다.",
+    desc: "발표자료 PPT, 자료집 30부, 안내물 디자인, 모바일 쿠폰, 성과 리포트, 스타트업 커피 브랜드 LOCK IN COFFEE의 현장 케이터링까지 기본가에 전부 포함입니다. 추가 옵션도 전 항목 정찰제 — 숨은 비용이 없습니다.",
   },
   {
     no: "03",
@@ -258,7 +258,7 @@ export const STAGE_TRUST = {
   stats: [
     { value: "20곳", label: "업무협약(MOU) 학원" },
     { value: "3,600%", label: "설명회 ROAS", note: "표준 시나리오 환산*" },
-    { value: "100%", label: "재참석 의사", note: "2026.02 실측 · 응답 21명" },
+    { value: "100%", label: "재참석 의사", note: "2026.02 실측 · 4~5점 응답 · 21명" },
   ],
   partners: [
     {
@@ -281,6 +281,11 @@ export const STAGE_TRUST = {
       src: "/trust/highway.png",
       alt: "하이웨이 합격연구소 로고",
       label: "연사 공급 파트너 · 하이웨이 합격연구소",
+    },
+    {
+      src: "/trust/lockin-coffee.png",
+      alt: "LOCK IN COFFEE 로고",
+      label: "케이터링 파트너 · LOCK IN COFFEE",
     },
   ],
   footnote:
@@ -447,7 +452,7 @@ export const STAGE_PRICING_PUBLIC = {
   standard: {
     label: "정식가",
     price: "100만 원",
-    includes: ["기획", "디자인", "마케팅(모객)", "모바일 쿠폰", "현장 운영", "성과 리포트"],
+    includes: ["기획", "디자인", "마케팅(모객)", "모바일 쿠폰", "현장 운영·케이터링", "성과 리포트"],
     note: "학원 규모(예상 인원·세션 수)에 따라 추가 금액이 발생할 수 있습니다.",
   },
   promo: {

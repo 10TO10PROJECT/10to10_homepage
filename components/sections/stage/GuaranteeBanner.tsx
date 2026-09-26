@@ -42,8 +42,8 @@ export function GuaranteeBanner() {
                   </span>
                 </h2>
                 <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/70 md:text-base">
-                  모객을 저희가 책임지기 때문에 드릴 수 있는 약속입니다. 자체
-                  최다 모객 실적 47명 — 목표 20명은 보수적인 숫자입니다.
+                  모객을 저희가 책임지기 때문에 드릴 수 있는 약속입니다. 2026.02
+                  콜라보 설명회 신청 37명 — 목표 20명은 보수적인 숫자입니다.
                 </p>
 
                 {/* 개런티 씰 */}
