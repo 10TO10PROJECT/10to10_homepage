@@ -1,9 +1,7 @@
 import { Suspense } from "react";
 import { Container } from "@/components/ui/Container";
 import { InquiryForm } from "@/components/forms/InquiryForm";
-import { KakaoSymbol } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { COMPANY } from "@/lib/content/company";
 import { STAGE_GUARANTEE, STAGE_URGENCY } from "@/lib/content/stage";
 
 export function StageContact() {
@@ -28,40 +26,8 @@ export function StageContact() {
           </p>
         </FadeIn>
 
-        {/* CTA 1순위 — 카카오톡 (T2 옐로 규격) */}
-        <FadeIn delay={0.05} className="mb-6">
-          <a
-            href={COMPANY.kakaoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-4 rounded-[var(--radius-card)] bg-[var(--color-kakao)] p-6 transition hover:brightness-95 md:p-7"
-          >
-            <div>
-              <div className="micro-label text-[var(--color-ink-950)]/60">
-                가장 빠른 방법
-              </div>
-              <div className="mt-1 flex items-center gap-2 text-lg font-bold text-[var(--color-ink-950)] md:text-xl">
-                <KakaoSymbol size={20} />
-                카톡으로 3분 상담
-              </div>
-              <div className="mt-1 text-sm text-[var(--color-ink-950)]/70">
-                평균 응답 30분 · 평일 09:00–19:00
-              </div>
-            </div>
-            <span
-              aria-hidden
-              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-ink-950)] text-[var(--color-kakao)]"
-            >
-              →
-            </span>
-          </a>
-          <p className="mt-3 text-center text-sm text-[var(--color-ink-500)]">
-            영업 전화 드리지 않습니다. 카톡과 폼으로만 답합니다.
-          </p>
-        </FadeIn>
-
         {/* 폼 직전 — 모객 보장 재노출 (심리 1: 제출 직전 불안 제거) */}
-        <FadeIn delay={0.1} className="mb-8">
+        <FadeIn delay={0.05} className="mb-8">
           <div className="flex items-start gap-3 rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white p-5 md:p-6">
             <span aria-hidden className="mt-0.5 font-bold text-[var(--color-mint-600)]">✓</span>
             <div className="text-[15px] leading-relaxed text-[var(--color-ink-900)]">
@@ -73,10 +39,11 @@ export function StageContact() {
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.15}>
+        {/* CTA 1순위 — 견적 문의 폼. 카카오톡은 제출 완료 화면 + 우하단 KakaoFab이 담당 */}
+        <FadeIn delay={0.1}>
           <div className="rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-6 md:p-8">
             <div className="mb-2 text-base font-bold text-[var(--color-ink-900)]">
-              또는 견적 문의 폼
+              견적 문의 보내기
             </div>
             <p className="mb-5 text-sm text-[var(--color-ink-500)]">
               30초면 됩니다. 견적은 카톡으로 보내드려요.

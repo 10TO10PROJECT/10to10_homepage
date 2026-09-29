@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/Button";
+import { Button, KakaoSymbol } from "@/components/ui/Button";
 import { inquirySchema, type InquiryInput } from "@/lib/schema/inquiry";
 import { cn } from "@/lib/cn";
 import { COMPANY } from "@/lib/content/company";
@@ -42,6 +42,14 @@ export function InquiryForm({ source = "stage" }: { source?: Source }) {
     "idle",
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // 긴 폼이 짧은 완료 카드로 바뀌면 화면 밖으로 밀릴 수 있어 완료 카드로 스크롤
+  useEffect(() => {
+    if (status === "success") {
+      successRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -88,21 +96,43 @@ export function InquiryForm({ source = "stage" }: { source?: Source }) {
 
   if (status === "success") {
     return (
-      <div className="rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white p-10 text-center">
+      <div
+        ref={successRef}
+        className="break-keep rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white px-4 py-6 text-center md:p-10"
+      >
         <div className="text-2xl font-bold text-[var(--color-ink-950)]">
           문의 접수 완료!
         </div>
         <p className="mt-3 text-[var(--color-ink-700)]">
           영업일 기준 24시간 내 카톡으로 연락드립니다.
         </p>
+
+        {/* 제출 후 CTA — 기다리기 싫은 원장님께 카카오톡이 가장 빠른 길 */}
+        <p className="mt-6 text-sm font-semibold text-[var(--color-ink-900)]">
+          바로 상담받고 싶으시다면, 카카오톡이 가장 빠릅니다.
+        </p>
         <a
           href={COMPANY.kakaoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] px-5 py-3 text-sm font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
+          className="mt-3 flex items-center justify-between gap-3 rounded-[var(--radius-card)] bg-[var(--color-kakao)] p-4 text-left transition hover:brightness-95 md:p-5"
         >
-          카톡 채널 바로가기
-          <span aria-hidden>→</span>
+          <div>
+            <div className="micro-label text-[var(--color-ink-950)]/60">가장 빠른 방법</div>
+            <div className="mt-1 flex items-center gap-2 text-lg font-bold text-[var(--color-ink-950)]">
+              <KakaoSymbol size={20} />
+              카톡으로 3분 상담
+            </div>
+            <div className="mt-1 text-sm text-[var(--color-ink-950)]/70">
+              평균 응답 30분 · 평일 09:00–19:00
+            </div>
+          </div>
+          <span
+            aria-hidden
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-ink-950)] text-[var(--color-kakao)]"
+          >
+            →
+          </span>
         </a>
       </div>
     );
