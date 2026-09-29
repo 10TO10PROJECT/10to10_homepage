@@ -55,7 +55,8 @@ export function PromoShowcase() {
           </div>
         </FadeIn>
 
-        {/* 포트폴리오 — 가로 스크롤 스냅 */}
+        {/* 포트폴리오 — 가로 스크롤 스냅 (실제 진행분이 있을 때만 노출) */}
+        {PROMO_PORTFOLIO.length > 0 && (
         <FadeIn delay={0.15} className="mt-12">
           <div className="mb-5 flex items-end justify-between gap-4">
             <div>
@@ -100,6 +101,7 @@ export function PromoShowcase() {
           </div>
           <p className="mt-2 text-[13px] text-[var(--color-ink-500)]">{PROMO_NOTE}</p>
         </FadeIn>
+        )}
       </Container>
     </section>
   );
