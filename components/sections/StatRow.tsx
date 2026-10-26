@@ -10,15 +10,15 @@ const STATS = [
     emphasis: true,
   },
   {
-    value: "47명",
-    label: "자체 설명회 최다 모객",
-    note: "2026.02 실적",
+    value: "37명",
+    label: "콜라보 설명회 신청 인원",
+    note: "2026.02 · 신청 기준",
     emphasis: false,
   },
   {
     value: "95.2%",
     label: "참석 학부모 추천 의사",
-    note: "실측 · 응답 21명",
+    note: "4~5점 응답 · 21명",
     emphasis: false,
   },
 ] as const;

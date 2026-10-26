@@ -44,11 +44,11 @@ export function InfoSessionFlagship() {
                 <div className="flex items-center gap-1 text-[var(--color-mint-500)]">
                   <LaurelBranch size={44} side="left" />
                   <div className="min-w-0">
-                    <div className="text-[13px] font-semibold text-white/70">{m.label}</div>
+                    <div className="break-keep text-[13px] font-semibold text-white/70">{m.label}</div>
                     <div className="display-type mt-0.5 text-2xl md:text-3xl">
                       {m.value}
                       {m.unit && (
-                        <span className="ml-0.5 text-sm text-white/50">{m.unit}</span>
+                        <span className="ml-0.5 whitespace-nowrap text-sm text-white/50">{m.unit}</span>
                       )}
                     </div>
                   </div>

@@ -17,7 +17,7 @@ export function StageHero() {
               <div className="flex flex-wrap items-center gap-3">
                 <StageLogo height={20} />
                 <span className="micro-label text-[var(--color-ink-500)]">
-                  모객부터 전환까지 책임지는 학원 설명회 풀케어 솔루션
+                  모객부터 등록까지 책임지는 학원 설명회 풀케어 서비스
                 </span>
               </div>
             </FadeIn>
@@ -61,7 +61,7 @@ function StageHeroSub() {
   return (
     <>
       <p className="text-lg font-bold text-[var(--color-ink-950)] md:text-xl">
-        학부모가 직접 방문하는 설명회는, 등록으로 이어지는 가장 확실한 퍼널입니다.
+        학부모가 직접 찾아오는 설명회는, 등록으로 이어지는 가장 확실한 길입니다.
       </p>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-[var(--color-ink-700)] md:text-lg">
         홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리와 데이터
@@ -69,7 +69,7 @@ function StageHeroSub() {
       </p>
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2 text-[15px] text-[var(--color-ink-700)]">
         <span>
-          <strong className="text-[var(--color-ink-950)]">4.3</strong> 만족도 / 5.0
+          <strong className="text-[var(--color-ink-950)]">4.25</strong> 만족도 / 5.0
         </span>
         <span>
           <strong className="text-[var(--color-ink-950)]">100%</strong> 재참석 의사
@@ -78,7 +78,7 @@ function StageHeroSub() {
           <strong className="text-[var(--color-ink-950)]">95.2%</strong> 추천 의사
         </span>
         <span className="text-[13px] text-[var(--color-ink-500)]">
-          2026.02 자체 설명회 실측 · 응답 21명
+          2026.02 콜라보 설명회 · 응답 21명 · 5점 척도 (재참석·추천 = 4~5점 응답 비율)
         </span>
       </div>
     </>
