@@ -269,7 +269,7 @@ export const STAGE_TRUST = {
     {
       src: "/trust/moduchangup.png",
       alt: "모두의창업 로고",
-      label: "모두의창업 1기 · 2라운드 진출팀 (상위 1.7%)",
+      label: "모두의창업 1기 · 3라운드 진출팀",
     },
     {
       src: "/trust/alphabrothers.png",
@@ -283,9 +283,9 @@ export const STAGE_TRUST = {
       label: "연사 공급 파트너 · 하이웨이 합격연구소",
     },
     {
-      src: "/trust/lockin-coffee.png",
-      alt: "LOCK IN COFFEE 로고",
-      label: "케이터링 파트너 · LOCK IN COFFEE",
+      src: "/trust/thezonebio.png",
+      alt: "더존바이오 THE ZONE BIO 로고",
+      label: "케이터링 파트너 · 더존바이오 (LOCK IN COFFEE)",
     },
   ],
   footnote:
