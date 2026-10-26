@@ -44,7 +44,7 @@ export function Slide({
         )}
         <div className="flex-1 flex flex-col justify-center min-h-0">{children}</div>
         <div className="text-[0.75rem] tracking-[0.18em] uppercase opacity-50 font-medium">
-          10to10 · Link Earth Inc.
+          10to10 · 텐투텐
         </div>
       </div>
     </section>

@@ -157,6 +157,16 @@ export const INFO_SESSION = {
       alt: "10to10 앱 안내 세션 — 현장",
       caption: "10to10 앱 연동 안내",
     },
+    {
+      src: "/info-session/07-rebirth-session.jpg",
+      alt: "리버스수학학원 설명회 — 원장님 세션과 참석 학부모 (2026.10)",
+      caption: "리버스수학학원 설명회 · 원장님 세션 (2026.10)",
+    },
+    {
+      src: "/info-session/06-rebirth-desk.jpg",
+      alt: "리버스수학학원 설명회 — 접수 데스크, 자료집과 다과 세팅 (2026.10)",
+      caption: "접수 데스크 · 자료집·다과 세팅 (2026.10)",
+    },
   ],
   testimonial: {
     quote: "다양한 강의가 너무 좋았습니다.",

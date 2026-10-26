@@ -1,5 +1,5 @@
 export const COMPANY = {
-  legalName: "Link Earth Inc.",
+  legalName: "텐투텐(10to10)",
   brandName: "10to10",
   ceo: "신현우",
   bizNo: "154-01-03674",
