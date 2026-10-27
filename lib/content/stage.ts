@@ -135,37 +135,37 @@ export const INFO_SESSION = {
     {
       src: "/info-session/01-hall-wide.jpg",
       alt: "설명회 현장 — 학부모 가득 찬 강의실",
-      caption: "학부모 가득 찬 현장",
+      caption: "학부모 가득 찬 현장 · 실제 현장 2026.02",
     },
     {
       src: "/info-session/02-speaker-female.jpg",
       alt: "여성 연사 — 학교별 수업 자료 세션",
-      caption: "전문 연사 섭외",
+      caption: "전문 연사 섭외 · 실제 현장 2026.02",
     },
     {
       src: "/info-session/03-speaker-male.jpg",
       alt: "이경보 원장 — 입시 컨설팅 세션",
-      caption: "입시 컨설턴트 세션",
+      caption: "입시 컨설턴트 세션 · 실제 현장 2026.02",
     },
     {
       src: "/info-session/04-booklet.jpg",
       alt: "EDUFLO 브랜드 안내책자 · 인쇄물",
-      caption: "브랜드 일관 인쇄물",
+      caption: "브랜드 일관 인쇄물 · 실제 현장 2026.02",
     },
     {
       src: "/info-session/05-hall-app.jpg",
       alt: "10to10 앱 안내 세션 — 현장",
-      caption: "10to10 앱 연동 안내",
+      caption: "10to10 앱 연동 안내 · 실제 현장 2026.02",
     },
     {
       src: "/info-session/07-rebirth-session.jpg",
       alt: "리버스수학학원 설명회 — 원장님 세션과 참석 학부모 (2026.10)",
-      caption: "리버스수학학원 설명회 · 원장님 세션 (2026.10)",
+      caption: "리버스수학학원 원장님 세션 · 실제 현장 2026.10",
     },
     {
       src: "/info-session/06-rebirth-desk.jpg",
       alt: "리버스수학학원 설명회 — 접수 데스크, 자료집과 다과 세팅 (2026.10)",
-      caption: "접수 데스크 · 자료집·다과 세팅 (2026.10)",
+      caption: "접수 데스크 — 자료집·다과 세팅 · 실제 현장 2026.10",
     },
   ],
   testimonial: {

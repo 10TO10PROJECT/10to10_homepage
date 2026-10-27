@@ -57,7 +57,7 @@ export function SiteGallery() {
                     loading={i === 0 ? "eager" : "lazy"}
                   />
                   <figcaption className="micro-label absolute bottom-4 left-4 rounded-[var(--radius-badge)] bg-[var(--color-ink-950)]/80 px-2.5 py-1.5 text-white">
-                    {p.caption} · 실제 현장 2026.02
+                    {p.caption}
                   </figcaption>
                 </figure>
               ))}
