@@ -29,56 +29,99 @@ export const PROMO_LOGIC = {
   ],
 } as const;
 
-export const PROMO_PORTFOLIO = [
+export type PromoPortfolioItem = {
+  src: string;
+  alt: string;
+  label: string;
+  aspect: "square" | "portrait";
+};
+
+/**
+ * 공개 포트폴리오 = 실제 진행분만 (데모 학원 샘플은 2026-09-12 전량 내림).
+ * 2026-10-20 CEO 지시로 실물 교체: 2026.02 콜라보 설명회 포스터 +
+ * 2026.10.09 리버스수학학원 설명회 모객 포스터·후기 인스타 캐러셀(8장).
+ * 원본: 사업 자료/홍보자료/컨퍼런스 포스터 · docs/stage/2026-10-09-rebirth
+ */
+export const PROMO_PORTFOLIO: readonly PromoPortfolioItem[] = [
   {
-    src: "/stage-mockups/11-summer.png",
-    alt: "2026 여름방학특강 포스터 — 시즌 모집 디자인",
-    label: "시즌 특강 포스터",
+    src: "/promo/feb-main-poster.jpg",
+    alt: "2026.02 동탄 입시 전략 설명회 메인 포스터 — EDUFLO x 더나은국어학원",
+    label: "메인 포스터 · 2026.02 입시 전략 설명회",
     aspect: "portrait",
   },
   {
-    src: "/promo/signage-mockup.jpg",
-    alt: "10to10 수학학원 간판 사이니지 목업",
-    label: "간판 · 사이니지",
-    aspect: "square",
-  },
-  {
-    src: "/stage-mockups/03-100points.jpg",
-    alt: "또 100점, 또 1등 — 성적 인증 포스터",
-    label: "성적 인증 포스터",
+    src: "/promo/feb-speaker-leekyungbo.jpg",
+    alt: "연사 세션 홍보 포스터 — 이경보 대표 '교육과정의 변화는 곧 기회입니다'",
+    label: "연사 세션 포스터 · 입시 컨설턴트",
     aspect: "portrait",
   },
   {
-    src: "/stage-mockups/04-results.jpg",
-    alt: "입시 결과·성적 향상 후기 카드뉴스",
-    label: "입시 결과 카드뉴스",
+    src: "/promo/feb-speaker-kimjonghwan.jpg",
+    alt: "연사 세션 홍보 포스터 — 김종환 대표",
+    label: "연사 세션 포스터 · 학습법 특강",
     aspect: "portrait",
   },
   {
-    src: "/stage-mockups/01-instructor.jpg",
-    alt: "강사 소개·커리큘럼 카드뉴스",
-    label: "강사 · 커리큘럼 소개",
+    src: "/promo/feb-senior-mom.jpg",
+    alt: "선배맘 토크 세션 홍보 포스터",
+    label: "세션 포스터 · 선배맘 토크",
     aspect: "portrait",
   },
   {
-    src: "/promo/leveltest-card.jpg",
-    alt: "무료 레벨테스트 신청 카드뉴스 — QR 전환 디자인",
-    label: "신청 전환 카드뉴스",
-    aspect: "square",
-  },
-  {
-    src: "/stage-mockups/08-grade1.jpg",
-    alt: "내신부터 수능까지 확실한 1등급 비법 — 타깃 모집 카드뉴스",
-    label: "타깃 모집 카드뉴스",
+    src: "/promo/oct-rebirth-poster.jpg",
+    alt: "2026.10.09 리버스수학학원 예비고1 설명회 모객 포스터 (인스타그램 피드)",
+    label: "모객 포스터 · 2026.10 리버스수학학원 설명회",
     aspect: "portrait",
   },
   {
-    src: "/stage-mockups/12-place-setting-pitch.jpg",
-    alt: "학원 네이버 플레이스 세팅 안내 콘텐츠",
-    label: "네이버 플레이스 세팅",
+    src: "/promo/oct-review-01.jpg",
+    alt: "리버스수학학원 설명회 후기 인스타그램 캐러셀 1 — 표지 '동탄 4개 고교 수학 전면 분석'",
+    label: "후기 캐러셀 ① 표지",
     aspect: "portrait",
   },
-] as const;
+  {
+    src: "/promo/oct-review-02.jpg",
+    alt: "후기 캐러셀 2 — 현장 준비",
+    label: "후기 캐러셀 ② 현장 준비",
+    aspect: "portrait",
+  },
+  {
+    src: "/promo/oct-review-03.jpg",
+    alt: "후기 캐러셀 3 — 1부 원장님 세션",
+    label: "후기 캐러셀 ③ 원장님 세션",
+    aspect: "portrait",
+  },
+  {
+    src: "/promo/oct-review-04.jpg",
+    alt: "후기 캐러셀 4 — 같은 A, 다른 위치",
+    label: "후기 캐러셀 ④ 같은 A, 다른 위치",
+    aspect: "portrait",
+  },
+  {
+    src: "/promo/oct-review-05.jpg",
+    alt: "후기 캐러셀 5 — 2부 대표 세션",
+    label: "후기 캐러셀 ⑤ 대표 세션",
+    aspect: "portrait",
+  },
+  {
+    src: "/promo/oct-review-06.jpg",
+    alt: "후기 캐러셀 6 — 겨울방학 3가지",
+    label: "후기 캐러셀 ⑥ 겨울방학 3가지",
+    aspect: "portrait",
+  },
+  {
+    src: "/promo/oct-review-07.jpg",
+    alt: "후기 캐러셀 7 — 학부모님 설문",
+    label: "후기 캐러셀 ⑦ 학부모님 설문",
+    aspect: "portrait",
+  },
+  {
+    src: "/promo/oct-review-08.jpg",
+    alt: "후기 캐러셀 8 — 다음 소식",
+    label: "후기 캐러셀 ⑧ 다음 소식",
+    aspect: "portrait",
+  },
+];
 
 export const PROMO_NOTE =
-  "* 포트폴리오는 데모 학원 브랜딩(10to10 수학학원)으로 제작한 자체 디자인 샘플입니다.";
+  "* 2026.02 콜라보 설명회와 2026.10 리버스수학학원 설명회에서 실제 사용·게시한 홍보물입니다.";
