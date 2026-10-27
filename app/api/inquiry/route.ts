@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { resendAddresses } from "@/lib/resend";
 import { inquirySchema } from "@/lib/schema/inquiry";
 import { createInquiryRow } from "@/lib/notion";
 
@@ -31,7 +32,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "notion failure" }, { status: 502 });
   }
 
-  if (process.env.RESEND_API_KEY && process.env.RESEND_TO_EMAIL) {
+  if (process.env.RESEND_API_KEY) {
+    const { from, to } = resendAddresses();
     try {
       await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -40,8 +42,8 @@ export async function POST(req: Request) {
           Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: "10to10 <onboarding@resend.dev>",
-          to: process.env.RESEND_TO_EMAIL,
+          from,
+          to,
           subject: `[${parsed.data.source}] ${parsed.data.academyName} (${parsed.data.name})`,
           text: [
             `이름: ${parsed.data.name}`,

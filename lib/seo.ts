@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/site";
+import { COMPANY } from "@/lib/content/company";
 import { STAGE_FAQ } from "@/lib/content/stage";
 
 /** 사이트 전역 — 조직 정보 (구글 지식패널·네이버 사이트 정보) */
@@ -14,7 +15,7 @@ export const ORGANIZATION_JSONLD = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "stage@10to10.kr",
+    email: COMPANY.email,
     availableLanguage: "Korean",
   },
 } as const;
