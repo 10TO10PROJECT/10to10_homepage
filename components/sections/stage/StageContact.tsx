@@ -31,7 +31,7 @@ export function StageContact() {
           <div className="flex items-start gap-3 rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white p-5 md:p-6">
             <span aria-hidden className="mt-0.5 font-bold text-[var(--color-mint-600)]">✓</span>
             <div className="text-[15px] leading-relaxed text-[var(--color-ink-900)]">
-              <strong>모객 보장</strong> — 신청 20명을 못 채우면, 부족한 만큼 돌려드립니다.{" "}
+              <strong>모객 보장</strong> — 약속한 인원의 80%를 못 채우면, 대행료의 절반을 돌려드립니다.{" "}
               <span className="text-[var(--color-ink-500)]">{STAGE_GUARANTEE.sub}</span>
               <span className="mx-2 text-[var(--color-ink-300)]">|</span>
               만족도 4.25/5.0 · 재참석 의사 100%(4~5점 응답) · 응답 21명

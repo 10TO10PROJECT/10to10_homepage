@@ -103,7 +103,7 @@ function HeroCard() {
       </div>
       <div className="flex flex-1 flex-col p-6 md:p-7">
         <p className="text-[15px] leading-relaxed text-[var(--color-ink-700)]">
-          신청 20명을 못 채우면 부족한 만큼 돌려드리는{" "}
+          약속한 인원의 80%를 못 채우면 대행료의 절반을 돌려드리는{" "}
           <strong className="text-[var(--color-ink-950)]">모객 보장</strong>까지.
         </p>
         {/* 히어로 primary = 견적 문의 (abbg·GF 문법). 카카오 접점은 우하단 KakaoFab 전담 */}

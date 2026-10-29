@@ -37,7 +37,7 @@ export default function InquiryPage() {
               bullets={[
                 "모객 20명 → 등록 6명 = 예상 매출 720만 원",
                 "만족도 4.25 / 5.0 · 재참석 의사 100%(4~5점 응답, 21명)",
-                "신청 20명 미달 시 부족한 만큼 환급 — 모객 보장",
+                "합의 인원 80% 미달 시 대행료 반액 환급 — 모객 보장",
               ]}
               primary={{ href: "/#contact", label: "설명회 견적 문의하기" }}
               secondary={{ href: "/", label: "STAGE 자세히 보기" }}

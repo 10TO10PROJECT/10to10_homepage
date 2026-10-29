@@ -3,14 +3,14 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { STAGE_GUARANTEE } from "@/lib/content/stage";
 
 const GUARANTEE_TERMS = [
-  { label: "목표 신청 인원", value: "20명" },
-  { label: "미달 시 환급", value: "1인당 5만 원" },
-  { label: "환급 상한", value: "대행료의 50%" },
+  { label: "보장 인원", value: "원장님과 합의" },
+  { label: "환급 기준", value: "합의 인원의 80% 미달" },
+  { label: "환급액", value: "대행료의 50%" },
 ] as const;
 
 /**
  * 심리 1 — 손실 회피가 최대 전환 장치. 주변 화이트 섹션과 대비되는 다크 블록 +
- * 대형 '20' 워터마크 + 보장 조건 스펙 패널 + 개런티 씰.
+ * 대형 '80%' 워터마크 + 보장 조건 스펙 패널 + 개런티 씰.
  */
 export function GuaranteeBanner() {
   return (
@@ -23,7 +23,7 @@ export function GuaranteeBanner() {
               aria-hidden
               className="display-type pointer-events-none absolute -right-6 -top-14 select-none text-[16rem] leading-none text-white/[0.05] md:-top-24 md:text-[26rem]"
             >
-              20
+              80%
             </div>
 
             <div className="relative grid gap-8 p-8 md:grid-cols-[1.4fr_1fr] md:gap-12 md:p-14">
@@ -35,15 +35,15 @@ export function GuaranteeBanner() {
                   <span className="text-sm font-semibold text-white/60">저희가 책임지고 함께 하겠습니다</span>
                 </div>
                 <h2 className="display-type mt-6 whitespace-pre-line text-3xl md:text-5xl">
-                  신청 20명을 못 채우면,
+                  약속한 인원의 80%를 못 채우면,
                   {"\n"}
                   <span className="text-[var(--color-mint-500)]">
-                    부족한 만큼 돌려드립니다.
+                    대행료의 절반을 돌려드립니다.
                   </span>
                 </h2>
                 <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/70 md:text-base">
-                  모객을 저희가 책임지기 때문에 드릴 수 있는 약속입니다. 2026.02
-                  콜라보 설명회 신청 37명 — 목표 20명은 보수적인 숫자입니다.
+                  모객을 저희가 책임지기 때문에 드릴 수 있는 약속입니다. 보장 인원은
+                  학원 규모와 상권에 맞춰 원장님과 합의해 계약서에 적습니다.
                 </p>
 
                 {/* 개런티 씰 */}
