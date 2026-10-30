@@ -104,8 +104,9 @@ export function SiteGallery() {
           <p className="mt-3 text-center text-[13px] text-[var(--color-ink-500)]">
             실제 설명회 사진 · 좌우로 넘기면서 확인해 보세요.
           </p>
-          <p className="script-accent mt-6 text-center text-2xl leading-snug text-[var(--color-ink-900)] md:text-3xl">
-            기획부터 현장, 결과까지<br />하나의 팀이 끝까지 책임지겠습니다
+          <p className="display-type mt-8 text-center text-2xl text-[var(--color-ink-950)] md:text-3xl">
+            기획부터 현장, 결과까지<br />
+            <span className="hl">하나의 팀이 끝까지</span> 책임지겠습니다
           </p>
         </FadeIn>
       </Container>

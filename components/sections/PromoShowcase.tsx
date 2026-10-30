@@ -36,7 +36,7 @@ export function PromoShowcase() {
 
         {/* 모객 로직 4단계 */}
         <FadeIn delay={0.1} className="mt-10">
-          <div className="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-[var(--color-cloud)] md:grid-cols-4">
+          <div className="grid gap-px overflow-hidden rounded-[var(--radius-card)] shadow-card bg-[var(--color-cloud)] md:grid-cols-4">
             {PROMO_LOGIC.steps.map((s) => (
               <div key={s.no} className="bg-white p-6 md:p-7">
                 <div className="flex items-center gap-2">
@@ -72,12 +72,12 @@ export function PromoShowcase() {
           </div>
           <div
             ref={trackRef}
-            className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-3 md:-mx-8 md:px-8 [scrollbar-width:thin]"
+            className="-mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pt-3 pb-5 md:-mx-8 md:px-8 [scrollbar-width:thin]"
           >
             {PROMO_PORTFOLIO.map((p) => (
               <figure
                 key={p.src}
-                className="group w-[240px] shrink-0 snap-start overflow-hidden rounded-[var(--radius-img)] border border-[var(--color-cloud)] bg-white md:w-[300px]"
+                className="group w-[240px] shrink-0 snap-start overflow-hidden rounded-[var(--radius-img)] bg-white shadow-card transition duration-300 md:w-[300px] md:odd:-rotate-[1.5deg] md:even:rotate-[1.5deg] md:hover:rotate-0 md:hover:-translate-y-1 md:hover:shadow-elevated"
               >
                 <div
                   className={`relative overflow-hidden ${
@@ -121,7 +121,7 @@ function ArrowButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-cloud)] bg-white text-[var(--color-ink-900)] transition hover:border-[var(--color-ink-500)]"
+      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[var(--color-ink-900)] shadow-card transition hover:shadow-elevated"
     >
       <span aria-hidden>{dir === 1 ? "→" : "←"}</span>
     </button>
