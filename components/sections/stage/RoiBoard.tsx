@@ -14,31 +14,31 @@ export function RoiBoard({
   return (
     <section id="roi" className="py-10 md:py-14">
       <Container size="wide">
-        <div className="rounded-[var(--radius-break)] bg-[var(--color-ink-900)] p-7 text-white md:p-14">
+        <div className="rounded-[var(--radius-break)] bg-[var(--color-paper-dim)] p-7 text-[var(--color-ink-950)] md:p-14">
           <FadeIn className="max-w-3xl">
-            <div className="text-sm font-semibold text-white/60">
+            <div className="text-sm font-semibold text-[var(--color-ink-700)]">
               {STAGE_ROI.eyebrow}
             </div>
             <h2 className="display-type mt-3 text-3xl md:text-5xl">
               신규 등록은{" "}
-              <span className="text-[var(--color-mint-500)]">만남</span>에서
+              <span className="hl">만남</span>에서
               결정됩니다.
             </h2>
-            <p className="mt-4 text-base text-white/70 md:text-lg">{STAGE_ROI.subhead}</p>
+            <p className="mt-4 text-base text-[var(--color-ink-700)] md:text-lg">{STAGE_ROI.subhead}</p>
           </FadeIn>
 
           {/* 신뢰 지표 — 방문 상담 74.2% (대교 에듀베이션 조사, 출처 각주 필수) */}
           <FadeIn delay={0.05} className="mt-8">
-            <div className="rounded-[var(--radius-card)] border border-[var(--color-mint-500)]/40 bg-[var(--color-mint-500)]/10 px-6 py-5 md:px-8">
+            <div className="rounded-[var(--radius-card)] bg-white shadow-card px-6 py-5 md:px-8">
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <span className="max-w-md text-[15px] leading-snug text-white/85 md:text-base">
+                <span className="max-w-md text-[15px] leading-snug text-[var(--color-ink-700)] md:text-base">
                   {STAGE_ROI.trust.label}
                 </span>
-                <span className="display-type text-5xl text-[var(--color-mint-500)] md:text-6xl">
+                <span className="display-type text-5xl text-[var(--color-mint-700)] md:text-6xl">
                   {STAGE_ROI.trust.value}
                 </span>
               </div>
-              <p className="mt-3 text-[13px] text-white/45">{STAGE_ROI.trust.source}</p>
+              <p className="mt-3 text-[13px] text-[var(--color-ink-500)]">{STAGE_ROI.trust.source}</p>
             </div>
           </FadeIn>
 
@@ -53,27 +53,27 @@ export function RoiBoard({
               {STAGE_ROI.steps.map((s, i) => (
                 <div
                   key={s.label}
-                  className="relative rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-6 md:p-8"
+                  className="relative rounded-[var(--radius-card)] bg-white shadow-card p-6 md:p-8"
                 >
-                  <div className="micro-label text-white/45">STEP {i + 1}</div>
+                  <div className="micro-label text-[var(--color-ink-500)]">STEP {i + 1}</div>
                   <div className="mt-3 flex items-baseline gap-1">
                     <Counter
                       target={s.value}
                       className={`display-type text-5xl md:text-6xl ${
-                        i === 2 ? "text-[var(--color-mint-500)]" : "text-white"
+                        i === 2 ? "text-[var(--color-mint-700)]" : "text-[var(--color-ink-950)]"
                       }`}
                     />
-                    <span className="text-xl font-bold text-white/80">{s.suffix}</span>
+                    <span className="text-xl font-bold text-[var(--color-ink-700)]">{s.suffix}</span>
                   </div>
-                  <div className="mt-2.5 text-base font-bold text-white/90">{s.label}</div>
-                  <div className="mt-1 text-sm leading-relaxed text-white/50">{s.note}</div>
+                  <div className="mt-2.5 text-base font-bold text-[var(--color-ink-700)]">{s.label}</div>
+                  <div className="mt-1 text-sm leading-relaxed text-[var(--color-ink-500)]">{s.note}</div>
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-[13px] leading-relaxed text-white/45">
+            <p className="mt-4 text-[13px] leading-relaxed text-[var(--color-ink-500)]">
               {STAGE_ROI.footnote}
             </p>
-            <p className="mt-8 border-t border-white/10 pt-6 text-right text-lg font-bold text-white/90 md:text-xl">
+            <p className="mt-8 border-t border-[var(--color-cloud)] pt-6 text-right text-lg font-bold text-[var(--color-ink-700)] md:text-xl">
               {STAGE_ROI.closer}
             </p>
           </FadeIn>
@@ -82,7 +82,7 @@ export function RoiBoard({
             <FadeIn delay={0.15} className="mt-8">
               <a
                 href={cta.href}
-                className="inline-flex h-12 items-center gap-2 rounded-[var(--radius-btn)] bg-white px-6 text-base font-bold text-[var(--color-ink-950)] transition hover:bg-[var(--color-ink-100)]"
+                className="inline-flex h-12 items-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-ink-950)] px-6 text-base font-bold text-white transition hover:bg-black"
               >
                 {cta.label}
                 <span aria-hidden>→</span>

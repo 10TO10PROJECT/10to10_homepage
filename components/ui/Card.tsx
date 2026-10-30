@@ -12,8 +12,8 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7",
-        interactive && "transition-colors duration-300 hover:border-[var(--color-ink-500)]",
+        "rounded-[var(--radius-card)] bg-white p-7 shadow-card",
+        interactive && "transition-shadow duration-300 hover:shadow-elevated",
         className,
       )}
     >

@@ -49,7 +49,7 @@ export const STAGE_SERVICE_JSONLD = {
     },
     {
       "@type": "Offer",
-      name: "파트너 프로모션가",
+      name: "초기 파트너 프로모션가",
       price: "500000",
       priceCurrency: "KRW",
       priceSpecification: { "@type": "PriceSpecification", price: "500000", priceCurrency: "KRW", valueAddedTaxIncluded: true },

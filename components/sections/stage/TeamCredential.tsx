@@ -17,9 +17,47 @@ export function TeamCredential() {
           </h2>
         </FadeIn>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        {/* 정부 창업 프로그램 선발 단계 — 인쇄물·캐러셀과 같은 수치 (지원~2R: 2026.09 언론 보도, 3R: 2026.10 선발) */}
+        <FadeIn className="mt-10">
+          <div className="rounded-[var(--radius-card)] bg-[var(--color-ink-950)] p-6 text-white md:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <span className="text-[15px] font-bold text-[var(--color-mint-500)] md:text-base">
+                중소벤처기업부 「모두의 창업」 1기 · 3라운드 진출
+              </span>
+              <span className="rounded-full bg-[var(--color-mint-500)] px-3.5 py-1 text-sm font-extrabold text-[var(--color-ink-950)]">
+                상위 0.3%
+              </span>
+            </div>
+            <ol className="mt-5 grid grid-cols-2 gap-2.5 md:grid-cols-4">
+              {[
+                { label: "지원", value: "6.3만", unit: "명" },
+                { label: "1라운드", value: "5,000", unit: "명" },
+                { label: "2라운드", value: "1,100", unit: "명" },
+                { label: "3라운드 · 텐투텐", value: "200", unit: "명", on: true },
+              ].map((r) => (
+                <li
+                  key={r.label}
+                  className={`rounded-[var(--radius-img)] px-4 py-3.5 ${
+                    r.on ? "bg-[var(--color-mint-500)] text-[var(--color-ink-950)]" : "bg-white/[0.07]"
+                  }`}
+                >
+                  <div className={`text-[13px] font-semibold ${r.on ? "" : "text-white/60"}`}>{r.label}</div>
+                  <div className="display-type mt-1 text-2xl md:text-3xl">
+                    {r.value}
+                    <span className="ml-0.5 text-sm font-bold">{r.unit}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-4 text-[12px] text-white/50">
+              지원~2라운드 인원은 2026년 9월 언론 보도 기준, 3라운드 200명은 2026년 10월 선발 기준
+            </p>
+          </div>
+        </FadeIn>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
           <FadeIn>
-            <div className="h-full rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 md:p-9">
+            <div className="h-full rounded-[var(--radius-card)] shadow-card bg-white p-7 md:p-9">
               <div className="flex items-baseline gap-3">
                 <span className="text-2xl font-bold text-[var(--color-ink-950)]">
                   {STAGE_TEAM.ceo.name}
@@ -45,7 +83,7 @@ export function TeamCredential() {
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
-            <div className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 md:p-9">
+            <div className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-white p-7 md:p-9">
               <h3 className="text-xl font-bold text-[var(--color-ink-950)]">
                 {STAGE_TEAM.team.title}
               </h3>

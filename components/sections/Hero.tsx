@@ -84,7 +84,7 @@ export function Hero() {
             {HERO_OUTCOMES.map((o, i) => (
               <div
                 key={o.title}
-                className="group overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white"
+                className="group overflow-hidden rounded-[var(--radius-card)] shadow-card bg-white"
               >
                 <div className="relative aspect-[16/8] overflow-hidden">
                   <Image

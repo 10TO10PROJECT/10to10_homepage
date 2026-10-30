@@ -41,7 +41,7 @@ export function StageContact() {
 
         {/* CTA 1순위 — 견적 문의 폼. 카카오톡은 제출 완료 화면 + 우하단 KakaoFab이 담당 */}
         <FadeIn delay={0.1}>
-          <div className="rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-6 md:p-8">
+          <div className="rounded-[var(--radius-card)] shadow-card bg-white p-6 md:p-8">
             <div className="mb-2 text-base font-bold text-[var(--color-ink-900)]">
               견적 문의 보내기
             </div>

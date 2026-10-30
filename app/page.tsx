@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-/** 메인 = STAGE 랜딩. 섹션 맵 = 멘토링 ④-1: 히어로 → 신뢰도 → 페인 → 솔루션 → 포트폴리오 → 차별화 → 팀 → 가격·보장 → 수행방안 */
+/** 메인 = STAGE 랜딩. 섹션 맵 = 인쇄물·캐러셀 논리: 히어로 → 신뢰도 → 페인 → 왜 설명회 → 실제 사례·포트폴리오 → 솔루션 → 차별화 → 팀 → 가격·보장 → 수행방안 → 상담 */
 export default function Home() {
   return (
     <>
@@ -39,10 +39,10 @@ export default function Home() {
       <TrustBar />
       <Painpoints />
       <RoiBoard />
-      <InfoSessionFlagship />
-      <CompareStrip />
       <SiteGallery />
       <PromoShowcase />
+      <InfoSessionFlagship />
+      <CompareStrip />
       <WhyUs />
       <TeamCredential />
       <DiagnosisBanner />

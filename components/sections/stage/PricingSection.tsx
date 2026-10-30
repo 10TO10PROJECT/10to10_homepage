@@ -24,7 +24,7 @@ export function PricingSection() {
 
         {/* 비용 앵커링 3컷 (GF POINT 03 문법) — 가격 공개 전 기준점 세팅 */}
         <FadeIn delay={0.03} className="mb-10">
-          <div className="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-[var(--color-cloud)] md:grid-cols-3">
+          <div className="grid gap-px overflow-hidden rounded-[var(--radius-card)] shadow-card bg-[var(--color-cloud)] md:grid-cols-3">
             {STAGE_COST_ANCHOR.map((c) => (
               <div
                 key={c.title}
@@ -51,7 +51,7 @@ export function PricingSection() {
         {/* 시작가 → 파트너 프로모션가 */}
         <div className="grid gap-4 md:grid-cols-2">
           <FadeIn delay={0.05}>
-            <div className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 md:p-9">
+            <div className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-white p-7 md:p-9">
               <div className="micro-label text-[var(--color-ink-500)]">{P.standard.label}</div>
               <div className="display-type mt-3 text-4xl text-[var(--color-ink-950)] md:text-5xl">
                 {P.standard.price}
@@ -93,7 +93,7 @@ export function PricingSection() {
                 className="mt-auto inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] pt-0 text-base font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
               >
                 <KakaoSymbol size={18} />
-                파트너 자리 확인하기
+                초기 파트너 자리 확인하기
               </a>
             </div>
           </FadeIn>

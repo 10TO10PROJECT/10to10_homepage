@@ -28,7 +28,7 @@ export function StatRow() {
     <section className="pb-20 md:pb-28">
       <Container size="wide">
         <FadeIn>
-          <div className="grid gap-4 rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 md:grid-cols-3 md:gap-0 md:p-0">
+          <div className="grid gap-4 rounded-[var(--radius-card)] shadow-card bg-white p-7 md:grid-cols-3 md:gap-0 md:p-0">
             {STATS.map((s, i) => (
               <div
                 key={s.label}

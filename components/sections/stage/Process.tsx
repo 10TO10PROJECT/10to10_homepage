@@ -6,7 +6,7 @@ import { STAGE_PROCESS } from "@/lib/content/stage";
 /** 브로슈어 P7 — 표준 30일 진행 절차. 타이밍 필 + '원장님께 드리는 요청' 말풍선. */
 export function Process() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="band-wash py-20 md:py-28">
       <Container size="wide">
         <FadeIn className="mb-12 max-w-3xl">
           <div className="micro-label text-[var(--color-ink-500)]">Process</div>
@@ -20,7 +20,7 @@ export function Process() {
         <StaggerChildren className="grid gap-4 md:grid-cols-4">
           {STAGE_PROCESS.map((p) => (
             <StaggerItem key={p.step} className="h-full">
-              <div className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-6 md:p-7">
+              <div className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-white p-6 md:p-7">
                 <div className="micro-label inline-flex w-fit items-center rounded-full bg-[var(--color-paper)] px-3 py-1.5 text-[var(--color-ink-500)]">
                   {p.timing}
                 </div>
