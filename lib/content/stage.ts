@@ -279,7 +279,7 @@ export const STAGE_TRUST = {
     {
       src: "/trust/moduchangup.png",
       alt: "모두의창업 로고",
-      label: "모두의창업 1기 · 3라운드 진출팀",
+      label: "모두의창업 1기 · 3라운드 진출팀 (상위 0.3%)",
     },
     {
       src: "/trust/alphabrothers.png",
