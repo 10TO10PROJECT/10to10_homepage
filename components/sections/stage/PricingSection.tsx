@@ -93,7 +93,7 @@ export function PricingSection() {
                 className="mt-auto inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] pt-0 text-base font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
               >
                 <KakaoSymbol size={18} />
-                파트너 자리 확인하기
+                초기 파트너 자리 확인하기
               </a>
             </div>
           </FadeIn>

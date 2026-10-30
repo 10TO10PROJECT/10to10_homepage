@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
 import { STAGE_PAINPOINTS, STAGE_BRIDGE } from "@/lib/content/stage";
 
-/** 심리 3 — 문제 공감 선행 (브로슈어 P2). 다크 피처 블록 + 화살표 리스트. */
+/** 심리 3 — 문제 공감 선행. 민트 워시 블록 + 화살표 리스트, 하단은 준비 과정 3단계. */
 export function Painpoints() {
   return (
     <section className="py-10 md:py-14">
@@ -14,7 +14,7 @@ export function Painpoints() {
               원장님의 고민을 이해하는 10to10
             </div>
             <h2 className="display-type mt-4 text-3xl md:text-5xl">
-              자주 겪으시는 문제 TOP3
+              원장님들께 자주 듣는 고민 세 가지
             </h2>
           </FadeIn>
           <StaggerChildren className="mt-10 space-y-4 md:mt-12">
@@ -55,9 +55,9 @@ export function Painpoints() {
               ))}
             </div>
             <p className="mt-6 text-lg font-bold md:text-xl">
-              그 다리가 되는 방법,{" "}
-              <span className="hl">설명회</span>
-              입니다.
+              {STAGE_BRIDGE.closer.lead}
+              <span className="hl">{STAGE_BRIDGE.closer.hl}</span>
+              {STAGE_BRIDGE.closer.tail}
             </p>
           </FadeIn>
         </div>
