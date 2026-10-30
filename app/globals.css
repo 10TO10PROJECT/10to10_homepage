@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource/nanum-pen-script/400.css";
 @import "@fontsource/pretendard/400.css";
 @import "@fontsource/pretendard/500.css";
 @import "@fontsource/pretendard/600.css";
@@ -12,6 +11,7 @@
   --color-mint-100: #E6FAF5;
   --color-mint-500: #50E3C2;
   --color-mint-600: #2CC4A8;
+  --color-mint-700: #0E8A72; /* 흰 배경 위 민트 글자 — 대비 확보용 */
   --color-sky-500:  #15BDFF;
 
   /* Ink */
@@ -23,10 +23,11 @@
   --color-ink-100: #F5F5F5;
   --color-ink-50:  #FAFAFA;
 
-  /* Awesomic 번안 서피스 — zinc 캔버스 + 헤어라인 (docs/design/DESIGN-awesomic.md) */
-  --color-paper: #F4F4F5;
-  --color-cloud: #ECECEE;
-  --color-paper-dim: #ECEDEE;
+  /* 신뢰형 서피스 — 흰 캔버스 + 옅은 그림자 카드 + 민트 워시 밴드 (docs/design/DESIGN-trust-template.md) */
+  --color-paper: #FFFFFF;
+  --color-cloud: #E9EAEC;
+  --color-paper-dim: #F6F7F8;
+  --color-mint-wash: #EFFBF8;
 
   /* 기능적 컬러 — 카카오 CTA 전용 (T2 예외, 카카오 공식 버튼 규격) */
   --color-kakao: #FEE500;
@@ -34,24 +35,26 @@
   /* Type */
   --font-sans: 'Pretendard', system-ui, -apple-system, sans-serif;
 
-  /* Radius — Awesomic 지오메트리: 카드 36 / 버튼·인풋 14 / 뱃지 12 / 브레이크 48 */
-  --radius-badge: 12px;
-  --radius-btn: 14px;
-  --radius-card: 36px;
-  --radius-break: 48px;
-  --radius-img: 24px;
+  /* Radius — 신뢰형 지오메트리: 카드 16 / 이미지 14 / 버튼·인풋 10 / 뱃지 필 / 브레이크 24 */
+  --radius-badge: 999px;
+  --radius-btn: 10px;
+  --radius-card: 16px;
+  --radius-break: 24px;
+  --radius-img: 14px;
   /* 레거시 별칭 — 미개편 컴포넌트가 새 스케일을 자동 상속 */
-  --radius-xs: 14px;
-  --radius-sm: 16px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
-  --radius-xl: 36px;
-  --shadow-mint: var(--shadow-md-soft);
-  --shadow-mint-soft: var(--shadow-md-soft);
+  --radius-xs: 8px;
+  --radius-sm: 10px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --shadow-mint: var(--shadow-card);
+  --shadow-mint-soft: var(--shadow-card);
 
-  /* Elevation — 카드는 헤어라인만, 다크 버튼만 inset 하이라이트 */
-  --shadow-btn-dark: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.5), 0 4px 6px 0 rgba(0, 0, 0, 0.14);
-  --shadow-md-soft: 0 4px 12px 0 rgba(0, 0, 0, 0.04);
+  /* Elevation — 카드는 옅은 그림자로 떠 있고, 강조 카드만 다층 그림자 */
+  --shadow-btn-dark: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --shadow-md-soft: 0 0 0 1px rgba(11, 12, 12, 0.04), 0 2px 10px 0 rgba(11, 12, 12, 0.06);
+  --shadow-card: 0 0 0 1px rgba(11, 12, 12, 0.04), 0 2px 10px 0 rgba(11, 12, 12, 0.06);
+  --shadow-elevated: 0 0.8px 2.4px -0.6px rgba(11, 12, 12, 0.06), 0 2.4px 7.2px -1.25px rgba(11, 12, 12, 0.06), 0 6.4px 19px -1.9px rgba(11, 12, 12, 0.06), 0 20px 60px -2.5px rgba(11, 12, 12, 0.08);
 
   /* Motion */
   --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -91,18 +94,34 @@
 
   /* 디스플레이 — weight 600~700, 타이트 리딩 (Awesomic 1.12), 트래킹은 절제 */
   .display-type {
-    font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -0.015em;
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -0.035em;
     word-break: keep-all;
   }
 
-  /* 손글씨 액센트 — 브로슈어의 스크립트 강조 차용 (포인트 단어 전용) */
-  .script-accent {
-    font-family: 'Nanum Pen Script', cursive;
-    font-weight: 400;
-    letter-spacing: 0;
+  /* 형광펜 강조 — 인쇄물·캐러셀과 같은 러프 브러시 (박스형 강조 대체) */
+  .hl {
+    background-image: url("/brand/brush-hl.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 0.62em;
+    background-position: 0 92%;
+    padding: 0 0.12em;
+    margin: 0 -0.06em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
+
+  /* 어두운 배경용 — 브러시를 글자 높이 전체로 깔아 대비 확보 */
+  .hl-solid { background-size: 100% 0.98em; background-position: 0 55%; }
+
+  /* 민트 워시 밴드 — 흰 섹션과 번갈아 쓰는 연한 그라데이션 배경 */
+  .band-wash { background: linear-gradient(180deg, #E9FAF5 0%, #FFFFFF 100%); }
+  /* 브랜드 그라데이션 — 인쇄물 표지·CTA 패널용 연한 민트→하늘 */
+  .band-brand { background: linear-gradient(140deg, #B4F3E4 0%, #A5EEEC 48%, #A3E3FF 100%); }
+
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
 
   /* 헤어라인 — 1px cloud 보더가 유일한 컨테이너 구조 */
   .hairline { border: 1px solid var(--color-cloud); }

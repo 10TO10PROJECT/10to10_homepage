@@ -17,7 +17,7 @@ export function CompareStrip() {
 
         <div className="grid gap-4 md:grid-cols-2">
           <FadeIn>
-            <div className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-[var(--color-paper)] p-7 md:p-9">
+            <div className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-[var(--color-paper)] p-7 md:p-9">
               <div className="text-lg font-bold text-[var(--color-ink-700)]">
                 {C.before.label}
               </div>

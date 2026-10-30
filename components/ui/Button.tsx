@@ -35,7 +35,7 @@ const variants: Record<Variant, string> = {
   // 다크 필 — 시스템의 유일한 주력 CTA (D3)
   primary:
     "bg-[var(--color-ink-950)] text-white font-bold shadow-[var(--shadow-btn-dark)] hover:bg-black",
-  secondary: "bg-white text-[var(--color-ink-900)] hairline hover:border-[var(--color-ink-900)]",
+  secondary: "bg-white text-[var(--color-ink-900)] border border-[var(--color-ink-950)] hover:bg-[var(--color-ink-50)]",
   ghost: "text-[var(--color-ink-900)] hover:bg-[var(--color-ink-100)]",
   outline:
     "bg-[var(--color-ink-50)] text-[var(--color-ink-900)] hover:bg-[var(--color-cloud)]",

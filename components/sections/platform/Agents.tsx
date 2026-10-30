@@ -72,7 +72,7 @@ export function Agents() {
         <StaggerChildren className="grid gap-4 md:grid-cols-2">
           {PLATFORM_AGENTS.map((a) => (
             <StaggerItem key={a.title}>
-              <div className="group h-full rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 transition hover:border-[var(--color-ink-500)]">
+              <div className="group h-full rounded-[var(--radius-card)] shadow-card bg-white p-7 transition hover:border-[var(--color-ink-500)]">
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-ink-950)] text-[var(--color-mint-500)]">
                     <AgentIcon name={a.icon} />

@@ -6,7 +6,7 @@ import { STAGE_MOATS } from "@/lib/content/stage";
 /** 차별화 3종 (멘토링 ④-5: 싸다 / 올인클루시브 / 성과 책임). 화이트 카드 그리드. */
 export function WhyUs() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="band-wash py-20 md:py-28">
       <Container size="wide">
         <FadeIn className="mb-12 max-w-3xl">
           <div className="micro-label text-[var(--color-ink-500)]">Why 10to10</div>
@@ -19,7 +19,7 @@ export function WhyUs() {
         <StaggerChildren className="grid gap-4 md:grid-cols-3">
           {STAGE_MOATS.map((m) => (
             <StaggerItem key={m.no} className="h-full">
-              <div className="h-full rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
+              <div className="h-full rounded-[var(--radius-card)] shadow-card bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
                 <div className="flex items-baseline justify-between">
                   <h3 className="text-xl font-bold text-[var(--color-ink-950)] md:text-2xl">
                     {m.title}

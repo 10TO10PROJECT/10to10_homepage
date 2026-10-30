@@ -21,7 +21,7 @@ export function DualProducts() {
         <div className="grid gap-4 md:grid-cols-2">
           <FadeIn delay={0.1}>
             <Link href="/stage" className="block h-full">
-              <article className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
+              <article className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
                 <div className="micro-label text-[var(--color-ink-500)]">
                   10to10 STAGE
                 </div>
@@ -47,7 +47,7 @@ export function DualProducts() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <Link href="/platform" className="block h-full">
-              <article className="flex h-full flex-col rounded-[var(--radius-card)] border border-[var(--color-cloud)] bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
+              <article className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
                 <div className="micro-label text-[var(--color-ink-500)]">
                   10to10 AI 플랫폼
                 </div>
