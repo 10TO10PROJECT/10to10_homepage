@@ -37,7 +37,7 @@ export function DualProducts() {
                 </div>
                 <ul className="mt-4 space-y-2 text-sm text-[var(--color-ink-700)]">
                   <li>· 만족도 4.25 / 5.0 · 재참석 의사 100%(4~5점 응답, 21명)</li>
-                  <li>· 신청 20명 미달 시 부족한 만큼 환급 — 모객 보장</li>
+                  <li>· 합의 인원 80% 미달 시 대행료 반액 환급 — 모객 보장</li>
                 </ul>
                 <div className="mt-auto pt-7 text-[15px] font-bold text-[var(--color-ink-950)]">
                   자세히 보기 →

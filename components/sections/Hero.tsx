@@ -154,8 +154,8 @@ function PhotoCtaCard() {
         <div className="flex items-start gap-2 text-white">
           <span aria-hidden className="mt-0.5 font-bold text-[var(--color-mint-500)]">✓</span>
           <p className="text-[15px] leading-snug">
-            <strong>모객 보장</strong> — 신청 20명을 못 채우면, 부족한 만큼
-            돌려드립니다.
+            <strong>모객 보장</strong> — 약속한 인원의 80%를 못 채우면,
+            대행료의 절반을 돌려드립니다.
           </p>
         </div>
         <a
