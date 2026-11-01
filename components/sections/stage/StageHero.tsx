@@ -91,7 +91,7 @@ function ProofCard() {
   return (
     <div className="rounded-[var(--radius-card)] bg-white p-6 shadow-elevated md:p-7">
       <div className="flex items-center justify-between">
-        <span className="text-[15px] font-bold text-[var(--color-ink-950)]">실제로 열어 본 설명회</span>
+        <span className="text-[15px] font-bold text-[var(--color-ink-950)]">텐투텐이 주관한 설명회</span>
         <span className="rounded-full bg-[var(--color-mint-wash)] px-3 py-1 text-[12px] font-bold text-[var(--color-mint-600)]">
           실측 데이터
         </span>
