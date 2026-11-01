@@ -7,7 +7,7 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { PROMO_LOGIC, PROMO_PORTFOLIO, PROMO_NOTE } from "@/lib/content/promo";
 
 /**
- * 모객·홍보 로직 + 홍보팀 포트폴리오 — 해자 ③(홍보물·홍보 일원화)의 증거 섹션.
+ * 모객·홍보 로직 + 텐투텐 디자인 포트폴리오 — 해자 ③(홍보물·홍보 일원화)의 증거 섹션.
  * Awesomic 카테고리 카드 문법: 가로 스크롤 스냅 + 이미지 플러시 카드.
  */
 export function PromoShowcase() {
@@ -62,7 +62,7 @@ export function PromoShowcase() {
             <div>
               <div className="micro-label text-[var(--color-ink-500)]">Portfolio</div>
               <h3 className="mt-2 text-xl font-bold text-[var(--color-ink-950)] md:text-2xl">
-                홍보팀이 직접 만든 디자인
+                텐투텐이 직접 하는 디자인
               </h3>
             </div>
             <div className="hidden gap-2 md:flex">
