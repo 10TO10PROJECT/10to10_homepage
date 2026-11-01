@@ -55,20 +55,25 @@ export function TeamCredential() {
           </div>
         </FadeIn>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
+        {/* 대표·COO — 누끼 인물 + 민트 판(머리는 판 위로), 카드 테두리 없이 크게 */}
+        <div className="mt-14 grid gap-14 md:mt-16 md:grid-cols-2 md:gap-10">
           {[STAGE_TEAM.ceo, STAGE_TEAM.coo].map((m, i) => (
             <FadeIn key={m.name} delay={i * 0.08}>
-              <div className="flex h-full flex-col gap-6 rounded-[var(--radius-card)] bg-white p-7 shadow-card sm:flex-row md:p-8">
-                <div className="relative aspect-[4/5] w-28 shrink-0 overflow-hidden rounded-[var(--radius-img)] bg-[var(--color-paper-dim)] sm:w-32">
+              <div className="flex h-full flex-col">
+                <div className="relative aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-b-[var(--radius-card)]">
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 top-[26%] rounded-[var(--radius-card)] bg-[var(--color-mint-100)]"
+                  />
                   <Image
                     src={m.photo}
                     alt={`${m.name} ${m.role}`}
                     fill
-                    sizes="128px"
-                    className="object-cover object-top"
+                    sizes="(min-width: 768px) 320px, 80vw"
+                    className="object-contain object-bottom"
                   />
                 </div>
-                <div>
+                <div className="mt-6">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <span className="text-2xl font-bold text-[var(--color-ink-950)]">{m.name}</span>
                     <span className="text-sm font-semibold text-[var(--color-mint-700)]">{m.role}</span>
