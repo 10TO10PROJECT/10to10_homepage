@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { STAGE_TEAM, STAGE_EVENT_RECORD } from "@/lib/content/stage";
 
-/** 팀 크레덴셜 — 차별화 뒤. 대표 실명 크레덴셜 + 파트너 클로징 (멘토링 레퍼런스 번안) */
+/** 팀 크레덴셜 — 차별화 뒤. 대표·COO 실명 약력(사진) + 팀 소개·파트너 클로징 */
 export function TeamCredential() {
   return (
     <section className="py-20 md:py-28">
@@ -56,46 +56,58 @@ export function TeamCredential() {
         </FadeIn>
 
         <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <FadeIn>
-            <div className="h-full rounded-[var(--radius-card)] shadow-card bg-white p-7 md:p-9">
-              <div className="flex items-baseline gap-3">
-                <span className="text-2xl font-bold text-[var(--color-ink-950)]">
-                  {STAGE_TEAM.ceo.name}
-                </span>
-                <span className="text-sm font-semibold text-[var(--color-ink-500)]">
-                  {STAGE_TEAM.ceo.role}
-                </span>
+          {[STAGE_TEAM.ceo, STAGE_TEAM.coo].map((m, i) => (
+            <FadeIn key={m.name} delay={i * 0.08}>
+              <div className="flex h-full flex-col gap-6 rounded-[var(--radius-card)] bg-white p-7 shadow-card sm:flex-row md:p-8">
+                <div className="relative aspect-[4/5] w-28 shrink-0 overflow-hidden rounded-[var(--radius-img)] bg-[var(--color-paper-dim)] sm:w-32">
+                  <Image
+                    src={m.photo}
+                    alt={`${m.name} ${m.role}`}
+                    fill
+                    sizes="128px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="text-2xl font-bold text-[var(--color-ink-950)]">{m.name}</span>
+                    <span className="text-sm font-semibold text-[var(--color-mint-700)]">{m.role}</span>
+                  </div>
+                  <ul className="mt-4 space-y-2">
+                    {m.lines.map((line) => (
+                      <li
+                        key={line}
+                        className="flex gap-2.5 break-keep text-[15px] leading-relaxed text-[var(--color-ink-700)]"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-mint-500)]"
+                        />
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <ul className="mt-5 space-y-2.5">
-                {STAGE_TEAM.ceo.lines.map((line) => (
-                  <li
-                    key={line}
-                    className="flex gap-2.5 text-[15px] leading-relaxed text-[var(--color-ink-700)]"
-                  >
-                    <span
-                      aria-hidden
-                      className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-mint-500)]"
-                    />
-                    {line}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <div className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-white p-7 md:p-9">
-              <h3 className="text-xl font-bold text-[var(--color-ink-950)]">
-                {STAGE_TEAM.team.title}
-              </h3>
-              <p className="mt-4 text-[15px] leading-relaxed text-[var(--color-ink-700)] md:text-base">
-                {STAGE_TEAM.team.desc}
-              </p>
-              <p className="mt-auto border-t border-[var(--color-cloud)] pt-5 text-base font-bold leading-relaxed text-[var(--color-ink-950)] md:text-lg">
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.12} className="mt-4">
+          <div className="rounded-[var(--radius-card)] bg-white p-7 shadow-card md:p-9">
+            <div className="grid gap-4 md:grid-cols-[1fr_1fr] md:gap-10">
+              <div>
+                <h3 className="break-keep text-xl font-bold text-[var(--color-ink-950)]">{STAGE_TEAM.team.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink-700)] md:text-base">
+                  {STAGE_TEAM.team.desc}
+                </p>
+              </div>
+              <p className="self-end border-t border-[var(--color-cloud)] pt-5 text-base font-bold leading-relaxed text-[var(--color-ink-950)] md:border-t-0 md:border-l md:pl-10 md:pt-0 md:text-lg">
                 {STAGE_TEAM.closer}
               </p>
             </div>
-          </FadeIn>
-        </div>
+          </div>
+        </FadeIn>
 
         {/* 행사 운영 실적 — VERIFY (데모데이 명칭 비노출) */}
         <FadeIn delay={0.1} className="mt-16 md:mt-20">
