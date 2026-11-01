@@ -316,6 +316,18 @@ export const STAGE_TEAM = {
       "메가스터디 국어 강사 조교 · 스파르타 입시연구소 입시 컨설팅 조교",
       "5년차 입시 과외",
     ],
+    photo: "/team/shin-hyunwoo.jpg",
+  },
+  coo: {
+    name: "최선우",
+    role: "COO · 공동창업자",
+    lines: [
+      "동탄에서 자란 동탄 키즈 — 석우중·반송고 졸업",
+      "GIST(광주과학기술원) 전기전자컴퓨터공학부",
+      "에듀플렉스 튜터",
+      "입시 과외",
+    ],
+    photo: "/team/choi-sunwoo.jpg",
   },
   team: {
     title: "기획·개발·디자인·마케팅이 한 테이블에 앉는 팀",
