@@ -112,9 +112,6 @@
     box-decoration-break: clone;
   }
 
-  /* 어두운 배경용 — 브러시를 글자 높이 전체로 깔아 대비 확보 */
-  .hl-solid { background-size: 100% 0.98em; background-position: 0 55%; }
-
   /* 민트 워시 밴드 — 흰 섹션과 번갈아 쓰는 연한 그라데이션 배경 */
   .band-wash { background: linear-gradient(180deg, #E9FAF5 0%, #FFFFFF 100%); }
   /* 브랜드 그라데이션 — 인쇄물 표지·CTA 패널용 연한 민트→하늘 */

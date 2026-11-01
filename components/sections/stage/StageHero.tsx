@@ -40,7 +40,7 @@ export function StageHero() {
               <h1 className="display-type text-[clamp(2.3rem,5.2vw,3.8rem)] text-white">
                 설명회 하루가
                 <br />
-                학원의 <span className="hl hl-solid text-[var(--color-ink-950)]">한 학기</span>를 바꿉니다.
+                학원의 <span className="text-[var(--color-mint-500)]">한 학기</span>를 바꿉니다.
               </h1>
             </FadeIn>
             <FadeIn delay={0.2} className="mt-6">
