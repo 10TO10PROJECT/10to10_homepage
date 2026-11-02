@@ -99,8 +99,10 @@ export function PhoneFeedMock({ className }: { className?: string }) {
           </div>
         </div>
       </div>
-      <figcaption className="mt-4 text-center text-[13px] text-[var(--color-ink-500)]">
-        화면 예시 · 업데이트에서 실제 화면은 달라질 수 있습니다
+      <figcaption className="mt-4 text-center">
+        <span className="inline-block rounded-full bg-white/85 px-3 py-1 text-[13px] text-[var(--color-ink-500)] backdrop-blur-sm">
+          화면 예시 · 업데이트에서 실제 화면은 달라질 수 있습니다
+        </span>
       </figcaption>
     </figure>
   );
