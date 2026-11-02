@@ -7,6 +7,30 @@ export const PLATFORM_HERO = {
   trust: "중소벤처기업부 「모두의 창업」 1기 3라운드 진출 · 동탄 기반 대학생 팀",
 } as const;
 
+/** 히어로 배경 콜라주 — 텐투텐이 직접 진행한 설명회 현장·포스터(메인 페이지에 이미 공개된 실물만) */
+export const PLATFORM_HERO_COLLAGE = [
+  [
+    { src: "/info-session/01-hall-wide.jpg", w: 4, h: 3 },
+    { src: "/promo/feb-main-poster.jpg", w: 1000, h: 1415 },
+    { src: "/info-session/06-rebirth-desk.jpg", w: 4, h: 3 },
+    { src: "/promo/oct-review-01.jpg", w: 4, h: 5 },
+  ],
+  [
+    { src: "/promo/oct-rebirth-poster.jpg", w: 4, h: 5 },
+    { src: "/info-session/03-speaker-male.jpg", w: 4, h: 3 },
+    { src: "/info-session/07-rebirth-session.jpg", w: 4, h: 3 },
+    { src: "/promo/feb-speaker-leekyungbo.jpg", w: 1000, h: 1415 },
+  ],
+  [
+    { src: "/info-session/05-hall-app.jpg", w: 16, h: 9 },
+    { src: "/promo/feb-senior-mom.jpg", w: 1000, h: 1415 },
+    { src: "/info-session/02-speaker-female.jpg", w: 4, h: 3 },
+    { src: "/info-session/04-booklet.jpg", w: 4, h: 3 },
+  ],
+] as const;
+
+export const PLATFORM_HERO_COLLAGE_CAPTION = "배경 사진 · 텐투텐이 직접 진행한 설명회 현장과 포스터 (2026.02 · 2026.10)";
+
 /** 피드 화면 예시 — 실제 학원명·수치 대신 일반 예시만 사용 */
 export const PLATFORM_FEED_MOCK = {
   location: "동탄",

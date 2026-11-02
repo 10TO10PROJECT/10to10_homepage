@@ -126,6 +126,16 @@
   .hairline-t { border-top: 1px solid var(--color-cloud); }
 }
 
+/* 플랫폼 히어로 배경 콜라주 — 같은 목록을 네 번 이어 붙인 열을 한 벌 높이(-25%)만큼 흘려 이음매 없이 반복 */
+@keyframes drift-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-25%); }
+}
+@keyframes drift-down {
+  from { transform: translateY(-25%); }
+  to { transform: translateY(0); }
+}
+
 /* IR Deck — print to PDF (16:9 landscape) */
 @page {
   size: 1280px 720px;
