@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { PLATFORM_BETA_URL } from "@/lib/content/platform";
 
 export const metadata: Metadata = {
   title: "학원 문의 — 10to10",
   description:
-    "10to10은 두 가지 트랙으로 학원을 지원합니다. 플랫폼 도입과 STAGE 설명회 풀케어 문의를 트랙별로 안내합니다.",
+    "10to10은 두 가지 트랙으로 학원을 지원합니다. STAGE 설명회 풀케어와 텐투텐 앱 설명회 등록 문의를 트랙별로 안내합니다.",
 };
 
 export default function InquiryPage() {
@@ -46,20 +45,16 @@ export default function InquiryPage() {
           </FadeIn>
           <FadeIn delay={0.25}>
             <InquiryCard
-              eyebrow="10to10 플랫폼"
-              title="플랫폼 도입·체험"
-              desc="학원 운영 SaaS와 학부모·학생 탐색 앱을 연결한 양면 플랫폼입니다. Beta 체험 또는 정규 도입 문의를 안내드립니다."
+              eyebrow="텐투텐 앱"
+              title="앱에 설명회 알리기"
+              desc="학부모·학생이 학년과 동네에 맞춰 교육 소식을 받아 보는 텐투텐 앱입니다. 학원 설명회를 앱에 올리는 방법을 안내드립니다."
               bullets={[
-                "학원 운영 SaaS (관리자 콘솔)",
-                "학부모·학생 탐색 앱",
-                "AI 에이전트 자동화",
+                "학부모·학생용 학년·동네 맞춤 소식",
+                "동네 설명회 모아보기 (업데이트 예정)",
+                "신청은 학원의 신청 폼으로 바로 연결",
               ]}
-              primary={{
-                href: PLATFORM_BETA_URL,
-                label: "Beta 바로 체험하기",
-                external: true,
-              }}
-              secondary={{ href: "/platform", label: "플랫폼 자세히 보기" }}
+              primary={{ href: "/#contact", label: "등록 문의하기" }}
+              secondary={{ href: "/platform", label: "텐투텐 앱 자세히 보기" }}
               tone="ink"
             />
           </FadeIn>
