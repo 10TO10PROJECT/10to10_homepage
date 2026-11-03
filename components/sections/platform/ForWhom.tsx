@@ -57,12 +57,12 @@ export function ForWhom() {
   return (
     <section className="band-wash py-20 md:py-28">
       <Container size="wide">
-        <FadeIn className="mb-12 max-w-3xl">
+        <FadeIn className="mb-12 max-w-5xl">
           <div className="micro-label text-[var(--color-ink-500)]">For Parents & Students</div>
-          <h2 className="display-type mt-4 text-3xl text-[var(--color-ink-950)] md:text-5xl">
-            앱이 나오기 전에도,
+          <h2 className="display-type mt-4 break-keep text-3xl text-[var(--color-ink-950)] md:text-5xl">
+            앱 출시 이전에도,
             <br />
-            소식은 먼저 전하고 있습니다.
+            저희는 교육 현장에서 양질의 정보를 전달해왔습니다.
           </h2>
         </FadeIn>
         <div className="grid gap-4 md:grid-cols-2">
