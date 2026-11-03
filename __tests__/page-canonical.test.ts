@@ -36,7 +36,9 @@ describe("page canonical & open graph", () => {
 
   it.each(SUBPAGES)("$route keeps a share thumbnail when it overrides openGraph", ({ file, src }) => {
     if (!src.includes("openGraph: {")) return;
-    const ownImage = readdirSync(path.dirname(file)).some((name) => name.startsWith("opengraph-image."));
+    const ownImage = readdirSync(path.dirname(file)).some((name) =>
+      /^opengraph-image\.(png|jpe?g|gif|[jt]sx?)$/.test(name),
+    );
     expect(ownImage || src.includes("openGraph?.images")).toBe(true);
   });
 });
