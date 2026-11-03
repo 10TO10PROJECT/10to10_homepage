@@ -2,13 +2,25 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerChildren, StaggerItem } from "@/components/motion/StaggerChildren";
+import { Symbol } from "@/components/brand/Symbol";
 import { PLATFORM_AXES, PLATFORM_FEED_POINTS } from "@/lib/content/platform";
 
-/** 학년 맞춤 소식 피드 — 개인화 3축(카테고리·학년·지역) + 피드 원칙 */
+/** 학년 맞춤 소식 피드 — 개인화 3축(카테고리·학년·지역) + 피드 원칙. 배경은 브랜드 심볼 워터마크 */
 export function FeedAxes() {
   return (
-    <section className="py-20 md:py-28">
-      <Container size="wide">
+    <section className="relative overflow-hidden py-20 md:py-28">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <Symbol
+          variant="mint"
+          size={640}
+          role="presentation"
+          aria-hidden
+          aria-label={undefined}
+          className="absolute -right-40 top-6 h-auto w-[420px] opacity-[0.08] md:-right-24 md:top-10 md:w-[640px]"
+        />
+        <div className="absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-[var(--color-mint-100)] opacity-60 blur-3xl" />
+      </div>
+      <Container size="wide" className="relative">
         <FadeIn className="mb-12 max-w-3xl">
           <Badge variant="mint">업데이트 예정 · 학년 맞춤 소식</Badge>
           <h2 className="display-type mt-4 text-3xl text-[var(--color-ink-950)] md:text-5xl">

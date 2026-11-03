@@ -89,6 +89,15 @@ export const PLATFORM_FEED_POINTS = [
   },
 ] as const;
 
+/** 설명회 모아보기 뒤에 비치는 실제 포스터·후기 게시물 — 10to10 표기 실물만(2026.10) */
+export const PLATFORM_SEMINAR_POSTERS = [
+  { src: "/promo/oct-rebirth-poster.jpg", w: 4, h: 5 },
+  { src: "/promo/oct-review-01.jpg", w: 4, h: 5 },
+] as const;
+
+export const PLATFORM_SEMINAR_POSTERS_CAPTION =
+  "뒤 포스터 · 2026.10 리버스수학학원 예비 고1 설명회 모객 포스터와 후기 게시물 (실제 게시본)";
+
 /** 설명회 모아보기 — 예시 카드. 학원명은 실제 이름 대신 OO 처리 */
 export const PLATFORM_SEMINARS = [
   { title: "OO수학학원 예비 고1 학부모 설명회", target: "예비 고1", when: "토 오후 2시", due: "신청 마감 D-3" },
@@ -100,6 +109,28 @@ export const PLATFORM_SEMINAR_POINTS = [
   "설명회 날짜에 맞춰 신청 마감일도 함께 표시",
   "신청은 각 설명회의 원래 신청 폼으로 바로 연결",
 ] as const;
+
+/** 창업자 이야기 — 약력은 STAGE_TEAM(SSOT)에서 가져옴. 인용은 대표 본인이 공개한 쓰레드 글(@10to10.kr, 2026.10)만 사용, 선우님 일화·발언은 지어 쓰지 않음 */
+export const PLATFORM_FOUNDERS = {
+  eyebrow: "Founders' Story",
+  headline: "석우중·반송고를 나온 두\u00A0사람이,\n동탄 후배들을 위해 만듭니다.", // 모바일에서 "두 사람이"가 갈라지지 않도록 줄바꿈 없는 공백
+  story: [
+    "텐투텐 대표 신현우와 COO 최선우는 동탄에서 같은 중학교와 고등학교를 다녔습니다. 대학에 간 뒤에도 입시 과외와 학습 튜터로 학생들을 가르쳐 왔습니다.",
+    "2026년 2월과 10월에는 동탄에서 학원과 함께 설명회를 직접 열어 학부모님들을 만났습니다. 그 자리에서 나눈 이야기를 정보방과 인스타그램에서 이어 가고, 이제 앱 하나로 모으려 합니다.",
+  ],
+  quote: {
+    lead: "중3 수학 100점이었는데,\n고1 첫 시험은 36점이었어요.",
+    body: "중3 겨울에는 “고등학교도 이 정도겠지” 했거든요.",
+    by: "신현우 대표",
+    source: "텐투텐 쓰레드 @10to10.kr 중에서",
+  },
+  photo: {
+    src: "/info-session/08-rebirth-ceo-talk.jpg",
+    alt: "2026년 10월 리버스수학학원 예비 고1 설명회 2부에서 '반송고 출신 연대생이 이야기해주는 실전 학습팁'을 발표하는 신현우 대표",
+    caption: "2026.10.09 · 리버스수학학원 예비 고1 설명회 2부, 신현우 대표 세션",
+  },
+  closer: "그래서 텐투텐은 학년에 맞는 소식을, 필요한 시기에 먼저 전하려 합니다.",
+} as const;
 
 export const PLATFORM_AUDIENCE = {
   parents: {
@@ -122,6 +153,18 @@ export const PLATFORM_AUDIENCE = {
   },
 } as const;
 
+/** 학부모·학생 카드 상단 사진 — 학부모=설명회 현장, 학생=인스타그램 실제 게시물 */
+export const PLATFORM_AUDIENCE_MEDIA = {
+  parents: {
+    src: "/info-session/01-hall-wide.jpg",
+    caption: "2026.02 동탄 콜라보 설명회 · 학부모님들과 만난 현장",
+  },
+  students: {
+    posts: ["/promo/oct-review-01.jpg", "/promo/oct-review-04.jpg", "/promo/oct-review-06.jpg"],
+    caption: "@10to10.kr 실제 게시물 · 2026.10 설명회 후기",
+  },
+} as const;
+
 export const PLATFORM_ROADMAP = [
   {
     phase: "지금",
@@ -139,6 +182,12 @@ export const PLATFORM_ROADMAP = [
     sub: "앱 홈이 우리 아이 학년·동네 맞춤 소식으로 바뀌고, 동네 설명회를 한곳에서 볼 수 있습니다.",
   },
 ] as const;
+
+/** 마무리 CTA 배경 — 설명회 스크린에 앱 화면을 띄운 현장 */
+export const PLATFORM_CTA_PHOTO = {
+  src: "/info-session/05-hall-app.jpg",
+  caption: "배경 사진 · 2026.02 동탄 콜라보 설명회, 스크린에 앱 화면을 띄운 현장",
+} as const;
 
 export const PLATFORM_INFO_ROOM_URL = "https://open.kakao.com/o/pgC72bSi";
 export const PLATFORM_INSTAGRAM_URL = "https://www.instagram.com/10to10.kr/";
