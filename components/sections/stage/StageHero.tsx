@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { StageLogo } from "@/components/brand/StageLogo";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { KakaoSymbol } from "@/components/ui/Button";
+import { COMPANY } from "@/lib/content/company";
 
 /**
  * 풀블리드 현장 사진 히어로 — 사진 위 좌측 헤드라인 + 우측 실적 카드.
@@ -53,16 +55,19 @@ export function StageHero() {
             </FadeIn>
             <FadeIn delay={0.28} className="mt-8 flex flex-wrap gap-3">
               <a
-                href="?service=info_session#contact"
+                href="#estimate"
                 className="inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-white px-7 text-base font-bold text-[var(--color-ink-950)] transition hover:bg-white/90"
               >
-                견적 문의하기 <span aria-hidden>→</span>
+                견적 확인하기 <span aria-hidden>→</span>
               </a>
               <a
-                href="#diagnosis"
-                className="inline-flex h-13 min-h-12 items-center justify-center rounded-[var(--radius-btn)] border border-white/70 px-7 text-base font-semibold text-white transition hover:bg-white/10"
+                href={COMPANY.kakaoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] border border-white/70 px-7 text-base font-semibold text-white transition hover:bg-white/10"
               >
-                무료 모객 진단
+                <KakaoSymbol size={18} />
+                카톡으로 상담하기
               </a>
             </FadeIn>
             <FadeIn delay={0.34} className="mt-8 flex flex-wrap gap-2">

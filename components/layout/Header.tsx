@@ -60,10 +60,10 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-2">
           <Link
-            href="/inquiry"
+            href="/#estimate"
             className="hidden h-10 items-center rounded-full bg-[var(--color-ink-950)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-btn-dark)] transition hover:bg-black md:inline-flex"
           >
-            견적 문의
+            견적 확인
           </Link>
           <button
             type="button"
@@ -126,11 +126,11 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="/inquiry"
+              href="/#estimate"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex h-12 items-center justify-center rounded-[var(--radius-btn)] bg-[var(--color-ink-950)] px-5 text-base font-bold text-white transition-colors hover:bg-black"
             >
-              견적 문의 →
+              견적 확인 →
             </Link>
           </Container>
         </div>

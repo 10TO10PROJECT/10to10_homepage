@@ -5,7 +5,6 @@ import { Painpoints } from "@/components/sections/stage/Painpoints";
 import { RoiBoard } from "@/components/sections/stage/RoiBoard";
 import { InfoSessionFlagship } from "@/components/sections/stage/InfoSessionFlagship";
 import { CompareStrip } from "@/components/sections/stage/CompareStrip";
-import { DiagnosisBanner } from "@/components/sections/stage/DiagnosisBanner";
 import { SiteGallery } from "@/components/sections/SiteGallery";
 import { PromoShowcase } from "@/components/sections/PromoShowcase";
 import { WhyUs } from "@/components/sections/stage/WhyUs";
@@ -45,7 +44,6 @@ export default function Home() {
       <CompareStrip />
       <WhyUs />
       <TeamCredential />
-      <DiagnosisBanner />
       <PricingSection />
       <GuaranteeBanner />
       <Process />
