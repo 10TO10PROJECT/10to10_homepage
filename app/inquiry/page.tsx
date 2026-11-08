@@ -1,14 +1,36 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { COMPANY } from "@/lib/content/company";
 
-export const metadata: Metadata = {
-  title: "학원 문의 — 10to10",
-  description:
-    "10to10은 두 가지 트랙으로 학원을 지원합니다. STAGE 설명회 풀케어와 텐투텐 앱 설명회 등록 문의를 트랙별로 안내합니다.",
-};
+const TITLE = "학원 문의 — 10to10";
+const DESCRIPTION =
+  "10to10은 두 가지 트랙으로 학원을 지원합니다. STAGE 설명회 풀케어와 텐투텐 앱 설명회 등록 문의를 트랙별로 안내합니다.";
+
+// openGraph는 레이아웃 값을 통째로 덮으므로 링크 공유(카카오톡 등)에 쓰이는 필드를 여기서 모두 적음.
+// 썸네일은 루트 opengraph-image.png — openGraph를 덮으면 자동 상속이 끊기므로 parent에서 images를 이어받음
+export async function generateMetadata(
+  _props: PageProps<"/inquiry">,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { openGraph } = await parent;
+  return {
+    title: TITLE,
+    description: DESCRIPTION,
+    alternates: { canonical: "/inquiry" },
+    openGraph: {
+      title: TITLE,
+      description: DESCRIPTION,
+      url: "/inquiry",
+      siteName: "10to10",
+      locale: "ko_KR",
+      type: "website",
+      images: openGraph?.images,
+    },
+    twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  };
+}
 
 export default function InquiryPage() {
   return (

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
@@ -9,11 +9,33 @@ import { KakaoSymbol } from "@/components/ui/Button";
 import { STAGE_EVENT_RECORD } from "@/lib/content/stage";
 import { COMPANY } from "@/lib/content/company";
 
-export const metadata: Metadata = {
-  title: "포트폴리오 — 10to10 STAGE",
-  description:
-    "10to10 STAGE가 직접 기획하고 운영한 설명회 현장과 행사 실적을 모았습니다.",
-};
+const TITLE = "포트폴리오 — 10to10 STAGE";
+const DESCRIPTION =
+  "10to10 STAGE가 직접 기획하고 운영한 설명회 현장과 행사 실적을 모았습니다.";
+
+// openGraph는 레이아웃 값을 통째로 덮으므로 링크 공유(카카오톡 등)에 쓰이는 필드를 여기서 모두 적음.
+// 썸네일은 루트 opengraph-image.png — openGraph를 덮으면 자동 상속이 끊기므로 parent에서 images를 이어받음
+export async function generateMetadata(
+  _props: PageProps<"/portfolio">,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { openGraph } = await parent;
+  return {
+    title: TITLE,
+    description: DESCRIPTION,
+    alternates: { canonical: "/portfolio" },
+    openGraph: {
+      title: TITLE,
+      description: DESCRIPTION,
+      url: "/portfolio",
+      siteName: "10to10",
+      locale: "ko_KR",
+      type: "website",
+      images: openGraph?.images,
+    },
+    twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  };
+}
 
 /** 포트폴리오 — 실사·산출물 전면 배치 (멘토링 ④-10 "실사 최대치" + abbg 포트폴리오 섹션 번안) */
 export default function PortfolioPage() {
