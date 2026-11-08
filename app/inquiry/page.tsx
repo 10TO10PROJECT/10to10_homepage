@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { COMPANY } from "@/lib/content/company";
 
 export const metadata: Metadata = {
   title: "학원 문의 — 10to10",
@@ -36,9 +37,9 @@ export default function InquiryPage() {
               bullets={[
                 "모객 20명 → 등록 6명 = 예상 매출 720만 원",
                 "만족도 4.25 / 5.0 · 재참석 의사 100%(4~5점 응답, 21명)",
-                "합의 인원 80% 미달 시 대행료 반액 환급 — 모객 보장",
+                "보장 인원 80% 미달 시 대행료 반액 환급 — 모객 보장",
               ]}
-              primary={{ href: "/#contact", label: "설명회 견적 문의하기" }}
+              primary={{ href: "/#estimate", label: "설명회 견적 확인하기" }}
               secondary={{ href: "/", label: "STAGE 자세히 보기" }}
               tone="mint"
             />
@@ -53,7 +54,7 @@ export default function InquiryPage() {
                 "동네 설명회 모아보기 (업데이트 예정)",
                 "신청은 학원의 신청 폼으로 바로 연결",
               ]}
-              primary={{ href: "/#contact", label: "등록 문의하기" }}
+              primary={{ href: COMPANY.kakaoUrl, label: "카톡으로 등록 문의하기", external: true }}
               secondary={{ href: "/platform", label: "텐투텐 앱 자세히 보기" }}
               tone="ink"
             />
@@ -62,13 +63,15 @@ export default function InquiryPage() {
 
         <FadeIn delay={0.4} className="mt-12 text-center text-sm text-[var(--color-ink-500)]">
           어떤 트랙인지 모르겠다면{" "}
-          <Link
-            href="/#contact"
+          <a
+            href={COMPANY.kakaoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-semibold text-[var(--color-ink-950)] underline decoration-[var(--color-ink-300)] underline-offset-4 hover:decoration-[var(--color-ink-950)]"
           >
-            STAGE 문의 폼
-          </Link>
-          에 남겨주세요. 상담 단계에서 트랙을 함께 정해드립니다.
+            카카오톡으로 문의
+          </a>
+          해 주세요. 상담 단계에서 트랙을 함께 정해드립니다.
         </FadeIn>
       </Container>
     </section>

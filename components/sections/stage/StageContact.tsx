@@ -1,9 +1,13 @@
-import { Suspense } from "react";
 import { Container } from "@/components/ui/Container";
-import { InquiryForm } from "@/components/forms/InquiryForm";
+import { KakaoSymbol } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { COMPANY } from "@/lib/content/company";
 import { STAGE_GUARANTEE, STAGE_URGENCY } from "@/lib/content/stage";
 
+/**
+ * 상담 문의 — 2026-11-08 CEO: 견적은 홈페이지에서 직접 확인하고, 문의는 카카오톡으로 받는다(폼 제거).
+ * id="contact"는 기존 /#contact 링크가 이어지도록 유지.
+ */
 export function StageContact() {
   return (
     <section id="contact" className="py-20 md:py-28">
@@ -26,7 +30,7 @@ export function StageContact() {
           </p>
         </FadeIn>
 
-        {/* 폼 직전 — 모객 보장 재노출 (심리 1: 제출 직전 불안 제거) */}
+        {/* 모객 보장 재노출 (심리 1: 문의 직전 불안 제거) */}
         <FadeIn delay={0.05} className="mb-8">
           <div className="flex items-start gap-3 rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white p-5 md:p-6">
             <span aria-hidden className="mt-0.5 font-bold text-[var(--color-mint-600)]">✓</span>
@@ -39,18 +43,29 @@ export function StageContact() {
           </div>
         </FadeIn>
 
-        {/* CTA 1순위 — 견적 문의 폼. 카카오톡은 제출 완료 화면 + 우하단 KakaoFab이 담당 */}
         <FadeIn delay={0.1}>
-          <div className="rounded-[var(--radius-card)] shadow-card bg-white p-6 md:p-8">
-            <div className="mb-2 text-base font-bold text-[var(--color-ink-900)]">
-              견적 문의 보내기
-            </div>
-            <p className="mb-5 text-sm text-[var(--color-ink-500)]">
-              30초면 됩니다. 견적은 카톡으로 보내드려요.
+          <div className="rounded-[var(--radius-card)] bg-white p-6 text-center shadow-card md:p-8">
+            <div className="text-lg font-bold text-[var(--color-ink-950)]">문의는 카카오톡으로 받고 있어요</div>
+            <p className="mx-auto mt-2 max-w-md break-keep text-[15px] leading-relaxed text-[var(--color-ink-500)]">
+              일정, 학원 상황, 원하시는 보장 인원을 남겨 주시면 바로 답해 드립니다. 영업 전화는 드리지 않아요.
             </p>
-            <Suspense fallback={<div className="h-96 animate-pulse rounded-[var(--radius-card)] bg-[var(--color-ink-100)]" />}>
-              <InquiryForm source="stage" />
-            </Suspense>
+            <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
+              <a
+                href={COMPANY.kakaoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] px-7 text-base font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
+              >
+                <KakaoSymbol size={18} />
+                카톡으로 상담하기
+              </a>
+              <a
+                href="#estimate"
+                className="inline-flex h-13 min-h-12 items-center justify-center rounded-[var(--radius-btn)] border border-[var(--color-ink-950)] px-7 text-base font-semibold text-[var(--color-ink-950)] transition hover:bg-[var(--color-ink-100)]"
+              >
+                견적 먼저 확인하기
+              </a>
+            </div>
           </div>
         </FadeIn>
       </Container>

@@ -29,27 +29,27 @@ export const WEBSITE_JSONLD = {
   inLanguage: "ko",
 } as const;
 
-/** 메인 — 설명회 풀케어 서비스 (2026-10-29: 시작가 100만~ · 파트너 프로모션가 50만) */
+/** 메인 — 설명회 풀케어 서비스 (2026-11-08: 보장 10명 기본가 100만 · 초기 파트너 50만, 5명마다 +15만 — STAGE_PRICING_PUBLIC) */
 export const STAGE_SERVICE_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "10to10 STAGE 학원 설명회 풀케어",
   serviceType: "학원 설명회 대행",
   description:
-    "학원 설명회의 기획·모객·디자인·현장 운영·성과 리포트까지 원스톱 대행. 원장님과 합의한 보장 인원의 80%에 못 미치면 대행료의 절반을 돌려드리는 모객 보장.",
+    "학원 설명회의 기획·모객·디자인·현장 운영·성과 리포트까지 원스톱 대행. 견적에서 정한 보장 인원(10~30명)의 80%에 못 미치면 대행료의 절반을 돌려드리는 모객 보장.",
   provider: { "@type": "Organization", name: "10to10", url: SITE.canonicalUrl },
   areaServed: { "@type": "Country", name: "대한민국" },
   offers: [
     {
       "@type": "Offer",
-      name: "설명회 풀케어 시작가",
+      name: "설명회 풀케어 기본가 (보장 인원 10명)",
       price: "1000000",
       priceCurrency: "KRW",
       priceSpecification: { "@type": "PriceSpecification", price: "1000000", priceCurrency: "KRW", valueAddedTaxIncluded: true },
     },
     {
       "@type": "Offer",
-      name: "초기 파트너 프로모션가",
+      name: "초기 파트너 기본가 (보장 인원 10명)",
       price: "500000",
       priceCurrency: "KRW",
       priceSpecification: { "@type": "PriceSpecification", price: "500000", priceCurrency: "KRW", valueAddedTaxIncluded: true },
