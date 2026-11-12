@@ -10,7 +10,6 @@ export const COMPANY = {
   kakaoUrl: "https://open.kakao.com/o/sSNmmm2h",
   instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "",
   careersUrl: "/careers",
-  irPdfPath: "/ir/10to10-deck.pdf",
 } as const;
 
 export const COMPANY_STATS = [
