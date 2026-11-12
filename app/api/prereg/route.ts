@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { preregSchema } from "@/lib/schema/prereg";
 import { createPreregRow } from "@/lib/notion";
+import { isPreregStoreReady } from "@/lib/prereg";
 
 export const runtime = "nodejs";
 
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
   }
   if (parsed.data.honeypot.length > 0) return NextResponse.json({ ok: true, stored: true });
 
-  if (!process.env.NOTION_PREREG_DB_ID) {
+  if (!isPreregStoreReady()) {
     if (process.env.NODE_ENV !== "production") {
       // 로컬 미리보기 — 번호는 로그에 남기지 않음
       console.info("[prereg] 저장소 미연결 — 로컬 미리보기라 저장하지 않음", parsed.data.role, parsed.data.grade);

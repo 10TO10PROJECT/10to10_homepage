@@ -3,7 +3,7 @@ import { PreregForm } from "@/components/forms/PreregForm";
 import { HOME_PREREG } from "@/lib/content/home";
 
 /**
- * 앱 사전 예약 — '정보에서 신청까지'(앱 출시 준비 중) 바로 다음. 왼쪽 안내 + 오른쪽 그래파이트 카드 폼.
+ * 앱 사전 예약 — 10to10 STAGE 장면 다음. 왼쪽 안내 + 오른쪽 그래파이트 카드 폼.
  * 저장소가 연결된 배포에서만 보인다(app/page.tsx의 isPreregOpen). 다른 곳의 '앱 사전 예약하기'는 #prereg로 온다.
  */
 export function HomePrereg() {

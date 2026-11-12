@@ -75,6 +75,8 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
   const bY = useTransform(p, [0.17, 0.23], [16, 0]);
   const cOpacity = useTransform(p, [0.6, 0.66], [0, 1]);
   const cY = useTransform(p, [0.6, 0.66], [16, 0]);
+  // 세 번째 문장의 링크는 보이기 전엔 누르거나 키보드로 갈 수 없게(앞 장면 글 위에 투명한 링크가 겹치지 않도록)
+  const cVisibility = useTransform(p, (v) => (v < 0.6 ? "hidden" : "visible"));
 
   // 엔진 · 피드 · 로고
   const coreOpacity = useTransform(p, [T.engineIn[0], T.engineIn[1], T.phoneIn[0], T.phoneIn[0] + 0.05], [0, 1, 1, 0]);
@@ -180,7 +182,7 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
               </p>
             </motion.div>
 
-            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: cOpacity, y: cY }}>
+            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: cOpacity, y: cY, visibility: cVisibility }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
               <p className="m-heading mt-3 whitespace-pre-line text-[clamp(1.2rem,5.6vw,1.45rem)] text-[var(--color-ivory)] sm:text-[clamp(1.45rem,2.4vw,2.1rem)]">
                 {HOME_GATHER.apply.headline}
@@ -400,16 +402,16 @@ function SpinRing({
   reverse?: boolean;
 }) {
   return (
-    <motion.svg
-      className="absolute"
+    // CSS 회전 — 자바스크립트 프레임을 쓰지 않고, 화면 밖에선 브라우저가 쉬게 한다. 모션 줄이기 설정이면 멈춤
+    <svg
+      className="absolute animate-spin motion-reduce:animate-none"
+      style={{ animationDuration: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}
       width={size}
       height={size}
       viewBox="0 0 100 100"
-      animate={{ rotate: reverse ? -360 : 360 }}
-      transition={{ duration, repeat: Infinity, ease: "linear" }}
     >
       <circle cx="50" cy="50" r="49" fill="none" stroke="var(--color-mint-500)" strokeOpacity={strokeOpacity} strokeWidth="0.7" strokeDasharray={dash} />
-    </motion.svg>
+    </svg>
   );
 }
 

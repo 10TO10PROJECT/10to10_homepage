@@ -12,7 +12,8 @@ const GUARD_KEY = "10to10:stage-hash-redirect";
  */
 export function StageHashRedirect() {
   useEffect(() => {
-    const id = decodeURIComponent(window.location.hash.slice(1));
+    // 옛 앵커는 모두 영문이라 해독할 필요가 없다 — 깨진 해시(#% 등)를 해독하다 메인 전체가 오류 화면이 되는 일을 막음
+    const id = window.location.hash.slice(1);
     if (!(STAGE_LEGACY_ANCHORS as readonly string[]).includes(id)) return;
     try {
       const last = Number(window.sessionStorage.getItem(GUARD_KEY) ?? 0);

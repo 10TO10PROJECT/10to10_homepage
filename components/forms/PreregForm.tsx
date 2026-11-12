@@ -78,10 +78,18 @@ export function PreregForm() {
   }
 
   const field = "h-12 w-full rounded-[12px] border border-white/20 bg-[var(--color-onyx)] px-4 text-[16px] text-[var(--color-ivory)] outline-none transition focus:border-[var(--color-mint-500)]";
-  const err = (k: string) => errors[k] && <p className="mt-1.5 text-[13px] text-rose-300">{errors[k]}</p>;
+  const errId = (k: string) => `prereg-${k}-error`;
+  const err = (k: string) =>
+    errors[k] && (
+      <p id={errId(k)} role="alert" className="mt-1.5 text-[13px] text-rose-300">
+        {errors[k]}
+      </p>
+    );
+  const describe = (k: string) => (errors[k] ? { "aria-invalid": true, "aria-describedby": errId(k) } : {});
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5">
+    // method="post": 자바스크립트가 돌기 전에 제출돼도 휴대폰 번호가 주소창(URL)에 붙지 않게
+    <form method="post" onSubmit={onSubmit} noValidate className="space-y-5">
       <fieldset>
         <legend className="text-[14px] text-[var(--color-ash)]">신청하시는 분</legend>
         <div className="mt-2 grid grid-cols-2 gap-2">
@@ -111,7 +119,7 @@ export function PreregForm() {
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
             className={`${field} appearance-none pr-10`}
-            aria-invalid={Boolean(errors.grade)}
+            {...describe("grade")}
           >
             <option value="" disabled>
               학년을 골라 주세요
@@ -141,7 +149,7 @@ export function PreregForm() {
           autoComplete="tel"
           placeholder="010-1234-5678"
           className={`${field} mt-2 placeholder:text-white/30`}
-          aria-invalid={Boolean(errors.phone)}
+          {...describe("phone")}
         />
         {err("phone")}
       </div>
@@ -152,7 +160,7 @@ export function PreregForm() {
       {role === "student" && (
         <div>
           <label className="flex items-start gap-2.5 text-[15px] text-[var(--color-ivory)]">
-            <input type="checkbox" name="over14" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" />
+            <input type="checkbox" name="over14" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" {...describe("over14")} />
             만 14세 이상입니다
           </label>
           {err("over14")}
@@ -161,7 +169,7 @@ export function PreregForm() {
 
       <div className="rounded-[12px] border border-white/10 p-4">
         <label className="flex items-start gap-2.5 text-[15px] text-[var(--color-ivory)]">
-          <input type="checkbox" name="consent" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" />
+          <input type="checkbox" name="consent" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" {...describe("consent")} />
           {P.consent.label}
         </label>
         <dl className="mt-3 space-y-1 pl-[26px] text-[13px] leading-relaxed text-[var(--color-ash)]">
