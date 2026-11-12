@@ -7,7 +7,7 @@ export const ORGANIZATION_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "10to10",
-  alternateName: ["텐투텐", "10to10 STAGE"],
+  alternateName: ["텐투텐", "10to10 STAGE", "텐투텐 앱"],
   url: SITE.canonicalUrl,
   logo: `${SITE.canonicalUrl}/brand/symbol-mint.svg`,
   description: SITE.description,
@@ -29,12 +29,13 @@ export const WEBSITE_JSONLD = {
   inLanguage: "ko",
 } as const;
 
-/** 메인 — 설명회 풀케어 서비스 (2026-11-08: 보장 10명 기본가 100만 · 초기 파트너 50만, 5명마다 +15만 — STAGE_PRICING_PUBLIC) */
+/** /stage — 설명회 풀케어 서비스 (2026-11-08: 보장 10명 기본가 100만 · 초기 파트너 50만, 5명마다 +15만 — STAGE_PRICING_PUBLIC) */
 export const STAGE_SERVICE_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "10to10 STAGE 학원 설명회 풀케어",
   serviceType: "학원 설명회 대행",
+  url: `${SITE.canonicalUrl}/stage`,
   description:
     "학원 설명회의 기획·모객·디자인·현장 운영·성과 리포트까지 원스톱 대행. 견적에서 정한 보장 인원(10~30명)의 80%에 못 미치면 대행료의 절반을 돌려드리는 모객 보장.",
   provider: { "@type": "Organization", name: "10to10", url: SITE.canonicalUrl },
@@ -57,7 +58,7 @@ export const STAGE_SERVICE_JSONLD = {
   ],
 } as const;
 
-/** 메인 — FAQ 리치 결과 (STAGE_FAQ 콘텐츠 SSOT에서 생성) */
+/** /stage — FAQ 리치 결과 (STAGE_FAQ 콘텐츠 SSOT에서 생성) */
 export const STAGE_FAQ_JSONLD = {
   "@context": "https://schema.org",
   "@type": "FAQPage",

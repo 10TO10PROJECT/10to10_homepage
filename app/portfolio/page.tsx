@@ -100,7 +100,7 @@ export default function PortfolioPage() {
                   카톡으로 3분 상담
                 </a>
                 <Link
-                  href="/#estimate"
+                  href="/stage#estimate"
                   className="inline-flex h-12 items-center rounded-[var(--radius-btn)] bg-white px-6 text-base font-bold text-[var(--color-ink-950)] transition hover:bg-[var(--color-ink-100)]"
                 >
                   견적 확인 →
