@@ -4,6 +4,7 @@ import { StageLogo } from "@/components/brand/StageLogo";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { KakaoSymbol } from "@/components/ui/Button";
 import { COMPANY } from "@/lib/content/company";
+import { STAGE_PROOF } from "@/lib/content/stage";
 
 /**
  * 풀블리드 현장 사진 히어로 — 사진 위 좌측 헤드라인 + 우측 실적 카드.
@@ -96,37 +97,28 @@ function ProofCard() {
   return (
     <div className="rounded-[var(--radius-card)] bg-white p-6 shadow-elevated md:p-7">
       <div className="flex items-center justify-between">
-        <span className="text-[15px] font-bold text-[var(--color-ink-950)]">텐투텐이 주관한 설명회</span>
+        <span className="text-[15px] font-bold text-[var(--color-ink-950)]">{STAGE_PROOF.title}</span>
         <span className="rounded-full bg-[var(--color-mint-wash)] px-3 py-1 text-[12px] font-bold text-[var(--color-mint-600)]">
           실측 데이터
         </span>
       </div>
 
-      <div className="mt-5 border-t border-[var(--color-cloud)] pt-5">
-        <div className="text-[13px] font-semibold text-[var(--color-ink-500)]">2026.02 · 동탄 콜라보 설명회</div>
-        <dl className="mt-3 grid grid-cols-3 gap-3">
-          <ProofStat value="37" unit="명" label="신청" />
-          <ProofStat value="4.25" label="만족도 /5" />
-          <ProofStat value="95.2" unit="%" label="추천 의사*" />
-        </dl>
-      </div>
-
-      <div className="mt-5 border-t border-[var(--color-cloud)] pt-5">
-        <div className="text-[13px] font-semibold text-[var(--color-ink-500)]">2026.10.09 · 고등 수학 설명회</div>
-        <dl className="mt-3 grid grid-cols-3 gap-3">
-          <ProofStat value="4.8" label="도움 정도 /5" />
-          <ProofStat value="9.0" label="추천 /10" />
-          <ProofStat value="0" unit="건" label="비추천" />
-        </dl>
-      </div>
+      {STAGE_PROOF.events.map((event) => (
+        <div key={event.label} className="mt-5 border-t border-[var(--color-cloud)] pt-5">
+          <div className="text-[13px] font-semibold text-[var(--color-ink-500)]">{event.label}</div>
+          <dl className="mt-3 grid grid-cols-3 gap-3">
+            {event.stats.map((stat) => (
+              <ProofStat key={stat.label} value={stat.value} unit={"unit" in stat ? stat.unit : undefined} label={stat.label} />
+            ))}
+          </dl>
+        </div>
+      ))}
 
       <p className="mt-5 rounded-[var(--radius-img)] bg-[var(--color-paper-dim)] px-4 py-3 text-[14px] leading-relaxed text-[var(--color-ink-700)]">
         약속한 인원의 80%를 못 채우면 대행료의 절반을 돌려드리는{" "}
         <strong className="text-[var(--color-ink-950)]">모객 보장</strong>까지.
       </p>
-      <p className="mt-3 text-[12px] leading-relaxed text-[var(--color-ink-500)]">
-        * 2월 학부모 응답 21명 중 4~5점 비율 · 10월은 현장 설문 5건 기준
-      </p>
+      <p className="mt-3 text-[12px] leading-relaxed text-[var(--color-ink-500)]">{STAGE_PROOF.footnote}</p>
     </div>
   );
 }

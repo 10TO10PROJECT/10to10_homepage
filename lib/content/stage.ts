@@ -461,6 +461,30 @@ export const STAGE_COST_ANCHOR = [
  * "파트너" = 텐투텐 베타 웹앱 테스트에 협조한 학원(STAGE 전용 표현). 계산은 lib/estimate.ts.
  * 부가세 포함가 — 간이과세자, 증빙은 현금영수증 (2026-09-26 홈택스 확인).
  */
+/** 텐투텐이 주관한 설명회 실측 — STAGE 히어로 실적 카드와 메인(통합 랜딩)이 같이 씀. 수치 정정 락(2026-09-26) 기준, 각주 필수 */
+export const STAGE_PROOF = {
+  title: "텐투텐이 주관한 설명회",
+  events: [
+    {
+      label: "2026.02 · 동탄 콜라보 설명회",
+      stats: [
+        { value: "37", unit: "명", label: "신청" },
+        { value: "4.25", label: "만족도 /5" },
+        { value: "95.2", unit: "%", label: "추천 의사*" },
+      ],
+    },
+    {
+      label: "2026.10.09 · 고등 수학 설명회",
+      stats: [
+        { value: "4.8", label: "도움 정도 /5" },
+        { value: "9.0", label: "추천 /10" },
+        { value: "0", unit: "건", label: "비추천" },
+      ],
+    },
+  ],
+  footnote: "* 2월 학부모 응답 21명 중 4~5점 비율 · 10월은 현장 설문 5건 기준",
+} as const;
+
 export const STAGE_PRICING_PUBLIC = {
   eyebrow: "'견적은 문의 주세요'? NO.",
   headline: "견적은 지금 바로,\n직접 확인하세요.",

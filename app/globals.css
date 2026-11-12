@@ -4,6 +4,9 @@
 @import "@fontsource/pretendard/600.css";
 @import "@fontsource/pretendard/700.css";
 @import "@fontsource/pretendard/800.css";
+/* 한글 Pretendard 웹폰트(2026-11-09) — @fontsource 판은 라틴 글자만 있어, Pretendard가 설치되지 않은 PC(대부분의 윈도우)에서는
+   한글이 맑은 고딕으로 나왔음. 가변 글꼴의 다이내믹 서브셋이라 페이지에 쓰인 글자 묶음만 받음 (SIL OFL) */
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 
 @theme {
   /* Brand */
@@ -29,11 +32,20 @@
   --color-paper-dim: #F6F7F8;
   --color-mint-wash: #EFFBF8;
 
+  /* 메인(통합 랜딩) 다크 서피스 — Mercury 스타일 템플릿(2026-11-09 CEO 제공)을 브랜드 민트로 번안.
+     캔버스 → 카드 → 버튼 순으로 한 단계씩 밝아지고, 그림자 대신 이 명도 차이로 층을 나눈다. 포인트 색은 민트 하나 */
+  --color-onyx: #171721;
+  --color-graphite: #1E1E2A;
+  --color-obsidian: #272735;
+  --color-slate-line: #70707D;
+  --color-ash: #C3C3CC;
+  --color-ivory: #EDEDF3;
+
   /* 기능적 컬러 — 카카오 CTA 전용 (T2 예외, 카카오 공식 버튼 규격) */
   --color-kakao: #FEE500;
 
   /* Type */
-  --font-sans: 'Pretendard', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Pretendard Variable', 'Pretendard', system-ui, -apple-system, sans-serif;
 
   /* Radius — 신뢰형 지오메트리: 카드 16 / 이미지 14 / 버튼·인풋 10 / 뱃지 필 / 브레이크 24 */
   --radius-badge: 999px;
@@ -98,6 +110,37 @@
     line-height: 1.16;
     letter-spacing: -0.035em;
     word-break: keep-all;
+  }
+
+  /* 메인 다크 랜딩 타이포 — 템플릿(Mercury) 굵기 그대로: 큰 제목 530 · 제목 480 · 본문 400 (Pretendard 가변 글꼴이라 중간 굵기 가능).
+     줄간격 1.1~1.2, 한글은 자간을 살짝 좁혀 템플릿의 넓은 라틴 자간 대신 단정하게 */
+  .m-display {
+    font-weight: 530;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+  }
+  .m-heading {
+    font-weight: 480;
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+    word-break: keep-all;
+  }
+  .m-eyebrow {
+    font-size: 14px;
+    font-weight: 480;
+    letter-spacing: 0.01em;
+    color: var(--color-mint-500);
+  }
+  /* 템플릿 레이아웃 — 콘텐츠 최대 폭 1200px, 섹션 위아래 72px(데스크톱은 여유 있게 112px) */
+  .m-wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .m-wrap { padding-inline: 2rem; }
   }
 
   /* 형광펜 강조 — 인쇄물·캐러셀과 같은 러프 브러시 (박스형 강조 대체) */

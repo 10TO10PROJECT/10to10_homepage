@@ -9,7 +9,8 @@ import { STAGE_TEAM } from "@/lib/content/stage";
 export function FounderStory() {
   const f = PLATFORM_FOUNDERS;
   return (
-    <section className="relative overflow-hidden py-20 md:py-28">
+    // id="founders": 메인 '창업자 이야기 더 보기'가 이 섹션으로 바로 온다(11/11 CEO)
+    <section id="founders" className="relative scroll-mt-16 overflow-hidden py-20 md:py-28">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center">
         <Wordmark
           variant="mint"

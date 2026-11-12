@@ -1,54 +1,54 @@
 import type { Metadata } from "next";
-import { StageHero } from "@/components/sections/stage/StageHero";
-import { TrustBar } from "@/components/sections/stage/TrustBar";
-import { Painpoints } from "@/components/sections/stage/Painpoints";
-import { RoiBoard } from "@/components/sections/stage/RoiBoard";
-import { InfoSessionFlagship } from "@/components/sections/stage/InfoSessionFlagship";
-import { CompareStrip } from "@/components/sections/stage/CompareStrip";
-import { SiteGallery } from "@/components/sections/SiteGallery";
-import { PromoShowcase } from "@/components/sections/PromoShowcase";
-import { WhyUs } from "@/components/sections/stage/WhyUs";
-import { TeamCredential } from "@/components/sections/stage/TeamCredential";
-import { PricingSection } from "@/components/sections/stage/PricingSection";
-import { GuaranteeBanner } from "@/components/sections/stage/GuaranteeBanner";
-import { Process } from "@/components/sections/stage/Process";
-import { StageFaq } from "@/components/sections/stage/StageFaq";
-import { StageContact } from "@/components/sections/stage/StageContact";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { STAGE_SERVICE_JSONLD, STAGE_FAQ_JSONLD } from "@/lib/seo";
+import { HomeHero } from "@/components/sections/home/HomeHero";
+import { HomePaths } from "@/components/sections/home/HomePaths";
+import { HomeGather } from "@/components/sections/home/HomeGather";
+import { HomeOpen } from "@/components/sections/home/HomeOpen";
+import { HomeFounders } from "@/components/sections/home/HomeFounders";
+import { HomeCta } from "@/components/sections/home/HomeCta";
+import { StageHashRedirect } from "@/components/sections/home/StageHashRedirect";
+import { HomePrereg } from "@/components/sections/home/HomePrereg";
+import { isPreregOpen } from "@/lib/prereg";
+import { SITE } from "@/lib/site";
 
+const TITLE = "텐투텐 — 학생을 위한 교육 정보를 모으고, 그 정보를 나누는 자리, 설명회를 엽니다";
+const DESCRIPTION = SITE.description;
+
+// openGraph는 레이아웃 값을 통째로 덮으므로 링크 공유(카카오톡 등)에 쓰이는 필드를 여기서 모두 적음. 썸네일은 같은 폴더 opengraph-image.png
 export const metadata: Metadata = {
-  title: "10to10 STAGE — 등록으로 이어지는 가장 확실한 길, 학원 설명회 풀케어",
-  description:
-    "학부모가 직접 찾아오는 설명회는 등록으로 이어지는 가장 확실한 길입니다. 설명회 하루가 학원의 한 학기를 바꿉니다. 홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리까지 전담팀이 대신합니다.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "10to10 STAGE — 등록으로 이어지는 가장 확실한 길, 학원 설명회 풀케어",
-    description:
-      "학부모가 직접 찾아오는 설명회는 등록으로 이어지는 가장 확실한 길입니다. 설명회 하루가 학원의 한 학기를 바꿉니다. 홍보·모객, 연사 섭외, 홍보물 제작, 현장 운영, 사후 등록 관리까지 전담팀이 대신합니다.",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: "10to10",
+    locale: "ko_KR",
+    type: "website",
   },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
-/** 메인 = STAGE 랜딩. 섹션 맵 = 인쇄물·캐러셀 논리: 히어로 → 신뢰도 → 페인 → 왜 설명회 → 실제 사례·포트폴리오 → 솔루션 → 차별화 → 팀 → 가격·보장 → 수행방안 → 상담 */
+/**
+ * 메인 = 텐투텐의 두 사업을 한 이야기로 잇는 랜딩 (2026-11-09 개편, 11-10 CEO 피드백: 좌우 분할 대신 스토리·애니메이션으로 유기적 연결).
+ * 기존 STAGE 랜딩은 /stage. 디자인: CEO 제공 Mercury 템플릿(어두운 캔버스·그래파이트 카드·알약 버튼·실사 히어로)을 민트·Pretendard로 번안.
+ * 흐름: 히어로("모으고 · 엽니다") → 바로 아래 갈림길(학부모·학생에게는 챙겨 드립니다 → /platform, 원장님께는 열어 드립니다 → /stage)
+ *       → 텐투텐 앱(쏟아지는 소식 → 텐투텐 AI 엄선 엔진이 맞춤만 골라 피드로 → 설명회 바로 신청) → 10to10 STAGE(설명회 현장·실측)
+ *       → 앱 사전 예약 → 만드는 사람들 → 마무리. (11/12: 따로 있던 '정보에서 신청까지' 장면은 엔진 장면의 마지막 단계로 합침)
+ * 앱 사전 예약(#prereg)과 그리로 가는 버튼은 저장소가 연결된 배포에서만 보인다(isPreregOpen, 로컬은 미리보기로 항상).
+ */
 export default function Home() {
+  const prereg = isPreregOpen();
   return (
-    <>
-      <JsonLd data={STAGE_SERVICE_JSONLD} />
-      <JsonLd data={STAGE_FAQ_JSONLD} />
-      <StageHero />
-      <TrustBar />
-      <Painpoints />
-      <RoiBoard />
-      <SiteGallery />
-      <PromoShowcase />
-      <InfoSessionFlagship />
-      <CompareStrip />
-      <WhyUs />
-      <TeamCredential />
-      <PricingSection />
-      <GuaranteeBanner />
-      <Process />
-      <StageFaq />
-      <StageContact />
-    </>
+    <div className="bg-[var(--color-onyx)] text-[var(--color-ivory)]">
+      <StageHashRedirect />
+      <HomeHero />
+      <HomePaths />
+      <HomeGather prereg={prereg} />
+      <HomeOpen />
+      {prereg && <HomePrereg />}
+      <HomeFounders />
+      <HomeCta prereg={prereg} />
+    </div>
   );
 }

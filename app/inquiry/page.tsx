@@ -39,8 +39,8 @@ export default function InquiryPage() {
                 "만족도 4.25 / 5.0 · 재참석 의사 100%(4~5점 응답, 21명)",
                 "보장 인원 80% 미달 시 대행료 반액 환급 — 모객 보장",
               ]}
-              primary={{ href: "/#estimate", label: "설명회 견적 확인하기" }}
-              secondary={{ href: "/", label: "STAGE 자세히 보기" }}
+              primary={{ href: "/stage#estimate", label: "설명회 견적 확인하기" }}
+              secondary={{ href: "/stage", label: "STAGE 자세히 보기" }}
               tone="mint"
             />
           </FadeIn>
