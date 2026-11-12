@@ -4,9 +4,14 @@ import { Container } from "@/components/ui/Container";
 import { KakaoSymbol } from "@/components/ui/Button";
 import { COMPANY } from "@/lib/content/company";
 
-export function Footer() {
+export function Footer({ tone = "light" }: { tone?: "light" | "dark" }) {
+  // 메인(다크)은 본문과 같은 오닉스 캔버스가 이어지도록 위 여백(흰 바탕) 없이 경계선만
+  const cls =
+    tone === "dark"
+      ? "border-t border-white/[0.08] bg-[var(--color-onyx)] text-white"
+      : "mt-32 bg-[var(--color-ink-900)] text-white";
   return (
-    <footer className="mt-32 bg-[var(--color-ink-900)] text-white">
+    <footer className={cls}>
       <Container className="py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
@@ -31,7 +36,7 @@ export function Footer() {
             <div className="micro-label mb-4 text-white/50">Product</div>
             <ul className="space-y-2.5 text-white/75">
               <li>
-                <Link href="/" className="transition hover:text-[var(--color-mint-500)]">
+                <Link href="/stage" className="transition hover:text-[var(--color-mint-500)]">
                   10to10 STAGE · 설명회 풀케어
                 </Link>
               </li>
