@@ -1,6 +1,7 @@
 import { FadeIn } from "@/components/motion/FadeIn";
 import { PreregForm } from "@/components/forms/PreregForm";
 import { HOME_PREREG } from "@/lib/content/home";
+import { Emph } from "@/components/sections/home/Emph";
 
 /**
  * 앱 사전 예약 — 10to10 STAGE 장면 다음. 왼쪽 안내 + 오른쪽 그래파이트 카드 폼.
@@ -16,7 +17,7 @@ export function HomePrereg() {
           <h2 id="prereg-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.85rem,3.4vw,2.65rem)] text-[var(--color-ivory)]">
             {P.headline}
           </h2>
-          <p className="mt-5 max-w-md break-keep text-[16px] leading-[1.6] text-[var(--color-ash)] md:text-[18px]">{P.sub}</p>
+          <p className="mt-5 max-w-md break-keep text-[16px] leading-[1.6] text-[var(--color-ash)] md:text-[18px]"><Emph text={P.sub} /></p>
         </FadeIn>
         <FadeIn delay={0.1}>
           <div className="rounded-[12px] bg-[var(--color-graphite)] p-6 md:p-8">

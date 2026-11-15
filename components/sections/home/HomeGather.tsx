@@ -1,17 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { motion, useTransform, type MotionValue } from "framer-motion";
-import { useSectionProgress } from "@/components/motion/useSectionProgress";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { animate, motion, useInView, useMotionValue, useTransform, type AnimationPlaybackControls, type MotionValue } from "framer-motion";
 import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
 import { PhoneFeedMock } from "@/components/sections/platform/PhoneFeedMock";
 import { Symbol } from "@/components/brand/Symbol";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { HOME_ENGINE, HOME_GATHER, HOME_PREREG } from "@/lib/content/home";
+import { Emph } from "@/components/sections/home/Emph";
 
 /**
- * 텐투텐 앱 — 화면에 고정된 무대에서 스크롤에 따라 네 장면이 이어진다(11/12 CEO: AI 엔진을 로고로 부각).
+ * 텐투텐 앱 — 화면 한 장 크기의 무대에서 네 장면이 자동으로 이어진다(11/12 CEO: AI 엔진을 로고로 부각).
+ * 11/12 CEO: 스크롤에 맞춰 움직이니 어색·불편 → 섹션이 화면에 보이기 시작하면 자동 재생(약 11초), 화면 밖으로 나가면 멈췄다가 돌아오면 이어서,
+ * 끝나면 마지막 장면(신청 완료)에 멈추고 '다시 보기' 버튼. 장면 키프레임은 진행도(0~1) 기준 그대로 두고, 진행도를 스크롤 대신 시간으로 움직인다.
  *  1) 쏟아지는 소식 — 흩어진 소식 카드 + "정보는 쏟아지는데… 찾기 어려우시죠?"
  *  2) AI 엄선 — 가운데 텐투텐 심볼이 엔진이 되어 소식을 하나씩 판정. 맞는 것은 '✓ 맞춤'으로 엔진에 들어가고,
  *     안 맞는 것은 '다른 학년 · 다른 지역'으로 걸러져 밀려난다. 엔진 아래 기준(동탄 · 예비 고1)은 휴대폰 화면과 같은 값.
@@ -20,7 +22,7 @@ import { HOME_ENGINE, HOME_GATHER, HOME_PREREG } from "@/lib/content/home";
  * 트랜스폼·투명도만 움직인다. 모션 줄이기 설정이면 고정 무대 없이 마지막 상태(기준·피드·신청 완료)를 그대로 보여 준다.
  */
 
-// 장면 타이밍(섹션 진행도 0~1)
+// 장면 타이밍(진행도 0~1)
 const T = {
   engineIn: [0.08, 0.16],
   chipStart: 0.14,
@@ -30,6 +32,15 @@ const T = {
   tap: [0.75, 0.78],
   done: [0.77, 0.8],
 } as const;
+
+// 자동 재생 — 진행도를 시간 구간별 속도로 움직임(첫 장면 1.8초, 판정 6초, 피드 1.4초, 신청 1.8초)
+// 11/12 CEO: 시작이 늦게 느껴짐(2회) → 섹션 윗부분이 화면 아래쪽에 보이기 시작하면 바로 시작 + 첫 장면 정지 3.2 → 1.8초
+const PLAY = {
+  progress: [0, 0.08, 0.53, 0.66, 0.82, 1],
+  seconds: [0, 1.8, 7.8, 9.2, 11.0, 11.4],
+} as const;
+const PLAY_DURATION = PLAY.seconds[PLAY.seconds.length - 1];
+const PLAY_TIMES = PLAY.seconds.map((t) => t / PLAY_DURATION);
 
 // 흩어진 위치(무대 가운데 기준, 데스크톱 px) — 태블릿은 배율을 곱함
 const SCATTER = [
@@ -64,9 +75,47 @@ const ENGINE_SYMBOL = 56; // 엔진 안 심볼 폭(데스크톱)
 export function HomeGather({ prereg = false }: { prereg?: boolean }) {
   const reduce = useReducedMotionSafe();
   const ref = useRef<HTMLElement>(null);
-  const p = useSectionProgress(ref, "pin");
-  const scale = useStageScale();
-  const compact = scale < 0.5;
+  const p = useMotionValue(0);
+  // 섹션 윗부분이 화면 맨 아래 8%선을 넘는 순간 재생(조금이라도 보이면), 완전히 벗어나면 멈춤
+  const inView = useInView(ref, { amount: "some", margin: "0px 0px -8% 0px" });
+  const controls = useRef<AnimationPlaybackControls | null>(null);
+  const done = useRef(false); // 한 번 끝까지 재생했으면 다시 들어와도 자동으로 되감지 않음(마지막 장면 유지)
+  const [finished, setFinished] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const { scale, compact } = useStageScale(stageRef);
+
+  // 처음부터 재생(상태는 건드리지 않음 — 효과 안에서도 부를 수 있게)
+  const start = useCallback(() => {
+    controls.current?.stop();
+    p.set(0);
+    controls.current = animate(p, [...PLAY.progress], {
+      duration: PLAY_DURATION,
+      times: PLAY_TIMES,
+      ease: "linear",
+      onComplete: () => {
+        done.current = true;
+        setFinished(true);
+      },
+    });
+  }, [p]);
+
+  // 화면에 들어오면 재생(처음이면 시작, 멈췄던 거면 이어서), 나가면 멈춤
+  useEffect(() => {
+    if (reduce || done.current) return;
+    const c = controls.current;
+    if (inView) {
+      if (c) c.play();
+      else start();
+    } else c?.pause();
+  }, [inView, reduce, start]);
+
+  useEffect(() => () => controls.current?.stop(), []);
+
+  const replay = () => {
+    done.current = false;
+    setFinished(false);
+    start();
+  };
   const k = compact ? 0.62 : scale; // 엔진 크기 배율
 
   // 문장 세 장면
@@ -82,11 +131,20 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
   const coreOpacity = useTransform(p, [T.engineIn[0], T.engineIn[1], T.phoneIn[0], T.phoneIn[0] + 0.05], [0, 1, 1, 0]);
   const coreScale = useTransform(p, [T.engineIn[0], T.engineIn[1], T.phoneIn[0], T.phoneIn[0] + 0.05], [0.7, 1, 1, 1.25]);
   const symbolTarget = (128 * scale) / (ENGINE_SYMBOL * k);
-  const symbolX = useTransform(p, [T.phoneIn[0], T.phoneIn[1]], [0, LOGO_SYMBOL_X * scale]);
-  const symbolScale = useTransform(p, [T.engineIn[0], T.engineIn[1], T.phoneIn[0], T.phoneIn[1]], [0.7, 1, 1, symbolTarget]);
-  const symbolOpacity = useTransform(p, [T.engineIn[0], T.engineIn[1], T.phoneIn[0], T.phoneIn[1]], [0, 1, 1, 0.15]);
-  const wordmarkOpacity = useTransform(p, [T.phoneIn[0] + 0.03, T.phoneIn[1] + 0.02], [0, 0.15]);
-  const phoneOpacity = useTransform(p, [T.phoneIn[0], T.phoneIn[0] + 0.07, T.cardIn[0], T.cardIn[1]], [0, 1, 1, 0.5]);
+  // 넓은 화면: 엔진 심볼이 휴대폰 뒤 풀 로고의 심볼 자리로 옮겨 간다.
+  // 휴대폰(좁은 화면): 설명회 카드가 가운데를 덮어 뒤 로고가 조각처럼 보이므로, 엔진 심볼은 사라지고 휴대폰 위에 작은 풀 로고가 뜬다
+  const symbolX = useTransform(p, [T.phoneIn[0], T.phoneIn[1]], [0, compact ? 0 : LOGO_SYMBOL_X * scale]);
+  const symbolScale = useTransform(p, [T.engineIn[0], T.engineIn[1], T.phoneIn[0], T.phoneIn[1]], [0.7, 1, 1, compact ? 1 : symbolTarget]);
+  // 11/12 CEO: 마지막에 뜨는 텐투텐 로고는 반투명 말고 또렷하게(불투명) — 엔진 심볼이 그대로 로고 심볼이 된다
+  const symbolOpacity = useTransform(
+    p,
+    [T.engineIn[0], T.engineIn[1], T.phoneIn[0], T.phoneIn[0] + 0.05],
+    [0, 1, 1, compact ? 0 : 1],
+  );
+  const wordmarkOpacity = useTransform(p, [T.phoneIn[0] + 0.03, T.phoneIn[1] + 0.02], [0, 1]);
+  // 휴대폰은 불투명 유지(뒤 로고가 비치지 않게) — 설명회 카드가 나올 땐 휴대폰 화면 위에 어두운 막을 덮어 카드로 시선을 모음
+  const phoneOpacity = useTransform(p, [T.phoneIn[0], T.phoneIn[0] + 0.07], [0, 1]);
+  const phoneDim = useTransform(p, [T.cardIn[0], T.cardIn[1]], [0, 0.55]);
   const phoneScale = useTransform(p, [T.phoneIn[0], T.phoneIn[1]], [0.3, 1]);
 
   // 맞춤 소식이 엔진에 들어갈 때마다 고리가 한 번씩 퍼진다
@@ -98,19 +156,21 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
   const D = 136 * k; // 엔진 지름
 
   return (
-    <section ref={ref} aria-labelledby="gather-title" className="relative h-[320svh]">
-      <div className="sticky top-16 flex h-[calc(100svh-4rem)] flex-col overflow-hidden lg:flex-row lg:items-center">
+    <section ref={ref} aria-labelledby="gather-title" className="relative">
+      <div className="relative flex h-[calc(100svh-4rem)] min-h-[600px] flex-col overflow-hidden lg:flex-row lg:items-center">
         {/* 무대 — 쏟아지는 소식 → 엔진 → 피드 → 신청 */}
-        <div className="relative h-[48%] w-full sm:h-[56%] lg:order-2 lg:h-full lg:w-1/2">
+        <div ref={stageRef} className="relative h-[48%] w-full sm:h-[56%] lg:order-2 lg:h-full lg:w-1/2">
           <div
             aria-hidden
             className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(80,227,194,0.16)_0%,rgba(80,227,194,0)_100%)]"
           />
 
           {/* 휴대폰 뒤 풀 로고의 워드마크 — 심볼 자리는 비워 두고, 엔진 심볼이 그 자리로 옮겨 온다 */}
-          <motion.div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: wordmarkOpacity }}>
-            <LogoRow scale={scale} hideSymbol />
-          </motion.div>
+          {!compact && (
+            <motion.div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: wordmarkOpacity }}>
+              <LogoRow scale={scale} hideSymbol />
+            </motion.div>
+          )}
 
           {/* 엔진 — 그래파이트 원 + 도는 점선 고리 + 맞춤이 들어올 때 퍼지는 고리 + 기준 알약 */}
           <motion.div
@@ -141,7 +201,7 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
           </motion.div>
 
           {HOME_ENGINE.chips.map((chip, i) => (
-            <Chip key={chip.title} progress={p} index={i} scale={scale} {...chip} />
+            <Chip key={chip.title} progress={p} index={i} scale={scale} compact={compact} {...chip} />
           ))}
 
           {/* 가운데 맞춤은 CSS translate(Tailwind), 움직임은 motion transform — 두 속성이 따로 합쳐짐 */}
@@ -149,12 +209,44 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{ opacity: phoneOpacity, scale: phoneScale }}
           >
-            <div className="origin-center" style={{ transform: `scale(${scale * 0.92})` }}>
+            <div className="relative origin-center" style={{ transform: `scale(${scale * 0.92})` }}>
               <PhoneFeedMock className="[&>div]:shadow-none [&_figcaption_span]:bg-white/10 [&_figcaption_span]:text-[var(--color-ash)]" />
+              {/* 휴대폰(좁은 화면) 전용 — 휴대폰 위에 텐투텐 풀 로고(불투명). 휴대폰과 같이 축소되므로 원래 크기로 그림 */}
+              {compact && (
+                <motion.div
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-full left-1/2 mb-7 flex -translate-x-1/2 items-center gap-3"
+                  style={{ opacity: wordmarkOpacity }}
+                >
+                  <Symbol variant="mint" size={64} role="presentation" aria-label={undefined} />
+                  <Wordmark variant="mint" height={48} role="presentation" aria-label={undefined} />
+                </motion.div>
+              )}
+              {/* 휴대폰 화면만 덮는 어두운 막(아래 '화면 예시' 캡션은 그대로) */}
+              <motion.div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 top-0 bottom-[44px] mx-auto w-[300px] rounded-[2.6rem] bg-[var(--color-onyx)]"
+                style={{ opacity: phoneDim }}
+              />
             </div>
           </motion.div>
 
-          <SeminarCard progress={p} compact={compact} />
+          <SeminarCard progress={p} compact={compact} stageScale={scale} />
+
+          <motion.button
+            type="button"
+            onClick={replay}
+            initial={false}
+            animate={{ opacity: finished ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            tabIndex={finished ? 0 : -1}
+            aria-hidden={!finished}
+            className={`absolute top-3 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-[var(--color-onyx)]/80 px-3 py-1.5 text-[13px] text-[var(--color-ivory)] backdrop-blur transition-colors hover:border-[var(--color-mint-500)] md:top-5 md:right-6 ${
+              finished ? "" : "pointer-events-none"
+            }`}
+          >
+            <span aria-hidden>↻</span> 다시 보기
+          </motion.button>
         </div>
 
         {/* 문장 — 세 장면이 같은 자리에서 바뀜 */}
@@ -167,7 +259,7 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
                 {HOME_GATHER.before.headline}
               </h2>
               <p className="mt-4 max-w-md break-keep text-[15px] leading-[1.6] text-[var(--color-ash)] md:text-[18px]">
-                {HOME_GATHER.before.sub}
+                <Emph text={HOME_GATHER.before.sub} />
               </p>
             </motion.div>
 
@@ -178,7 +270,7 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
               </p>
               <EngineBadge className="mt-3 md:mt-5" />
               <p className="mt-2.5 max-w-md break-keep text-[15px] leading-[1.55] text-[var(--color-ash)] md:mt-3 md:text-[18px] md:leading-[1.6]">
-                {HOME_GATHER.after.sub}
+                <Emph text={HOME_GATHER.after.sub} />
               </p>
             </motion.div>
 
@@ -188,7 +280,7 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
                 {HOME_GATHER.apply.headline}
               </p>
               <p className="mt-2.5 max-w-md break-keep text-[15px] leading-[1.55] text-[var(--color-ash)] md:mt-4 md:text-[18px] md:leading-[1.6]">
-                {HOME_GATHER.apply.sub}
+                <Emph text={HOME_GATHER.apply.sub} />
               </p>
               {/* 버튼 링크를 운영 상태 문구보다 먼저 — 휴대폰 오른쪽 아래 카카오 상담 버튼에 가리지 않게 */}
               <Links prereg={prereg} className="mt-3.5 md:mt-6" />
@@ -228,6 +320,7 @@ function Chip({
   progress,
   index,
   scale,
+  compact,
   tag,
   title,
   pass,
@@ -236,12 +329,12 @@ function Chip({
   progress: MotionValue<number>;
   index: number;
   scale: number;
+  compact: boolean;
   tag: string;
   title: string;
   pass: boolean;
   why?: string;
 }) {
-  const compact = scale < 0.5;
   const s = compact ? SCATTER_SM[index % SCATTER_SM.length] : SCATTER[index % SCATTER.length];
   const k = compact ? 1 : scale;
   const sy = s.y * k * (compact ? 0.86 : 1); // 휴대폰은 무대가 화면의 48%라 세로로 덜 흩어지게
@@ -301,12 +394,14 @@ function Chip({
 }
 
 /** 피드 속 설명회 카드가 앞으로 나와 신청 버튼이 '신청 완료'로 바뀐다(장식 — 실제로 눌리지 않음) */
-function SeminarCard({ progress, compact }: { progress: MotionValue<number>; compact: boolean }) {
+function SeminarCard({ progress, compact, stageScale }: { progress: MotionValue<number>; compact: boolean; stageScale: number }) {
   const s = HOME_ENGINE.seminar;
-  const baseY = compact ? 34 : 120;
+  // 무대가 작아지면(좁거나 낮은 창) 카드도 위치·크기를 같이 줄여 아래 문장과 겹치지 않게
+  const fit = compact ? 1 : Math.min(1, Math.max(0.62, stageScale));
+  const baseY = compact ? 34 : 120 * stageScale;
   const opacity = useTransform(progress, [T.cardIn[0], T.cardIn[1]], [0, 1]);
   const y = useTransform(progress, [T.cardIn[0], T.cardIn[1]], [baseY + 48, baseY]);
-  const scale = useTransform(progress, [T.cardIn[0], T.cardIn[1]], [0.9, 1]);
+  const scale = useTransform(progress, [T.cardIn[0], T.cardIn[1]], [0.9 * fit, fit]);
   const tapOpacity = useTransform(progress, [T.tap[0], T.tap[0] + 0.006, T.tap[1]], [0, 0.55, 0]);
   const tapScale = useTransform(progress, [T.tap[0], T.tap[1]], [0.4, 2.4]);
   const applyOpacity = useTransform(progress, [T.done[0], T.done[0] + 0.015], [1, 0]);
@@ -460,22 +555,39 @@ function LogoRow({ scale, hideSymbol = false }: { scale: number; hideSymbol?: bo
   );
 }
 
+// 무대에 휴대폰·카드·흩어진 소식이 다 들어가는 데 필요한 높이(배율 1 기준 px)
+const STAGE_DESIGN_H = 700;
+
 /**
- * 무대 크기에 맞춘 배율 — 넓은 화면은 무대(화면 반쪽)가 1440px 기준 720px보다 좁아지는 만큼 줄임(1280 → 0.89, 1024 → 0.71:
- * 흩어진 카드가 왼쪽 글을 덮거나 로고가 글 뒤로 넘어가지 않게). 태블릿 0.8, 휴대폰 0.42.
+ * 무대 크기에 맞춘 배율 — 폭과 높이 중 더 빠듯한 쪽을 따른다.
+ *  폭: 넓은 화면은 무대(화면 반쪽)가 1440px 기준 720px보다 좁아지는 만큼(1280 → 0.89, 1024 → 0.71), 태블릿 0.8.
+ *  높이(11/12 CEO: 창을 좁히면 휴대폰·설명회 카드가 아래 문장과 겹침): 무대 높이가 700px보다 낮으면 그만큼 줄임.
+ *  휴대폰(폭 640 미만)은 전용 배치라 0.42 고정. compact = 휴대폰 배치 여부(폭으로만 정함).
  */
-function useStageScale() {
-  const [scale, setScale] = useState(1);
+function useStageScale(stageRef: React.RefObject<HTMLDivElement | null>) {
+  const [state, setState] = useState({ scale: 1, compact: false });
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      setScale(w >= 1024 ? Math.min(1, w / 1440) : w >= 640 ? 0.8 : 0.42);
+      if (w < 640) {
+        setState({ scale: 0.42, compact: true });
+        return;
+      }
+      const byWidth = w >= 1024 ? Math.min(1, w / 1440) : 0.8;
+      const h = stageRef.current?.clientHeight ?? 0;
+      const byHeight = h > 0 ? h / STAGE_DESIGN_H : 1;
+      setState({ scale: Math.max(0.4, Math.min(byWidth, byHeight)), compact: false });
     };
     update();
+    const ro = new ResizeObserver(update);
+    if (stageRef.current) ro.observe(stageRef.current);
     window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-  return scale;
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, [stageRef]);
+  return state;
 }
 
 /** 모션 줄이기 — 고정 무대 없이 마지막 상태를 그대로: 문장 세 개 + 엔진 기준 + 피드 화면 + 신청 완료 카드 */
@@ -489,7 +601,7 @@ function StaticGather({ prereg }: { prereg: boolean }) {
           <h2 id="gather-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
             {HOME_GATHER.before.headline}
           </h2>
-          <p className="mt-4 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]">{HOME_GATHER.before.sub}</p>
+          <p className="mt-4 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]"><Emph text={HOME_GATHER.before.sub} /></p>
           <p className="m-heading mt-10 whitespace-pre-line text-[clamp(1.4rem,2.6vw,2rem)] text-[var(--color-ivory)]">
             {HOME_GATHER.after.headline}
           </p>
@@ -497,16 +609,16 @@ function StaticGather({ prereg }: { prereg: boolean }) {
             <EngineBadge />
             <CriteriaPill compact={false} />
           </div>
-          <p className="mt-3 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]">{HOME_GATHER.after.sub}</p>
+          <p className="mt-3 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]"><Emph text={HOME_GATHER.after.sub} /></p>
           <p className="m-heading mt-10 whitespace-pre-line text-[clamp(1.3rem,2.4vw,1.85rem)] text-[var(--color-ivory)]">
             {HOME_GATHER.apply.headline}
           </p>
-          <p className="mt-3 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]">{HOME_GATHER.apply.sub}</p>
+          <p className="mt-3 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]"><Emph text={HOME_GATHER.apply.sub} /></p>
           <p className="mt-3 break-keep text-[14px] leading-[1.5] text-[var(--color-ash)]/75">{HOME_GATHER.apply.status}</p>
           <Links prereg={prereg} className="mt-6" />
         </div>
         <div className="relative">
-          <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.15]">
+          <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <LogoRow scale={1} />
           </div>
           <PhoneFeedMock className="relative [&>div]:shadow-none" />

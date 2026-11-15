@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 export default function Home() {
   const prereg = isPreregOpen();
   return (
-    <div className="bg-[var(--color-onyx)] text-[var(--color-ivory)]">
+    <div className="m-dark bg-[var(--color-onyx)] text-[var(--color-ivory)]">
       <StageHashRedirect />
       <HomeHero />
       <HomePaths />

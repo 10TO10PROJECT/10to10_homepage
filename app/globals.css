@@ -112,23 +112,35 @@
     word-break: keep-all;
   }
 
-  /* 메인 다크 랜딩 타이포 — 템플릿(Mercury) 굵기 그대로: 큰 제목 530 · 제목 480 · 본문 400 (Pretendard 가변 글꼴이라 중간 굵기 가능).
+  /* 메인 다크 랜딩 타이포 — 템플릿(Mercury) 굵기(530·480·400)는 어두운 바탕에서 얇아 읽기 어려움(11/12 CEO)
+     → 큰 제목 800 · 제목 720 · 라벨 600 · 본문 450 · 흰 글씨 600, 강조(**)는 700 아이보리 (Pretendard 가변 글꼴이라 중간 굵기 가능).
+     11/12 CEO 2차: 흰 글씨는 전반적으로 더 굵게 — 굵기를 따로 정한 글자(font-*·제목 클래스)와 입력칸은 그대로 둔다.
      줄간격 1.1~1.2, 한글은 자간을 살짝 좁혀 템플릿의 넓은 라틴 자간 대신 단정하게 */
+  .m-dark {
+    font-weight: 450;
+  }
+  .m-dark :where([class*="text-[var(--color-ivory)]"]:not([class*="font-"]):not(.m-heading):not(.m-display):not(input):not(select):not(textarea)) {
+    font-weight: 600;
+  }
+  .m-dark strong {
+    font-weight: 700;
+    color: var(--color-ivory);
+  }
   .m-display {
-    font-weight: 530;
+    font-weight: 800;
     line-height: 1.12;
     letter-spacing: -0.02em;
     word-break: keep-all;
   }
   .m-heading {
-    font-weight: 480;
+    font-weight: 720;
     line-height: 1.22;
     letter-spacing: -0.015em;
     word-break: keep-all;
   }
   .m-eyebrow {
     font-size: 14px;
-    font-weight: 480;
+    font-weight: 600;
     letter-spacing: 0.01em;
     color: var(--color-mint-500);
   }
