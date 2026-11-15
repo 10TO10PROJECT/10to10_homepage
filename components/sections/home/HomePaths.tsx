@@ -3,6 +3,7 @@ import Link from "next/link";
 import { RiseIn } from "@/components/motion/RiseIn";
 import { PhoneFeedMock } from "@/components/sections/platform/PhoneFeedMock";
 import { HOME_PATHS } from "@/lib/content/home";
+import { ChalkUnderline } from "@/components/sections/home/ChalkUnderline";
 
 /**
  * 갈림길 — 히어로 바로 아래(히어로 끝에 겹쳐 올라와 첫 화면에서도 윗부분이 보임).
@@ -62,7 +63,7 @@ function PathCard({ path, children }: { path: Path; children: React.ReactNode })
             <span className="block">{path.lead}</span>
             <span className="relative inline-block">
               {path.keyword}
-              <span aria-hidden className="absolute right-0 -bottom-[0.08em] left-0 h-[0.08em] rounded-full bg-[var(--color-mint-500)]" />
+              <ChalkUnderline when="view" delay={0.15} />
             </span>
           </p>
         </div>

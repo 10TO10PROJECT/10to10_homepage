@@ -7,6 +7,7 @@ import { motion, useTransform } from "framer-motion";
 import { useSectionProgress } from "@/components/motion/useSectionProgress";
 import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
 import { HOME_HERO } from "@/lib/content/home";
+import { ChalkUnderline } from "@/components/sections/home/ChalkUnderline";
 
 /**
  * 메인 히어로 — 템플릿(Mercury) 구조: 화면 가득한 실사 + 어두운 덮개 + 가운데 정렬 제목.
@@ -52,7 +53,7 @@ export function HomeHero() {
           {HOME_HERO.eyebrow[1]}
         </p>
         {/* 시안 A: 템플릿 굵기(530)보다 굵은 700 + 촘촘한 자간 — 신뢰감 우선(CEO 선택) */}
-        <h1 className="mt-5 max-w-[17ch] break-keep text-[clamp(2.05rem,5.1vw,4.2rem)] leading-[1.2] font-bold tracking-[-0.035em] text-white md:mt-6 md:max-w-none">
+        <h1 className="mt-5 max-w-[17ch] break-keep text-[clamp(2.05rem,5.1vw,4.2rem)] leading-[1.2] font-extrabold tracking-[-0.035em] text-white md:mt-6 md:max-w-none">
           {HOME_HERO.lead}{" "}
           <span className="whitespace-nowrap">
             <Keyword delay={0.35}>{HOME_HERO.gather}</Keyword>,
@@ -86,19 +87,12 @@ export function HomeHero() {
   );
 }
 
-/** 민트 밑줄이 왼쪽에서 그어지는 낱말 — 갈림길 카드의 키워드와 같은 말 */
+/** 분필 밑줄이 왼쪽에서 그어지는 낱말 — 갈림길 카드의 키워드와 같은 말(11/12 CEO: 밑줄을 분필 질감으로) */
 function Keyword({ children, delay }: { children: React.ReactNode; delay: number }) {
-  const reduce = useReducedMotionSafe();
   return (
     <span className="relative inline-block whitespace-nowrap">
       {children}
-      <motion.span
-        aria-hidden
-        className="absolute right-0 -bottom-[0.05em] left-0 h-[0.075em] origin-left rounded-full bg-[var(--color-mint-500)]"
-        initial={reduce ? false : { scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.7, delay, ease: [0.2, 0.8, 0.2, 1] }}
-      />
+      <ChalkUnderline delay={delay} />
     </span>
   );
 }
