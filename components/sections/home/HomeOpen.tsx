@@ -4,6 +4,7 @@ import { PillLink, SectionHead } from "@/components/sections/home/HomeButtons";
 import { CountUp } from "@/components/sections/home/CountUp";
 import { HOME_OPEN } from "@/lib/content/home";
 import { STAGE_PROOF } from "@/lib/content/stage";
+import { Emph } from "@/components/sections/home/Emph";
 
 /**
  * 10to10 STAGE — 앞 장면(텐투텐 앱)의 "정보"에서 "가장 확실한 정보는 설명회 현장"으로 이어 받는다.
@@ -18,7 +19,7 @@ export function HomeOpen() {
           <FadeIn>
             <SectionHead eyebrow={HOME_OPEN.eyebrow} headline={HOME_OPEN.headline} />
             <p className="mt-5 max-w-xl break-keep text-[16px] leading-[1.6] text-[var(--color-ivory)] md:text-[18px]">
-              {HOME_OPEN.body}
+              <Emph text={HOME_OPEN.body} />
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <PillLink href="/stage" variant="ghost">
