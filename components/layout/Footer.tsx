@@ -66,8 +66,18 @@ export function Footer({ tone = "light" }: { tone?: "light" | "dark" }) {
             </ul>
           </div>
         </div>
-        <div className="mt-14 border-t border-white/10 pt-6 text-xs text-white/40">
-          © {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved.
+        {/* 개인정보 처리방침 링크는 다른 링크보다 눈에 띄게(작성지침: 글자 굵기·색 구분).
+            오른쪽 아래 카톡 버튼에 가리지 않게 왼쪽에 둔다. */}
+        <div className="mt-14 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:gap-6">
+          <Link
+            href="/privacy"
+            className="text-sm font-bold text-white transition hover:text-[var(--color-mint-500)]"
+          >
+            개인정보 처리방침
+          </Link>
+          <span>
+            © {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved.
+          </span>
         </div>
       </Container>
     </footer>
