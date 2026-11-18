@@ -13,7 +13,7 @@ import { Emph } from "@/components/sections/home/Emph";
 
 /**
  * 텐투텐 앱 — 화면 한 장 크기의 무대에서 네 장면이 자동으로 이어진다(11/12 CEO: AI 엔진을 로고로 부각).
- * 11/12 CEO: 스크롤에 맞춰 움직이니 어색·불편 → 섹션이 화면에 보이기 시작하면 자동 재생(약 11초), 화면 밖으로 나가면 멈췄다가 돌아오면 이어서,
+ * 11/12 CEO: 스크롤에 맞춰 움직이니 어색·불편 → 섹션이 화면에 보이기 시작하면 자동 재생(약 8초, 11/18 단축), 화면 밖으로 나가면 멈췄다가 돌아오면 이어서,
  * 끝나면 마지막 장면(신청 완료)에 멈추고 '다시 보기' 버튼. 장면 키프레임은 진행도(0~1) 기준 그대로 두고, 진행도를 스크롤 대신 시간으로 움직인다.
  *  1) 쏟아지는 소식 — 흩어진 소식 카드 + "정보는 쏟아지는데… 찾기 어려우시죠?"
  *  2) AI 엄선 — 가운데 텐투텐 심볼이 엔진이 되어 소식을 하나씩 판정. 맞는 것은 '✓ 맞춤'으로 엔진에 들어가고,
@@ -37,11 +37,12 @@ const T = {
   done: [0.77, 0.8],
 } as const;
 
-// 자동 재생 — 진행도를 시간 구간별 속도로 움직임(첫 장면 1.8초, 판정 6초, 피드 1.4초, 신청 1.8초)
+// 자동 재생 — 진행도를 시간 구간별 속도로 움직임(첫 장면 1.4초, 판정 3.8초, 피드 1초, 신청 1.3초 — 전체 약 7.8초)
 // 11/12 CEO: 시작이 늦게 느껴짐(2회) → 섹션 윗부분이 화면 아래쪽에 보이기 시작하면 바로 시작 + 첫 장면 정지 3.2 → 1.8초
+// 11/18 CEO: 휴대폰에서 보니 더 빨리 재생돼야 함 → 전체 11.4 → 7.8초(약 3분의 1 단축, 장면 비율은 그대로)
 const PLAY = {
   progress: [0, 0.08, 0.53, 0.66, 0.82, 1],
-  seconds: [0, 1.8, 7.8, 9.2, 11.0, 11.4],
+  seconds: [0, 1.4, 5.2, 6.2, 7.5, 7.8],
 } as const;
 const PLAY_DURATION = PLAY.seconds[PLAY.seconds.length - 1];
 const PLAY_TIMES = PLAY.seconds.map((t) => t / PLAY_DURATION);
@@ -215,7 +216,8 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
             style={{ opacity: phoneOpacity, scale: phoneScale }}
           >
             <div className="relative origin-center" style={{ transform: `scale(${scale * 0.92})` }}>
-              <PhoneFeedMock className="[&>div]:shadow-none [&_figcaption_span]:bg-white/10 [&_figcaption_span]:text-[var(--color-ash)]" />
+              {/* 휴대폰(폭 640 미만)에선 이 캡션이 아주 작게 줄어 카드 아래 읽히는 크기의 캡션과 겹치므로 자리만 남기고 숨김(11/18 CEO) */}
+              <PhoneFeedMock className="[&>div]:shadow-none [&_figcaption_span]:bg-white/10 [&_figcaption_span]:text-[var(--color-ash)] max-sm:[&_figcaption]:invisible" />
               {/* 휴대폰(좁은 화면) 전용 — 휴대폰 위에 텐투텐 풀 로고(불투명). 휴대폰과 같이 축소되므로 원래 크기로 그림 */}
               {compact && (
                 <motion.div
