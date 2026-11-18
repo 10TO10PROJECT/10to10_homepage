@@ -1,7 +1,7 @@
 /** 모객·홍보 로직 + 텐투텐 디자인 포트폴리오 (해자 ③ 홍보물·홍보 일원화의 증거) */
 
 export const PROMO_LOGIC = {
-  eyebrow: "Promotion Logic",
+  eyebrow: "모객 설계", // 11/18 메인 템플릿 통일 — 영문 눈썹(Promotion Logic) 대신 한국어
   headline: "모객에도 설계도가 있습니다.",
   subhead:
     "잘 만든 포스터 한 장이 아니라, 타깃 설계부터 신청 전환까지 이어지는 흐름이 모객을 만듭니다. 텐투텐이 전 과정을 한 톤으로 설계합니다.",

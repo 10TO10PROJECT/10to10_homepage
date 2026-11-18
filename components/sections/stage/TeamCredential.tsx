@@ -19,12 +19,12 @@ export function TeamCredential() {
 
         {/* 정부 창업 프로그램 선발 단계 — 인쇄물·캐러셀과 같은 수치 (지원~2R: 2026.09 언론 보도, 3R: 2026.10 선발) */}
         <FadeIn className="mt-10">
-          <div className="rounded-[var(--radius-card)] bg-[var(--color-ink-950)] p-6 text-white md:p-8">
+          <div className="rounded-[var(--radius-card)] bg-strong p-6 text-white md:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <span className="text-[15px] font-bold text-[var(--color-mint-500)] md:text-base">
                 중소벤처기업부 「모두의 창업」 1기 · 3라운드 진출
               </span>
-              <span className="rounded-full bg-[var(--color-mint-500)] px-3.5 py-1 text-sm font-extrabold text-[var(--color-ink-950)]">
+              <span className="rounded-full bg-[var(--color-mint-500)] px-3.5 py-1 text-sm font-extrabold text-on-mint">
                 상위 0.3%
               </span>
             </div>
@@ -38,7 +38,7 @@ export function TeamCredential() {
                 <li
                   key={r.label}
                   className={`rounded-[var(--radius-img)] px-4 py-3.5 ${
-                    r.on ? "bg-[var(--color-mint-500)] text-[var(--color-ink-950)]" : "bg-white/[0.07]"
+                    r.on ? "bg-[var(--color-mint-500)] text-on-mint" : "bg-white/[0.07]"
                   }`}
                 >
                   <div className={`text-[13px] font-semibold ${r.on ? "" : "text-white/60"}`}>{r.label}</div>
@@ -99,7 +99,7 @@ export function TeamCredential() {
         </div>
 
         <FadeIn delay={0.12} className="mt-4">
-          <div className="rounded-[var(--radius-card)] bg-white p-7 shadow-card md:p-9">
+          <div className="rounded-[var(--radius-card)] bg-card p-7 shadow-card md:p-9">
             <div className="grid gap-4 md:grid-cols-[1fr_1fr] md:gap-10">
               <div>
                 <h3 className="break-keep text-xl font-bold text-[var(--color-ink-950)]">{STAGE_TEAM.team.title}</h3>

@@ -29,7 +29,7 @@ export function RoiBoard({
 
           {/* 신뢰 지표 — 방문 상담 74.2% (대교 에듀베이션 조사, 출처 각주 필수) */}
           <FadeIn delay={0.05} className="mt-8">
-            <div className="rounded-[var(--radius-card)] bg-white shadow-card px-6 py-5 md:px-8">
+            <div className="rounded-[var(--radius-card)] bg-card shadow-card px-6 py-5 md:px-8">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <span className="max-w-md text-[15px] leading-snug text-[var(--color-ink-700)] md:text-base">
                   {STAGE_ROI.trust.label}
@@ -53,7 +53,7 @@ export function RoiBoard({
               {STAGE_ROI.steps.map((s, i) => (
                 <div
                   key={s.label}
-                  className="relative rounded-[var(--radius-card)] bg-white shadow-card p-6 md:p-8"
+                  className="relative rounded-[var(--radius-card)] bg-card shadow-card p-6 md:p-8"
                 >
                   <div className="micro-label text-[var(--color-ink-500)]">STEP {i + 1}</div>
                   <div className="mt-3 flex items-baseline gap-1">
@@ -82,7 +82,7 @@ export function RoiBoard({
             <FadeIn delay={0.15} className="mt-8">
               <a
                 href={cta.href}
-                className="inline-flex h-12 items-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-ink-950)] px-6 text-base font-bold text-white transition hover:bg-black"
+                className="inline-flex h-12 items-center gap-2 rounded-[var(--radius-btn)] bg-strong px-6 text-base font-bold text-white transition hover:bg-black"
               >
                 {cta.label}
                 <span aria-hidden>→</span>

@@ -41,7 +41,7 @@ export function EstimateCalculator() {
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1.35fr_1fr] lg:items-start">
-      <div className="rounded-[var(--radius-card)] bg-white p-6 shadow-card md:p-8">
+      <div className="rounded-[var(--radius-card)] bg-card p-6 shadow-card md:p-8">
         <fieldset>
           <legend className="text-base font-bold text-[var(--color-ink-950)]">1. 모객 보장 인원</legend>
           <p className="mt-1 text-[13px] leading-relaxed text-[var(--color-ink-500)]">
@@ -56,8 +56,8 @@ export function EstimateCalculator() {
                   key={n}
                   className={`cursor-pointer rounded-[12px] border-2 px-2 py-3 text-center transition has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-ink-950)] ${
                     on
-                      ? "border-[var(--color-ink-950)] bg-[var(--color-ink-950)] text-white"
-                      : "border-[var(--color-cloud)] bg-white text-[var(--color-ink-950)] hover:border-[var(--color-ink-300)]"
+                      ? "border-[var(--color-mint-500)] bg-strong text-white"
+                      : "border-[var(--color-cloud)] bg-card text-[var(--color-ink-950)] hover:border-[var(--color-ink-300)]"
                   }`}
                 >
                   <input
@@ -90,7 +90,7 @@ export function EstimateCalculator() {
             <span>
               <span className="flex flex-wrap items-center gap-2 text-base font-bold text-[var(--color-ink-950)]">
                 2. {P.partner.label}이에요
-                <span className="rounded-full bg-[var(--color-mint-500)] px-2 py-0.5 text-[12px] font-extrabold text-[var(--color-ink-950)]">
+                <span className="rounded-full bg-[var(--color-mint-500)] px-2 py-0.5 text-[12px] font-extrabold text-on-mint">
                   {formatWon(-P.partner.discount)}
                 </span>
               </span>
@@ -154,7 +154,7 @@ export function EstimateCalculator() {
         </div>
       </div>
 
-      <div className="rounded-[var(--radius-card)] bg-[var(--color-ink-900)] p-6 text-white md:p-8 lg:sticky lg:top-24">
+      <div className="rounded-[var(--radius-card)] bg-strong p-6 text-white md:p-8 lg:sticky lg:top-24">
         <div className="micro-label text-[var(--color-mint-500)]">내 견적</div>
         <ul className="mt-4 space-y-2.5 text-[14px]">
           {estimate.lines.map((l) => (
@@ -177,7 +177,7 @@ export function EstimateCalculator() {
           href={COMPANY.kakaoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] text-base font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
+          className="mt-6 flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] text-base font-bold text-on-mint transition hover:brightness-95"
         >
           <KakaoSymbol size={18} />
           이 견적으로 카톡 상담하기

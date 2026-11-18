@@ -9,7 +9,7 @@ export function Process() {
     <section className="band-wash py-20 md:py-28">
       <Container size="wide">
         <FadeIn className="mb-12 max-w-3xl">
-          <div className="micro-label text-[var(--color-ink-500)]">Process</div>
+          <div className="micro-label text-[var(--color-ink-500)]">진행 절차</div>
           <h2 className="display-type mt-4 text-3xl text-[var(--color-ink-950)] md:text-5xl">
             표준 30일 진행 절차 안내
           </h2>
@@ -20,7 +20,7 @@ export function Process() {
         <StaggerChildren className="grid gap-4 md:grid-cols-4">
           {STAGE_PROCESS.map((p) => (
             <StaggerItem key={p.step} className="h-full">
-              <div className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-white p-6 md:p-7">
+              <div className="flex h-full flex-col rounded-[var(--radius-card)] shadow-card bg-card p-6 md:p-7">
                 <div className="micro-label inline-flex w-fit items-center rounded-full bg-[var(--color-paper)] px-3 py-1.5 text-[var(--color-ink-500)]">
                   {p.timing}
                 </div>
@@ -30,7 +30,7 @@ export function Process() {
                 <p className="mt-1.5 flex-1 text-[15px] leading-relaxed text-[var(--color-ink-700)]">
                   {p.desc}
                 </p>
-                <div className="mt-4 rounded-[var(--radius-btn)] rounded-bl-[4px] bg-[var(--color-ink-950)] px-3.5 py-2.5 text-[13px] font-semibold leading-snug text-[var(--color-mint-500)]">
+                <div className="mt-4 rounded-[var(--radius-btn)] rounded-bl-[4px] bg-strong px-3.5 py-2.5 text-[13px] font-semibold leading-snug text-[var(--color-mint-500)]">
                   {p.academy}
                 </div>
               </div>

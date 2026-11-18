@@ -17,7 +17,7 @@ export function GuaranteeBanner() {
     <section className="py-10 md:py-14">
       <Container size="wide">
         <FadeIn>
-          <div className="relative overflow-hidden rounded-[var(--radius-break)] bg-[var(--color-ink-900)] text-white">
+          <div className="relative overflow-hidden rounded-[var(--radius-break)] bg-strong text-white">
             {/* 대형 숫자 워터마크 */}
             <div
               aria-hidden
@@ -29,7 +29,7 @@ export function GuaranteeBanner() {
             <div className="relative grid gap-8 p-8 md:grid-cols-[1.4fr_1fr] md:gap-12 md:p-14">
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="micro-label rounded-[var(--radius-badge)] bg-[var(--color-mint-500)] px-2.5 py-1.5 text-[var(--color-ink-950)]">
+                  <span className="micro-label rounded-[var(--radius-badge)] bg-[var(--color-mint-500)] px-2.5 py-1.5 text-on-mint">
                     {STAGE_GUARANTEE.eyebrow}
                   </span>
                   <span className="text-sm font-semibold text-white/60">저희가 책임지고 함께 하겠습니다</span>
@@ -48,7 +48,7 @@ export function GuaranteeBanner() {
 
                 {/* 개런티 씰 */}
                 <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-mint-500)]/50 py-2 pl-2 pr-5">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-mint-500)] text-lg font-bold text-[var(--color-ink-950)]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-mint-500)] text-lg font-bold text-on-mint">
                     ✓
                   </span>
                   <span className="text-sm font-semibold text-white/90">

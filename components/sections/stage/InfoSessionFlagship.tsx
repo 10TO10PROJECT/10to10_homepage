@@ -15,7 +15,7 @@ export function InfoSessionFlagship() {
       <Container size="wide">
         <FadeIn className="max-w-3xl">
           <div className="micro-label text-[var(--color-mint-700)]">
-            Flagship · 설명회 풀케어
+            대표 서비스 · 설명회 풀케어
           </div>
           <h2 className="display-type mt-5 whitespace-pre-line text-3xl md:text-5xl">
             {INFO_SESSION.headline}
@@ -39,7 +39,7 @@ export function InfoSessionFlagship() {
             {INFO_SESSION.metrics.map((m) => (
               <div
                 key={m.label}
-                className="flex flex-col items-center rounded-[var(--radius-card)] bg-white shadow-card p-5 text-center md:p-6"
+                className="flex flex-col items-center rounded-[var(--radius-card)] bg-card shadow-card p-5 text-center md:p-6"
               >
                 <div className="flex items-center gap-1 text-[var(--color-mint-700)]">
                   <LaurelBranch size={44} side="left" />
@@ -64,7 +64,7 @@ export function InfoSessionFlagship() {
         <FadeIn delay={0.2} className="mt-16">
           <div className="mb-8 max-w-2xl">
             <div className="micro-label text-[var(--color-mint-700)]">
-              Full-Care Process
+              풀케어 진행 과정
             </div>
             <h3 className="display-type mt-3 text-2xl md:text-4xl">
               6단계, 전부 저희가 준비합니다.
@@ -73,7 +73,7 @@ export function InfoSessionFlagship() {
           <StaggerChildren className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {INFO_SESSION.stages.map((s) => (
               <StaggerItem key={s.step} className="h-full">
-                <div className="h-full rounded-[var(--radius-card)] bg-white shadow-card p-6 transition-colors hover:bg-white/[0.07]">
+                <div className="h-full rounded-[var(--radius-card)] bg-card shadow-card p-6 transition-colors hover:bg-white/[0.07]">
                   <div className="display-type text-2xl text-[var(--color-mint-700)]/70">
                     {s.step}
                   </div>
@@ -87,7 +87,7 @@ export function InfoSessionFlagship() {
 
         {/* 원장님 할 일 세 가지 (브로슈어 P4 하단) */}
         <FadeIn delay={0.25} className="mt-12">
-          <div className="rounded-[var(--radius-card)] bg-white shadow-card p-6 text-center md:p-8">
+          <div className="rounded-[var(--radius-card)] bg-card shadow-card p-6 text-center md:p-8">
             <div className="display-type text-xl text-[var(--color-mint-700)] md:text-2xl">
               {INFO_SESSION.ownerTasks.headline}
             </div>
@@ -121,14 +121,14 @@ export function InfoSessionFlagship() {
             href={COMPANY.kakaoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-14 items-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] px-7 text-lg font-bold text-[var(--color-ink-950)] transition hover:brightness-95"
+            className="inline-flex h-14 items-center gap-2 rounded-[var(--radius-btn)] bg-[var(--color-kakao)] px-7 text-lg font-bold text-on-mint transition hover:brightness-95"
           >
             <KakaoSymbol size={20} />
             {INFO_SESSION.ctaPrimary.label}
           </a>
           <a
             href={INFO_SESSION.ctaSecondary.href}
-            className="inline-flex h-14 items-center rounded-[var(--radius-btn)] border border-[var(--color-ink-950)] bg-white px-7 text-lg font-semibold text-[var(--color-ink-950)] transition hover:bg-[var(--color-ink-50)]"
+            className="inline-flex h-14 items-center rounded-[var(--radius-btn)] border border-[var(--color-ink-950)] bg-card px-7 text-lg font-semibold text-[var(--color-ink-950)] transition hover:bg-[var(--color-ink-50)]"
           >
             {INFO_SESSION.ctaSecondary.label}
           </a>

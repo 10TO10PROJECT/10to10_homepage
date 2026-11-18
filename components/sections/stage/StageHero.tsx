@@ -9,10 +9,12 @@ import { STAGE_PROOF } from "@/lib/content/stage";
 /**
  * 풀블리드 현장 사진 히어로 — 사진 위 좌측 헤드라인 + 우측 실적 카드.
  * 신뢰 신호(정부 프로그램·실측 지표)를 첫 화면에 모은다. 모바일은 헤드라인 → 실적 카드 순 스택.
+ * 11/18 메인 템플릿(Mercury 다크) 통일: 사진이 투명 헤더 밑까지 깔리고(-mt-16), 아래는 오닉스로 이어지며,
+ * 버튼은 메인처럼 알약(채운 민트 = 견적 확인 하나 · 카톡은 외곽선).
  */
 export function StageHero() {
   return (
-    <section className="relative overflow-hidden bg-[var(--color-ink-950)]">
+    <section className="relative -mt-16 overflow-hidden bg-[var(--color-onyx)]">
       <Image
         src="/info-session/01-hall-wide.jpg"
         alt="2026년 2월 콜라보 설명회 현장 — 학부모로 가득 찬 강의실"
@@ -23,15 +25,15 @@ export function StageHero() {
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,12,12,0.86)_0%,rgba(11,12,12,0.66)_48%,rgba(11,12,12,0.28)_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,23,33,0.88)_0%,rgba(23,23,33,0.68)_48%,rgba(23,23,33,0.32)_100%)]"
       />
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(80,227,194,0)_0%,rgba(80,227,194,0.22)_100%)]"
+        className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(23,23,33,0)_0%,rgba(23,23,33,1)_100%)]"
       />
 
       <Container size="wide" className="relative">
-        <div className="grid gap-10 pt-20 pb-16 md:grid-cols-[1.3fr_1fr] md:items-center md:gap-14 md:pt-28 md:pb-24">
+        <div className="grid gap-10 pt-36 pb-16 md:grid-cols-[1.3fr_1fr] md:items-center md:gap-14 md:pt-44 md:pb-24">
           <div>
             <FadeIn>
               <div className="flex flex-wrap items-center gap-3">
@@ -57,7 +59,7 @@ export function StageHero() {
             <FadeIn delay={0.28} className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#estimate"
-                className="inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-white px-7 text-base font-bold text-[var(--color-ink-950)] transition hover:bg-white/90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--color-mint-500)] px-7 text-base font-semibold text-on-mint transition hover:bg-[#6BE9CD]"
               >
                 견적 확인하기 <span aria-hidden>→</span>
               </a>
@@ -65,7 +67,7 @@ export function StageHero() {
                 href={COMPANY.kakaoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-13 min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] border border-white/70 px-7 text-base font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[var(--color-ivory)]/75 px-7 text-base text-[var(--color-ivory)] transition hover:border-[var(--color-ivory)] hover:bg-white/[0.06]"
               >
                 <KakaoSymbol size={18} />
                 카톡으로 상담하기
@@ -95,7 +97,7 @@ export function StageHero() {
 
 function ProofCard() {
   return (
-    <div className="rounded-[var(--radius-card)] bg-white p-6 shadow-elevated md:p-7">
+    <div className="rounded-[var(--radius-card)] bg-card p-6 shadow-elevated md:p-7">
       <div className="flex items-center justify-between">
         <span className="text-[15px] font-bold text-[var(--color-ink-950)]">{STAGE_PROOF.title}</span>
         <span className="rounded-full bg-[var(--color-mint-wash)] px-3 py-1 text-[12px] font-bold text-[var(--color-mint-600)]">

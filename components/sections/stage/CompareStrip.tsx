@@ -28,7 +28,7 @@ export function CompareStrip() {
                 {C.processes.map((p) => (
                   <span
                     key={p}
-                    className="rounded-[var(--radius-badge)] border border-[var(--color-ink-300)] bg-white px-2.5 py-1.5 text-[13px] font-semibold text-[var(--color-ink-500)]"
+                    className="rounded-[var(--radius-badge)] border border-[var(--color-ink-300)] bg-card px-2.5 py-1.5 text-[13px] font-semibold text-[var(--color-ink-500)]"
                   >
                     {p} — 원장님
                   </span>
@@ -46,7 +46,7 @@ export function CompareStrip() {
           </FadeIn>
 
           <FadeIn delay={0.08}>
-            <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-white p-7 md:p-9">
+            <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-[var(--color-mint-500)] bg-card p-7 md:p-9">
               <div className="text-lg font-bold text-[var(--color-ink-950)]">
                 {C.after.label}
               </div>
@@ -62,7 +62,7 @@ export function CompareStrip() {
                     {p} — STAGE
                   </span>
                 ))}
-                <span className="rounded-[var(--radius-badge)] bg-[var(--color-ink-950)] px-2.5 py-1.5 text-[13px] font-bold text-white">
+                <span className="rounded-[var(--radius-badge)] bg-strong px-2.5 py-1.5 text-[13px] font-bold text-white">
                   {C.after.ownerChip}
                 </span>
               </div>

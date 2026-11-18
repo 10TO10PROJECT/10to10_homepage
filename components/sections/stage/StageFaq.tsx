@@ -8,7 +8,7 @@ export function StageFaq() {
     <section className="py-20 md:py-28">
       <Container size="narrow">
         <FadeIn className="mb-12">
-          <div className="micro-label text-[var(--color-ink-500)]">FAQ</div>
+          <div className="micro-label text-[var(--color-ink-500)]">궁금하신 점</div>
           <h2 className="display-type mt-4 text-3xl md:text-5xl text-[var(--color-ink-950)]">
             자주 묻는 질문
           </h2>
