@@ -127,7 +127,7 @@ export function InfoSessionFlagship() {
             {INFO_SESSION.ctaPrimary.label}
           </a>
           <a
-            href={`?service=info_session${INFO_SESSION.ctaSecondary.href}`}
+            href={INFO_SESSION.ctaSecondary.href}
             className="inline-flex h-14 items-center rounded-[var(--radius-btn)] border border-[var(--color-ink-950)] bg-white px-7 text-lg font-semibold text-[var(--color-ink-950)] transition hover:bg-[var(--color-ink-50)]"
           >
             {INFO_SESSION.ctaSecondary.label}

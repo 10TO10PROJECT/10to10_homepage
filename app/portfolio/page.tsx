@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SiteGallery } from "@/components/sections/SiteGallery";
@@ -120,12 +121,12 @@ export default function PortfolioPage() {
                   <KakaoSymbol size={18} />
                   카톡으로 3분 상담
                 </a>
-                <a
-                  href="/?service=info_session#contact"
+                <Link
+                  href="/stage#estimate"
                   className="inline-flex h-12 items-center rounded-[var(--radius-btn)] bg-white px-6 text-base font-bold text-[var(--color-ink-950)] transition hover:bg-[var(--color-ink-100)]"
                 >
-                  견적 문의 →
-                </a>
+                  견적 확인 →
+                </Link>
               </div>
             </div>
           </FadeIn>

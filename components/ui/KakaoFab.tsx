@@ -3,7 +3,7 @@ import { KakaoSymbol } from "@/components/ui/Button";
 
 /**
  * 우하단 카카오 문의 플로팅 버튼 — 전 페이지 상주 (abbg·그로스파이낸스 문법).
- * 히어로 primary CTA가 견적 문의로 바뀌면서 카카오 접점은 이 FAB가 전담.
+ * 문의는 카카오톡으로 받는다(2026-11-08) — 히어로·견적 확인·상담 섹션의 카톡 버튼과 같은 링크.
  */
 export function KakaoFab() {
   return (

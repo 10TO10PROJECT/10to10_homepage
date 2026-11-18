@@ -31,6 +31,27 @@ export async function createInquiryRow(input: {
   });
 }
 
+/**
+ * 앱 사전 예약 한 건 — 노션 DB(NOTION_PREREG_DB_ID) 속성: 신청(제목) · 휴대폰(전화) · 구분(선택) · 학년(선택) · 상태(선택).
+ * 개인정보 동의는 폼·API에서 필수로 검사하므로 저장된 행은 모두 동의한 건이다.
+ */
+export async function createPreregRow(input: { role: "parent" | "student"; grade: string; phone: string }) {
+  const dbId = process.env.NOTION_PREREG_DB_ID;
+  if (!dbId) throw new Error("NOTION_PREREG_DB_ID is not set");
+  const roleLabel = input.role === "parent" ? "학부모" : "학생";
+
+  return notion.pages.create({
+    parent: { database_id: dbId },
+    properties: {
+      신청: { title: [{ text: { content: `${roleLabel} · ${input.grade}` } }] },
+      휴대폰: { phone_number: input.phone },
+      구분: { select: { name: roleLabel } },
+      학년: { select: { name: input.grade } },
+      상태: { select: { name: "알림 대기" } },
+    },
+  });
+}
+
 export async function createInvestInquiryRow(input: {
   name: string;
   organization: string;

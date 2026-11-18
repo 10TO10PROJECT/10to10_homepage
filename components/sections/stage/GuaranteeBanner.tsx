@@ -3,9 +3,9 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { STAGE_GUARANTEE } from "@/lib/content/stage";
 
 const GUARANTEE_TERMS = [
-  { label: "보장 인원", value: "원장님과 합의" },
-  { label: "환급 기준", value: "합의 인원의 80% 미달" },
-  { label: "환급액", value: "대행료의 50%" },
+  { label: "보장 인원", value: "견적에서 선택 (10~30명)" },
+  { label: "환급 기준", value: "보장 인원의 80% 미달" },
+  { label: "환급액", value: "대행료의 50% (선택 옵션 제외)" },
 ] as const;
 
 /**
@@ -43,7 +43,7 @@ export function GuaranteeBanner() {
                 </h2>
                 <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/70 md:text-base">
                   모객을 저희가 책임지기 때문에 드릴 수 있는 약속입니다. 보장 인원은
-                  학원 규모와 상권에 맞춰 원장님과 합의해 계약서에 적습니다.
+                  학원 규모에 맞춰 10~30명 중에서 정하고, 계약서에 적습니다.
                 </p>
 
                 {/* 개런티 씰 */}

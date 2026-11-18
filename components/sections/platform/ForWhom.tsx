@@ -95,7 +95,7 @@ export function ForWhom() {
         <FadeIn delay={0.15} className="mt-6">
           <p className="break-keep rounded-[var(--radius-card)] bg-white px-6 py-4 shadow-card text-[15px] text-[var(--color-ink-700)]">
             원장님이신가요? 학원 설명회 기획부터 모객·현장 운영까지는{" "}
-            <Link href="/" className="font-bold text-[var(--color-ink-950)] underline underline-offset-4">
+            <Link href="/stage" className="font-bold text-[var(--color-ink-950)] underline underline-offset-4">
               텐투텐 STAGE
             </Link>
             에서 안내드립니다.
