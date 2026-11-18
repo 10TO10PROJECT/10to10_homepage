@@ -163,9 +163,11 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
 
   return (
     <section ref={ref} aria-labelledby="gather-title" className="relative">
-      <div className="relative flex h-[calc(100svh-4rem)] min-h-[600px] flex-col overflow-hidden lg:flex-row lg:items-center">
+      {/* 11/18 CEO(휴대폰에서 위 로고·아래 글이 잘림): 넓은 화면만 화면 한 장 높이로 고정. 휴대폰·태블릿은 무대 높이를 px로 정하고
+          글은 세 장면을 같은 칸에 겹쳐 쌓아(grid) 가장 긴 장면만큼 높이를 차지하게 → 화면 높이와 상관없이 잘리지 않음 */}
+      <div className="relative flex flex-col overflow-hidden lg:h-[calc(100svh-4rem)] lg:min-h-[600px] lg:flex-row lg:items-center">
         {/* 무대 — 쏟아지는 소식 → 엔진 → 피드 → 신청 */}
-        <div ref={stageRef} className="relative h-[48%] w-full sm:h-[56%] lg:order-2 lg:h-full lg:w-1/2">
+        <div ref={stageRef} className="relative h-[400px] w-full sm:h-[560px] lg:order-2 lg:h-full lg:w-1/2">
           <div
             aria-hidden
             className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(80,227,194,0.16)_0%,rgba(80,227,194,0)_100%)]"
@@ -257,10 +259,10 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
         </div>
 
         {/* 문장 — 세 장면이 같은 자리에서 바뀜 */}
-        <div className="relative w-full flex-1 lg:order-1 lg:h-full lg:w-1/2">
+        <div className="relative w-full lg:order-1 lg:h-full lg:w-1/2">
           {/* 넓은 화면에선 왼쪽 반의 오른쪽 600px — 글 시작선이 위아래 섹션(1200px 폭)과 맞도록. m-wrap을 쓰면 최대 폭 규칙이 겹쳐 글이 화면 왼쪽 끝으로 붙음 */}
-          <div className="relative h-full w-full lg:mr-0 lg:ml-auto lg:max-w-[600px]">
-            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: aOpacity }}>
+          <div className="relative grid w-full px-6 pt-4 pb-14 md:px-8 lg:block lg:h-full lg:p-0 lg:mr-0 lg:ml-auto lg:max-w-[600px]">
+            <motion.div className="col-start-1 row-start-1 lg:absolute lg:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: aOpacity }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
               <Heading id="gather-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
                 {HOME_GATHER.before.headline}
@@ -270,7 +272,7 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
               </p>
             </motion.div>
 
-            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: bOpacity, y: bY }}>
+            <motion.div className="col-start-1 row-start-1 lg:absolute lg:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: bOpacity, y: bY }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
               <p className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
                 {HOME_GATHER.after.headline}
@@ -281,7 +283,7 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
               </p>
             </motion.div>
 
-            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: cOpacity, y: cY, visibility: cVisibility }}>
+            <motion.div className="col-start-1 row-start-1 lg:absolute lg:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: cOpacity, y: cY, visibility: cVisibility }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
               <p className="m-heading mt-3 whitespace-pre-line text-[clamp(1.2rem,5.6vw,1.45rem)] text-[var(--color-ivory)] sm:text-[clamp(1.45rem,2.4vw,2.1rem)]">
                 {HOME_GATHER.apply.headline}
