@@ -10,7 +10,11 @@ import {
 } from "@/lib/content/platform";
 
 // 카드 뒤로 비치는 포스터 두 장의 자리 — 위쪽은 오른쪽으로, 아래쪽은 왼쪽으로 기울임
+// PLATFORM_SEMINAR_POSTERS 순서대로 — 앞의 두 장(리버스)은 작게 뒤에, 뒤의 두 장(강아 카드·포스터)은 크게 앞에(11/18).
+// 오른쪽 아래 칸은 아래 캡션과 겹치지 않게 칸 안쪽(bottom-0)에 붙임
 const POSTER_SLOTS = [
+  "-left-2 -top-10 w-[34%] -rotate-[4deg] md:-left-6 md:-top-12",
+  "-right-3 bottom-0 w-[32%] rotate-[5deg] md:-right-8",
   "-right-4 -top-6 w-[46%] rotate-[7deg] md:-right-10 md:-top-8",
   "-left-6 -bottom-4 w-[42%] -rotate-[6deg] md:-left-12 md:-bottom-6",
 ];
