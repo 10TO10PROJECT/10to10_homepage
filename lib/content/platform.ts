@@ -87,7 +87,7 @@ export const PLATFORM_SEMINAR_POINTS = [
 
 /** 창업자 이야기 — 약력은 STAGE_TEAM(SSOT)에서 가져옴. 인용은 대표 본인이 공개한 쓰레드 글(@10to10.kr, 2026.10)만 사용, 선우님 일화·발언은 지어 쓰지 않음 */
 export const PLATFORM_FOUNDERS = {
-  eyebrow: "Founders' Story",
+  eyebrow: "창업자 이야기", // 11/18 메인 템플릿 통일 — 영문 눈썹(Founders' Story) 대신 메인처럼 한국어
   headline: "석우중·반송고 나온 두\u00A0사람이\n동탄 후배들을 위해 만든 것이 시작입니다.", // 모바일에서 "두 사람이"가 갈라지지 않도록 줄바꿈 없는 공백
   story: [
     "텐투텐 대표 신현우와 COO 최선우는 동탄에서 같은 중학교와 고등학교를 다녔습니다. 두 사람 모두 대학에 진학한 뒤에도 입시 과외와 학습 튜터로 학생들을 가르쳐 왔습니다.",

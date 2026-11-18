@@ -30,24 +30,19 @@ export const metadata: Metadata = {
 /**
  * 섹션 맵: 히어로(AI 엄선 엔진 장면) → 학년 맞춤 소식(3축) → 설명회 모아보기 → 창업자 이야기 → 학부모·학생 → 로드맵 → 출시 소식 CTA
  * 11/18 CEO: 히어로를 메인의 'AI 엄선 엔진' 애니메이션 장면으로 교체(쏟아지는 소식 → 엔진이 학년·동네 맞춤만 골라 피드로 → 바로 신청).
- * 장면은 메인과 같은 어두운 바탕이라 여기서 m-dark로 감싼다. 첫 문장이 이 페이지의 제목(h1).
- * 11/18 CEO: 사이트 틀도 메인처럼 어둡게 통일(lib/site-chrome.ts) — 투명 헤더 밑까지 어두운 바탕이 깔리도록 -mt-16 pt-16.
+ * 11/18 CEO: 페이지 전체를 메인 랜딩과 같은 템플릿(Mercury 다크 — 오닉스 캔버스·그래파이트 카드·알약 버튼)으로 통일.
+ *   사이트 틀(lib/site-chrome.ts)도 어둡게, 투명 헤더 밑까지 어두운 바탕이 깔리도록 -mt-16 pt-16. 첫 문장이 이 페이지의 제목(h1).
  */
 export default function PlatformPage() {
   return (
-    <>
-      <div className="m-dark -mt-16 bg-[var(--color-onyx)] pt-16 text-[var(--color-ivory)]">
-        <HomeGather variant="platform" />
-      </div>
-      {/* 11/18 CEO: 어두운 히어로 → 흰 섹션 경계가 딱 끊겨 보임 → 아래로 천천히 옅어지는 그라데이션(이징 스톱).
-          다음 섹션의 위 여백(py-20 · md:py-28)만큼 겹쳐 올려서 섹션 사이 간격은 그대로 */}
-      <div aria-hidden className="relative h-40 -mb-20 bg-[linear-gradient(to_bottom,rgb(23_23_33)_0%,rgb(23_23_33/0.74)_19%,rgb(23_23_33/0.54)_34%,rgb(23_23_33/0.38)_47%,rgb(23_23_33/0.26)_57%,rgb(23_23_33/0.16)_67%,rgb(23_23_33/0.09)_77%,rgb(23_23_33/0.04)_86%,rgb(23_23_33/0.01)_94%,transparent)] md:h-64 md:-mb-28" />
+    <div className="m-dark -mt-16 bg-[var(--color-onyx)] pt-16 text-[var(--color-ivory)]">
+      <HomeGather variant="platform" />
       <FeedAxes />
       <SeminarHub />
       <FounderStory />
       <ForWhom />
       <Roadmap />
       <PlatformCta />
-    </>
+    </div>
   );
 }
