@@ -39,6 +39,9 @@ export default function PlatformPage() {
       <div className="m-dark -mt-16 bg-[var(--color-onyx)] pt-16 text-[var(--color-ivory)]">
         <HomeGather variant="platform" />
       </div>
+      {/* 11/18 CEO: 어두운 히어로 → 흰 섹션 경계가 딱 끊겨 보임 → 아래로 천천히 옅어지는 그라데이션(이징 스톱).
+          다음 섹션의 위 여백(py-20 · md:py-28)만큼 겹쳐 올려서 섹션 사이 간격은 그대로 */}
+      <div aria-hidden className="relative h-40 -mb-20 bg-[linear-gradient(to_bottom,rgb(23_23_33)_0%,rgb(23_23_33/0.74)_19%,rgb(23_23_33/0.54)_34%,rgb(23_23_33/0.38)_47%,rgb(23_23_33/0.26)_57%,rgb(23_23_33/0.16)_67%,rgb(23_23_33/0.09)_77%,rgb(23_23_33/0.04)_86%,rgb(23_23_33/0.01)_94%,transparent)] md:h-64 md:-mb-28" />
       <FeedAxes />
       <SeminarHub />
       <FounderStory />

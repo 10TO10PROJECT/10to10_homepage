@@ -47,9 +47,9 @@ export function Header({ tone = "light" }: { tone?: "light" | "dark" }) {
     <header
       className={`sticky top-0 z-50 transition-colors ${
         dark
-          ? // 메인 다크: 맨 위에서는 히어로 사진 위에 투명하게 겹치고(HomeHero가 -mt-16로 밑에 깔림), 스크롤하면 반투명 오닉스 + 블러
+          ? // 메인·플랫폼 다크: 맨 위에서는 첫 장면 위에 투명하게 겹치고(첫 섹션이 -mt-16로 밑에 깔림), 스크롤하면 오닉스 95% + 블러(11/18: 플랫폼의 밝은 섹션 위에서도 회색으로 비치지 않게 80→95%)
             scrolled
-            ? "border-b border-white/[0.08] bg-[var(--color-onyx)]/80 backdrop-blur-xl"
+            ? "border-b border-white/[0.08] bg-[var(--color-onyx)]/95 backdrop-blur-xl"
             : "bg-transparent"
           : `bg-[var(--color-paper)]/90 backdrop-blur ${scrolled ? "border-b border-[var(--color-cloud)]" : ""}`
       }`}
