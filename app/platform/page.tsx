@@ -31,11 +31,12 @@ export const metadata: Metadata = {
  * 섹션 맵: 히어로(AI 엄선 엔진 장면) → 학년 맞춤 소식(3축) → 설명회 모아보기 → 창업자 이야기 → 학부모·학생 → 로드맵 → 출시 소식 CTA
  * 11/18 CEO: 히어로를 메인의 'AI 엄선 엔진' 애니메이션 장면으로 교체(쏟아지는 소식 → 엔진이 학년·동네 맞춤만 골라 피드로 → 바로 신청).
  * 장면은 메인과 같은 어두운 바탕이라 여기서 m-dark로 감싼다. 첫 문장이 이 페이지의 제목(h1).
+ * 11/18 CEO: 사이트 틀도 메인처럼 어둡게 통일(lib/site-chrome.ts) — 투명 헤더 밑까지 어두운 바탕이 깔리도록 -mt-16 pt-16.
  */
 export default function PlatformPage() {
   return (
     <>
-      <div className="m-dark bg-[var(--color-onyx)] text-[var(--color-ivory)]">
+      <div className="m-dark -mt-16 bg-[var(--color-onyx)] pt-16 text-[var(--color-ivory)]">
         <HomeGather variant="platform" />
       </div>
       <FeedAxes />
