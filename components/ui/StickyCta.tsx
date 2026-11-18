@@ -2,11 +2,13 @@
 
 import { usePathname } from "next/navigation";
 import { PLATFORM_INFO_ROOM_URL } from "@/lib/content/platform";
+import { hasStickyCta } from "@/lib/sticky-cta";
 
 /**
  * 모바일 상시 하단 플로팅 — "견적 확인하기" 단일 CTA (2026-08-18 CEO: 스크롤 게이트 없이 계속 노출 / 2026-11-08 문의 → 견적 확인).
  * 메인(통합 랜딩, 2026-11-09)은 원장님·학부모 두 갈래라 다크 바에 버튼 둘 — 원장님은 견적 확인, 학부모는 정보방.
  * 카카오 접점은 우하단 KakaoFab(모바일에서 이 바 위로 오프셋)이 전담. 전 페이지 layout 마운트.
+ * 개인정보 처리방침(/privacy)에는 띄우지 않음(2026-11-18 CEO) — 목록은 lib/sticky-cta.ts.
  */
 export function StickyCta({
   formHref = "/stage#estimate",
@@ -14,6 +16,8 @@ export function StickyCta({
   formHref?: string;
 }) {
   const pathname = usePathname();
+
+  if (!hasStickyCta(pathname)) return null;
 
   if (pathname === "/") {
     return (
