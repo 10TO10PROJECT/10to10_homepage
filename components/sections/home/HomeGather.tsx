@@ -8,6 +8,7 @@ import { PhoneFeedMock } from "@/components/sections/platform/PhoneFeedMock";
 import { Symbol } from "@/components/brand/Symbol";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { HOME_ENGINE, HOME_GATHER, HOME_PREREG } from "@/lib/content/home";
+import { PLATFORM_INFO_ROOM_URL, PLATFORM_INSTAGRAM_URL } from "@/lib/content/platform";
 import { Emph } from "@/components/sections/home/Emph";
 
 /**
@@ -20,7 +21,10 @@ import { Emph } from "@/components/sections/home/Emph";
  *  3) 맞춤 피드 — 엔진에서 피드 화면이 열리고, 엔진 심볼은 휴대폰 뒤 풀 로고 자리로 옮겨 가 옅게 깔린다(로고 하나, 역할만 바뀜).
  *  4) 바로 신청 — 피드 속 설명회 카드가 앞으로 나와 '앱에서 바로 신청하기 → ✓ 신청 완료'.
  * 트랜스폼·투명도만 움직인다. 모션 줄이기 설정이면 고정 무대 없이 마지막 상태(기준·피드·신청 완료)를 그대로 보여 준다.
+ * variant="platform"(11/18 CEO: /platform 히어로를 이 장면으로 교체) — 첫 문장이 페이지 제목(h1)이 되고,
+ * 마지막 장면 링크는 자기 페이지 대신 지금 운영 중인 학부모 정보방·인스타그램으로 보낸다. 어두운 바탕(m-dark)은 쓰는 쪽에서 감싼다.
  */
+type GatherVariant = "home" | "platform";
 
 // 장면 타이밍(진행도 0~1)
 const T = {
@@ -72,7 +76,8 @@ const LOGO_W = 128 + 16 + WORDMARK_W;
 const LOGO_SYMBOL_X = -LOGO_W / 2 + 64;
 const ENGINE_SYMBOL = 56; // 엔진 안 심볼 폭(데스크톱)
 
-export function HomeGather({ prereg = false }: { prereg?: boolean }) {
+export function HomeGather({ prereg = false, variant = "home" }: { prereg?: boolean; variant?: GatherVariant }) {
+  const Heading = variant === "platform" ? "h1" : "h2";
   const reduce = useReducedMotionSafe();
   const ref = useRef<HTMLElement>(null);
   const p = useMotionValue(0);
@@ -151,7 +156,7 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
   const pulseOpacity = useTransform(p, PULSE_INPUT, PULSE_OPACITY);
   const pulseScale = useTransform(p, PULSE_INPUT, PULSE_SCALE);
 
-  if (reduce) return <StaticGather prereg={prereg} />;
+  if (reduce) return <StaticGather prereg={prereg} variant={variant} />;
 
   const D = 136 * k; // 엔진 지름
 
@@ -255,9 +260,9 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
           <div className="relative h-full w-full lg:mr-0 lg:ml-auto lg:max-w-[600px]">
             <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: aOpacity }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
-              <h2 id="gather-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
+              <Heading id="gather-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
                 {HOME_GATHER.before.headline}
-              </h2>
+              </Heading>
               <p className="mt-4 max-w-md break-keep text-[15px] leading-[1.6] text-[var(--color-ash)] md:text-[18px]">
                 <Emph text={HOME_GATHER.before.sub} />
               </p>
@@ -283,7 +288,7 @@ export function HomeGather({ prereg = false }: { prereg?: boolean }) {
                 <Emph text={HOME_GATHER.apply.sub} />
               </p>
               {/* 버튼 링크를 운영 상태 문구보다 먼저 — 휴대폰 오른쪽 아래 카카오 상담 버튼에 가리지 않게 */}
-              <Links prereg={prereg} className="mt-3.5 md:mt-6" />
+              <Links prereg={prereg} variant={variant} className="mt-3.5 md:mt-6" />
               <p className="mt-3 max-w-md break-keep text-[12.5px] leading-[1.5] text-[var(--color-ash)]/75 md:mt-5 md:text-[14px]">
                 {HOME_GATHER.apply.status}
               </p>
@@ -522,7 +527,30 @@ function EngineBadge({ className = "" }: { className?: string }) {
   );
 }
 
-function Links({ prereg, className = "" }: { prereg: boolean; className?: string }) {
+function Links({ prereg, variant, className = "" }: { prereg: boolean; variant: GatherVariant; className?: string }) {
+  if (variant === "platform") {
+    // /platform에선 자기 페이지로 가는 링크 대신, 문구(정보방·인스타그램에서 소식을 먼저 전하고 있고)가 말하는 두 곳으로
+    return (
+      <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 ${className}`}>
+        <a
+          href={PLATFORM_INFO_ROOM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-[15px] text-[var(--color-mint-500)] underline-offset-4 hover:underline"
+        >
+          학부모 정보방 입장하기 <span aria-hidden>→</span>
+        </a>
+        <a
+          href={PLATFORM_INSTAGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-[15px] text-[var(--color-ivory)] underline-offset-4 hover:underline"
+        >
+          인스타그램 @10to10.kr <span aria-hidden>→</span>
+        </a>
+      </div>
+    );
+  }
   return (
     <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 ${className}`}>
       <Link
@@ -591,16 +619,17 @@ function useStageScale(stageRef: React.RefObject<HTMLDivElement | null>) {
 }
 
 /** 모션 줄이기 — 고정 무대 없이 마지막 상태를 그대로: 문장 세 개 + 엔진 기준 + 피드 화면 + 신청 완료 카드 */
-function StaticGather({ prereg }: { prereg: boolean }) {
+function StaticGather({ prereg, variant }: { prereg: boolean; variant: GatherVariant }) {
   const s = HOME_ENGINE.seminar;
+  const Heading = variant === "platform" ? "h1" : "h2";
   return (
     <section aria-labelledby="gather-title" className="py-[72px] md:py-28">
       <div className="m-wrap grid items-center gap-12 lg:grid-cols-2">
         <div>
           <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
-          <h2 id="gather-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
+          <Heading id="gather-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
             {HOME_GATHER.before.headline}
-          </h2>
+          </Heading>
           <p className="mt-4 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]"><Emph text={HOME_GATHER.before.sub} /></p>
           <p className="m-heading mt-10 whitespace-pre-line text-[clamp(1.4rem,2.6vw,2rem)] text-[var(--color-ivory)]">
             {HOME_GATHER.after.headline}
@@ -615,7 +644,7 @@ function StaticGather({ prereg }: { prereg: boolean }) {
           </p>
           <p className="mt-3 break-keep text-[16px] leading-[1.6] text-[var(--color-ash)]"><Emph text={HOME_GATHER.apply.sub} /></p>
           <p className="mt-3 break-keep text-[14px] leading-[1.5] text-[var(--color-ash)]/75">{HOME_GATHER.apply.status}</p>
-          <Links prereg={prereg} className="mt-6" />
+          <Links prereg={prereg} variant={variant} className="mt-6" />
         </div>
         <div className="relative">
           <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

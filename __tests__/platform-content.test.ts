@@ -6,7 +6,6 @@ import {
   PLATFORM_AUDIENCE_MEDIA,
   PLATFORM_CTA_PHOTO,
   PLATFORM_FOUNDERS,
-  PLATFORM_HERO_COLLAGE,
   PLATFORM_SEMINAR_POSTERS,
   PLATFORM_SEMINAR_POSTERS_CAPTION,
 } from "@/lib/content/platform";
@@ -16,8 +15,9 @@ import { STAGE_TEAM } from "@/lib/content/stage";
 // 배경에 깐 실제 현장 사진·게시물은 모두 캡션(언제·어디서·무엇)을 달고 public/에 실제로 있어야 한다.
 const ROOT = path.resolve(__dirname, "..");
 // platform.ts는 주석에 "11/21 비노출" 같은 내부 메모가 있으므로 화면에 나가는 export 값만 검사하고, 페이지·섹션 파일은 원문을 검사
-const PLATFORM_SOURCES = ["app/platform/page.tsx", "components/sections/platform/FounderStory.tsx"];
-const FORBIDDEN = [/텐투텐\s*AI/, /알림톡/, /11\s*\/\s*21/, /11월\s*21일/];
+const PLATFORM_SOURCES = ["app/platform/page.tsx", "components/sections/platform/FounderStory.tsx", "components/sections/home/HomeGather.tsx"];
+// '텐투텐 AI' 단독은 아직 정식 명칭이 아님. 엔진 이름 '텐투텐 AI 엄선 엔진'만 허용(11/11 CEO, 메인과 같은 규칙 — 11/18 히어로가 엔진 장면이 됨)
+const FORBIDDEN = [/텐투텐\s*AI(?!\s*엄선\s*엔진)/, /알림톡/, /11\s*\/\s*21/, /11월\s*21일/];
 
 const publicPath = (src: string) => path.join(ROOT, "public", src.replace(/^\//, ""));
 
@@ -35,7 +35,6 @@ describe("platform page content", () => {
 
   it("points every background photo and post at a file that exists in public/", () => {
     const srcs = [
-      ...PLATFORM_HERO_COLLAGE.flat().map((t) => t.src),
       ...PLATFORM_SEMINAR_POSTERS.map((p) => p.src),
       PLATFORM_FOUNDERS.photo.src,
       PLATFORM_AUDIENCE_MEDIA.parents.src,
