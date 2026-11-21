@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { PREREG_SOURCES, type PreregSource } from "@/lib/schema/prereg";
 
 export const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
@@ -32,10 +33,18 @@ export async function createInquiryRow(input: {
 }
 
 /**
- * 앱 사전 예약 한 건 — 노션 DB(NOTION_PREREG_DB_ID) 속성: 신청(제목) · 휴대폰(전화) · 구분(선택) · 학년(선택) · 상태(선택).
- * 개인정보 동의는 폼·API에서 필수로 검사하므로 저장된 행은 모두 동의한 건이다.
+ * 앱 사전 예약 한 건 — 노션 DB(NOTION_PREREG_DB_ID) 속성: 신청(제목) · 휴대폰(전화) · 구분(선택) · 학년(선택) · 상태(선택)
+ * + 11/21 동네(선택) · 소식수신(체크박스) · 유입(선택). DB에 이 칸이 없으면 저장이 실패하므로 칸 이름을 바꾸지 말 것.
+ * 개인정보 동의는 폼·API에서 필수로 검사하므로 저장된 행은 모두 동의한 건이다. 소식수신은 [선택] 광고성 정보 수신 동의.
  */
-export async function createPreregRow(input: { role: "parent" | "student"; grade: string; phone: string }) {
+export async function createPreregRow(input: {
+  role: "parent" | "student";
+  grade: string;
+  region: string;
+  phone: string;
+  marketing: boolean;
+  source: PreregSource;
+}) {
   const dbId = process.env.NOTION_PREREG_DB_ID;
   if (!dbId) throw new Error("NOTION_PREREG_DB_ID is not set");
   const roleLabel = input.role === "parent" ? "학부모" : "학생";
@@ -47,6 +56,9 @@ export async function createPreregRow(input: { role: "parent" | "student"; grade
       휴대폰: { phone_number: input.phone },
       구분: { select: { name: roleLabel } },
       학년: { select: { name: input.grade } },
+      동네: { select: { name: input.region } },
+      소식수신: { checkbox: input.marketing },
+      유입: { select: { name: PREREG_SOURCES[input.source] } },
       상태: { select: { name: "알림 대기" } },
     },
   });
