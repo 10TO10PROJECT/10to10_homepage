@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
+import { SiteAnalytics } from "@/components/analytics/SiteAnalytics";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE } from "@/lib/site";
 import { SiteChrome } from "@/components/layout/SiteChrome";
@@ -51,7 +51,7 @@ export default function RootLayout({
         <SiteChrome>{children}</SiteChrome>
         <KakaoFab />
         <StickyCta />
-        <Analytics />
+        <SiteAnalytics />
         <SpeedInsights />
       </body>
     </html>
