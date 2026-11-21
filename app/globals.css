@@ -44,6 +44,12 @@
   /* 기능적 컬러 — 카카오 CTA 전용 (T2 예외, 카카오 공식 버튼 규격) */
   --color-kakao: #FEE500;
 
+  /* 의미 색(11/18) — 밝은 페이지와 어두운 페이지(.m-theme-dark)에서 값이 바뀌는 자리.
+     card = 카드 바탕(흰색 ↔ 그래파이트) · strong = 진한 알약·판(먹색 ↔ 옵시디언) · on-mint = 민트·카카오 위 글자(늘 먹색) */
+  --color-card: #FFFFFF;
+  --color-strong: #0B0C0C;
+  --color-on-mint: #0B0C0C;
+
   /* Type */
   --font-sans: 'Pretendard Variable', 'Pretendard', system-ui, -apple-system, sans-serif;
 
@@ -76,6 +82,35 @@
 }
 
 @layer base {
+  /* 11/18 CEO: STAGE도 메인·플랫폼과 같은 템플릿(Mercury 다크)으로 — 밝은 디자인으로 만든 섹션을 이 클래스 안에서 어둡게 바꾼다.
+     글자: 먹색 → 아이보리, 회색 → 애시 / 카드: 흰색 → 그래파이트 / 진한 판·알약: 옵시디언 / 그림자 없음 / 모서리: 카드 12px·버튼 알약.
+     민트 진한 단계(600·700)는 어두운 바탕에서 안 보이므로 기본 민트로. 민트·카카오 위 글자는 on-mint(먹색)라 그대로 */
+  .m-theme-dark {
+    --color-ink-950: #EDEDF3;
+    --color-ink-900: #EDEDF3;
+    --color-ink-700: #C3C3CC;
+    --color-ink-500: #A3A3AF;
+    --color-ink-300: #4A4A58;
+    --color-ink-100: #272735;
+    --color-ink-50: #1E1E2A;
+    --color-paper: #171721;
+    --color-paper-dim: #1E1E2A;
+    --color-cloud: rgba(255, 255, 255, 0.09);
+    --color-mint-wash: rgba(80, 227, 194, 0.1);
+    --color-mint-100: rgba(80, 227, 194, 0.14);
+    --color-mint-50: rgba(80, 227, 194, 0.08);
+    --color-mint-600: #50E3C2;
+    --color-mint-700: #50E3C2;
+    --color-card: #1E1E2A;
+    --color-strong: #272735;
+    --radius-card: 12px;
+    --radius-img: 12px;
+    --radius-break: 12px;
+    --radius-btn: 999px;
+    --shadow-card: none;
+    --shadow-elevated: none;
+  }
+
   html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   body { background: var(--color-paper); color: var(--color-ink-900); }
   ::selection { background: var(--color-mint-500); color: var(--color-ink-950); }
@@ -174,6 +209,34 @@
 
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-elevated { box-shadow: var(--shadow-elevated); }
+
+  /* .m-theme-dark(STAGE 등 밝은 디자인을 어둡게 쓰는 페이지) — 메인 다크 랜딩과 같은 글자·라벨·밴드 규칙 */
+  .m-theme-dark .display-type {
+    font-weight: 720;
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+  }
+  .m-theme-dark .micro-label {
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    text-transform: none;
+  }
+  /* 판·알약 위에 얹힌 라벨(bg-가 붙은 것)은 원래 색 유지, 나머지 라벨은 메인처럼 민트 눈썹 */
+  .m-theme-dark .micro-label:not([class*="bg-"]) {
+    color: var(--color-mint-500);
+  }
+  /* 형광펜 브러시는 어두운 바탕에서 글자가 묻히므로 민트 밑줄로 */
+  .m-theme-dark .hl {
+    background-image: none;
+    padding: 0;
+    margin: 0;
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-mint-500);
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.2em;
+  }
+  .m-theme-dark .band-wash { background: transparent; }
+  .m-theme-dark .band-brand { background: var(--color-graphite); }
 
   /* 헤어라인 — 1px cloud 보더가 유일한 컨테이너 구조 */
   .hairline { border: 1px solid var(--color-cloud); }

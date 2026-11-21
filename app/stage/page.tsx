@@ -41,10 +41,12 @@ export const metadata: Metadata = {
  * STAGE 랜딩 (2026-11-09: 메인에서 /stage로 이동 — 메인은 STAGE·텐투텐 앱 통합 랜딩).
  * 섹션 맵 = 인쇄물·캐러셀 논리: 히어로 → 신뢰도 → 페인 → 왜 설명회 → 실제 사례·포트폴리오 → 솔루션 → 차별화 → 팀 → 가격·보장 → 수행방안 → 상담
  * 옛 링크(10to10.kr/#estimate 등)는 메인의 StageHashRedirect가 이 페이지의 같은 앵커로 보낸다.
+ * 11/18 CEO: 메인·플랫폼과 같은 템플릿(Mercury 다크)으로 통일 — 섹션들은 밝은 디자인으로 만들어졌으므로
+ *   m-theme-dark(globals.css)가 이 페이지 안에서만 글자·카드·그림자·모서리 값을 어둡게 바꾼다. 사이트 틀도 어둡게(lib/site-chrome.ts).
  */
 export default function StagePage() {
   return (
-    <>
+    <div className="m-dark m-theme-dark -mt-16 bg-[var(--color-onyx)] pt-16 text-[var(--color-ivory)]">
       <JsonLd data={STAGE_SERVICE_JSONLD} />
       <JsonLd data={STAGE_FAQ_JSONLD} />
       <StageHero />
@@ -62,6 +64,6 @@ export default function StagePage() {
       <Process />
       <StageFaq />
       <StageContact />
-    </>
+    </div>
   );
 }

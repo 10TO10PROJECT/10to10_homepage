@@ -56,7 +56,7 @@ export function SiteGallery() {
                     className="object-cover"
                     loading={i === 0 ? "eager" : "lazy"}
                   />
-                  <figcaption className="micro-label absolute bottom-4 left-4 rounded-[var(--radius-badge)] bg-[var(--color-ink-950)]/80 px-2.5 py-1.5 text-white">
+                  <figcaption className="micro-label absolute bottom-4 left-4 rounded-[var(--radius-badge)] bg-strong/80 px-2.5 py-1.5 text-white">
                     {p.caption}
                   </figcaption>
                 </figure>
@@ -69,7 +69,7 @@ export function SiteGallery() {
               onClick={() => go(-1)}
               aria-label="이전 사진"
               disabled={index === 0}
-              className="absolute left-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[var(--color-ink-950)] transition hover:bg-white disabled:opacity-40 md:flex"
+              className="absolute left-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[var(--color-ink-950)] transition hover:bg-card disabled:opacity-40 md:flex"
             >
               <span aria-hidden>←</span>
             </button>
@@ -78,13 +78,13 @@ export function SiteGallery() {
               onClick={() => go(1)}
               aria-label="다음 사진"
               disabled={index === photos.length - 1}
-              className="absolute right-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[var(--color-ink-950)] transition hover:bg-white disabled:opacity-40 md:flex"
+              className="absolute right-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[var(--color-ink-950)] transition hover:bg-card disabled:opacity-40 md:flex"
             >
               <span aria-hidden>→</span>
             </button>
 
             {/* 카운터 + 도트 */}
-            <div className="absolute bottom-4 right-4 flex items-center gap-3 rounded-full bg-[var(--color-ink-950)]/80 px-3 py-1.5">
+            <div className="absolute bottom-4 right-4 flex items-center gap-3 rounded-full bg-strong/80 px-3 py-1.5">
               <div className="flex gap-1.5">
                 {photos.map((p, i) => (
                   <span

@@ -13,7 +13,7 @@ import { Emph } from "@/components/sections/home/Emph";
 
 /**
  * 텐투텐 앱 — 화면 한 장 크기의 무대에서 네 장면이 자동으로 이어진다(11/12 CEO: AI 엔진을 로고로 부각).
- * 11/12 CEO: 스크롤에 맞춰 움직이니 어색·불편 → 섹션이 화면에 보이기 시작하면 자동 재생(약 11초), 화면 밖으로 나가면 멈췄다가 돌아오면 이어서,
+ * 11/12 CEO: 스크롤에 맞춰 움직이니 어색·불편 → 섹션이 화면에 보이기 시작하면 자동 재생(약 11초 — 첫 장면은 읽을 시간 5초, 이후 움직임은 11/18 단축 속도), 화면 밖으로 나가면 멈췄다가 돌아오면 이어서,
  * 끝나면 마지막 장면(신청 완료)에 멈추고 '다시 보기' 버튼. 장면 키프레임은 진행도(0~1) 기준 그대로 두고, 진행도를 스크롤 대신 시간으로 움직인다.
  *  1) 쏟아지는 소식 — 흩어진 소식 카드 + "정보는 쏟아지는데… 찾기 어려우시죠?"
  *  2) AI 엄선 — 가운데 텐투텐 심볼이 엔진이 되어 소식을 하나씩 판정. 맞는 것은 '✓ 맞춤'으로 엔진에 들어가고,
@@ -37,11 +37,13 @@ const T = {
   done: [0.77, 0.8],
 } as const;
 
-// 자동 재생 — 진행도를 시간 구간별 속도로 움직임(첫 장면 1.8초, 판정 6초, 피드 1.4초, 신청 1.8초)
+// 자동 재생 — 진행도를 시간 구간별 속도로 움직임(첫 장면 5초, 판정 3.8초, 피드 1초, 신청 1.3초 — 전체 약 11.4초)
 // 11/12 CEO: 시작이 늦게 느껴짐(2회) → 섹션 윗부분이 화면 아래쪽에 보이기 시작하면 바로 시작 + 첫 장면 정지 3.2 → 1.8초
+// 11/18 CEO: 휴대폰에서 보니 더 빨리 재생돼야 함 → 판정·피드·신청을 약 3분의 1 단축(장면 비율은 그대로)
+// 11/18 CEO 2차: 첫 장면('쏟아지는 소식') 문장을 읽을 시간이 없음 → 첫 장면 정지만 1.4 → 5초로 늘리고, 그 뒤 움직임은 같은 속도
 const PLAY = {
   progress: [0, 0.08, 0.53, 0.66, 0.82, 1],
-  seconds: [0, 1.8, 7.8, 9.2, 11.0, 11.4],
+  seconds: [0, 5.0, 8.8, 9.8, 11.1, 11.4],
 } as const;
 const PLAY_DURATION = PLAY.seconds[PLAY.seconds.length - 1];
 const PLAY_TIMES = PLAY.seconds.map((t) => t / PLAY_DURATION);
@@ -162,9 +164,11 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
 
   return (
     <section ref={ref} aria-labelledby="gather-title" className="relative">
-      <div className="relative flex h-[calc(100svh-4rem)] min-h-[600px] flex-col overflow-hidden lg:flex-row lg:items-center">
+      {/* 11/18 CEO(휴대폰에서 위 로고·아래 글이 잘림): 넓은 화면만 화면 한 장 높이로 고정. 휴대폰·태블릿은 무대 높이를 px로 정하고
+          글은 세 장면을 같은 칸에 겹쳐 쌓아(grid) 가장 긴 장면만큼 높이를 차지하게 → 화면 높이와 상관없이 잘리지 않음 */}
+      <div className="relative flex flex-col overflow-hidden lg:h-[calc(100svh-4rem)] lg:min-h-[600px] lg:flex-row lg:items-center">
         {/* 무대 — 쏟아지는 소식 → 엔진 → 피드 → 신청 */}
-        <div ref={stageRef} className="relative h-[48%] w-full sm:h-[56%] lg:order-2 lg:h-full lg:w-1/2">
+        <div ref={stageRef} className="relative h-[400px] w-full sm:h-[560px] lg:order-2 lg:h-full lg:w-1/2">
           <div
             aria-hidden
             className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(80,227,194,0.16)_0%,rgba(80,227,194,0)_100%)]"
@@ -215,7 +219,8 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
             style={{ opacity: phoneOpacity, scale: phoneScale }}
           >
             <div className="relative origin-center" style={{ transform: `scale(${scale * 0.92})` }}>
-              <PhoneFeedMock className="[&>div]:shadow-none [&_figcaption_span]:bg-white/10 [&_figcaption_span]:text-[var(--color-ash)]" />
+              {/* 휴대폰(폭 640 미만)에선 이 캡션이 아주 작게 줄어 카드 아래 읽히는 크기의 캡션과 겹치므로 자리만 남기고 숨김(11/18 CEO) */}
+              <PhoneFeedMock className="[&>div]:shadow-none [&_figcaption_span]:bg-white/10 [&_figcaption_span]:text-[var(--color-ash)] max-sm:[&_figcaption]:invisible" />
               {/* 휴대폰(좁은 화면) 전용 — 휴대폰 위에 텐투텐 풀 로고(불투명). 휴대폰과 같이 축소되므로 원래 크기로 그림 */}
               {compact && (
                 <motion.div
@@ -255,10 +260,10 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
         </div>
 
         {/* 문장 — 세 장면이 같은 자리에서 바뀜 */}
-        <div className="relative w-full flex-1 lg:order-1 lg:h-full lg:w-1/2">
+        <div className="relative w-full lg:order-1 lg:h-full lg:w-1/2">
           {/* 넓은 화면에선 왼쪽 반의 오른쪽 600px — 글 시작선이 위아래 섹션(1200px 폭)과 맞도록. m-wrap을 쓰면 최대 폭 규칙이 겹쳐 글이 화면 왼쪽 끝으로 붙음 */}
-          <div className="relative h-full w-full lg:mr-0 lg:ml-auto lg:max-w-[600px]">
-            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: aOpacity }}>
+          <div className="relative grid w-full px-6 pt-4 pb-14 md:px-8 lg:block lg:h-full lg:p-0 lg:mr-0 lg:ml-auto lg:max-w-[600px]">
+            <motion.div className="col-start-1 row-start-1 lg:absolute lg:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: aOpacity }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
               <Heading id="gather-title" className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
                 {HOME_GATHER.before.headline}
@@ -268,7 +273,7 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
               </p>
             </motion.div>
 
-            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: bOpacity, y: bY }}>
+            <motion.div className="col-start-1 row-start-1 lg:absolute lg:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: bOpacity, y: bY }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
               <p className="m-heading mt-3 whitespace-pre-line text-[clamp(1.6rem,3.2vw,2.65rem)] text-[var(--color-ivory)]">
                 {HOME_GATHER.after.headline}
@@ -279,7 +284,7 @@ export function HomeGather({ prereg = false, variant = "home" }: { prereg?: bool
               </p>
             </motion.div>
 
-            <motion.div className="absolute inset-x-6 top-4 md:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: cOpacity, y: cY, visibility: cVisibility }}>
+            <motion.div className="col-start-1 row-start-1 lg:absolute lg:inset-x-8 lg:top-1/2 lg:-translate-y-1/2" style={{ opacity: cOpacity, y: cY, visibility: cVisibility }}>
               <p className="m-eyebrow">{HOME_GATHER.eyebrow}</p>
               <p className="m-heading mt-3 whitespace-pre-line text-[clamp(1.2rem,5.6vw,1.45rem)] text-[var(--color-ivory)] sm:text-[clamp(1.45rem,2.4vw,2.1rem)]">
                 {HOME_GATHER.apply.headline}

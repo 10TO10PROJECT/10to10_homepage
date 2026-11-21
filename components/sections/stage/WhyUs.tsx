@@ -9,7 +9,7 @@ export function WhyUs() {
     <section className="band-wash py-20 md:py-28">
       <Container size="wide">
         <FadeIn className="mb-12 max-w-3xl">
-          <div className="micro-label text-[var(--color-ink-500)]">Why 10to10</div>
+          <div className="micro-label text-[var(--color-ink-500)]">왜 텐투텐인가</div>
           <h2 className="display-type mt-4 text-3xl text-[var(--color-ink-950)] md:text-5xl">
             프리랜서도, 인쇄소도,
             <br />
@@ -19,7 +19,7 @@ export function WhyUs() {
         <StaggerChildren className="grid gap-4 md:grid-cols-3">
           {STAGE_MOATS.map((m) => (
             <StaggerItem key={m.no} className="h-full">
-              <div className="h-full rounded-[var(--radius-card)] shadow-card bg-white p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
+              <div className="h-full rounded-[var(--radius-card)] shadow-card bg-card p-7 transition-colors hover:border-[var(--color-ink-500)] md:p-9">
                 <div className="flex items-baseline justify-between">
                   <h3 className="text-xl font-bold text-[var(--color-ink-950)] md:text-2xl">
                     {m.title}

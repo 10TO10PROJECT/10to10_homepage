@@ -38,20 +38,31 @@ export function Header({ tone = "light" }: { tone?: "light" | "dark" }) {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-colors ${
-        dark
-          ? // 메인 다크: 맨 위에서는 히어로 사진 위에 투명하게 겹치고(HomeHero가 -mt-16로 밑에 깔림), 스크롤하면 반투명 오닉스 + 블러
-            scrolled
-            ? "border-b border-white/[0.08] bg-[var(--color-onyx)]/80 backdrop-blur-xl"
-            : "bg-transparent"
-          : `bg-[var(--color-paper)]/90 backdrop-blur ${scrolled ? "border-b border-[var(--color-cloud)]" : ""}`
+      className={`sticky top-0 transition-colors ${
+        open
+          ? // 11/18 CEO: 휴대폰 메뉴를 열면 헤더 줄과 메뉴판이 같은 색이어야 한다(투명 헤더 뒤로 흰 바탕이 비치던 문제).
+            // 열린 동안은 헤더를 불투명 단색으로 채우고, 카톡 버튼·하단 바(z-50·z-40)보다 위에 올린다.
+            `z-[60] ${dark ? "bg-[var(--color-onyx)]" : "bg-[var(--color-paper)]"}`
+          : `z-50 ${
+              dark
+                ? // 메인·플랫폼·STAGE 다크: 맨 위에서는 첫 장면 위에 투명하게 겹치고(첫 섹션이 -mt-16로 밑에 깔림), 스크롤하면 오닉스 95% + 블러
+                  scrolled
+                  ? "border-b border-white/[0.08] bg-[var(--color-onyx)]/95 backdrop-blur-xl"
+                  : "bg-transparent"
+                : `bg-[var(--color-paper)]/90 backdrop-blur ${scrolled ? "border-b border-[var(--color-cloud)]" : ""}`
+            }`
       }`}
     >
       <Container className="flex h-16 items-center justify-between">
@@ -136,9 +147,10 @@ export function Header({ tone = "light" }: { tone?: "light" | "dark" }) {
       </Container>
 
       {open && (
+        // 메뉴판은 페이지를 밀어내지 않고 헤더 바로 밑에서 화면 끝까지 덮는다(같은 단색) — 열 때 첫 장면이 아래로 튀지 않게
         <div
           id="mobile-menu"
-          className={`border-t md:hidden ${
+          className={`absolute inset-x-0 top-full h-[100dvh] overflow-y-auto border-t md:hidden ${
             dark ? "border-white/[0.08] bg-[var(--color-onyx)]" : "border-[var(--color-cloud)] bg-[var(--color-paper)]"
           }`}
         >

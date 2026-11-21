@@ -263,7 +263,7 @@ export const STAGE_MOATS = [
 
 /** 신뢰도 섹션 — 히어로 직후 (멘토링 ④-3). 파트너 로고 + 실적 스트립 */
 export const STAGE_TRUST = {
-  eyebrow: "TRUSTED BY",
+  eyebrow: "함께한 곳", // 11/18 메인 템플릿 통일 — 영문 눈썹(TRUSTED BY) 대신 한국어
   headline: "숫자와 파트너가 증명합니다.",
   stats: [
     { value: "20곳", label: "업무협약(MOU) 학원" },
@@ -304,13 +304,13 @@ export const STAGE_TRUST = {
 
 /** 팀 크레덴셜 섹션 — 차별화 뒤 (멘토링 레퍼런스: 그로스파이낸스 대표 실명 크레덴셜 / abbg '파트너' 클로징) */
 export const STAGE_TEAM = {
-  eyebrow: "WHO WE ARE",
+  eyebrow: "만드는 사람들", // 11/18 (WHO WE ARE)
   headline: "입시 현장에서 자란 팀이\n직접 만들고, 직접 뜁니다.",
   ceo: {
     name: "신현우",
     role: "대표",
     lines: [
-      "동탄에서 자란 동탄 키즈 — 석우중·반송고 졸업",
+      "석우중·반송고 졸업", // 11/18 CEO: '동탄 키즈' 워딩 뺌
       "연세대학교 전기전자공학부",
       "(주)하이컨시(시대인재) 서바이벌 모의고사 출제 이력",
       "메가스터디 국어 강사 조교 · 스파르타 입시연구소 입시 컨설팅 조교",
@@ -322,7 +322,7 @@ export const STAGE_TEAM = {
     name: "최선우",
     role: "COO · 공동창업자",
     lines: [
-      "동탄에서 자란 동탄 키즈 — 석우중·반송고 졸업",
+      "석우중·반송고 졸업", // 11/18 CEO: '동탄 키즈' 워딩 뺌
       "화성오산교육지원청 영재교육원 이수",
       "GIST(광주과학기술원) 전기전자컴퓨터공학부",
       "에듀플렉스 튜터",
@@ -339,7 +339,7 @@ export const STAGE_TEAM = {
 
 /** 행사 운영 실적 — 연세대 창업학회 VERY 43기 'VERIFY' (2026.07.18). "데모데이" 명칭 비노출 리프레이밍 (멘토링 ④-11) */
 export const STAGE_EVENT_RECORD = {
-  eyebrow: "EVENT TRACK RECORD",
+  eyebrow: "설명회 진행 기록", // 11/18 (EVENT TRACK RECORD)
   headline: "대규모 행사도 직접 기획해 완주한 팀입니다.",
   desc: "연세대학교 창업학회 VERY 43기 공식 행사 'VERIFY' — 기획, 모객, 현장 운영을 대표가 총괄했습니다. 설명회와 동일한 모객 로직(카카오톡·인스타그램 채널 운영)으로 2주 만에 신청 67명을 모았고, 대학생부터 현직 CEO·투자 심사역까지 한 자리에 모이는 행사를 완주했습니다.",
   stats: [
@@ -409,7 +409,7 @@ export const STAGE_PROCESS = [
 
 /** GF 차용 P0-② — 설명회 준비 6가지, 원장님 혼자 vs STAGE 전담팀 (시간 수치 = 1R 사업계획서 40→12시간) */
 export const STAGE_COMPARE = {
-  eyebrow: "SAME WORK, DIFFERENT WEIGHT",
+  eyebrow: "같은 일, 다른 부담", // 11/18 (SAME WORK, DIFFERENT WEIGHT)
   headline: "준비할 일은 똑같습니다.\n누가 하느냐만 다릅니다.",
   processes: [
     "기획·일정 설계",

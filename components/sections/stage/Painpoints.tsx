@@ -20,7 +20,7 @@ export function Painpoints() {
           <StaggerChildren className="mt-10 space-y-4 md:mt-12">
             {STAGE_PAINPOINTS.map((p) => (
               <StaggerItem key={p.title}>
-                <div className="flex gap-4 rounded-[var(--radius-card)] bg-white shadow-card p-6 md:items-baseline md:gap-6 md:p-7">
+                <div className="flex gap-4 rounded-[var(--radius-card)] bg-card shadow-card p-6 md:items-baseline md:gap-6 md:p-7">
                   <span aria-hidden className="text-xl font-bold text-[var(--color-mint-700)]">
                     →
                   </span>
@@ -47,7 +47,7 @@ export function Painpoints() {
               {STAGE_BRIDGE.causes.map((c) => (
                 <div
                   key={c.keyword}
-                  className="flex items-baseline gap-3 rounded-[var(--radius-btn)] bg-white shadow-card px-4 py-3"
+                  className="flex items-baseline gap-3 rounded-[var(--radius-btn)] bg-card shadow-card px-4 py-3"
                 >
                   <span className="display-type text-xl">{c.keyword}</span>
                   <span className="text-[13px] text-[var(--color-ink-700)]">{c.desc}</span>
