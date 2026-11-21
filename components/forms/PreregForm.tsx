@@ -1,23 +1,56 @@
 "use client";
 
-import { useState } from "react";
-import { PREREG_GRADES, PREREG_ROLES, PREREG_STUDENT_GRADES, preregSchema } from "@/lib/schema/prereg";
+import { useEffect, useState } from "react";
+import {
+  PREREG_GRADES,
+  PREREG_REGION_HINTS,
+  PREREG_REGIONS,
+  PREREG_ROLES,
+  PREREG_STUDENT_GRADES,
+  parsePreregSource,
+  preregSchema,
+} from "@/lib/schema/prereg";
 import { HOME_PREREG } from "@/lib/content/home";
 
 type Role = keyof typeof PREREG_ROLES;
 
+/** 채널 주소(?utm_source=…)로 들어온 뒤 다른 페이지를 둘러보고 돌아와도 유입 경로가 남도록 이 탭에만 기억 */
+const SOURCE_KEY = "10to10-prereg-source";
+
+function readSource() {
+  const fromUrl = new URLSearchParams(window.location.search).get("utm_source");
+  if (fromUrl) return parsePreregSource(fromUrl);
+  try {
+    return parsePreregSource(window.sessionStorage.getItem(SOURCE_KEY));
+  } catch {
+    return "direct" as const;
+  }
+}
+
 /**
- * 앱 사전 예약 폼(어두운 메인 전용) — 구분 · 학년 · 휴대폰 · [필수] 개인정보 동의.
+ * 앱 사전 예약 폼(어두운 메인 전용) — 구분 · 학년 · 사는 동네 · 휴대폰 · [필수] 개인정보 동의 · [선택] 소식 문자 수신 동의.
+ * 유입 경로(utm_source)는 화면에 보이지 않게 함께 보낸다.
  * 학생 본인은 중3 이상 + 만 14세 확인이 있어야 신청 가능(그 아래는 보호자가 '학부모'로). 검사는 서버와 같은 스키마.
  */
 export function PreregForm() {
   const P = HOME_PREREG;
   const [role, setRole] = useState<Role>("parent");
   const [grade, setGrade] = useState("");
+  const [region, setRegion] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
   const [stored, setStored] = useState(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const grades: readonly string[] = role === "parent" ? PREREG_GRADES : PREREG_STUDENT_GRADES;
+
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get("utm_source");
+    if (!fromUrl) return;
+    try {
+      window.sessionStorage.setItem(SOURCE_KEY, parsePreregSource(fromUrl));
+    } catch {
+      // 저장소를 막아 둔 브라우저 — 제출 때 주소에서 다시 읽는다
+    }
+  }, []);
 
   function pickRole(next: Role) {
     setRole(next);
@@ -31,9 +64,12 @@ export function PreregForm() {
     const parsed = preregSchema.safeParse({
       role,
       grade,
+      region,
       phone: String(fd.get("phone") ?? ""),
       consent: fd.get("consent") === "on",
       over14: fd.get("over14") === "on",
+      marketing: fd.get("marketing") === "on",
+      source: readSource(),
       honeypot: String(fd.get("website") ?? ""),
     });
     if (!parsed.success) {
@@ -138,6 +174,34 @@ export function PreregForm() {
       </div>
 
       <div>
+        <label htmlFor="prereg-region" className="text-[14px] text-[var(--color-ash)]">
+          사는 동네
+        </label>
+        <div className="relative mt-2">
+          <select
+            id="prereg-region"
+            value={region}
+            onChange={(e) => setRegion(e.target.value)}
+            className={`${field} appearance-none pr-10`}
+            {...describe("region")}
+          >
+            <option value="" disabled>
+              동네를 골라 주세요
+            </option>
+            {PREREG_REGIONS.map((r) => (
+              <option key={r} value={r}>
+                {PREREG_REGION_HINTS[r] ? `${r} (${PREREG_REGION_HINTS[r]})` : r}
+              </option>
+            ))}
+          </select>
+          <span aria-hidden className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-[12px] text-[var(--color-ash)]">
+            ▼
+          </span>
+        </div>
+        {err("region")}
+      </div>
+
+      <div>
         <label htmlFor="prereg-phone" className="text-[14px] text-[var(--color-ash)]">
           휴대폰 번호
         </label>
@@ -168,7 +232,7 @@ export function PreregForm() {
       )}
 
       <div className="rounded-[12px] border border-white/10 p-4">
-        <label className="flex items-start gap-2.5 text-[15px] text-[var(--color-ivory)]">
+        <label className="flex items-start gap-2.5 break-keep text-[15px] text-[var(--color-ivory)]">
           <input type="checkbox" name="consent" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" {...describe("consent")} />
           {P.consent.label}
         </label>
@@ -182,6 +246,22 @@ export function PreregForm() {
           <p className="pt-1 break-keep">{P.consent.refuse}</p>
         </dl>
         {err("consent")}
+      </div>
+
+      <div className="rounded-[12px] border border-white/10 p-4">
+        <label className="flex items-start gap-2.5 break-keep text-[15px] text-[var(--color-ivory)]">
+          <input type="checkbox" name="marketing" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" />
+          {P.marketing.label}
+        </label>
+        <dl className="mt-3 space-y-1 pl-[26px] text-[13px] leading-relaxed text-[var(--color-ash)]">
+          {P.marketing.items.map(([k, v]) => (
+            <div key={k} className="flex gap-2">
+              <dt className="shrink-0 text-[var(--color-ivory)]/70">{k}</dt>
+              <dd className="break-keep">{v}</dd>
+            </div>
+          ))}
+          <p className="pt-1 break-keep">{P.marketing.refuse}</p>
+        </dl>
       </div>
 
       <p className="break-keep text-[13px] text-[var(--color-ash)]">{P.minorNote}</p>
