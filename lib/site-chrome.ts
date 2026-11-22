@@ -3,7 +3,7 @@
  * 메인(통합 랜딩)에 이어 11/18 CEO: 플랫폼·STAGE 페이지도 메인처럼 통일.
  * 투명 헤더 밑에 어두운 바탕이 깔리도록 각 페이지의 첫 섹션을 헤더 높이만큼(-mt-16) 끌어올려야 한다.
  */
-export const DARK_CHROME_PATHS = ["/", "/platform", "/stage"] as const;
+export const DARK_CHROME_PATHS = ["/", "/platform", "/stage", "/prereg"] as const;
 
 /** 휴대폰 하단 바에 원장님·학부모 두 버튼을 띄우는 페이지(두 갈래를 다 받는 곳). STAGE는 원장님 페이지라 '견적 확인하기' 하나 */
 export const DUAL_CTA_PATHS = ["/", "/platform"] as const;

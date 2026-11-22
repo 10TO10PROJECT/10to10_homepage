@@ -565,7 +565,7 @@ function Links({ prereg, variant, className = "" }: { prereg: boolean; variant: 
         텐투텐 앱 자세히 보기 <span aria-hidden>→</span>
       </Link>
       {prereg && (
-        <a href="#prereg" className="inline-flex items-center gap-1.5 text-[15px] text-[var(--color-mint-500)] underline-offset-4 hover:underline">
+        <a href="/prereg" className="inline-flex items-center gap-1.5 text-[15px] text-[var(--color-mint-500)] underline-offset-4 hover:underline">
           {HOME_PREREG.cta} <span aria-hidden>→</span>
         </a>
       )}

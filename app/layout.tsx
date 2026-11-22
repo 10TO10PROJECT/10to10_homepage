@@ -7,6 +7,7 @@ import { SiteChrome } from "@/components/layout/SiteChrome";
 import { KakaoFab } from "@/components/ui/KakaoFab";
 import { StickyCta } from "@/components/ui/StickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { isPreregOpen } from "@/lib/prereg";
 import { ORGANIZATION_JSONLD, WEBSITE_JSONLD, SITE_KEYWORDS } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ export default function RootLayout({
         <JsonLd data={WEBSITE_JSONLD} />
         <SiteChrome>{children}</SiteChrome>
         <KakaoFab />
-        <StickyCta />
+        <StickyCta prereg={isPreregOpen()} />
         <SiteAnalytics />
         <SpeedInsights />
       </body>

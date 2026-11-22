@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
       { source: "/careers", destination: "/", permanent: false },
       { source: "/invest", destination: "/", permanent: false },
       { source: "/ir-deck", destination: "/", permanent: false },
+      // 앱 사전 예약 채널 주소(11/21 게시: 10to10.kr/?utm_source=insta#prereg 등)는 사전 예약 전용 페이지로 (11/22 CEO).
+      // 인스타 인앱 브라우저에서 메인의 #prereg 위치로 바로 넘어가지 않았기 때문. 쿼리(utm_source)는 그대로 따라가고,
+      // 해시(#prereg)는 브라우저가 붙여 가며 /prereg에서는 맨 위 섹션이 그 id라 첫 화면 그대로 보인다.
+      {
+        source: "/",
+        has: [{ type: "query", key: "utm_source", value: "(?:chat|insta|threads|ad)" }],
+        destination: "/prereg",
+        permanent: false,
+      },
     ];
   },
 };
