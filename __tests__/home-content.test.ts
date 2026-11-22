@@ -31,12 +31,15 @@ describe("home page content", () => {
   });
 
   it("captions every real photo and points it at a file in public/", () => {
-    const photos = [HOME_HERO.photo, HOME_PATHS.stage.photo, ...HOME_OPEN.photos];
+    const photos = [HOME_HERO.photo, HOME_PATHS.stage.photo, ...HOME_PATHS.stage.morePhotos, ...HOME_OPEN.photos];
     for (const p of photos) {
       expect(existsSync(publicPath(p.src)), p.src).toBe(true);
       expect(p.caption).toMatch(/20\d\d\.\d\d/); // 언제(연·월)를 캡션에 적음
       expect(p.alt.length).toBeGreaterThan(10);
     }
+    // 11/18: STAGE 카드 콜라주는 사진마다가 아니라 한 줄 캡션 — 콜라주에 든 설명회가 모두 적혀야 함
+    expect(HOME_PATHS.stage.collageCaption).toMatch(/2026\.02/);
+    expect(HOME_PATHS.stage.collageCaption).toMatch(/2026\.10/);
   });
 });
 
