@@ -12,6 +12,8 @@ import { hasStickyCta } from "@/lib/sticky-cta";
  */
 export function KakaoFab() {
   const pathname = usePathname();
+  // 사전 예약 전용 페이지(/prereg, 11/22)는 폼에만 집중 — 카톡 버튼이 동의 칸·제출 버튼을 가리지 않게
+  if (pathname === "/prereg") return null;
   const bottom = hasStickyCta(pathname)
     ? "bottom-[calc(5.25rem_+_env(safe-area-inset-bottom))]"
     : "bottom-[calc(1rem_+_env(safe-area-inset-bottom))]";

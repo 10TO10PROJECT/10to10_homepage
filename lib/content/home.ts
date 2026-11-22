@@ -186,6 +186,19 @@ export const HOME_PREREG = {
   done: "사전 예약이 완료됐어요.\n앱이 나오면 문자로 가장 먼저 알려 드릴게요.",
 } as const;
 
+/**
+ * 사전 예약 전용 페이지(/prereg, 11/22 CEO) — 인스타·스레드·오픈채팅·광고 링크가 도착하는 곳.
+ * 휴대폰 첫 화면에서 스크롤 없이 폼이 시작되도록 소개는 제목 + 한 문단만. 폼·동의 문구는 HOME_PREREG 그대로.
+ */
+export const PREREG_PAGE = {
+  title: "텐투텐 앱 사전 예약",
+  description: "우리 아이 학년 소식만 골라서 챙겨 드립니다. 학년과 동네를 고르고 휴대폰 번호만 남겨 주세요. 텐투텐 앱이 나오면 문자로 가장 먼저 알려 드립니다.",
+  eyebrow: HOME_PREREG.eyebrow,
+  headline: "우리 아이 학년 소식만\n골라서 챙겨 드립니다",
+  sub: HOME_PREREG.sub,
+  closed: "지금은 사전 예약을 잠시 쉬고 있어요. 다시 열면 이 페이지에서 바로 신청하실 수 있습니다.",
+} as const;
+
 export const HOME_FOUNDERS = {
   eyebrow: "만드는 사람들",
 } as const;

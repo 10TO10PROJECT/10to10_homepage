@@ -26,7 +26,7 @@ export function HomeCta({ prereg = false }: { prereg?: boolean }) {
         </FadeIn>
         {prereg && (
           <FadeIn delay={0.15} className="mt-6">
-            <a href="#prereg" className="text-[15px] text-[var(--color-ivory)] underline-offset-4 hover:underline">
+            <a href="/prereg" className="text-[15px] text-[var(--color-ivory)] underline-offset-4 hover:underline">
               {HOME_PREREG.cta} <span aria-hidden>→</span>
             </a>
           </FadeIn>

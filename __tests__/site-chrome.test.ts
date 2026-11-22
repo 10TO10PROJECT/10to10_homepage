@@ -7,10 +7,11 @@ const ROOT = path.resolve(__dirname, "..");
 
 // 11/18 CEO: 플랫폼 페이지도 메인처럼 어두운 사이트 틀(상단 띠·헤더·푸터·하단 두 버튼 바)로 통일
 describe("dark site chrome", () => {
-  it("covers the main, platform and STAGE pages only", () => {
+  it("covers the main, platform, STAGE and pre-registration pages only", () => {
     expect(isDarkChrome("/")).toBe(true);
     expect(isDarkChrome("/platform")).toBe(true);
     expect(isDarkChrome("/stage")).toBe(true); // 11/18 CEO: STAGE도 통일
+    expect(isDarkChrome("/prereg")).toBe(true); // 11/22 사전 예약 전용 페이지
     for (const p of ["/portfolio", "/inquiry", "/privacy", "/platform/x", null]) {
       expect(isDarkChrome(p), String(p)).toBe(false);
     }
