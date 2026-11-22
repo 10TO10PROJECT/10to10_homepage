@@ -59,14 +59,19 @@ export const PLATFORM_FEED_POINTS = [
   },
 ] as const;
 
-/** 설명회 모아보기 뒤에 비치는 실제 포스터·후기 게시물 — 10to10 표기 실물만(2026.10) */
+/**
+ * 설명회 모아보기 뒤에 비치는 실제 포스터·게시물 — 텐투텐이 만들어 실제로 쓴 것만(2026.10 리버스 · 2026.11 강아).
+ * 앞쪽이 뒤에 깔리고 뒤쪽이 위에 겹친다(11/18 CEO: 강아 포스터를 가장 잘 보이는 왼쪽 아래에 크게).
+ */
 export const PLATFORM_SEMINAR_POSTERS = [
   { src: "/promo/oct-rebirth-poster.jpg", w: 4, h: 5 },
   { src: "/promo/oct-review-01.jpg", w: 4, h: 5 },
+  { src: "/promo/nov-ganga-card-08.jpg", w: 4, h: 5 },
+  { src: "/promo/nov-ganga-poster.jpg", w: 4, h: 5 },
 ] as const;
 
 export const PLATFORM_SEMINAR_POSTERS_CAPTION =
-  "뒤 포스터 · 2026.10 리버스수학학원 예비 고1 설명회 모객 포스터와 후기 게시물 (실제 게시본)";
+  "뒤 포스터 · 2026.11 강의하는 아이들 동탄역 설명회, 2026.10 리버스수학학원 예비 고1 설명회 모객 포스터와 게시물 (실제 게시본)";
 
 /** 설명회 모아보기 — 예시 카드. 학원명은 실제 이름 대신 OO 처리 */
 export const PLATFORM_SEMINARS = [
@@ -82,7 +87,7 @@ export const PLATFORM_SEMINAR_POINTS = [
 
 /** 창업자 이야기 — 약력은 STAGE_TEAM(SSOT)에서 가져옴. 인용은 대표 본인이 공개한 쓰레드 글(@10to10.kr, 2026.10)만 사용, 선우님 일화·발언은 지어 쓰지 않음 */
 export const PLATFORM_FOUNDERS = {
-  eyebrow: "Founders' Story",
+  eyebrow: "창업자 이야기", // 11/18 메인 템플릿 통일 — 영문 눈썹(Founders' Story) 대신 메인처럼 한국어
   headline: "석우중·반송고 나온 두\u00A0사람이\n동탄 후배들을 위해 만든 것이 시작입니다.", // 모바일에서 "두 사람이"가 갈라지지 않도록 줄바꿈 없는 공백
   story: [
     "텐투텐 대표 신현우와 COO 최선우는 동탄에서 같은 중학교와 고등학교를 다녔습니다. 두 사람 모두 대학에 진학한 뒤에도 입시 과외와 학습 튜터로 학생들을 가르쳐 왔습니다.",

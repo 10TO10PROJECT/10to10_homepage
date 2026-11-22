@@ -31,7 +31,7 @@ export function PricingSection() {
                 className={`p-6 md:p-7 ${
                   "highlight" in c && c.highlight
                     ? "bg-[var(--color-mint-500)]/15"
-                    : "bg-white"
+                    : "bg-card"
                 }`}
               >
                 <div className="text-sm font-bold text-[var(--color-ink-500)]">
@@ -60,7 +60,7 @@ export function PricingSection() {
             </div>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {P.includes.map((item) => (
-                <li key={item.title} className="rounded-[12px] bg-white p-4">
+                <li key={item.title} className="rounded-[12px] bg-card p-4">
                   <div className="flex items-center gap-2 text-[15px] font-bold text-[var(--color-ink-950)]">
                     <span aria-hidden className="text-[var(--color-mint-600)]">✓</span>
                     {item.title}
