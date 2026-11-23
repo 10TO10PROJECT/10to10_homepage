@@ -4,9 +4,9 @@ import { HOME_PREREG } from "@/lib/content/home";
 import { Emph } from "@/components/sections/home/Emph";
 
 /**
- * 앱 사전 예약 — 10to10 STAGE 장면 다음. 왼쪽 안내 + 오른쪽 그래파이트 카드 폼.
- * 저장소가 연결된 배포에서만 보인다(app/page.tsx의 isPreregOpen). 다른 곳의 '앱 사전 예약하기'·홈 하단 배너는
- * 사전 예약 전용 페이지(/prereg)로 간다(11/22 — 휴대폰 인앱 브라우저에서 이 위치로 바로 넘어가지 않던 문제).
+ * 앱 출시 알림(구 '사전 예약', 11/23 이름 변경) — 10to10 STAGE 장면 다음. 왼쪽 안내 + 오른쪽 그래파이트 카드 폼.
+ * 저장소가 연결된 배포에서만 보인다(app/page.tsx의 isPreregOpen). 다른 곳의 '앱 출시 알림 받기'·홈 하단 배너는
+ * 전용 페이지(/prereg)로 간다(11/22 — 휴대폰 인앱 브라우저에서 이 위치로 바로 넘어가지 않던 문제).
  */
 export function HomePrereg() {
   const P = HOME_PREREG;

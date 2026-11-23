@@ -101,7 +101,7 @@ describe("pre-registration gate", () => {
     expect(HOME_PREREG.consent.label).toMatch(/^\[필수\]/);
     expect(HOME_PREREG.marketing.label).toMatch(/^\[선택\].*광고성 정보/);
     expect(HOME_PREREG.consent.items.find(([k]) => k === "수집 항목")?.[1]).toContain("사는 동네");
-    const row = JSON.stringify(PRIVACY).match(/앱 사전 예약","[^"]+/)?.[0] ?? "";
+    const row = JSON.stringify(PRIVACY).match(/앱 출시 알림\(사전 예약\)","[^"]+/)?.[0] ?? "";
     expect(row).toContain("사는 동네");
     const form = readFileSync(path.join(ROOT, "components/forms/PreregForm.tsx"), "utf8");
     expect(form).toMatch(/name="marketing"(?![^>]*defaultChecked)/);

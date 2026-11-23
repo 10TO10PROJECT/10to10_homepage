@@ -28,7 +28,8 @@ function readSource() {
 }
 
 /**
- * 앱 사전 예약 폼(어두운 메인 전용) — 구분 · 학년 · 사는 동네 · 휴대폰 · [필수] 개인정보 동의 · [선택] 소식 문자 수신 동의.
+ * 앱 출시 알림 신청 폼(어두운 메인 전용, 구 '사전 예약') — 구분 · 학년 · 사는 동네 · 휴대폰 · [필수] 개인정보 동의 · [선택] 소식 문자 수신 동의.
+ * 동의 칸의 상세 표는 기본으로 접어 둔다(11/23 CEO: 휴대폰에서 번호를 넣은 뒤 스크롤 한 번 안에 제출 버튼이 보이게).
  * 유입 경로(utm_source)는 화면에 보이지 않게 함께 보낸다.
  * 학생 본인은 중3 이상 + 만 14세 확인이 있어야 신청 가능(그 아래는 보호자가 '학부모'로). 검사는 서버와 같은 스키마.
  */
@@ -106,6 +107,7 @@ export function PreregForm() {
           ✓
         </span>
         <p className="m-heading mt-5 whitespace-pre-line text-[20px] text-[var(--color-ivory)] md:text-[22px]">{P.done}</p>
+        <p className="mt-3 break-keep text-[14px] text-[var(--color-ash)]">{P.doneNote}</p>
         {!stored && (
           <p className="mt-4 text-[13px] text-amber-300">로컬 미리보기 — 저장소가 아직 연결되지 않아 실제로 저장되지 않았습니다.</p>
         )}
@@ -236,15 +238,7 @@ export function PreregForm() {
           <input type="checkbox" name="consent" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" {...describe("consent")} />
           {P.consent.label}
         </label>
-        <dl className="mt-3 space-y-1 pl-[26px] text-[13px] leading-relaxed text-[var(--color-ash)]">
-          {P.consent.items.map(([k, v]) => (
-            <div key={k} className="flex gap-2">
-              <dt className="shrink-0 text-[var(--color-ivory)]/70">{k}</dt>
-              <dd className="break-keep">{v}</dd>
-            </div>
-          ))}
-          <p className="pt-1 break-keep">{P.consent.refuse}</p>
-        </dl>
+        <ConsentDetails items={P.consent.items} refuse={P.consent.refuse} />
         {err("consent")}
       </div>
 
@@ -253,31 +247,57 @@ export function PreregForm() {
           <input type="checkbox" name="marketing" className="mt-1 h-4 w-4 accent-[var(--color-mint-500)]" />
           {P.marketing.label}
         </label>
-        <dl className="mt-3 space-y-1 pl-[26px] text-[13px] leading-relaxed text-[var(--color-ash)]">
-          {P.marketing.items.map(([k, v]) => (
-            <div key={k} className="flex gap-2">
-              <dt className="shrink-0 text-[var(--color-ivory)]/70">{k}</dt>
-              <dd className="break-keep">{v}</dd>
-            </div>
-          ))}
-          <p className="pt-1 break-keep">{P.marketing.refuse}</p>
-        </dl>
+        <ConsentDetails items={P.marketing.items} refuse={P.marketing.refuse} />
       </div>
 
       <p className="break-keep text-[13px] text-[var(--color-ash)]">{P.minorNote}</p>
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-mint-500)] text-[16px] font-medium text-[var(--color-ink-950)] transition hover:bg-[#6BE9CD] disabled:opacity-60"
-      >
-        {status === "submitting" ? "보내는 중…" : P.submit}
-      </button>
+      <div>
+        <p className="mb-3 flex items-start gap-2 break-keep text-[14px] leading-[1.5] text-[var(--color-ivory)]">
+          <span className="mt-px shrink-0 rounded-full bg-[var(--color-mint-500)]/15 px-2 py-0.5 text-[12px] font-semibold text-[var(--color-mint-500)]">
+            혜택
+          </span>
+          {P.benefitShort}
+        </p>
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-mint-500)] text-[16px] font-medium text-[var(--color-ink-950)] transition hover:bg-[#6BE9CD] disabled:opacity-60"
+        >
+          {status === "submitting" ? "보내는 중…" : P.submit}
+        </button>
+      </div>
       {status === "error" && (
         <p role="alert" className="text-center text-[13px] text-rose-300">
           잠시 문제가 생겼어요. 조금 뒤에 다시 시도해 주세요.
         </p>
       )}
     </form>
+  );
+}
+
+/**
+ * 동의 칸의 상세 표(수집 항목·목적·보유 기간·거부 안내) — 기본으로 접혀 있고 '자세히 보기'를 누르면 펼친다.
+ * 체크박스는 이 바깥(label)에 있어 체크할 때 표가 열리고 닫히지 않는다. 인스타 앱 안 브라우저에서도 되는 기본 <details>.
+ */
+function ConsentDetails({ items, refuse }: { items: readonly (readonly [string, string])[]; refuse: string }) {
+  return (
+    <details className="group mt-1.5 pl-[26px]">
+      <summary className="inline-flex cursor-pointer list-none items-center gap-1 py-1 text-[13px] text-[var(--color-ash)] underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
+        {HOME_PREREG.details}
+        <span aria-hidden className="text-[10px] transition-transform group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
+      <dl className="mt-1.5 space-y-1 text-[13px] leading-relaxed text-[var(--color-ash)]">
+        {items.map(([k, v]) => (
+          <div key={k} className="flex gap-2">
+            <dt className="shrink-0 text-[var(--color-ivory)]/70">{k}</dt>
+            <dd className="break-keep">{v}</dd>
+          </div>
+        ))}
+        <p className="pt-1 break-keep">{refuse}</p>
+      </dl>
+    </details>
   );
 }
