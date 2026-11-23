@@ -50,6 +50,9 @@ describe("pre-registration page (/prereg)", () => {
 
   it("uses the agreed copy — 텐투텐 앱, no 'AI answers for you' tone, no AI credits", () => {
     expect(PREREG_PAGE.headline.replace("\n", " ")).toBe("우리 아이 학년 소식만 골라서 챙겨 드립니다");
+    // 무엇이 어떻게 오는지(문자) — 접힌 동의 표에만 있으면 안 되고 제목 바로 아래에 보여야 한다
+    expect(PREREG_PAGE.sub).toContain("문자로");
+    expect(read("app/prereg/page.tsx")).toContain("<Emph text={P.sub} />");
     const all = JSON.stringify([PREREG_PAGE, HOME_PREREG, PREREG_BANNER]);
     expect(all).not.toMatch(/AI|크레딧/);
   });

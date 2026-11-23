@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PreregForm } from "@/components/forms/PreregForm";
+import { Emph } from "@/components/sections/home/Emph";
 import { PREREG_PAGE } from "@/lib/content/home";
 import { isPreregOpen } from "@/lib/prereg";
 
@@ -54,6 +55,9 @@ export default function PreregPage() {
             >
               {P.headline}
             </h1>
+            <p className="mt-2 break-keep text-[15px] leading-[1.6] text-[var(--color-ash)] md:mt-4 md:text-[18px]">
+              <Emph text={P.sub} />
+            </p>
 
             <div className="mt-4 max-w-lg rounded-[12px] border border-[var(--color-mint-500)]/30 bg-[var(--color-mint-500)]/[0.08] px-4 py-3 md:mt-6 md:px-5 md:py-4">
               <p className="text-[13px] font-semibold text-[var(--color-mint-500)]">{P.benefitLabel}</p>
