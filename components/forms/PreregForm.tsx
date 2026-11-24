@@ -11,6 +11,7 @@ import {
   preregSchema,
 } from "@/lib/schema/prereg";
 import { HOME_PREREG } from "@/lib/content/home";
+import { PREREG_MATERIALS } from "@/lib/content/prereg-materials";
 
 type Role = keyof typeof PREREG_ROLES;
 
@@ -101,6 +102,7 @@ export function PreregForm() {
   }
 
   if (status === "done") {
+    const materials = (PREREG_MATERIALS as Record<string, (typeof PREREG_MATERIALS)[keyof typeof PREREG_MATERIALS]>)[grade] ?? [];
     return (
       <div role="status" className="py-6 text-center">
         <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-mint-500)]/15 text-[22px] text-[var(--color-mint-500)]">
@@ -108,6 +110,32 @@ export function PreregForm() {
         </span>
         <p className="m-heading mt-5 whitespace-pre-line text-[20px] text-[var(--color-ivory)] md:text-[22px]">{P.done}</p>
         <p className="mt-3 break-keep text-[14px] text-[var(--color-ash)]">{P.doneNote}</p>
+        {materials.length > 0 && (
+          <div className="mt-6 rounded-[12px] border border-[var(--color-mint-500)]/30 bg-[var(--color-mint-500)]/[0.08] p-4 text-left">
+            <p className="text-[13px] font-semibold text-[var(--color-mint-500)]">{P.materialsLabel}</p>
+            <ul className="mt-3 space-y-3">
+              {materials.map((m) => (
+                <li key={m.href}>
+                  <a
+                    href={m.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-12 items-center justify-between gap-3 rounded-[12px] bg-[var(--color-mint-500)] px-4 py-3 text-[15px] font-medium text-[var(--color-ink-950)] transition hover:bg-[#6BE9CD]"
+                  >
+                    <span className="break-keep">{m.title}</span>
+                    <span className="shrink-0 text-[13px]">{P.materialsCta} →</span>
+                  </a>
+                  {(m.paidAd || m.note) && (
+                    <p className="mt-1.5 break-keep text-[12px] text-[var(--color-ash)]">
+                      {m.paidAd && <span className="mr-1.5 text-[var(--color-ivory)]/80">[{P.materialsPaidAd}]</span>}
+                      {m.note}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         {!stored && (
           <p className="mt-4 text-[13px] text-amber-300">로컬 미리보기 — 저장소가 아직 연결되지 않아 실제로 저장되지 않았습니다.</p>
         )}
