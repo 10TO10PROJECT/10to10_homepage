@@ -2,7 +2,7 @@ export const COMPANY = {
   legalName: "텐투텐(10to10)",
   brandName: "10to10",
   ceo: "신현우",
-  bizNo: "154-01-03674",
+  // 사업자 번호는 사이트에 싣지 않음(11/17 CEO·COO 결정, 사업자 재발급 예정 — 처리방침에서도 뺌). __tests__/no-biz-number.test.ts
   address: "TBD",
   email: "support@10to10.kr",
   // 임시(2026-08-17): 카카오 비즈니스 상호 변경 심사로 채널 채팅 차단 → 오픈채팅방 하드코딩 우회 (env 오버라이드도 잠시 무시).
