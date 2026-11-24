@@ -19,7 +19,7 @@ export function Footer({ tone = "light" }: { tone?: "light" | "dark" }) {
             <p className="mt-4 text-[15px] leading-relaxed text-white/60">
               {COMPANY.legalName}
               <br />
-              대표 {COMPANY.ceo} · 사업자등록번호 {COMPANY.bizNo}
+              대표 {COMPANY.ceo}
             </p>
             <a
               href={COMPANY.kakaoUrl}
