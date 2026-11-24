@@ -120,6 +120,19 @@ describe("pre-registration page (/prereg)", () => {
     expect(article(3)).not.toContain("출시 알림 발송 후 지체 없이 파기");
   });
 
+  // 11/24 CEO: 링크를 공유하면 메인과 같은 썸네일이 떠서 출시 알림 페이지인지 알 수 없음 → 전용 썸네일
+  it("has its own share thumbnail that says 출시 알림 (with 사전 예약), not the main page's", () => {
+    const png = readFileSync(path.join(ROOT, "app/prereg/opengraph-image.png"));
+    expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([1200, 630]);
+    expect(png.equals(readFileSync(path.join(ROOT, "app/opengraph-image.png")))).toBe(false);
+    const alt = read("app/prereg/opengraph-image.alt.txt");
+    expect(alt).toContain("텐투텐 앱 출시 알림(사전 예약)");
+    expect(alt).toContain(PREREG_PAGE.headline.replace("\n", " "));
+    expect(alt).not.toMatch(/AI|크레딧|\d/);
+    // 파일 썸네일을 쓰므로 부모(메인) 썸네일을 이어받던 코드는 없어야 한다
+    expect(read("app/prereg/page.tsx")).not.toContain("openGraph?.images");
+  });
+
   it("points every pre-registration button on the main page to /prereg", () => {
     for (const f of ["components/sections/home/HomeCta.tsx", "components/sections/home/HomeGather.tsx"]) {
       const src = read(f);

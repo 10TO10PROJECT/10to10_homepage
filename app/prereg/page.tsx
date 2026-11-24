@@ -1,4 +1,4 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PreregForm } from "@/components/forms/PreregForm";
@@ -10,28 +10,21 @@ const TITLE = PREREG_PAGE.title;
 const DESCRIPTION = PREREG_PAGE.description;
 
 // openGraph는 레이아웃 값을 통째로 덮으므로 링크 공유(카카오톡 등)에 쓰이는 필드를 여기서 모두 적음.
-// 썸네일은 루트 opengraph-image.png — openGraph를 덮으면 자동 상속이 끊기므로 parent에서 images를 이어받음
-export async function generateMetadata(
-  _props: PageProps<"/prereg">,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const { openGraph } = await parent;
-  return {
+// 썸네일은 같은 폴더 opengraph-image.png(11/24 CEO: 출시 알림 페이지 전용 썸네일) — 파일이 메타 객체보다 우선
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/prereg" },
+  openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    alternates: { canonical: "/prereg" },
-    openGraph: {
-      title: TITLE,
-      description: DESCRIPTION,
-      url: "/prereg",
-      siteName: "10to10",
-      locale: "ko_KR",
-      type: "website",
-      images: openGraph?.images,
-    },
-    twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
-  };
-}
+    url: "/prereg",
+    siteName: "10to10",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+};
 
 /**
  * 앱 출시 알림 전용 페이지(구 '사전 예약', 11/22 CEO: 인스타 프로필 링크로 들어오면 휴대폰에서 메인의 신청 위치로 바로 가지지 않음).
