@@ -87,8 +87,8 @@ describe("pre-registration page (/prereg)", () => {
     expect(existsSync(path.join(ROOT, "public", PREREG_PAGE.shot.src))).toBe(true);
     expect(PREREG_PAGE.shot.caption).toBe("개발 중인 앱 화면 예시입니다");
     expect(PREREG_PAGE.features).toEqual([
-      "학년과 동네를 고르면 맞는 소식부터 보여 드립니다",
-      "모든 소식에는 출처를 붙입니다",
+      "학년과 지역을 고르면 맞는 소식부터 보여 드립니다",
+      "모든 정보에는 원문을 확인할 수 있도록 출처를 밝힙니다",
       "우리 동네 설명회 소식도 한곳에서 챙겨 드립니다",
     ]);
     const page = read("app/prereg/page.tsx");
