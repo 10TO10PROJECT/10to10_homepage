@@ -72,8 +72,9 @@ describe("pre-registration page (/prereg)", () => {
   // 11/23 CEO: 지금 신청하면 얻는 것 — 금액·기간·기능 이름은 미확정이라 쓰지 않는다
   it("shows the sign-up benefit under the title and once more, shorter, right above the button", () => {
     expect(PREREG_PAGE.benefit).toBe(
-      "출시 알림을 신청하신 분께는 앞으로 나올 유료 기능을 무료로 먼저 써 보실 수 있는 혜택을 드립니다.",
+      "신청하시면 학년에 맞는 자료집을 바로 드립니다. 앞으로 나올 유료 기능을 무료로 먼저 써 보실 수 있는 혜택도 드립니다.",
     );
+    expect(HOME_PREREG.benefitShort).toContain("학년에 맞는 자료집을 바로");
     expect(HOME_PREREG.benefitShort).toContain("유료 기능을 무료로 먼저");
     expect(JSON.stringify([PREREG_PAGE.benefit, HOME_PREREG.benefitShort, HOME_PREREG.doneNote])).not.toMatch(/\d|만 원|개월|일간/);
     const page = read("app/prereg/page.tsx");
@@ -81,6 +82,22 @@ describe("pre-registration page (/prereg)", () => {
     const form = read("components/forms/PreregForm.tsx");
     expect(form.indexOf("{P.benefitShort}")).toBeGreaterThan(-1);
     expect(form.indexOf("{P.benefitShort}")).toBeLessThan(form.indexOf('type="submit"'));
+  });
+
+  // 11/24 CEO: 신청 즉시 학년별 자료집 — 모든 학년에 하나 이상, 광고 칸이 있는 자료는 표시
+  it("gives every grade at least one material right after sign-up and labels the ones with a paid ad", async () => {
+    const { PREREG_MATERIALS } = await import("@/lib/content/prereg-materials");
+    const { PREREG_GRADES } = await import("@/lib/schema/prereg");
+    for (const g of PREREG_GRADES) {
+      expect(PREREG_MATERIALS[g].length).toBeGreaterThan(0);
+      for (const m of PREREG_MATERIALS[g]) expect(m.href).toMatch(/^https:\/\//);
+    }
+    const all = Object.values(PREREG_MATERIALS).flat();
+    for (const m of all.filter((x) => /로드맵|도형/.test(x.title))) expect(m.paidAd).toBe(true);
+    const form = read("components/forms/PreregForm.tsx");
+    expect(form).toContain("{P.materialsLabel}");
+    expect(form).toContain("{P.materialsPaidAd}");
+    expect(HOME_PREREG.materialsPaidAd).toBe("유료 광고 포함");
   });
 
   it("shows what the app is — one app screen with its caption and three lines, before the form", () => {
