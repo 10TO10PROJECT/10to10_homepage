@@ -177,7 +177,7 @@ export function PreregForm() {
 
       <div>
         <label htmlFor="prereg-region" className="text-[14px] text-[var(--color-ash)]">
-          사는 동네
+          지역
         </label>
         <div className="relative mt-2">
           <select
@@ -188,7 +188,7 @@ export function PreregForm() {
             {...describe("region")}
           >
             <option value="" disabled>
-              동네를 골라 주세요
+              지역을 골라 주세요
             </option>
             {PREREG_REGIONS.map((r) => (
               <option key={r} value={r}>

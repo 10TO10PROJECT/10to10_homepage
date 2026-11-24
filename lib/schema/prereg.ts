@@ -29,7 +29,7 @@ export const preregSchema = z
   .object({
     role: z.enum(["parent", "student"]),
     grade: z.enum(PREREG_GRADES, { error: "학년을 골라 주세요" }),
-    region: z.enum(PREREG_REGIONS, { error: "사는 동네를 골라 주세요" }),
+    region: z.enum(PREREG_REGIONS, { error: "지역을 골라 주세요" }),
     phone: z.string().trim().regex(KOREAN_MOBILE, "휴대폰 번호 형식이 올바르지 않습니다 (예: 010-1234-5678)").transform(normalizePhone),
     consent: z.literal(true, { error: "개인정보 수집·이용에 동의해 주세요" }),
     over14: z.boolean().default(false),
